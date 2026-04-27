@@ -1,7 +1,96 @@
 import pandas as pd
 from pathlib import Path
 import numpy as np
-from ..run_benchmark import PROMPT_VARIANTS
+
+_DIR_WORD = {"→": "RIGHT", "↓": "DOWN", "←": "LEFT", "↑": "UP"}
+
+
+def _v_ifthen(s, view):
+    """~170 tokens — decision tree / if-then rules."""
+    d = s.get("agent_dir_str", "?")
+    fw = _DIR_WORD.get(d, d)
+    carrying = s.get("agent_carrying")
+    carry_line = f"You are currently carrying a {carrying}." if carrying else ""
+    return (
+        f"Grid navigation. Agent faces {fw}. Mission: {s['mission']}\n"
+        f"{carry_line}\n\n"
+        f"Decision rules (apply the first that matches):\n"
+        f"  → If the GREEN GOAL is directly {fw}: action 2 (forward)\n"
+        f"  → If a KEY is directly {fw} and you need it: action 3 (pickup)\n"
+        f"  → If a DOOR is directly {fw} and you have the key: action 5 (toggle)\n"
+        f"  → If turning right gets you closer to your target: action 1\n"
+        f"  → If turning left gets you closer to your target: action 0\n"
+        f"  → Otherwise move forward: action 2\n\n"
+        f"Based on the image, which action applies? YOU HAVE TO REPLY WITH ONE INTEGER ONLY."
+    )
+
+
+def _v_negative(s, view):
+    """~180 tokens — tells what NOT to do + what to do."""
+    d = s.get("agent_dir_str", "?")
+    fw = _DIR_WORD.get(d, d)
+    carrying = s.get("agent_carrying")
+    carry_line = f"You carry a {carrying}." if carrying else "You carry nothing."
+    return (
+        f"Grid agent (red triangle) faces {fw}. {carry_line}\n"
+        f"Mission: {s['mission']}\n\n"
+        f"Rules:\n"
+        f"  ✗ Do NOT pick up (action 3) unless a key is DIRECTLY {fw} of you.\n"
+        f"  ✗ Do NOT toggle (action 5) unless a door is DIRECTLY {fw} of you AND you hold the key.\n"
+        f"  ✗ Do NOT move forward (action 2) into a wall or closed door.\n"
+        f"  ✓ DO pick up the key if it is directly ahead.\n"
+        f"  ✓ DO open the door if you face it and hold the key.\n"
+        f"  ✓ DO move forward when the path is clear and it brings you closer.\n"
+        f"  ✓ DO turn (0 or 1) to face your next target.\n\n"
+        f"Actions: 0=turn_left 1=turn_right 2=forward({fw}) 3=pickup 5=toggle\n"
+        f"YOU HAVE TO REPLY WITH ONE INTEGER ONLY."
+    )
+
+
+def _v_verbose(s, view):
+    """~310 tokens — full MiniGrid mechanics explanation."""
+    d = s.get("agent_dir_str", "?")
+    fw = _DIR_WORD.get(d, d)
+    carrying = s.get("agent_carrying")
+    carry_line = (
+        f"The agent is currently carrying: a {carrying}."
+        if carrying else "The agent is not carrying anything."
+    )
+    view_ctx = (
+        "The image is a full top-down view of the grid. "
+        f"Every cell is visible. The red triangle is the agent, looking {fw}."
+    ) if view == "global" else (
+        f"The image shows a 7×7 egocentric view. The agent is at the bottom-center, looking {fw}."
+    )
+    return (
+        f"{view_ctx}\n\n"
+        f"GAME MECHANICS:\n"
+        f"- The grid contains: walls (dark border cells), floor (empty cells), "
+        f"keys (yellow objects), doors (colored gates), and a green goal square.\n"
+        f"- To win: reach the green goal square.\n"
+        f"- If there is a door: you must first PICK UP the key (action 3 when facing it), "
+        f"then OPEN the door (action 5 when facing it with key in hand), then go through.\n"
+        f"- Walls and closed doors block movement.\n\n"
+        f"CURRENT STATE:\n"
+        f"- Mission: {s['mission']}\n"
+        f"- Agent facing: {fw}\n"
+        f"- {carry_line}\n\n"
+        f"ACTIONS:\n"
+        f"  0 = turn_left   — rotate 90° counter-clockwise (no movement)\n"
+        f"  1 = turn_right  — rotate 90° clockwise (no movement)\n"
+        f"  2 = forward     — move one cell {fw} (blocked by walls/closed doors)\n"
+        f"  3 = pickup      — grab object in the cell directly {fw} of you\n"
+        f"  5 = toggle      — open/close door in the cell directly {fw} of you\n\n"
+        f"WHAT IS THE OPTIMAL BEST ACTION? REPLY WITH ONE INTEGER ONLY."
+    )
+
+
+PROMPT_VARIANTS = [
+    {"id": 0, "name": "if_then",        "approx_tokens": 170, "fn": _v_ifthen,   "max_out": 16},
+    {"id": 1, "name": "negative_rules", "approx_tokens": 180, "fn": _v_negative, "max_out": 16},
+    {"id": 2, "name": "verbose",        "approx_tokens": 310, "fn": _v_verbose,  "max_out": 16},
+]
+
 
 def _debug_probe(client, served_model_name: str, samples: list[dict],
                  view: str, dataset_root: Path, model_key: str):
