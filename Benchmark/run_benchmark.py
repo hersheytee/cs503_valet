@@ -163,7 +163,32 @@ MODELS = {
         "dtype":   "float16",
         "gpu_mem": 0.30,
     },
+    "internvl3": {
+        "name":    "InternVL3 8B",
+        "repo_id": "OpenGVLab/InternVL3-8B",
+        "dtype":   "float16",
+        "gpu_mem": 0.85,
+    },
+    "internvl8b_mpo": {
+        "name":    "InternVL2.5 8B MPO",
+        "repo_id": "OpenGVLab/InternVL2_5-8B-MPO",
+        "dtype":   "float16",
+        "gpu_mem": 0.85,
+    },
+    "wethink": {
+        "name":    "WeThink-Qwen2.5VL 7B",
+        "repo_id": "yangjie-cv/WeThink-Qwen2.5VL-7B",
+        "dtype":   "float16",   # ← BF16 obligatoire
+        "gpu_mem": 0.75,
+    },
+    "qwen2vl": {
+        "name":    "Qwen2-VL 7B",
+        "repo_id": "Qwen/Qwen2-VL-7B-Instruct",
+        "dtype":   "float16",
+        "gpu_mem": 0.70,
+    },
 }
+
 
 VLLM_HOST = "127.0.0.1"
 VLLM_PORT = 8000

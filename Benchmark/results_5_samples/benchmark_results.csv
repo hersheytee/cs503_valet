@@ -1,0 +1,61 @@
+sample_id,model,model_name,view,variant,env,complexity,mission,agent_carrying,optimal_actions,action_names,raw_output,predicted_action,correct,parse_failed,latency_ms
+00000,internvl3,InternVL3 8B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,2383
+00001,internvl3,InternVL3 8B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,166
+00002,internvl3,InternVL3 8B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,166
+00003,internvl3,InternVL3 8B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,168
+00004,internvl3,InternVL3 8B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,162
+00000,internvl3,InternVL3 8B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,108
+00001,internvl3,InternVL3 8B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,117
+00002,internvl3,InternVL3 8B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,117
+00003,internvl3,InternVL3 8B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],1,1,False,False,118
+00004,internvl3,InternVL3 8B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,117
+00000,internvl3,InternVL3 8B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,132
+00001,internvl3,InternVL3 8B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,143
+00002,internvl3,InternVL3 8B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,140
+00003,internvl3,InternVL3 8B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,141
+00004,internvl3,InternVL3 8B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,142
+00000,internvl8b_mpo,InternVL2.5 8B MPO,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,1058
+00001,internvl8b_mpo,InternVL2.5 8B MPO,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,178
+00002,internvl8b_mpo,InternVL2.5 8B MPO,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,178
+00003,internvl8b_mpo,InternVL2.5 8B MPO,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],1,1,False,False,179
+00004,internvl8b_mpo,InternVL2.5 8B MPO,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],1,1,False,False,179
+00000,internvl8b_mpo,InternVL2.5 8B MPO,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,112
+00001,internvl8b_mpo,InternVL2.5 8B MPO,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],1,1,False,False,118
+00002,internvl8b_mpo,InternVL2.5 8B MPO,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,122
+00003,internvl8b_mpo,InternVL2.5 8B MPO,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],1,1,False,False,119
+00004,internvl8b_mpo,InternVL2.5 8B MPO,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],1,1,False,False,120
+00000,internvl8b_mpo,InternVL2.5 8B MPO,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],0,0,False,False,138
+00001,internvl8b_mpo,InternVL2.5 8B MPO,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,145
+00002,internvl8b_mpo,InternVL2.5 8B MPO,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,149
+00003,internvl8b_mpo,InternVL2.5 8B MPO,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,135
+00004,internvl8b_mpo,InternVL2.5 8B MPO,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,142
+00000,qwen2vl,Qwen2-VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,2346
+00001,qwen2vl,Qwen2-VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,130
+00002,qwen2vl,Qwen2-VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,129
+00003,qwen2vl,Qwen2-VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,130
+00004,qwen2vl,Qwen2-VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,130
+00000,qwen2vl,Qwen2-VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],0,0,False,False,101
+00001,qwen2vl,Qwen2-VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,109
+00002,qwen2vl,Qwen2-VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",0,0,True,False,109
+00003,qwen2vl,Qwen2-VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,110
+00004,qwen2vl,Qwen2-VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,107
+00000,qwen2vl,Qwen2-VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,120
+00001,qwen2vl,Qwen2-VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,129
+00002,qwen2vl,Qwen2-VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,129
+00003,qwen2vl,Qwen2-VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,130
+00004,qwen2vl,Qwen2-VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,130
+00000,wethink,WeThink-Qwen2.5VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,2313
+00001,wethink,WeThink-Qwen2.5VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,146
+00002,wethink,WeThink-Qwen2.5VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,149
+00003,wethink,WeThink-Qwen2.5VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,140
+00004,wethink,WeThink-Qwen2.5VL 7B,global,if_then,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,144
+00000,wethink,WeThink-Qwen2.5VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,102
+00001,wethink,WeThink-Qwen2.5VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,109
+00002,wethink,WeThink-Qwen2.5VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,109
+00003,wethink,WeThink-Qwen2.5VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,109
+00004,wethink,WeThink-Qwen2.5VL 7B,global,negative_rules,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],0,0,True,False,109
+00000,wethink,WeThink-Qwen2.5VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,125
+00001,wethink,WeThink-Qwen2.5VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,127
+00002,wethink,WeThink-Qwen2.5VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,129
+00003,wethink,WeThink-Qwen2.5VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,130
+00004,wethink,WeThink-Qwen2.5VL 7B,global,verbose,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,130
