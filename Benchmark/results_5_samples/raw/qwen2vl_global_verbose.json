@@ -1,0 +1,114 @@
+[
+  {
+    "sample_id": "00000",
+    "model": "qwen2vl",
+    "model_name": "Qwen2-VL 7B",
+    "view": "global",
+    "variant": "verbose",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 120
+  },
+  {
+    "sample_id": "00001",
+    "model": "qwen2vl",
+    "model_name": "Qwen2-VL 7B",
+    "view": "global",
+    "variant": "verbose",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 129
+  },
+  {
+    "sample_id": "00002",
+    "model": "qwen2vl",
+    "model_name": "Qwen2-VL 7B",
+    "view": "global",
+    "variant": "verbose",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 129
+  },
+  {
+    "sample_id": "00003",
+    "model": "qwen2vl",
+    "model_name": "Qwen2-VL 7B",
+    "view": "global",
+    "variant": "verbose",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 130
+  },
+  {
+    "sample_id": "00004",
+    "model": "qwen2vl",
+    "model_name": "Qwen2-VL 7B",
+    "view": "global",
+    "variant": "verbose",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 130
+  }
+]

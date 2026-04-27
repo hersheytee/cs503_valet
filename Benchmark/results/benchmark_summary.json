@@ -1,0 +1,578 @@
+{
+  "internvl3_global_if_then": {
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "if_then",
+    "accuracy": 0.3767,
+    "n_samples": 300,
+    "n_correct": 113,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 155,
+    "latency_p95_ms": 169,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.3333,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.2746,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.6,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.7083,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.8679,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.02,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.2143,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.1111,
+        "n": 90
+      }
+    }
+  },
+  "internvl3_global_negative_rules": {
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "negative_rules",
+    "accuracy": 0.3667,
+    "n_samples": 300,
+    "n_correct": 110,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 124,
+    "latency_p95_ms": 137,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.2436,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.2887,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.625,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.4028,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.1132,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.0,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.619,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.6778,
+        "n": 90
+      }
+    }
+  },
+  "internvl3_global_verbose": {
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "verbose",
+    "accuracy": 0.2933,
+    "n_samples": 300,
+    "n_correct": 88,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 144,
+    "latency_p95_ms": 162,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.2179,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.1972,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.5375,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.6389,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.7358,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.0,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.0476,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.0,
+        "n": 90
+      }
+    }
+  },
+  "internvl8b_mpo_global_if_then": {
+    "model": "internvl8b_mpo",
+    "model_name": "InternVL2.5 8B MPO",
+    "view": "global",
+    "variant": "if_then",
+    "accuracy": 0.3167,
+    "n_samples": 300,
+    "n_correct": 95,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 163,
+    "latency_p95_ms": 181,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.4231,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.3028,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.2375,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.1528,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 1.0,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.46,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.0238,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.0889,
+        "n": 90
+      }
+    }
+  },
+  "internvl8b_mpo_global_negative_rules": {
+    "model": "internvl8b_mpo",
+    "model_name": "InternVL2.5 8B MPO",
+    "view": "global",
+    "variant": "negative_rules",
+    "accuracy": 0.2667,
+    "n_samples": 300,
+    "n_correct": 80,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 167,
+    "latency_p95_ms": 188,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.1923,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.2958,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.2875,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.2222,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.0,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.0,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.2976,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.7667,
+        "n": 90
+      }
+    }
+  },
+  "internvl8b_mpo_global_verbose": {
+    "model": "internvl8b_mpo",
+    "model_name": "InternVL2.5 8B MPO",
+    "view": "global",
+    "variant": "verbose",
+    "accuracy": 0.28,
+    "n_samples": 300,
+    "n_correct": 84,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 181,
+    "latency_p95_ms": 205,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.3077,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.2183,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.3625,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.3889,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 1.0,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.02,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.0238,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.0222,
+        "n": 90
+      }
+    }
+  },
+  "qwen2vl_global_if_then": {
+    "model": "qwen2vl",
+    "model_name": "Qwen2-VL 7B",
+    "view": "global",
+    "variant": "if_then",
+    "accuracy": 0.3067,
+    "n_samples": 300,
+    "n_correct": 92,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 153,
+    "latency_p95_ms": 214,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.3462,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.2254,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.4125,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.6944,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.1509,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.1,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.1786,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.2778,
+        "n": 90
+      }
+    }
+  },
+  "qwen2vl_global_negative_rules": {
+    "model": "qwen2vl",
+    "model_name": "Qwen2-VL 7B",
+    "view": "global",
+    "variant": "negative_rules",
+    "accuracy": 0.2933,
+    "n_samples": 300,
+    "n_correct": 88,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 165,
+    "latency_p95_ms": 233,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.2436,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.3169,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.3,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.0833,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.0,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.0,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.8333,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.6333,
+        "n": 90
+      }
+    }
+  },
+  "qwen2vl_global_verbose": {
+    "model": "qwen2vl",
+    "model_name": "Qwen2-VL 7B",
+    "view": "global",
+    "variant": "verbose",
+    "accuracy": 0.44,
+    "n_samples": 300,
+    "n_correct": 132,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 173,
+    "latency_p95_ms": 242,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.4231,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.4225,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.4875,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.5417,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.9811,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.82,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.0,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.0,
+        "n": 90
+      }
+    }
+  },
+  "wethink_global_if_then": {
+    "model": "wethink",
+    "model_name": "WeThink-Qwen2.5VL 7B",
+    "view": "global",
+    "variant": "if_then",
+    "accuracy": 0.3567,
+    "n_samples": 300,
+    "n_correct": 107,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 176,
+    "latency_p95_ms": 243,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.2949,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.3099,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.5,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.75,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.3774,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.54,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.0952,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.0778,
+        "n": 90
+      }
+    }
+  },
+  "wethink_global_negative_rules": {
+    "model": "wethink",
+    "model_name": "WeThink-Qwen2.5VL 7B",
+    "view": "global",
+    "variant": "negative_rules",
+    "accuracy": 0.3567,
+    "n_samples": 300,
+    "n_correct": 107,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 139,
+    "latency_p95_ms": 200,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.2821,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.3239,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.4875,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.0972,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 0.0,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.0,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.7738,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.9,
+        "n": 90
+      }
+    }
+  },
+  "wethink_global_verbose": {
+    "model": "wethink",
+    "model_name": "WeThink-Qwen2.5VL 7B",
+    "view": "global",
+    "variant": "verbose",
+    "accuracy": 0.31,
+    "n_samples": 300,
+    "n_correct": 93,
+    "n_parse_failed": 0,
+    "latency_mean_ms": 176,
+    "latency_p95_ms": 259,
+    "by_complexity": {
+      "hard": {
+        "accuracy": 0.2821,
+        "n": 78
+      },
+      "medium": {
+        "accuracy": 0.2183,
+        "n": 142
+      },
+      "simple": {
+        "accuracy": 0.5,
+        "n": 80
+      }
+    },
+    "by_action": {
+      "forward": {
+        "accuracy": 0.5556,
+        "n": 72
+      },
+      "pickup": {
+        "accuracy": 1.0,
+        "n": 53
+      },
+      "toggle": {
+        "accuracy": 0.0,
+        "n": 50
+      },
+      "turn_left": {
+        "accuracy": 0.0,
+        "n": 84
+      },
+      "turn_right": {
+        "accuracy": 0.0,
+        "n": 90
+      }
+    }
+  }
+}
