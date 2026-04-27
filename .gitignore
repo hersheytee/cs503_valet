@@ -1,0 +1,5 @@
+# All the python cache files
+*__pycache__/
+*.pyc
+*.pyo
+*.pyd
