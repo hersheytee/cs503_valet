@@ -1,0 +1,1444 @@
+=== Oracle gratuit        (cost=0.000) | seed=4 ===
+Run: oracle_free__MiniGrid-DoorKey-8x8-v0__seed4__1777413293
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_free__MiniGrid-DoorKey-8x8-v0__seed4__1777413293.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    2 | return= 1.860 | guided%= 16.1 | bc=0.0000 | cumQ=   142 | bc_coef=0.000 | sps=99
+[  10/488] step=  10240 | ep=   84 | return= 1.833 | guided%= 27.0 | bc=0.0000 | cumQ=  2203 | bc_coef=0.000 | sps=343
+[  20/488] step=  20480 | ep=  431 | return= 1.967 | guided%= 73.8 | bc=0.0000 | cumQ=  8410 | bc_coef=0.000 | sps=389
+[  30/488] step=  30720 | ep=  898 | return= 1.973 | guided%= 87.4 | bc=0.0000 | cumQ= 16737 | bc_coef=0.000 | sps=405
+[  40/488] step=  40960 | ep= 1422 | return= 1.973 | guided%= 91.5 | bc=0.0000 | cumQ= 25986 | bc_coef=0.000 | sps=412
+[  50/488] step=  51200 | ep= 1975 | return= 1.976 | guided%= 92.4 | bc=0.0000 | cumQ= 35392 | bc_coef=0.000 | sps=417
+[  60/488] step=  61440 | ep= 2549 | return= 1.977 | guided%= 93.1 | bc=0.0000 | cumQ= 44939 | bc_coef=0.000 | sps=420
+[  70/488] step=  71680 | ep= 3109 | return= 1.976 | guided%= 93.8 | bc=0.0000 | cumQ= 54522 | bc_coef=0.000 | sps=422
+[  80/488] step=  81920 | ep= 3679 | return= 1.976 | guided%= 94.0 | bc=0.0000 | cumQ= 64147 | bc_coef=0.000 | sps=424
+[  90/488] step=  92160 | ep= 4211 | return= 1.976 | guided%= 94.0 | bc=0.0000 | cumQ= 73827 | bc_coef=0.000 | sps=426
+[ 100/488] step= 102400 | ep= 4746 | return= 1.976 | guided%= 93.8 | bc=0.0000 | cumQ= 83472 | bc_coef=0.000 | sps=427
+[ 110/488] step= 112640 | ep= 5266 | return= 1.975 | guided%= 89.0 | bc=0.0000 | cumQ= 92880 | bc_coef=0.000 | sps=428
+[ 120/488] step= 122880 | ep= 5818 | return= 1.977 | guided%= 93.2 | bc=0.0000 | cumQ=102285 | bc_coef=0.000 | sps=429
+[ 130/488] step= 133120 | ep= 6383 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=111936 | bc_coef=0.000 | sps=430
+[ 140/488] step= 143360 | ep= 6966 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=121581 | bc_coef=0.000 | sps=431
+[ 150/488] step= 153600 | ep= 7536 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=131243 | bc_coef=0.000 | sps=431
+[ 160/488] step= 163840 | ep= 8123 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=140884 | bc_coef=0.000 | sps=432
+[ 170/488] step= 174080 | ep= 8691 | return= 1.977 | guided%= 93.7 | bc=0.0000 | cumQ=150524 | bc_coef=0.000 | sps=432
+[ 180/488] step= 184320 | ep= 9263 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=160183 | bc_coef=0.000 | sps=432
+[ 190/488] step= 194560 | ep= 9833 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ=169834 | bc_coef=0.000 | sps=433
+[ 200/488] step= 204800 | ep=10413 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=179486 | bc_coef=0.000 | sps=433
+[ 210/488] step= 215040 | ep=10990 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=189134 | bc_coef=0.000 | sps=433
+[ 220/488] step= 225280 | ep=11568 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=198790 | bc_coef=0.000 | sps=433
+[ 230/488] step= 235520 | ep=12142 | return= 1.978 | guided%= 93.9 | bc=0.0000 | cumQ=208453 | bc_coef=0.000 | sps=434
+[ 240/488] step= 245760 | ep=12717 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=218116 | bc_coef=0.000 | sps=434
+[ 250/488] step= 256000 | ep=13302 | return= 1.977 | guided%= 93.8 | bc=0.0000 | cumQ=227752 | bc_coef=0.000 | sps=434
+[ 260/488] step= 266240 | ep=13878 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=237408 | bc_coef=0.000 | sps=434
+[ 270/488] step= 276480 | ep=14465 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=247061 | bc_coef=0.000 | sps=434
+[ 280/488] step= 286720 | ep=15031 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=256734 | bc_coef=0.000 | sps=435
+[ 290/488] step= 296960 | ep=15612 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=266388 | bc_coef=0.000 | sps=435
+[ 300/488] step= 307200 | ep=16182 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=276058 | bc_coef=0.000 | sps=435
+[ 310/488] step= 317440 | ep=16757 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=285722 | bc_coef=0.000 | sps=435
+[ 320/488] step= 327680 | ep=17335 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=295382 | bc_coef=0.000 | sps=435
+[ 330/488] step= 337920 | ep=17916 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=305039 | bc_coef=0.000 | sps=436
+[ 340/488] step= 348160 | ep=18482 | return= 1.976 | guided%= 94.4 | bc=0.0000 | cumQ=314713 | bc_coef=0.000 | sps=436
+[ 350/488] step= 358400 | ep=19060 | return= 1.976 | guided%= 94.4 | bc=0.0000 | cumQ=324373 | bc_coef=0.000 | sps=436
+[ 360/488] step= 368640 | ep=19633 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=334031 | bc_coef=0.000 | sps=436
+[ 370/488] step= 378880 | ep=20214 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ=343681 | bc_coef=0.000 | sps=436
+[ 380/488] step= 389120 | ep=20793 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=353340 | bc_coef=0.000 | sps=436
+[ 390/488] step= 399360 | ep=21365 | return= 1.977 | guided%= 94.2 | bc=0.0000 | cumQ=363007 | bc_coef=0.000 | sps=436
+[ 400/488] step= 409600 | ep=21930 | return= 1.976 | guided%= 94.4 | bc=0.0000 | cumQ=372680 | bc_coef=0.000 | sps=436
+[ 410/488] step= 419840 | ep=22511 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=382337 | bc_coef=0.000 | sps=436
+[ 420/488] step= 430080 | ep=23083 | return= 1.976 | guided%= 94.4 | bc=0.0000 | cumQ=392004 | bc_coef=0.000 | sps=436
+[ 430/488] step= 440320 | ep=23664 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=401662 | bc_coef=0.000 | sps=436
+[ 440/488] step= 450560 | ep=24246 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=411318 | bc_coef=0.000 | sps=436
+[ 450/488] step= 460800 | ep=24822 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ=420982 | bc_coef=0.000 | sps=436
+[ 460/488] step= 471040 | ep=25398 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=430645 | bc_coef=0.000 | sps=436
+[ 470/488] step= 481280 | ep=25981 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=440301 | bc_coef=0.000 | sps=436
+[ 480/488] step= 491520 | ep=26555 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=449967 | bc_coef=0.000 | sps=437
+Generating plots...
+Plots → figures/oracle_free__MiniGrid-DoorKey-8x8-v0__seed4__1777413293.png
+=== Oracle payant faible  (cost=0.010) | seed=4 ===
+Run: oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed4__1777414473
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed4__1777414473.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    2 | return= 1.690 | guided%= 16.1 | bc=0.0000 | cumQ=   142 | bc_coef=0.000 | sps=302
+[  10/488] step=  10240 | ep=   74 | return= 1.540 | guided%= 25.4 | bc=0.0000 | cumQ=  2083 | bc_coef=0.000 | sps=438
+[  20/488] step=  20480 | ep=  371 | return= 1.775 | guided%= 61.6 | bc=0.0000 | cumQ=  7389 | bc_coef=0.000 | sps=445
+[  30/488] step=  30720 | ep=  813 | return= 1.796 | guided%= 80.2 | bc=0.0000 | cumQ= 14759 | bc_coef=0.000 | sps=444
+[  40/488] step=  40960 | ep= 1329 | return= 1.803 | guided%= 87.7 | bc=0.0000 | cumQ= 23411 | bc_coef=0.000 | sps=443
+[  50/488] step=  51200 | ep= 1853 | return= 1.805 | guided%= 85.9 | bc=0.0000 | cumQ= 32085 | bc_coef=0.000 | sps=443
+[  60/488] step=  61440 | ep= 2407 | return= 1.812 | guided%= 91.5 | bc=0.0000 | cumQ= 41142 | bc_coef=0.000 | sps=442
+[  70/488] step=  71680 | ep= 2986 | return= 1.822 | guided%= 88.2 | bc=0.0000 | cumQ= 50370 | bc_coef=0.000 | sps=441
+[  80/488] step=  81920 | ep= 3545 | return= 1.824 | guided%= 80.1 | bc=0.0000 | cumQ= 59038 | bc_coef=0.000 | sps=441
+[  90/488] step=  92160 | ep= 4103 | return= 1.862 | guided%= 62.5 | bc=0.0000 | cumQ= 66207 | bc_coef=0.000 | sps=440
+[ 100/488] step= 102400 | ep= 4646 | return= 1.857 | guided%= 63.2 | bc=0.0000 | cumQ= 72843 | bc_coef=0.000 | sps=440
+[ 110/488] step= 112640 | ep= 5181 | return= 1.854 | guided%= 64.9 | bc=0.0000 | cumQ= 79286 | bc_coef=0.000 | sps=440
+[ 120/488] step= 122880 | ep= 5727 | return= 1.856 | guided%= 62.9 | bc=0.0000 | cumQ= 85898 | bc_coef=0.000 | sps=440
+[ 130/488] step= 133120 | ep= 6275 | return= 1.858 | guided%= 61.8 | bc=0.0000 | cumQ= 92234 | bc_coef=0.000 | sps=440
+[ 140/488] step= 143360 | ep= 6832 | return= 1.863 | guided%= 59.8 | bc=0.0000 | cumQ= 98509 | bc_coef=0.000 | sps=440
+[ 150/488] step= 153600 | ep= 7375 | return= 1.869 | guided%= 57.0 | bc=0.0000 | cumQ=104354 | bc_coef=0.000 | sps=440
+[ 160/488] step= 163840 | ep= 7929 | return= 1.863 | guided%= 57.6 | bc=0.0000 | cumQ=110264 | bc_coef=0.000 | sps=441
+[ 170/488] step= 174080 | ep= 8479 | return= 1.870 | guided%= 55.8 | bc=0.0000 | cumQ=116056 | bc_coef=0.000 | sps=440
+[ 180/488] step= 184320 | ep= 9030 | return= 1.872 | guided%= 56.8 | bc=0.0000 | cumQ=121996 | bc_coef=0.000 | sps=440
+[ 190/488] step= 194560 | ep= 9596 | return= 1.863 | guided%= 61.1 | bc=0.0000 | cumQ=128046 | bc_coef=0.000 | sps=440
+[ 200/488] step= 204800 | ep=10160 | return= 1.875 | guided%= 58.2 | bc=0.0000 | cumQ=134105 | bc_coef=0.000 | sps=440
+[ 210/488] step= 215040 | ep=10731 | return= 1.872 | guided%= 57.1 | bc=0.0000 | cumQ=140112 | bc_coef=0.000 | sps=440
+[ 220/488] step= 225280 | ep=11295 | return= 1.876 | guided%= 57.3 | bc=0.0000 | cumQ=145927 | bc_coef=0.000 | sps=440
+[ 230/488] step= 235520 | ep=11859 | return= 1.872 | guided%= 56.7 | bc=0.0000 | cumQ=151707 | bc_coef=0.000 | sps=440
+[ 240/488] step= 245760 | ep=12415 | return= 1.870 | guided%= 55.3 | bc=0.0000 | cumQ=157364 | bc_coef=0.000 | sps=440
+[ 250/488] step= 256000 | ep=12969 | return= 1.882 | guided%= 53.2 | bc=0.0000 | cumQ=162820 | bc_coef=0.000 | sps=440
+[ 260/488] step= 266240 | ep=13516 | return= 1.875 | guided%= 52.4 | bc=0.0000 | cumQ=168201 | bc_coef=0.000 | sps=440
+[ 270/488] step= 276480 | ep=14080 | return= 1.883 | guided%= 53.6 | bc=0.0000 | cumQ=173657 | bc_coef=0.000 | sps=441
+[ 280/488] step= 286720 | ep=14636 | return= 1.877 | guided%= 51.9 | bc=0.0000 | cumQ=179050 | bc_coef=0.000 | sps=441
+[ 290/488] step= 296960 | ep=15178 | return= 1.879 | guided%= 52.3 | bc=0.0000 | cumQ=184507 | bc_coef=0.000 | sps=441
+[ 300/488] step= 307200 | ep=15733 | return= 1.877 | guided%= 53.2 | bc=0.0000 | cumQ=189897 | bc_coef=0.000 | sps=441
+[ 310/488] step= 317440 | ep=16281 | return= 1.875 | guided%= 53.6 | bc=0.0000 | cumQ=195384 | bc_coef=0.000 | sps=441
+[ 320/488] step= 327680 | ep=16845 | return= 1.876 | guided%= 53.7 | bc=0.0000 | cumQ=200919 | bc_coef=0.000 | sps=441
+[ 330/488] step= 337920 | ep=17405 | return= 1.873 | guided%= 56.5 | bc=0.0000 | cumQ=206508 | bc_coef=0.000 | sps=441
+[ 340/488] step= 348160 | ep=17983 | return= 1.880 | guided%= 54.6 | bc=0.0000 | cumQ=212175 | bc_coef=0.000 | sps=441
+[ 350/488] step= 358400 | ep=18538 | return= 1.874 | guided%= 55.3 | bc=0.0000 | cumQ=217833 | bc_coef=0.000 | sps=441
+[ 360/488] step= 368640 | ep=19105 | return= 1.875 | guided%= 55.0 | bc=0.0000 | cumQ=223413 | bc_coef=0.000 | sps=441
+[ 370/488] step= 378880 | ep=19666 | return= 1.872 | guided%= 55.6 | bc=0.0000 | cumQ=229027 | bc_coef=0.000 | sps=441
+[ 380/488] step= 389120 | ep=20236 | return= 1.877 | guided%= 53.6 | bc=0.0000 | cumQ=234632 | bc_coef=0.000 | sps=441
+[ 390/488] step= 399360 | ep=20811 | return= 1.875 | guided%= 56.1 | bc=0.0000 | cumQ=240413 | bc_coef=0.000 | sps=441
+[ 400/488] step= 409600 | ep=21370 | return= 1.868 | guided%= 57.9 | bc=0.0000 | cumQ=246203 | bc_coef=0.000 | sps=441
+[ 410/488] step= 419840 | ep=21942 | return= 1.877 | guided%= 57.3 | bc=0.0000 | cumQ=252147 | bc_coef=0.000 | sps=441
+[ 420/488] step= 430080 | ep=22517 | return= 1.879 | guided%= 55.1 | bc=0.0000 | cumQ=257947 | bc_coef=0.000 | sps=441
+[ 430/488] step= 440320 | ep=23088 | return= 1.879 | guided%= 54.6 | bc=0.0000 | cumQ=263697 | bc_coef=0.000 | sps=441
+[ 440/488] step= 450560 | ep=23655 | return= 1.874 | guided%= 55.7 | bc=0.0000 | cumQ=269424 | bc_coef=0.000 | sps=441
+[ 450/488] step= 460800 | ep=24232 | return= 1.877 | guided%= 55.3 | bc=0.0000 | cumQ=275229 | bc_coef=0.000 | sps=441
+[ 460/488] step= 471040 | ep=24800 | return= 1.872 | guided%= 55.9 | bc=0.0000 | cumQ=280858 | bc_coef=0.000 | sps=441
+[ 470/488] step= 481280 | ep=25375 | return= 1.881 | guided%= 53.4 | bc=0.0000 | cumQ=286467 | bc_coef=0.000 | sps=441
+[ 480/488] step= 491520 | ep=25947 | return= 1.877 | guided%= 55.4 | bc=0.0000 | cumQ=292124 | bc_coef=0.000 | sps=441
+Generating plots...
+Plots → figures/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed4__1777414473.png
+=== Oracle payant moyen   (cost=0.020) | seed=4 ===
+Run: oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed4__1777415614
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed4__1777415614.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    2 | return= 1.520 | guided%= 16.1 | bc=0.0000 | cumQ=   142 | bc_coef=0.000 | sps=315
+[  10/488] step=  10240 | ep=   67 | return= 1.259 | guided%= 22.1 | bc=0.0000 | cumQ=  1852 | bc_coef=0.000 | sps=448
+[  20/488] step=  20480 | ep=  420 | return= 1.625 | guided%= 68.2 | bc=0.0000 | cumQ=  7955 | bc_coef=0.000 | sps=452
+[  30/488] step=  30720 | ep=  871 | return= 1.660 | guided%= 77.3 | bc=0.0000 | cumQ= 15349 | bc_coef=0.000 | sps=452
+[  40/488] step=  40960 | ep= 1369 | return= 1.683 | guided%= 68.2 | bc=0.0000 | cumQ= 22931 | bc_coef=0.000 | sps=452
+[  50/488] step=  51200 | ep= 1903 | return= 1.751 | guided%= 58.2 | bc=0.0000 | cumQ= 29283 | bc_coef=0.000 | sps=451
+[  60/488] step=  61440 | ep= 2445 | return= 1.761 | guided%= 56.7 | bc=0.0000 | cumQ= 35291 | bc_coef=0.000 | sps=450
+[  70/488] step=  71680 | ep= 3005 | return= 1.769 | guided%= 56.8 | bc=0.0000 | cumQ= 41020 | bc_coef=0.000 | sps=449
+[  80/488] step=  81920 | ep= 3562 | return= 1.772 | guided%= 55.7 | bc=0.0000 | cumQ= 46759 | bc_coef=0.000 | sps=449
+[  90/488] step=  92160 | ep= 4129 | return= 1.770 | guided%= 56.4 | bc=0.0000 | cumQ= 52492 | bc_coef=0.000 | sps=449
+[ 100/488] step= 102400 | ep= 4695 | return= 1.774 | guided%= 56.0 | bc=0.0000 | cumQ= 58320 | bc_coef=0.000 | sps=448
+[ 110/488] step= 112640 | ep= 5263 | return= 1.780 | guided%= 54.1 | bc=0.0000 | cumQ= 63906 | bc_coef=0.000 | sps=448
+[ 120/488] step= 122880 | ep= 5821 | return= 1.770 | guided%= 56.9 | bc=0.0000 | cumQ= 69521 | bc_coef=0.000 | sps=448
+[ 130/488] step= 133120 | ep= 6367 | return= 1.761 | guided%= 57.1 | bc=0.0000 | cumQ= 75076 | bc_coef=0.000 | sps=448
+[ 140/488] step= 143360 | ep= 6932 | return= 1.777 | guided%= 55.1 | bc=0.0000 | cumQ= 80749 | bc_coef=0.000 | sps=449
+[ 150/488] step= 153600 | ep= 7498 | return= 1.772 | guided%= 56.0 | bc=0.0000 | cumQ= 86465 | bc_coef=0.000 | sps=449
+[ 160/488] step= 163840 | ep= 8055 | return= 1.779 | guided%= 53.1 | bc=0.0000 | cumQ= 91963 | bc_coef=0.000 | sps=448
+[ 170/488] step= 174080 | ep= 8579 | return= 1.769 | guided%= 53.8 | bc=0.0000 | cumQ= 97217 | bc_coef=0.000 | sps=448
+[ 180/488] step= 184320 | ep= 9126 | return= 1.779 | guided%= 54.8 | bc=0.0000 | cumQ=102690 | bc_coef=0.000 | sps=448
+[ 190/488] step= 194560 | ep= 9688 | return= 1.776 | guided%= 52.9 | bc=0.0000 | cumQ=108303 | bc_coef=0.000 | sps=448
+[ 200/488] step= 204800 | ep=10247 | return= 1.779 | guided%= 53.2 | bc=0.0000 | cumQ=113887 | bc_coef=0.000 | sps=448
+[ 210/488] step= 215040 | ep=10808 | return= 1.781 | guided%= 53.7 | bc=0.0000 | cumQ=119352 | bc_coef=0.000 | sps=448
+[ 220/488] step= 225280 | ep=11360 | return= 1.780 | guided%= 53.6 | bc=0.0000 | cumQ=124822 | bc_coef=0.000 | sps=448
+[ 230/488] step= 235520 | ep=11923 | return= 1.790 | guided%= 51.7 | bc=0.0000 | cumQ=130257 | bc_coef=0.000 | sps=448
+[ 240/488] step= 245760 | ep=12478 | return= 1.778 | guided%= 52.9 | bc=0.0000 | cumQ=135758 | bc_coef=0.000 | sps=448
+[ 250/488] step= 256000 | ep=13016 | return= 1.781 | guided%= 54.9 | bc=0.0000 | cumQ=140919 | bc_coef=0.000 | sps=449
+[ 260/488] step= 266240 | ep=13565 | return= 1.769 | guided%= 55.9 | bc=0.0000 | cumQ=146339 | bc_coef=0.000 | sps=449
+[ 270/488] step= 276480 | ep=14137 | return= 1.785 | guided%= 53.9 | bc=0.0000 | cumQ=152009 | bc_coef=0.000 | sps=449
+[ 280/488] step= 286720 | ep=14691 | return= 1.774 | guided%= 54.6 | bc=0.0000 | cumQ=157477 | bc_coef=0.000 | sps=448
+[ 290/488] step= 296960 | ep=15163 | return= 1.771 | guided%= 55.5 | bc=0.0000 | cumQ=162403 | bc_coef=0.000 | sps=448
+[ 300/488] step= 307200 | ep=15683 | return= 1.775 | guided%= 53.7 | bc=0.0000 | cumQ=167587 | bc_coef=0.000 | sps=448
+[ 310/488] step= 317440 | ep=16196 | return= 1.780 | guided%= 52.0 | bc=0.0000 | cumQ=172825 | bc_coef=0.000 | sps=448
+[ 320/488] step= 327680 | ep=16672 | return= 1.776 | guided%= 55.8 | bc=0.0000 | cumQ=177575 | bc_coef=0.000 | sps=448
+[ 330/488] step= 337920 | ep=17197 | return= 1.775 | guided%= 55.1 | bc=0.0000 | cumQ=182790 | bc_coef=0.000 | sps=448
+[ 340/488] step= 348160 | ep=17767 | return= 1.787 | guided%= 53.3 | bc=0.0000 | cumQ=188392 | bc_coef=0.000 | sps=448
+[ 350/488] step= 358400 | ep=18323 | return= 1.773 | guided%= 54.7 | bc=0.0000 | cumQ=194015 | bc_coef=0.000 | sps=448
+[ 360/488] step= 368640 | ep=18892 | return= 1.784 | guided%= 53.0 | bc=0.0000 | cumQ=199634 | bc_coef=0.000 | sps=448
+[ 370/488] step= 378880 | ep=19457 | return= 1.782 | guided%= 54.5 | bc=0.0000 | cumQ=205224 | bc_coef=0.000 | sps=448
+[ 380/488] step= 389120 | ep=20029 | return= 1.790 | guided%= 52.8 | bc=0.0000 | cumQ=210815 | bc_coef=0.000 | sps=448
+[ 390/488] step= 399360 | ep=20591 | return= 1.776 | guided%= 53.9 | bc=0.0000 | cumQ=216335 | bc_coef=0.000 | sps=448
+[ 400/488] step= 409600 | ep=21149 | return= 1.781 | guided%= 52.5 | bc=0.0000 | cumQ=221813 | bc_coef=0.000 | sps=448
+[ 410/488] step= 419840 | ep=21710 | return= 1.774 | guided%= 54.9 | bc=0.0000 | cumQ=227405 | bc_coef=0.000 | sps=448
+[ 420/488] step= 430080 | ep=22280 | return= 1.781 | guided%= 53.6 | bc=0.0000 | cumQ=232935 | bc_coef=0.000 | sps=448
+[ 430/488] step= 440320 | ep=22840 | return= 1.789 | guided%= 52.3 | bc=0.0000 | cumQ=238374 | bc_coef=0.000 | sps=448
+[ 440/488] step= 450560 | ep=23398 | return= 1.774 | guided%= 53.6 | bc=0.0000 | cumQ=243916 | bc_coef=0.000 | sps=448
+[ 450/488] step= 460800 | ep=23964 | return= 1.777 | guided%= 54.1 | bc=0.0000 | cumQ=249411 | bc_coef=0.000 | sps=448
+[ 460/488] step= 471040 | ep=24534 | return= 1.789 | guided%= 52.8 | bc=0.0000 | cumQ=254969 | bc_coef=0.000 | sps=448
+[ 470/488] step= 481280 | ep=25098 | return= 1.788 | guided%= 52.4 | bc=0.0000 | cumQ=260388 | bc_coef=0.000 | sps=448
+[ 480/488] step= 491520 | ep=25667 | return= 1.779 | guided%= 54.7 | bc=0.0000 | cumQ=265835 | bc_coef=0.000 | sps=448
+Generating plots...
+Plots → figures/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed4__1777415614.png
+=== Oracle payant élevé   (cost=0.050) | seed=4 ===
+Run: oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed4__1777416739
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed4__1777416739.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    2 | return= 1.010 | guided%= 16.1 | bc=0.0000 | cumQ=   142 | bc_coef=0.000 | sps=328
+[  10/488] step=  10240 | ep=   28 | return=-0.101 | guided%= 11.6 | bc=0.0000 | cumQ=  1101 | bc_coef=0.000 | sps=454
+[  20/488] step=  20480 | ep=   60 | return=-0.014 | guided%= 10.0 | bc=0.0000 | cumQ=  1925 | bc_coef=0.000 | sps=469
+[  30/488] step=  30720 | ep=  100 | return= 0.316 | guided%=  9.2 | bc=0.0000 | cumQ=  2586 | bc_coef=0.000 | sps=476
+[  40/488] step=  40960 | ep=  228 | return= 1.221 | guided%= 24.5 | bc=0.0000 | cumQ=  4330 | bc_coef=0.000 | sps=478
+[  50/488] step=  51200 | ep=  507 | return= 1.414 | guided%= 34.1 | bc=0.0000 | cumQ=  7629 | bc_coef=0.000 | sps=477
+[  60/488] step=  61440 | ep=  844 | return= 1.527 | guided%= 33.4 | bc=0.0000 | cumQ= 10840 | bc_coef=0.000 | sps=476
+[  70/488] step=  71680 | ep= 1275 | return= 1.492 | guided%= 45.0 | bc=0.0000 | cumQ= 15004 | bc_coef=0.000 | sps=474
+[  80/488] step=  81920 | ep= 1741 | return= 1.496 | guided%= 44.2 | bc=0.0000 | cumQ= 19382 | bc_coef=0.000 | sps=473
+[  90/488] step=  92160 | ep= 2206 | return= 1.520 | guided%= 43.5 | bc=0.0000 | cumQ= 23664 | bc_coef=0.000 | sps=471
+[ 100/488] step= 102400 | ep= 2676 | return= 1.527 | guided%= 42.0 | bc=0.0000 | cumQ= 27877 | bc_coef=0.000 | sps=470
+[ 110/488] step= 112640 | ep= 3162 | return= 1.526 | guided%= 43.8 | bc=0.0000 | cumQ= 32158 | bc_coef=0.000 | sps=468
+[ 120/488] step= 122880 | ep= 3634 | return= 1.532 | guided%= 44.2 | bc=0.0000 | cumQ= 36363 | bc_coef=0.000 | sps=468
+[ 130/488] step= 133120 | ep= 4100 | return= 1.532 | guided%= 43.0 | bc=0.0000 | cumQ= 40461 | bc_coef=0.000 | sps=467
+[ 140/488] step= 143360 | ep= 4588 | return= 1.570 | guided%= 40.9 | bc=0.0000 | cumQ= 44715 | bc_coef=0.000 | sps=467
+[ 150/488] step= 153600 | ep= 5068 | return= 1.534 | guided%= 41.7 | bc=0.0000 | cumQ= 48834 | bc_coef=0.000 | sps=466
+[ 160/488] step= 163840 | ep= 5550 | return= 1.545 | guided%= 41.1 | bc=0.0000 | cumQ= 52970 | bc_coef=0.000 | sps=466
+[ 170/488] step= 174080 | ep= 5998 | return= 1.520 | guided%= 41.0 | bc=0.0000 | cumQ= 56820 | bc_coef=0.000 | sps=466
+[ 180/488] step= 184320 | ep= 6507 | return= 1.540 | guided%= 44.4 | bc=0.0000 | cumQ= 61352 | bc_coef=0.000 | sps=465
+[ 190/488] step= 194560 | ep= 6989 | return= 1.571 | guided%= 40.6 | bc=0.0000 | cumQ= 65357 | bc_coef=0.000 | sps=466
+[ 200/488] step= 204800 | ep= 7472 | return= 1.546 | guided%= 44.2 | bc=0.0000 | cumQ= 69406 | bc_coef=0.000 | sps=465
+[ 210/488] step= 215040 | ep= 7972 | return= 1.583 | guided%= 41.1 | bc=0.0000 | cumQ= 73629 | bc_coef=0.000 | sps=465
+[ 220/488] step= 225280 | ep= 8501 | return= 1.554 | guided%= 43.2 | bc=0.0000 | cumQ= 78063 | bc_coef=0.000 | sps=465
+[ 230/488] step= 235520 | ep= 9016 | return= 1.521 | guided%= 46.2 | bc=0.0000 | cumQ= 82545 | bc_coef=0.000 | sps=465
+[ 240/488] step= 245760 | ep= 9541 | return= 1.553 | guided%= 43.3 | bc=0.0000 | cumQ= 86900 | bc_coef=0.000 | sps=465
+[ 250/488] step= 256000 | ep=10046 | return= 1.549 | guided%= 42.4 | bc=0.0000 | cumQ= 91052 | bc_coef=0.000 | sps=465
+[ 260/488] step= 266240 | ep=10564 | return= 1.583 | guided%= 41.4 | bc=0.0000 | cumQ= 95281 | bc_coef=0.000 | sps=465
+[ 270/488] step= 276480 | ep=11078 | return= 1.568 | guided%= 40.7 | bc=0.0000 | cumQ= 99429 | bc_coef=0.000 | sps=465
+[ 280/488] step= 286720 | ep=11597 | return= 1.580 | guided%= 40.3 | bc=0.0000 | cumQ=103606 | bc_coef=0.000 | sps=465
+[ 290/488] step= 296960 | ep=12101 | return= 1.578 | guided%= 40.0 | bc=0.0000 | cumQ=107563 | bc_coef=0.000 | sps=465
+[ 300/488] step= 307200 | ep=12605 | return= 1.594 | guided%= 40.2 | bc=0.0000 | cumQ=111537 | bc_coef=0.000 | sps=465
+[ 310/488] step= 317440 | ep=13120 | return= 1.601 | guided%= 38.3 | bc=0.0000 | cumQ=115514 | bc_coef=0.000 | sps=465
+[ 320/488] step= 327680 | ep=13639 | return= 1.593 | guided%= 38.5 | bc=0.0000 | cumQ=119441 | bc_coef=0.000 | sps=465
+[ 330/488] step= 337920 | ep=14158 | return= 1.614 | guided%= 38.7 | bc=0.0000 | cumQ=123241 | bc_coef=0.000 | sps=465
+[ 340/488] step= 348160 | ep=14688 | return= 1.570 | guided%= 40.9 | bc=0.0000 | cumQ=127211 | bc_coef=0.000 | sps=465
+[ 350/488] step= 358400 | ep=15209 | return= 1.616 | guided%= 38.3 | bc=0.0000 | cumQ=131125 | bc_coef=0.000 | sps=464
+[ 360/488] step= 368640 | ep=15740 | return= 1.620 | guided%= 37.1 | bc=0.0000 | cumQ=135026 | bc_coef=0.000 | sps=464
+[ 370/488] step= 378880 | ep=16261 | return= 1.591 | guided%= 38.5 | bc=0.0000 | cumQ=138958 | bc_coef=0.000 | sps=464
+[ 380/488] step= 389120 | ep=16796 | return= 1.618 | guided%= 37.7 | bc=0.0000 | cumQ=142747 | bc_coef=0.000 | sps=464
+[ 390/488] step= 399360 | ep=17332 | return= 1.610 | guided%= 39.2 | bc=0.0000 | cumQ=146698 | bc_coef=0.000 | sps=464
+[ 400/488] step= 409600 | ep=17867 | return= 1.600 | guided%= 39.8 | bc=0.0000 | cumQ=150558 | bc_coef=0.000 | sps=464
+[ 410/488] step= 419840 | ep=18383 | return= 1.600 | guided%= 37.5 | bc=0.0000 | cumQ=154342 | bc_coef=0.000 | sps=464
+[ 420/488] step= 430080 | ep=18924 | return= 1.610 | guided%= 39.0 | bc=0.0000 | cumQ=158215 | bc_coef=0.000 | sps=464
+[ 430/488] step= 440320 | ep=19460 | return= 1.624 | guided%= 38.3 | bc=0.0000 | cumQ=162077 | bc_coef=0.000 | sps=464
+[ 440/488] step= 450560 | ep=20002 | return= 1.616 | guided%= 39.3 | bc=0.0000 | cumQ=165986 | bc_coef=0.000 | sps=464
+[ 450/488] step= 460800 | ep=20539 | return= 1.602 | guided%= 39.3 | bc=0.0000 | cumQ=169814 | bc_coef=0.000 | sps=464
+[ 460/488] step= 471040 | ep=21088 | return= 1.620 | guided%= 37.6 | bc=0.0000 | cumQ=173721 | bc_coef=0.000 | sps=464
+[ 470/488] step= 481280 | ep=21607 | return= 1.641 | guided%= 36.4 | bc=0.0000 | cumQ=177353 | bc_coef=0.000 | sps=464
+[ 480/488] step= 491520 | ep=22153 | return= 1.626 | guided%= 39.0 | bc=0.0000 | cumQ=181263 | bc_coef=0.000 | sps=464
+Generating plots...
+Plots → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed4__1777416739.png
+=== Baseline PPO                       | seed=4 ===
+Run: baseline__MiniGrid-DoorKey-8x8-v0__seed4__1777417824
+  device=cuda, batch=1024, updates=488
+  CSV → logs/baseline__MiniGrid-DoorKey-8x8-v0__seed4__1777417824.csv
+  obs=(64, 64, 3), n_actions=7, query_action=6
+  params=67,167,496
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=326
+  *** First unguided success — episode 1 ***
+[  10/488] step=  10240 | ep=    8 | return= 0.500 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=466
+[  20/488] step=  20480 | ep=   32 | return= 0.764 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=479
+[  30/488] step=  30720 | ep=   49 | return= 0.805 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[  40/488] step=  40960 | ep=   67 | return= 0.833 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=486
+[  50/488] step=  51200 | ep=   83 | return= 0.846 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=487
+[  60/488] step=  61440 | ep=  102 | return= 0.834 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=489
+[  70/488] step=  71680 | ep=  121 | return= 0.889 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[  80/488] step=  81920 | ep=  143 | return= 0.960 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[  90/488] step=  92160 | ep=  160 | return= 0.905 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=492
+[ 100/488] step= 102400 | ep=  180 | return= 0.963 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=492
+[ 110/488] step= 112640 | ep=  201 | return= 1.014 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=492
+[ 120/488] step= 122880 | ep=  219 | return= 1.040 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=492
+[ 130/488] step= 133120 | ep=  242 | return= 1.024 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 140/488] step= 143360 | ep=  268 | return= 1.138 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 150/488] step= 153600 | ep=  290 | return= 1.114 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 160/488] step= 163840 | ep=  321 | return= 1.170 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 170/488] step= 174080 | ep=  352 | return= 1.243 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 180/488] step= 184320 | ep=  374 | return= 1.328 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 190/488] step= 194560 | ep=  405 | return= 1.379 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 200/488] step= 204800 | ep=  431 | return= 1.325 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 210/488] step= 215040 | ep=  462 | return= 1.345 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 220/488] step= 225280 | ep=  493 | return= 1.350 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 230/488] step= 235520 | ep=  514 | return= 1.272 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 240/488] step= 245760 | ep=  544 | return= 1.300 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=493
+[ 250/488] step= 256000 | ep=  576 | return= 1.311 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 260/488] step= 266240 | ep=  606 | return= 1.294 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 270/488] step= 276480 | ep=  629 | return= 1.315 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 280/488] step= 286720 | ep=  655 | return= 1.258 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 290/488] step= 296960 | ep=  692 | return= 1.360 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 300/488] step= 307200 | ep=  715 | return= 1.314 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 310/488] step= 317440 | ep=  748 | return= 1.379 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 320/488] step= 327680 | ep=  781 | return= 1.346 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 330/488] step= 337920 | ep=  814 | return= 1.399 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 340/488] step= 348160 | ep=  841 | return= 1.359 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 350/488] step= 358400 | ep=  869 | return= 1.351 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 360/488] step= 368640 | ep=  896 | return= 1.302 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 370/488] step= 378880 | ep=  931 | return= 1.360 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 380/488] step= 389120 | ep=  963 | return= 1.345 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 390/488] step= 399360 | ep=  990 | return= 1.376 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 400/488] step= 409600 | ep= 1019 | return= 1.316 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=494
+[ 410/488] step= 419840 | ep= 1056 | return= 1.343 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=495
+[ 420/488] step= 430080 | ep= 1081 | return= 1.288 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=495
+[ 430/488] step= 440320 | ep= 1109 | return= 1.245 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=495
+[ 440/488] step= 450560 | ep= 1144 | return= 1.298 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=495
+[ 450/488] step= 460800 | ep= 1179 | return= 1.350 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=495
+[ 460/488] step= 471040 | ep= 1208 | return= 1.376 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=495
+[ 470/488] step= 481280 | ep= 1237 | return= 1.326 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=495
+[ 480/488] step= 491520 | ep= 1265 | return= 1.291 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=495
+Generating plots...
+Saved → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed4__1777417824.png
+Plots → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed4__1777417824.png
+=== Oracle gratuit        (cost=0.000) | seed=5 ===
+Run: oracle_free__MiniGrid-DoorKey-8x8-v0__seed5__1777418845
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_free__MiniGrid-DoorKey-8x8-v0__seed5__1777418845.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=   114 | bc_coef=0.000 | sps=312
+[  10/488] step=  10240 | ep=  102 | return= 1.862 | guided%= 33.0 | bc=0.0000 | cumQ=  2587 | bc_coef=0.000 | sps=442
+[  20/488] step=  20480 | ep=  465 | return= 1.971 | guided%= 76.8 | bc=0.0000 | cumQ=  8955 | bc_coef=0.000 | sps=447
+[  30/488] step=  30720 | ep=  974 | return= 1.975 | guided%= 92.0 | bc=0.0000 | cumQ= 17802 | bc_coef=0.000 | sps=446
+[  40/488] step=  40960 | ep= 1493 | return= 1.973 | guided%= 89.9 | bc=0.0000 | cumQ= 26922 | bc_coef=0.000 | sps=445
+[  50/488] step=  51200 | ep= 2050 | return= 1.975 | guided%= 91.3 | bc=0.0000 | cumQ= 36231 | bc_coef=0.000 | sps=445
+[  60/488] step=  61440 | ep= 2613 | return= 1.976 | guided%= 92.2 | bc=0.0000 | cumQ= 45546 | bc_coef=0.000 | sps=444
+[  70/488] step=  71680 | ep= 3159 | return= 1.976 | guided%= 92.4 | bc=0.0000 | cumQ= 54739 | bc_coef=0.000 | sps=444
+[  80/488] step=  81920 | ep= 3728 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ= 64346 | bc_coef=0.000 | sps=444
+[  90/488] step=  92160 | ep= 4305 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ= 74001 | bc_coef=0.000 | sps=444
+[ 100/488] step= 102400 | ep= 4887 | return= 1.977 | guided%= 93.9 | bc=0.0000 | cumQ= 83637 | bc_coef=0.000 | sps=444
+[ 110/488] step= 112640 | ep= 5468 | return= 1.976 | guided%= 94.0 | bc=0.0000 | cumQ= 93249 | bc_coef=0.000 | sps=443
+[ 120/488] step= 122880 | ep= 6041 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=102857 | bc_coef=0.000 | sps=443
+[ 130/488] step= 133120 | ep= 6616 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=112520 | bc_coef=0.000 | sps=443
+[ 140/488] step= 143360 | ep= 7193 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=122180 | bc_coef=0.000 | sps=442
+[ 150/488] step= 153600 | ep= 7766 | return= 1.977 | guided%= 94.2 | bc=0.0000 | cumQ=131842 | bc_coef=0.000 | sps=442
+[ 160/488] step= 163840 | ep= 8342 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=141500 | bc_coef=0.000 | sps=442
+[ 170/488] step= 174080 | ep= 8915 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=151158 | bc_coef=0.000 | sps=441
+[ 180/488] step= 184320 | ep= 9493 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=160819 | bc_coef=0.000 | sps=441
+[ 190/488] step= 194560 | ep=10063 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=170485 | bc_coef=0.000 | sps=441
+[ 200/488] step= 204800 | ep=10644 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=180140 | bc_coef=0.000 | sps=440
+[ 210/488] step= 215040 | ep=11220 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=189799 | bc_coef=0.000 | sps=440
+[ 220/488] step= 225280 | ep=11797 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=199461 | bc_coef=0.000 | sps=440
+[ 230/488] step= 235520 | ep=12372 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=209126 | bc_coef=0.000 | sps=440
+[ 240/488] step= 245760 | ep=12955 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=218781 | bc_coef=0.000 | sps=440
+[ 250/488] step= 256000 | ep=13515 | return= 1.973 | guided%= 94.0 | bc=0.0000 | cumQ=228441 | bc_coef=0.000 | sps=440
+[ 260/488] step= 266240 | ep=14096 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=238086 | bc_coef=0.000 | sps=440
+[ 270/488] step= 276480 | ep=14680 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=247716 | bc_coef=0.000 | sps=440
+[ 280/488] step= 286720 | ep=15249 | return= 1.977 | guided%= 94.2 | bc=0.0000 | cumQ=257384 | bc_coef=0.000 | sps=440
+[ 290/488] step= 296960 | ep=15825 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=267007 | bc_coef=0.000 | sps=440
+[ 300/488] step= 307200 | ep=16398 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=276669 | bc_coef=0.000 | sps=440
+[ 310/488] step= 317440 | ep=16977 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=286328 | bc_coef=0.000 | sps=440
+[ 320/488] step= 327680 | ep=17555 | return= 1.977 | guided%= 93.5 | bc=0.0000 | cumQ=295977 | bc_coef=0.000 | sps=440
+[ 330/488] step= 337920 | ep=18129 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=305632 | bc_coef=0.000 | sps=440
+[ 340/488] step= 348160 | ep=18695 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ=315303 | bc_coef=0.000 | sps=440
+[ 350/488] step= 358400 | ep=19273 | return= 1.977 | guided%= 94.2 | bc=0.0000 | cumQ=324964 | bc_coef=0.000 | sps=440
+[ 360/488] step= 368640 | ep=19852 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=334626 | bc_coef=0.000 | sps=440
+[ 370/488] step= 378880 | ep=20426 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=344291 | bc_coef=0.000 | sps=440
+[ 380/488] step= 389120 | ep=21002 | return= 1.976 | guided%= 94.0 | bc=0.0000 | cumQ=353940 | bc_coef=0.000 | sps=440
+[ 390/488] step= 399360 | ep=21570 | return= 1.976 | guided%= 93.6 | bc=0.0000 | cumQ=363572 | bc_coef=0.000 | sps=440
+[ 400/488] step= 409600 | ep=22144 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=373225 | bc_coef=0.000 | sps=440
+[ 410/488] step= 419840 | ep=22723 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=382872 | bc_coef=0.000 | sps=440
+[ 420/488] step= 430080 | ep=23299 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=392532 | bc_coef=0.000 | sps=440
+[ 430/488] step= 440320 | ep=23881 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=402188 | bc_coef=0.000 | sps=440
+[ 440/488] step= 450560 | ep=24459 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=411853 | bc_coef=0.000 | sps=440
+[ 450/488] step= 460800 | ep=25034 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=421510 | bc_coef=0.000 | sps=440
+[ 460/488] step= 471040 | ep=25613 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=431167 | bc_coef=0.000 | sps=440
+[ 470/488] step= 481280 | ep=26185 | return= 1.975 | guided%= 94.4 | bc=0.0000 | cumQ=440835 | bc_coef=0.000 | sps=441
+[ 480/488] step= 491520 | ep=26769 | return= 1.977 | guided%= 94.2 | bc=0.0000 | cumQ=450492 | bc_coef=0.000 | sps=441
+Generating plots...
+Plots → figures/oracle_free__MiniGrid-DoorKey-8x8-v0__seed5__1777418845.png
+=== Oracle payant faible  (cost=0.010) | seed=5 ===
+Run: oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed5__1777419989
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed5__1777419989.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=   114 | bc_coef=0.000 | sps=334
+[  10/488] step=  10240 | ep=   59 | return= 1.475 | guided%= 22.4 | bc=0.0000 | cumQ=  1722 | bc_coef=0.000 | sps=450
+[  20/488] step=  20480 | ep=  413 | return= 1.799 | guided%= 74.8 | bc=0.0000 | cumQ=  7916 | bc_coef=0.000 | sps=450
+[  30/488] step=  30720 | ep=  936 | return= 1.809 | guided%= 89.8 | bc=0.0000 | cumQ= 16569 | bc_coef=0.000 | sps=446
+[  40/488] step=  40960 | ep= 1477 | return= 1.812 | guided%= 90.5 | bc=0.0000 | cumQ= 25761 | bc_coef=0.000 | sps=443
+[  50/488] step=  51200 | ep= 2044 | return= 1.808 | guided%= 89.6 | bc=0.0000 | cumQ= 35049 | bc_coef=0.000 | sps=442
+[  60/488] step=  61440 | ep= 2578 | return= 1.806 | guided%= 90.4 | bc=0.0000 | cumQ= 44270 | bc_coef=0.000 | sps=441
+[  70/488] step=  71680 | ep= 3122 | return= 1.814 | guided%= 88.0 | bc=0.0000 | cumQ= 53323 | bc_coef=0.000 | sps=441
+[  80/488] step=  81920 | ep= 3654 | return= 1.813 | guided%= 86.0 | bc=0.0000 | cumQ= 62249 | bc_coef=0.000 | sps=441
+[  90/488] step=  92160 | ep= 4197 | return= 1.801 | guided%= 83.6 | bc=0.0000 | cumQ= 70916 | bc_coef=0.000 | sps=441
+[ 100/488] step= 102400 | ep= 4749 | return= 1.861 | guided%= 64.3 | bc=0.0000 | cumQ= 78198 | bc_coef=0.000 | sps=441
+[ 110/488] step= 112640 | ep= 5276 | return= 1.857 | guided%= 61.8 | bc=0.0000 | cumQ= 84412 | bc_coef=0.000 | sps=441
+[ 120/488] step= 122880 | ep= 5833 | return= 1.862 | guided%= 61.4 | bc=0.0000 | cumQ= 90808 | bc_coef=0.000 | sps=441
+[ 130/488] step= 133120 | ep= 6396 | return= 1.865 | guided%= 60.2 | bc=0.0000 | cumQ= 97104 | bc_coef=0.000 | sps=441
+[ 140/488] step= 143360 | ep= 6964 | return= 1.871 | guided%= 56.8 | bc=0.0000 | cumQ=103275 | bc_coef=0.000 | sps=441
+[ 150/488] step= 153600 | ep= 7526 | return= 1.874 | guided%= 56.1 | bc=0.0000 | cumQ=109285 | bc_coef=0.000 | sps=441
+[ 160/488] step= 163840 | ep= 8083 | return= 1.870 | guided%= 57.5 | bc=0.0000 | cumQ=115102 | bc_coef=0.000 | sps=441
+[ 170/488] step= 174080 | ep= 8640 | return= 1.863 | guided%= 56.9 | bc=0.0000 | cumQ=120947 | bc_coef=0.000 | sps=442
+[ 180/488] step= 184320 | ep= 9201 | return= 1.872 | guided%= 56.5 | bc=0.0000 | cumQ=126846 | bc_coef=0.000 | sps=442
+[ 190/488] step= 194560 | ep= 9770 | return= 1.870 | guided%= 57.1 | bc=0.0000 | cumQ=132777 | bc_coef=0.000 | sps=442
+[ 200/488] step= 204800 | ep=10319 | return= 1.865 | guided%= 61.2 | bc=0.0000 | cumQ=138662 | bc_coef=0.000 | sps=442
+[ 210/488] step= 215040 | ep=10895 | return= 1.870 | guided%= 58.9 | bc=0.0000 | cumQ=144748 | bc_coef=0.000 | sps=442
+[ 220/488] step= 225280 | ep=11457 | return= 1.872 | guided%= 57.7 | bc=0.0000 | cumQ=150664 | bc_coef=0.000 | sps=442
+[ 230/488] step= 235520 | ep=12014 | return= 1.870 | guided%= 57.7 | bc=0.0000 | cumQ=156502 | bc_coef=0.000 | sps=442
+[ 240/488] step= 245760 | ep=12570 | return= 1.869 | guided%= 56.6 | bc=0.0000 | cumQ=162294 | bc_coef=0.000 | sps=442
+[ 250/488] step= 256000 | ep=13145 | return= 1.874 | guided%= 56.9 | bc=0.0000 | cumQ=168088 | bc_coef=0.000 | sps=442
+[ 260/488] step= 266240 | ep=13713 | return= 1.874 | guided%= 55.0 | bc=0.0000 | cumQ=173786 | bc_coef=0.000 | sps=442
+[ 270/488] step= 276480 | ep=14273 | return= 1.875 | guided%= 55.1 | bc=0.0000 | cumQ=179298 | bc_coef=0.000 | sps=442
+[ 280/488] step= 286720 | ep=14825 | return= 1.870 | guided%= 55.5 | bc=0.0000 | cumQ=184938 | bc_coef=0.000 | sps=442
+[ 290/488] step= 296960 | ep=15333 | return= 1.865 | guided%= 54.3 | bc=0.0000 | cumQ=190040 | bc_coef=0.000 | sps=442
+[ 300/488] step= 307200 | ep=15898 | return= 1.872 | guided%= 55.4 | bc=0.0000 | cumQ=195782 | bc_coef=0.000 | sps=442
+[ 310/488] step= 317440 | ep=16460 | return= 1.877 | guided%= 55.5 | bc=0.0000 | cumQ=201339 | bc_coef=0.000 | sps=442
+[ 320/488] step= 327680 | ep=17033 | return= 1.876 | guided%= 56.2 | bc=0.0000 | cumQ=207148 | bc_coef=0.000 | sps=442
+[ 330/488] step= 337920 | ep=17608 | return= 1.881 | guided%= 54.3 | bc=0.0000 | cumQ=212916 | bc_coef=0.000 | sps=442
+[ 340/488] step= 348160 | ep=18173 | return= 1.875 | guided%= 54.2 | bc=0.0000 | cumQ=218577 | bc_coef=0.000 | sps=442
+[ 350/488] step= 358400 | ep=18734 | return= 1.876 | guided%= 55.6 | bc=0.0000 | cumQ=224406 | bc_coef=0.000 | sps=442
+[ 360/488] step= 368640 | ep=19311 | return= 1.879 | guided%= 55.0 | bc=0.0000 | cumQ=230195 | bc_coef=0.000 | sps=442
+[ 370/488] step= 378880 | ep=19838 | return= 1.875 | guided%= 54.0 | bc=0.0000 | cumQ=235528 | bc_coef=0.000 | sps=442
+[ 380/488] step= 389120 | ep=20343 | return= 1.856 | guided%= 57.1 | bc=0.0000 | cumQ=240767 | bc_coef=0.000 | sps=442
+[ 390/488] step= 399360 | ep=20902 | return= 1.872 | guided%= 55.8 | bc=0.0000 | cumQ=246547 | bc_coef=0.000 | sps=442
+[ 400/488] step= 409600 | ep=21468 | return= 1.873 | guided%= 55.5 | bc=0.0000 | cumQ=252230 | bc_coef=0.000 | sps=442
+[ 410/488] step= 419840 | ep=22034 | return= 1.870 | guided%= 58.2 | bc=0.0000 | cumQ=258022 | bc_coef=0.000 | sps=442
+[ 420/488] step= 430080 | ep=22610 | return= 1.872 | guided%= 57.3 | bc=0.0000 | cumQ=263842 | bc_coef=0.000 | sps=442
+[ 430/488] step= 440320 | ep=23187 | return= 1.870 | guided%= 58.4 | bc=0.0000 | cumQ=269802 | bc_coef=0.000 | sps=442
+[ 440/488] step= 450560 | ep=23765 | return= 1.875 | guided%= 58.0 | bc=0.0000 | cumQ=275665 | bc_coef=0.000 | sps=442
+[ 450/488] step= 460800 | ep=24343 | return= 1.871 | guided%= 57.3 | bc=0.0000 | cumQ=281565 | bc_coef=0.000 | sps=442
+[ 460/488] step= 471040 | ep=24919 | return= 1.871 | guided%= 58.6 | bc=0.0000 | cumQ=287569 | bc_coef=0.000 | sps=442
+[ 470/488] step= 481280 | ep=25502 | return= 1.875 | guided%= 57.2 | bc=0.0000 | cumQ=293376 | bc_coef=0.000 | sps=442
+[ 480/488] step= 491520 | ep=26073 | return= 1.877 | guided%= 54.9 | bc=0.0000 | cumQ=299172 | bc_coef=0.000 | sps=442
+Generating plots...
+Plots → figures/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed5__1777419989.png
+=== Oracle payant moyen   (cost=0.020) | seed=5 ===
+Run: oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed5__1777421128
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed5__1777421128.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=   114 | bc_coef=0.000 | sps=337
+[  10/488] step=  10240 | ep=   48 | return= 1.192 | guided%= 14.8 | bc=0.0000 | cumQ=  1304 | bc_coef=0.000 | sps=459
+[  20/488] step=  20480 | ep=  351 | return= 1.608 | guided%= 74.7 | bc=0.0000 | cumQ=  6631 | bc_coef=0.000 | sps=460
+[  30/488] step=  30720 | ep=  859 | return= 1.648 | guided%= 84.1 | bc=0.0000 | cumQ= 15113 | bc_coef=0.000 | sps=456
+[  40/488] step=  40960 | ep= 1374 | return= 1.698 | guided%= 70.2 | bc=0.0000 | cumQ= 22742 | bc_coef=0.000 | sps=454
+[  50/488] step=  51200 | ep= 1907 | return= 1.759 | guided%= 55.9 | bc=0.0000 | cumQ= 29082 | bc_coef=0.000 | sps=453
+[  60/488] step=  61440 | ep= 2423 | return= 1.772 | guided%= 52.4 | bc=0.0000 | cumQ= 34664 | bc_coef=0.000 | sps=453
+[  70/488] step=  71680 | ep= 2978 | return= 1.772 | guided%= 54.2 | bc=0.0000 | cumQ= 40558 | bc_coef=0.000 | sps=452
+[  80/488] step=  81920 | ep= 3526 | return= 1.769 | guided%= 56.1 | bc=0.0000 | cumQ= 46308 | bc_coef=0.000 | sps=452
+[  90/488] step=  92160 | ep= 4078 | return= 1.774 | guided%= 54.7 | bc=0.0000 | cumQ= 52019 | bc_coef=0.000 | sps=451
+[ 100/488] step= 102400 | ep= 4630 | return= 1.774 | guided%= 53.8 | bc=0.0000 | cumQ= 57609 | bc_coef=0.000 | sps=451
+[ 110/488] step= 112640 | ep= 5186 | return= 1.766 | guided%= 56.9 | bc=0.0000 | cumQ= 63243 | bc_coef=0.000 | sps=451
+[ 120/488] step= 122880 | ep= 5726 | return= 1.752 | guided%= 60.6 | bc=0.0000 | cumQ= 69125 | bc_coef=0.000 | sps=451
+[ 130/488] step= 133120 | ep= 6288 | return= 1.758 | guided%= 57.4 | bc=0.0000 | cumQ= 75001 | bc_coef=0.000 | sps=451
+[ 140/488] step= 143360 | ep= 6857 | return= 1.781 | guided%= 54.7 | bc=0.0000 | cumQ= 80767 | bc_coef=0.000 | sps=451
+[ 150/488] step= 153600 | ep= 7415 | return= 1.769 | guided%= 54.8 | bc=0.0000 | cumQ= 86444 | bc_coef=0.000 | sps=451
+[ 160/488] step= 163840 | ep= 7984 | return= 1.768 | guided%= 56.3 | bc=0.0000 | cumQ= 92316 | bc_coef=0.000 | sps=450
+[ 170/488] step= 174080 | ep= 8557 | return= 1.784 | guided%= 54.3 | bc=0.0000 | cumQ= 98091 | bc_coef=0.000 | sps=450
+[ 180/488] step= 184320 | ep= 9098 | return= 1.771 | guided%= 55.4 | bc=0.0000 | cumQ=103627 | bc_coef=0.000 | sps=450
+[ 190/488] step= 194560 | ep= 9661 | return= 1.777 | guided%= 56.2 | bc=0.0000 | cumQ=109322 | bc_coef=0.000 | sps=450
+[ 200/488] step= 204800 | ep=10234 | return= 1.782 | guided%= 55.7 | bc=0.0000 | cumQ=115180 | bc_coef=0.000 | sps=450
+[ 210/488] step= 215040 | ep=10809 | return= 1.781 | guided%= 55.4 | bc=0.0000 | cumQ=120969 | bc_coef=0.000 | sps=450
+[ 220/488] step= 225280 | ep=11375 | return= 1.765 | guided%= 57.5 | bc=0.0000 | cumQ=126720 | bc_coef=0.000 | sps=450
+[ 230/488] step= 235520 | ep=11935 | return= 1.770 | guided%= 55.5 | bc=0.0000 | cumQ=132359 | bc_coef=0.000 | sps=450
+[ 240/488] step= 245760 | ep=12488 | return= 1.767 | guided%= 56.9 | bc=0.0000 | cumQ=137940 | bc_coef=0.000 | sps=449
+[ 250/488] step= 256000 | ep=13039 | return= 1.769 | guided%= 55.1 | bc=0.0000 | cumQ=143388 | bc_coef=0.000 | sps=449
+[ 260/488] step= 266240 | ep=13582 | return= 1.777 | guided%= 55.0 | bc=0.0000 | cumQ=148849 | bc_coef=0.000 | sps=450
+[ 270/488] step= 276480 | ep=14139 | return= 1.784 | guided%= 53.3 | bc=0.0000 | cumQ=154321 | bc_coef=0.000 | sps=450
+[ 280/488] step= 286720 | ep=14686 | return= 1.775 | guided%= 54.0 | bc=0.0000 | cumQ=159762 | bc_coef=0.000 | sps=450
+[ 290/488] step= 296960 | ep=15233 | return= 1.773 | guided%= 55.5 | bc=0.0000 | cumQ=165307 | bc_coef=0.000 | sps=450
+[ 300/488] step= 307200 | ep=15797 | return= 1.768 | guided%= 55.6 | bc=0.0000 | cumQ=171030 | bc_coef=0.000 | sps=450
+[ 310/488] step= 317440 | ep=16349 | return= 1.787 | guided%= 52.6 | bc=0.0000 | cumQ=176527 | bc_coef=0.000 | sps=450
+[ 320/488] step= 327680 | ep=16897 | return= 1.780 | guided%= 52.4 | bc=0.0000 | cumQ=181991 | bc_coef=0.000 | sps=450
+[ 330/488] step= 337920 | ep=17446 | return= 1.770 | guided%= 53.4 | bc=0.0000 | cumQ=187479 | bc_coef=0.000 | sps=450
+[ 340/488] step= 348160 | ep=17992 | return= 1.774 | guided%= 52.1 | bc=0.0000 | cumQ=192761 | bc_coef=0.000 | sps=450
+[ 350/488] step= 358400 | ep=18525 | return= 1.783 | guided%= 52.5 | bc=0.0000 | cumQ=198151 | bc_coef=0.000 | sps=450
+[ 360/488] step= 368640 | ep=19082 | return= 1.778 | guided%= 54.4 | bc=0.0000 | cumQ=203693 | bc_coef=0.000 | sps=450
+[ 370/488] step= 378880 | ep=19644 | return= 1.777 | guided%= 55.5 | bc=0.0000 | cumQ=209351 | bc_coef=0.000 | sps=450
+[ 380/488] step= 389120 | ep=20209 | return= 1.783 | guided%= 53.3 | bc=0.0000 | cumQ=215008 | bc_coef=0.000 | sps=450
+[ 390/488] step= 399360 | ep=20774 | return= 1.776 | guided%= 53.4 | bc=0.0000 | cumQ=220558 | bc_coef=0.000 | sps=450
+[ 400/488] step= 409600 | ep=21325 | return= 1.767 | guided%= 54.7 | bc=0.0000 | cumQ=226113 | bc_coef=0.000 | sps=450
+[ 410/488] step= 419840 | ep=21886 | return= 1.789 | guided%= 53.0 | bc=0.0000 | cumQ=231682 | bc_coef=0.000 | sps=450
+[ 420/488] step= 430080 | ep=22454 | return= 1.777 | guided%= 54.9 | bc=0.0000 | cumQ=237308 | bc_coef=0.000 | sps=450
+[ 430/488] step= 440320 | ep=23018 | return= 1.774 | guided%= 55.5 | bc=0.0000 | cumQ=242851 | bc_coef=0.000 | sps=450
+[ 440/488] step= 450560 | ep=23585 | return= 1.777 | guided%= 55.2 | bc=0.0000 | cumQ=248483 | bc_coef=0.000 | sps=450
+[ 450/488] step= 460800 | ep=24157 | return= 1.782 | guided%= 54.5 | bc=0.0000 | cumQ=254076 | bc_coef=0.000 | sps=450
+[ 460/488] step= 471040 | ep=24722 | return= 1.778 | guided%= 54.6 | bc=0.0000 | cumQ=259688 | bc_coef=0.000 | sps=450
+[ 470/488] step= 481280 | ep=25293 | return= 1.778 | guided%= 54.6 | bc=0.0000 | cumQ=265275 | bc_coef=0.000 | sps=450
+[ 480/488] step= 491520 | ep=25855 | return= 1.780 | guided%= 54.3 | bc=0.0000 | cumQ=270802 | bc_coef=0.000 | sps=450
+Generating plots...
+Plots → figures/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed5__1777421128.png
+=== Oracle payant élevé   (cost=0.050) | seed=5 ===
+Run: oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed5__1777422247
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed5__1777422247.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=   114 | bc_coef=0.000 | sps=326
+[  10/488] step=  10240 | ep=   21 | return=-0.420 | guided%=  9.3 | bc=0.0000 | cumQ=   798 | bc_coef=0.000 | sps=453
+[  20/488] step=  20480 | ep=   37 | return=-0.155 | guided%=  6.6 | bc=0.0000 | cumQ=  1072 | bc_coef=0.000 | sps=467
+[  30/488] step=  30720 | ep=   54 | return=-0.002 | guided%=  5.1 | bc=0.0000 | cumQ=  1200 | bc_coef=0.000 | sps=474
+  *** First unguided success — episode 60 ***
+[  40/488] step=  40960 | ep=   72 | return= 0.189 | guided%=  3.9 | bc=0.0000 | cumQ=  1221 | bc_coef=0.000 | sps=478
+[  50/488] step=  51200 | ep=   88 | return= 0.292 | guided%=  3.2 | bc=0.0000 | cumQ=  1235 | bc_coef=0.000 | sps=481
+[  60/488] step=  61440 | ep=  104 | return= 0.315 | guided%=  2.4 | bc=0.0000 | cumQ=  1246 | bc_coef=0.000 | sps=482
+[  70/488] step=  71680 | ep=  120 | return= 0.524 | guided%=  1.0 | bc=0.0000 | cumQ=  1256 | bc_coef=0.000 | sps=484
+[  80/488] step=  81920 | ep=  140 | return= 0.719 | guided%=  0.4 | bc=0.0000 | cumQ=  1263 | bc_coef=0.000 | sps=485
+[  90/488] step=  92160 | ep=  163 | return= 0.856 | guided%=  0.1 | bc=0.0000 | cumQ=  1265 | bc_coef=0.000 | sps=486
+[ 100/488] step= 102400 | ep=  187 | return= 0.964 | guided%=  0.1 | bc=0.0000 | cumQ=  1269 | bc_coef=0.000 | sps=487
+[ 110/488] step= 112640 | ep=  210 | return= 1.124 | guided%=  0.1 | bc=0.0000 | cumQ=  1277 | bc_coef=0.000 | sps=486
+[ 120/488] step= 122880 | ep=  234 | return= 1.215 | guided%=  0.1 | bc=0.0000 | cumQ=  1284 | bc_coef=0.000 | sps=486
+[ 130/488] step= 133120 | ep=  260 | return= 1.245 | guided%=  0.1 | bc=0.0000 | cumQ=  1288 | bc_coef=0.000 | sps=486
+[ 140/488] step= 143360 | ep=  284 | return= 1.247 | guided%=  0.1 | bc=0.0000 | cumQ=  1290 | bc_coef=0.000 | sps=486
+[ 150/488] step= 153600 | ep=  306 | return= 1.220 | guided%=  0.0 | bc=0.0000 | cumQ=  1291 | bc_coef=0.000 | sps=486
+[ 160/488] step= 163840 | ep=  331 | return= 1.213 | guided%=  0.0 | bc=0.0000 | cumQ=  1294 | bc_coef=0.000 | sps=487
+[ 170/488] step= 174080 | ep=  351 | return= 1.153 | guided%=  0.0 | bc=0.0000 | cumQ=  1296 | bc_coef=0.000 | sps=487
+[ 180/488] step= 184320 | ep=  372 | return= 1.155 | guided%=  0.0 | bc=0.0000 | cumQ=  1297 | bc_coef=0.000 | sps=488
+[ 190/488] step= 194560 | ep=  399 | return= 1.138 | guided%=  0.0 | bc=0.0000 | cumQ=  1298 | bc_coef=0.000 | sps=488
+[ 200/488] step= 204800 | ep=  426 | return= 1.178 | guided%=  0.0 | bc=0.0000 | cumQ=  1298 | bc_coef=0.000 | sps=488
+[ 210/488] step= 215040 | ep=  457 | return= 1.289 | guided%=  0.0 | bc=0.0000 | cumQ=  1299 | bc_coef=0.000 | sps=488
+[ 220/488] step= 225280 | ep=  479 | return= 1.288 | guided%=  0.0 | bc=0.0000 | cumQ=  1299 | bc_coef=0.000 | sps=489
+[ 230/488] step= 235520 | ep=  501 | return= 1.268 | guided%=  0.0 | bc=0.0000 | cumQ=  1299 | bc_coef=0.000 | sps=489
+[ 240/488] step= 245760 | ep=  534 | return= 1.283 | guided%=  0.0 | bc=0.0000 | cumQ=  1299 | bc_coef=0.000 | sps=490
+[ 250/488] step= 256000 | ep=  571 | return= 1.372 | guided%=  0.0 | bc=0.0000 | cumQ=  1300 | bc_coef=0.000 | sps=490
+[ 260/488] step= 266240 | ep=  600 | return= 1.428 | guided%=  0.0 | bc=0.0000 | cumQ=  1303 | bc_coef=0.000 | sps=490
+[ 270/488] step= 276480 | ep=  639 | return= 1.471 | guided%=  0.0 | bc=0.0000 | cumQ=  1305 | bc_coef=0.000 | sps=490
+[ 280/488] step= 286720 | ep=  668 | return= 1.435 | guided%=  0.0 | bc=0.0000 | cumQ=  1307 | bc_coef=0.000 | sps=491
+[ 290/488] step= 296960 | ep=  703 | return= 1.482 | guided%=  0.0 | bc=0.0000 | cumQ=  1307 | bc_coef=0.000 | sps=491
+[ 300/488] step= 307200 | ep=  749 | return= 1.526 | guided%=  0.0 | bc=0.0000 | cumQ=  1309 | bc_coef=0.000 | sps=491
+[ 310/488] step= 317440 | ep=  790 | return= 1.609 | guided%=  0.0 | bc=0.0000 | cumQ=  1309 | bc_coef=0.000 | sps=491
+[ 320/488] step= 327680 | ep=  837 | return= 1.614 | guided%=  0.0 | bc=0.0000 | cumQ=  1309 | bc_coef=0.000 | sps=491
+[ 330/488] step= 337920 | ep=  889 | return= 1.659 | guided%=  0.0 | bc=0.0000 | cumQ=  1311 | bc_coef=0.000 | sps=491
+[ 340/488] step= 348160 | ep=  932 | return= 1.657 | guided%=  0.0 | bc=0.0000 | cumQ=  1311 | bc_coef=0.000 | sps=491
+[ 350/488] step= 358400 | ep=  988 | return= 1.676 | guided%=  0.0 | bc=0.0000 | cumQ=  1312 | bc_coef=0.000 | sps=491
+[ 360/488] step= 368640 | ep= 1046 | return= 1.704 | guided%=  0.0 | bc=0.0000 | cumQ=  1312 | bc_coef=0.000 | sps=491
+[ 370/488] step= 378880 | ep= 1107 | return= 1.734 | guided%=  0.0 | bc=0.0000 | cumQ=  1313 | bc_coef=0.000 | sps=491
+[ 380/488] step= 389120 | ep= 1165 | return= 1.741 | guided%=  0.0 | bc=0.0000 | cumQ=  1314 | bc_coef=0.000 | sps=491
+[ 390/488] step= 399360 | ep= 1227 | return= 1.734 | guided%=  0.0 | bc=0.0000 | cumQ=  1316 | bc_coef=0.000 | sps=491
+[ 400/488] step= 409600 | ep= 1292 | return= 1.766 | guided%=  0.0 | bc=0.0000 | cumQ=  1316 | bc_coef=0.000 | sps=491
+[ 410/488] step= 419840 | ep= 1347 | return= 1.733 | guided%=  0.0 | bc=0.0000 | cumQ=  1317 | bc_coef=0.000 | sps=491
+[ 420/488] step= 430080 | ep= 1412 | return= 1.732 | guided%=  0.0 | bc=0.0000 | cumQ=  1318 | bc_coef=0.000 | sps=491
+[ 430/488] step= 440320 | ep= 1488 | return= 1.795 | guided%=  0.0 | bc=0.0000 | cumQ=  1318 | bc_coef=0.000 | sps=491
+[ 440/488] step= 450560 | ep= 1564 | return= 1.802 | guided%=  0.0 | bc=0.0000 | cumQ=  1318 | bc_coef=0.000 | sps=491
+[ 450/488] step= 460800 | ep= 1649 | return= 1.832 | guided%=  0.0 | bc=0.0000 | cumQ=  1319 | bc_coef=0.000 | sps=491
+[ 460/488] step= 471040 | ep= 1736 | return= 1.818 | guided%=  0.0 | bc=0.0000 | cumQ=  1319 | bc_coef=0.000 | sps=491
+[ 470/488] step= 481280 | ep= 1834 | return= 1.833 | guided%=  0.0 | bc=0.0000 | cumQ=  1319 | bc_coef=0.000 | sps=491
+[ 480/488] step= 491520 | ep= 1910 | return= 1.819 | guided%=  0.0 | bc=0.0000 | cumQ=  1320 | bc_coef=0.000 | sps=491
+Generating plots...
+Saved → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed5__1777422247.png
+Plots → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed5__1777422247.png
+=== Baseline PPO                       | seed=5 ===
+Run: baseline__MiniGrid-DoorKey-8x8-v0__seed5__1777423274
+  device=cuda, batch=1024, updates=488
+  CSV → logs/baseline__MiniGrid-DoorKey-8x8-v0__seed5__1777423274.csv
+  obs=(64, 64, 3), n_actions=7, query_action=6
+  params=67,167,496
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=330
+  *** First unguided success — episode 1 ***
+[  10/488] step=  10240 | ep=    8 | return= 0.625 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=461
+[  20/488] step=  20480 | ep=   24 | return= 0.583 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=471
+[  30/488] step=  30720 | ep=   40 | return= 0.550 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=476
+[  40/488] step=  40960 | ep=   58 | return= 0.611 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=477
+[  50/488] step=  51200 | ep=   76 | return= 0.637 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=478
+[  60/488] step=  61440 | ep=   92 | return= 0.641 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=479
+[  70/488] step=  71680 | ep=  108 | return= 0.644 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=479
+[  80/488] step=  81920 | ep=  125 | return= 0.666 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=480
+[  90/488] step=  92160 | ep=  141 | return= 0.681 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=480
+[ 100/488] step= 102400 | ep=  158 | return= 0.652 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=481
+[ 110/488] step= 112640 | ep=  175 | return= 0.604 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=481
+[ 120/488] step= 122880 | ep=  191 | return= 0.594 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=481
+[ 130/488] step= 133120 | ep=  208 | return= 0.591 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 140/488] step= 143360 | ep=  224 | return= 0.579 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 150/488] step= 153600 | ep=  240 | return= 0.579 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 160/488] step= 163840 | ep=  256 | return= 0.564 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 170/488] step= 174080 | ep=  274 | return= 0.612 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 180/488] step= 184320 | ep=  290 | return= 0.614 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 190/488] step= 194560 | ep=  306 | return= 0.629 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 200/488] step= 204800 | ep=  327 | return= 0.712 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 210/488] step= 215040 | ep=  344 | return= 0.734 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 220/488] step= 225280 | ep=  364 | return= 0.797 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 230/488] step= 235520 | ep=  382 | return= 0.736 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 240/488] step= 245760 | ep=  398 | return= 0.773 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 250/488] step= 256000 | ep=  416 | return= 0.776 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 260/488] step= 266240 | ep=  434 | return= 0.736 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 270/488] step= 276480 | ep=  452 | return= 0.759 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 280/488] step= 286720 | ep=  474 | return= 0.810 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 290/488] step= 296960 | ep=  493 | return= 0.829 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 300/488] step= 307200 | ep=  513 | return= 0.868 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 310/488] step= 317440 | ep=  532 | return= 0.870 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 320/488] step= 327680 | ep=  555 | return= 0.882 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 330/488] step= 337920 | ep=  574 | return= 0.890 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 340/488] step= 348160 | ep=  592 | return= 0.856 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 350/488] step= 358400 | ep=  613 | return= 0.904 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 360/488] step= 368640 | ep=  634 | return= 0.909 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 370/488] step= 378880 | ep=  653 | return= 0.879 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 380/488] step= 389120 | ep=  679 | return= 0.948 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 390/488] step= 399360 | ep=  697 | return= 0.957 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 400/488] step= 409600 | ep=  721 | return= 0.990 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 410/488] step= 419840 | ep=  744 | return= 1.039 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 420/488] step= 430080 | ep=  767 | return= 0.991 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 430/488] step= 440320 | ep=  788 | return= 0.985 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 440/488] step= 450560 | ep=  813 | return= 0.955 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 450/488] step= 460800 | ep=  837 | return= 0.971 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 460/488] step= 471040 | ep=  865 | return= 1.021 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 470/488] step= 481280 | ep=  889 | return= 1.052 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[ 480/488] step= 491520 | ep=  913 | return= 1.093 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+Generating plots...
+Saved → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed5__1777423274.png
+Plots → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed5__1777423274.png
+=== Oracle gratuit        (cost=0.000) | seed=6 ===
+Run: oracle_free__MiniGrid-DoorKey-8x8-v0__seed6__1777424311
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_free__MiniGrid-DoorKey-8x8-v0__seed6__1777424311.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    2 | return= 1.866 | guided%= 17.8 | bc=0.0000 | cumQ=   149 | bc_coef=0.000 | sps=325
+[  10/488] step=  10240 | ep=   89 | return= 1.844 | guided%= 26.3 | bc=0.0000 | cumQ=  2272 | bc_coef=0.000 | sps=454
+[  20/488] step=  20480 | ep=  424 | return= 1.967 | guided%= 69.0 | bc=0.0000 | cumQ=  8386 | bc_coef=0.000 | sps=454
+[  30/488] step=  30720 | ep=  879 | return= 1.972 | guided%= 79.2 | bc=0.0000 | cumQ= 16139 | bc_coef=0.000 | sps=451
+[  40/488] step=  40960 | ep= 1407 | return= 1.975 | guided%= 88.9 | bc=0.0000 | cumQ= 24983 | bc_coef=0.000 | sps=450
+[  50/488] step=  51200 | ep= 1966 | return= 1.976 | guided%= 92.1 | bc=0.0000 | cumQ= 34267 | bc_coef=0.000 | sps=448
+[  60/488] step=  61440 | ep= 2540 | return= 1.977 | guided%= 92.9 | bc=0.0000 | cumQ= 43734 | bc_coef=0.000 | sps=448
+[  70/488] step=  71680 | ep= 3117 | return= 1.976 | guided%= 92.5 | bc=0.0000 | cumQ= 53305 | bc_coef=0.000 | sps=447
+[  80/488] step=  81920 | ep= 3685 | return= 1.976 | guided%= 93.8 | bc=0.0000 | cumQ= 62929 | bc_coef=0.000 | sps=447
+[  90/488] step=  92160 | ep= 4247 | return= 1.976 | guided%= 93.5 | bc=0.0000 | cumQ= 72578 | bc_coef=0.000 | sps=446
+[ 100/488] step= 102400 | ep= 4818 | return= 1.977 | guided%= 93.8 | bc=0.0000 | cumQ= 82194 | bc_coef=0.000 | sps=446
+[ 110/488] step= 112640 | ep= 5374 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ= 91777 | bc_coef=0.000 | sps=446
+[ 120/488] step= 122880 | ep= 5923 | return= 1.977 | guided%= 93.9 | bc=0.0000 | cumQ=101461 | bc_coef=0.000 | sps=445
+[ 130/488] step= 133120 | ep= 6495 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=111123 | bc_coef=0.000 | sps=445
+[ 140/488] step= 143360 | ep= 7078 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=120780 | bc_coef=0.000 | sps=445
+[ 150/488] step= 153600 | ep= 7648 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=130449 | bc_coef=0.000 | sps=445
+[ 160/488] step= 163840 | ep= 8228 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=140108 | bc_coef=0.000 | sps=444
+[ 170/488] step= 174080 | ep= 8805 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=149770 | bc_coef=0.000 | sps=444
+[ 180/488] step= 184320 | ep= 9377 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=159431 | bc_coef=0.000 | sps=444
+[ 190/488] step= 194560 | ep= 9956 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=169092 | bc_coef=0.000 | sps=444
+[ 200/488] step= 204800 | ep=10527 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=178756 | bc_coef=0.000 | sps=444
+[ 210/488] step= 215040 | ep=11107 | return= 1.976 | guided%= 94.4 | bc=0.0000 | cumQ=188413 | bc_coef=0.000 | sps=444
+[ 220/488] step= 225280 | ep=11684 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=198076 | bc_coef=0.000 | sps=444
+[ 230/488] step= 235520 | ep=12256 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=207742 | bc_coef=0.000 | sps=444
+[ 240/488] step= 245760 | ep=12837 | return= 1.977 | guided%= 94.2 | bc=0.0000 | cumQ=217402 | bc_coef=0.000 | sps=444
+[ 250/488] step= 256000 | ep=13422 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=227054 | bc_coef=0.000 | sps=444
+[ 260/488] step= 266240 | ep=13999 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=236716 | bc_coef=0.000 | sps=443
+[ 270/488] step= 276480 | ep=14580 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=246375 | bc_coef=0.000 | sps=443
+[ 280/488] step= 286720 | ep=15155 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=256038 | bc_coef=0.000 | sps=443
+[ 290/488] step= 296960 | ep=15733 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=265700 | bc_coef=0.000 | sps=443
+[ 300/488] step= 307200 | ep=16301 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=275371 | bc_coef=0.000 | sps=443
+[ 310/488] step= 317440 | ep=16881 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=285031 | bc_coef=0.000 | sps=443
+[ 320/488] step= 327680 | ep=17456 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=294697 | bc_coef=0.000 | sps=443
+[ 330/488] step= 337920 | ep=18028 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=304362 | bc_coef=0.000 | sps=443
+[ 340/488] step= 348160 | ep=18594 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=314034 | bc_coef=0.000 | sps=443
+[ 350/488] step= 358400 | ep=19169 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=323693 | bc_coef=0.000 | sps=443
+[ 360/488] step= 368640 | ep=19748 | return= 1.977 | guided%= 93.9 | bc=0.0000 | cumQ=333347 | bc_coef=0.000 | sps=443
+[ 370/488] step= 378880 | ep=20327 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=342999 | bc_coef=0.000 | sps=443
+[ 380/488] step= 389120 | ep=20900 | return= 1.976 | guided%= 94.4 | bc=0.0000 | cumQ=352661 | bc_coef=0.000 | sps=443
+[ 390/488] step= 399360 | ep=21470 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=362322 | bc_coef=0.000 | sps=443
+[ 400/488] step= 409600 | ep=22044 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=371983 | bc_coef=0.000 | sps=443
+[ 410/488] step= 419840 | ep=22623 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=381637 | bc_coef=0.000 | sps=443
+[ 420/488] step= 430080 | ep=23200 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=391292 | bc_coef=0.000 | sps=443
+[ 430/488] step= 440320 | ep=23781 | return= 1.977 | guided%= 94.2 | bc=0.0000 | cumQ=400949 | bc_coef=0.000 | sps=443
+[ 440/488] step= 450560 | ep=24360 | return= 1.975 | guided%= 94.5 | bc=0.0000 | cumQ=410609 | bc_coef=0.000 | sps=443
+[ 450/488] step= 460800 | ep=24937 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=420269 | bc_coef=0.000 | sps=443
+[ 460/488] step= 471040 | ep=25516 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=429930 | bc_coef=0.000 | sps=443
+[ 470/488] step= 481280 | ep=26089 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=439595 | bc_coef=0.000 | sps=443
+[ 480/488] step= 491520 | ep=26669 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=449252 | bc_coef=0.000 | sps=443
+Generating plots...
+Plots → figures/oracle_free__MiniGrid-DoorKey-8x8-v0__seed6__1777424311.png
+=== Oracle payant faible  (cost=0.010) | seed=6 ===
+Run: oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed6__1777425444
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed6__1777425444.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    2 | return= 1.696 | guided%= 17.8 | bc=0.0000 | cumQ=   149 | bc_coef=0.000 | sps=323
+[  10/488] step=  10240 | ep=   74 | return= 1.540 | guided%= 24.1 | bc=0.0000 | cumQ=  2161 | bc_coef=0.000 | sps=448
+[  20/488] step=  20480 | ep=  308 | return= 1.772 | guided%= 47.7 | bc=0.0000 | cumQ=  6754 | bc_coef=0.000 | sps=454
+[  30/488] step=  30720 | ep=  712 | return= 1.810 | guided%= 75.4 | bc=0.0000 | cumQ= 13498 | bc_coef=0.000 | sps=452
+[  40/488] step=  40960 | ep= 1224 | return= 1.816 | guided%= 80.7 | bc=0.0000 | cumQ= 21554 | bc_coef=0.000 | sps=449
+[  50/488] step=  51200 | ep= 1759 | return= 1.834 | guided%= 76.5 | bc=0.0000 | cumQ= 29586 | bc_coef=0.000 | sps=448
+[  60/488] step=  61440 | ep= 2306 | return= 1.854 | guided%= 65.6 | bc=0.0000 | cumQ= 36538 | bc_coef=0.000 | sps=447
+[  70/488] step=  71680 | ep= 2852 | return= 1.852 | guided%= 66.3 | bc=0.0000 | cumQ= 43246 | bc_coef=0.000 | sps=447
+[  80/488] step=  81920 | ep= 3416 | return= 1.851 | guided%= 67.9 | bc=0.0000 | cumQ= 50186 | bc_coef=0.000 | sps=447
+[  90/488] step=  92160 | ep= 3978 | return= 1.860 | guided%= 63.1 | bc=0.0000 | cumQ= 56779 | bc_coef=0.000 | sps=447
+[ 100/488] step= 102400 | ep= 4541 | return= 1.851 | guided%= 64.2 | bc=0.0000 | cumQ= 63466 | bc_coef=0.000 | sps=446
+[ 110/488] step= 112640 | ep= 5115 | return= 1.856 | guided%= 64.7 | bc=0.0000 | cumQ= 69955 | bc_coef=0.000 | sps=446
+[ 120/488] step= 122880 | ep= 5683 | return= 1.859 | guided%= 63.4 | bc=0.0000 | cumQ= 76576 | bc_coef=0.000 | sps=446
+[ 130/488] step= 133120 | ep= 6248 | return= 1.860 | guided%= 64.2 | bc=0.0000 | cumQ= 83248 | bc_coef=0.000 | sps=446
+[ 140/488] step= 143360 | ep= 6817 | return= 1.860 | guided%= 62.4 | bc=0.0000 | cumQ= 89859 | bc_coef=0.000 | sps=446
+[ 150/488] step= 153600 | ep= 7375 | return= 1.861 | guided%= 62.3 | bc=0.0000 | cumQ= 96223 | bc_coef=0.000 | sps=446
+[ 160/488] step= 163840 | ep= 7935 | return= 1.868 | guided%= 58.5 | bc=0.0000 | cumQ=102330 | bc_coef=0.000 | sps=446
+[ 170/488] step= 174080 | ep= 8496 | return= 1.872 | guided%= 54.1 | bc=0.0000 | cumQ=108247 | bc_coef=0.000 | sps=446
+[ 180/488] step= 184320 | ep= 9060 | return= 1.874 | guided%= 57.6 | bc=0.0000 | cumQ=114160 | bc_coef=0.000 | sps=446
+[ 190/488] step= 194560 | ep= 9625 | return= 1.875 | guided%= 56.2 | bc=0.0000 | cumQ=119900 | bc_coef=0.000 | sps=446
+[ 200/488] step= 204800 | ep=10191 | return= 1.872 | guided%= 57.0 | bc=0.0000 | cumQ=125709 | bc_coef=0.000 | sps=445
+[ 210/488] step= 215040 | ep=10767 | return= 1.872 | guided%= 59.3 | bc=0.0000 | cumQ=131826 | bc_coef=0.000 | sps=446
+[ 220/488] step= 225280 | ep=11343 | return= 1.872 | guided%= 59.0 | bc=0.0000 | cumQ=137791 | bc_coef=0.000 | sps=446
+[ 230/488] step= 235520 | ep=11909 | return= 1.874 | guided%= 56.6 | bc=0.0000 | cumQ=143810 | bc_coef=0.000 | sps=446
+[ 240/488] step= 245760 | ep=12476 | return= 1.871 | guided%= 57.6 | bc=0.0000 | cumQ=149824 | bc_coef=0.000 | sps=446
+[ 250/488] step= 256000 | ep=13054 | return= 1.873 | guided%= 55.6 | bc=0.0000 | cumQ=155584 | bc_coef=0.000 | sps=446
+[ 260/488] step= 266240 | ep=13630 | return= 1.876 | guided%= 57.2 | bc=0.0000 | cumQ=161396 | bc_coef=0.000 | sps=446
+[ 270/488] step= 276480 | ep=14202 | return= 1.879 | guided%= 54.4 | bc=0.0000 | cumQ=167199 | bc_coef=0.000 | sps=446
+[ 280/488] step= 286720 | ep=14778 | return= 1.870 | guided%= 56.4 | bc=0.0000 | cumQ=173023 | bc_coef=0.000 | sps=446
+[ 290/488] step= 296960 | ep=15345 | return= 1.875 | guided%= 55.5 | bc=0.0000 | cumQ=178775 | bc_coef=0.000 | sps=446
+[ 300/488] step= 307200 | ep=15919 | return= 1.871 | guided%= 57.9 | bc=0.0000 | cumQ=184834 | bc_coef=0.000 | sps=446
+[ 310/488] step= 317440 | ep=16485 | return= 1.874 | guided%= 58.0 | bc=0.0000 | cumQ=190865 | bc_coef=0.000 | sps=446
+[ 320/488] step= 327680 | ep=17040 | return= 1.869 | guided%= 56.4 | bc=0.0000 | cumQ=196690 | bc_coef=0.000 | sps=446
+[ 330/488] step= 337920 | ep=17574 | return= 1.870 | guided%= 57.3 | bc=0.0000 | cumQ=202352 | bc_coef=0.000 | sps=446
+[ 340/488] step= 348160 | ep=18135 | return= 1.870 | guided%= 56.4 | bc=0.0000 | cumQ=208204 | bc_coef=0.000 | sps=446
+[ 350/488] step= 358400 | ep=18695 | return= 1.877 | guided%= 56.5 | bc=0.0000 | cumQ=213977 | bc_coef=0.000 | sps=446
+[ 360/488] step= 368640 | ep=19273 | return= 1.878 | guided%= 56.3 | bc=0.0000 | cumQ=219793 | bc_coef=0.000 | sps=446
+[ 370/488] step= 378880 | ep=19847 | return= 1.876 | guided%= 57.7 | bc=0.0000 | cumQ=225631 | bc_coef=0.000 | sps=446
+[ 380/488] step= 389120 | ep=20421 | return= 1.873 | guided%= 57.3 | bc=0.0000 | cumQ=231472 | bc_coef=0.000 | sps=446
+[ 390/488] step= 399360 | ep=20992 | return= 1.870 | guided%= 57.2 | bc=0.0000 | cumQ=237280 | bc_coef=0.000 | sps=446
+[ 400/488] step= 409600 | ep=21555 | return= 1.874 | guided%= 55.8 | bc=0.0000 | cumQ=243043 | bc_coef=0.000 | sps=446
+[ 410/488] step= 419840 | ep=22128 | return= 1.880 | guided%= 55.5 | bc=0.0000 | cumQ=248780 | bc_coef=0.000 | sps=446
+[ 420/488] step= 430080 | ep=22699 | return= 1.873 | guided%= 55.8 | bc=0.0000 | cumQ=254475 | bc_coef=0.000 | sps=447
+[ 430/488] step= 440320 | ep=23270 | return= 1.873 | guided%= 56.4 | bc=0.0000 | cumQ=260172 | bc_coef=0.000 | sps=447
+[ 440/488] step= 450560 | ep=23844 | return= 1.877 | guided%= 55.6 | bc=0.0000 | cumQ=265849 | bc_coef=0.000 | sps=447
+[ 450/488] step= 460800 | ep=24387 | return= 1.874 | guided%= 56.2 | bc=0.0000 | cumQ=271206 | bc_coef=0.000 | sps=447
+[ 460/488] step= 471040 | ep=24958 | return= 1.873 | guided%= 56.7 | bc=0.0000 | cumQ=276961 | bc_coef=0.000 | sps=447
+[ 470/488] step= 481280 | ep=25532 | return= 1.882 | guided%= 53.9 | bc=0.0000 | cumQ=282644 | bc_coef=0.000 | sps=447
+[ 480/488] step= 491520 | ep=26105 | return= 1.874 | guided%= 56.3 | bc=0.0000 | cumQ=288444 | bc_coef=0.000 | sps=447
+Generating plots...
+Plots → figures/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed6__1777425444.png
+=== Oracle payant moyen   (cost=0.020) | seed=6 ===
+Run: oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed6__1777426568
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed6__1777426568.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    2 | return= 1.526 | guided%= 17.8 | bc=0.0000 | cumQ=   149 | bc_coef=0.000 | sps=334
+[  10/488] step=  10240 | ep=   56 | return= 1.176 | guided%= 18.3 | bc=0.0000 | cumQ=  1684 | bc_coef=0.000 | sps=457
+[  20/488] step=  20480 | ep=  334 | return= 1.641 | guided%= 63.0 | bc=0.0000 | cumQ=  6646 | bc_coef=0.000 | sps=459
+[  30/488] step=  30720 | ep=  775 | return= 1.735 | guided%= 54.9 | bc=0.0000 | cumQ= 12637 | bc_coef=0.000 | sps=458
+[  40/488] step=  40960 | ep= 1278 | return= 1.750 | guided%= 57.5 | bc=0.0000 | cumQ= 18288 | bc_coef=0.000 | sps=456
+[  50/488] step=  51200 | ep= 1820 | return= 1.760 | guided%= 56.8 | bc=0.0000 | cumQ= 24097 | bc_coef=0.000 | sps=455
+[  60/488] step=  61440 | ep= 2342 | return= 1.754 | guided%= 55.5 | bc=0.0000 | cumQ= 29557 | bc_coef=0.000 | sps=455
+[  70/488] step=  71680 | ep= 2913 | return= 1.774 | guided%= 56.0 | bc=0.0000 | cumQ= 35417 | bc_coef=0.000 | sps=455
+[  80/488] step=  81920 | ep= 3470 | return= 1.760 | guided%= 56.0 | bc=0.0000 | cumQ= 41178 | bc_coef=0.000 | sps=454
+[  90/488] step=  92160 | ep= 4035 | return= 1.763 | guided%= 58.2 | bc=0.0000 | cumQ= 46997 | bc_coef=0.000 | sps=453
+[ 100/488] step= 102400 | ep= 4604 | return= 1.773 | guided%= 56.0 | bc=0.0000 | cumQ= 52817 | bc_coef=0.000 | sps=452
+[ 110/488] step= 112640 | ep= 5188 | return= 1.765 | guided%= 58.7 | bc=0.0000 | cumQ= 58678 | bc_coef=0.000 | sps=452
+[ 120/488] step= 122880 | ep= 5753 | return= 1.771 | guided%= 56.3 | bc=0.0000 | cumQ= 64464 | bc_coef=0.000 | sps=451
+[ 130/488] step= 133120 | ep= 6308 | return= 1.760 | guided%= 56.6 | bc=0.0000 | cumQ= 70227 | bc_coef=0.000 | sps=451
+[ 140/488] step= 143360 | ep= 6879 | return= 1.780 | guided%= 54.3 | bc=0.0000 | cumQ= 75928 | bc_coef=0.000 | sps=451
+[ 150/488] step= 153600 | ep= 7433 | return= 1.772 | guided%= 54.4 | bc=0.0000 | cumQ= 81602 | bc_coef=0.000 | sps=451
+[ 160/488] step= 163840 | ep= 8000 | return= 1.780 | guided%= 54.0 | bc=0.0000 | cumQ= 87224 | bc_coef=0.000 | sps=451
+[ 170/488] step= 174080 | ep= 8566 | return= 1.774 | guided%= 55.3 | bc=0.0000 | cumQ= 92981 | bc_coef=0.000 | sps=451
+[ 180/488] step= 184320 | ep= 9136 | return= 1.776 | guided%= 56.7 | bc=0.0000 | cumQ= 98781 | bc_coef=0.000 | sps=451
+[ 190/488] step= 194560 | ep= 9700 | return= 1.783 | guided%= 54.0 | bc=0.0000 | cumQ=104456 | bc_coef=0.000 | sps=451
+[ 200/488] step= 204800 | ep=10263 | return= 1.776 | guided%= 54.2 | bc=0.0000 | cumQ=110119 | bc_coef=0.000 | sps=451
+[ 210/488] step= 215040 | ep=10823 | return= 1.776 | guided%= 54.0 | bc=0.0000 | cumQ=115711 | bc_coef=0.000 | sps=451
+[ 220/488] step= 225280 | ep=11383 | return= 1.772 | guided%= 54.7 | bc=0.0000 | cumQ=121244 | bc_coef=0.000 | sps=451
+[ 230/488] step= 235520 | ep=11929 | return= 1.776 | guided%= 52.8 | bc=0.0000 | cumQ=126744 | bc_coef=0.000 | sps=451
+[ 240/488] step= 245760 | ep=12476 | return= 1.773 | guided%= 54.7 | bc=0.0000 | cumQ=132169 | bc_coef=0.000 | sps=451
+[ 250/488] step= 256000 | ep=13047 | return= 1.772 | guided%= 54.2 | bc=0.0000 | cumQ=137694 | bc_coef=0.000 | sps=451
+[ 260/488] step= 266240 | ep=13614 | return= 1.771 | guided%= 54.7 | bc=0.0000 | cumQ=143302 | bc_coef=0.000 | sps=451
+[ 270/488] step= 276480 | ep=14184 | return= 1.793 | guided%= 53.3 | bc=0.0000 | cumQ=148808 | bc_coef=0.000 | sps=451
+[ 280/488] step= 286720 | ep=14752 | return= 1.775 | guided%= 54.5 | bc=0.0000 | cumQ=154461 | bc_coef=0.000 | sps=451
+[ 290/488] step= 296960 | ep=15318 | return= 1.780 | guided%= 54.3 | bc=0.0000 | cumQ=160152 | bc_coef=0.000 | sps=451
+[ 300/488] step= 307200 | ep=15884 | return= 1.774 | guided%= 53.9 | bc=0.0000 | cumQ=165839 | bc_coef=0.000 | sps=451
+[ 310/488] step= 317440 | ep=16442 | return= 1.778 | guided%= 53.5 | bc=0.0000 | cumQ=171396 | bc_coef=0.000 | sps=451
+[ 320/488] step= 327680 | ep=17008 | return= 1.780 | guided%= 54.1 | bc=0.0000 | cumQ=177073 | bc_coef=0.000 | sps=451
+[ 330/488] step= 337920 | ep=17571 | return= 1.775 | guided%= 54.9 | bc=0.0000 | cumQ=182773 | bc_coef=0.000 | sps=451
+[ 340/488] step= 348160 | ep=18136 | return= 1.768 | guided%= 55.6 | bc=0.0000 | cumQ=188466 | bc_coef=0.000 | sps=451
+[ 350/488] step= 358400 | ep=18695 | return= 1.781 | guided%= 54.3 | bc=0.0000 | cumQ=194165 | bc_coef=0.000 | sps=451
+[ 360/488] step= 368640 | ep=19268 | return= 1.779 | guided%= 54.3 | bc=0.0000 | cumQ=199850 | bc_coef=0.000 | sps=451
+[ 370/488] step= 378880 | ep=19840 | return= 1.793 | guided%= 53.0 | bc=0.0000 | cumQ=205551 | bc_coef=0.000 | sps=451
+[ 380/488] step= 389120 | ep=20413 | return= 1.781 | guided%= 55.0 | bc=0.0000 | cumQ=211254 | bc_coef=0.000 | sps=451
+[ 390/488] step= 399360 | ep=20982 | return= 1.763 | guided%= 56.7 | bc=0.0000 | cumQ=217006 | bc_coef=0.000 | sps=451
+[ 400/488] step= 409600 | ep=21548 | return= 1.781 | guided%= 55.4 | bc=0.0000 | cumQ=222746 | bc_coef=0.000 | sps=451
+[ 410/488] step= 419840 | ep=22118 | return= 1.785 | guided%= 53.9 | bc=0.0000 | cumQ=228440 | bc_coef=0.000 | sps=451
+[ 420/488] step= 430080 | ep=22695 | return= 1.774 | guided%= 55.5 | bc=0.0000 | cumQ=234144 | bc_coef=0.000 | sps=451
+[ 430/488] step= 440320 | ep=23269 | return= 1.779 | guided%= 55.5 | bc=0.0000 | cumQ=239856 | bc_coef=0.000 | sps=451
+[ 440/488] step= 450560 | ep=23844 | return= 1.781 | guided%= 54.9 | bc=0.0000 | cumQ=245522 | bc_coef=0.000 | sps=451
+[ 450/488] step= 460800 | ep=24422 | return= 1.776 | guided%= 54.3 | bc=0.0000 | cumQ=251199 | bc_coef=0.000 | sps=451
+[ 460/488] step= 471040 | ep=24989 | return= 1.768 | guided%= 56.6 | bc=0.0000 | cumQ=256955 | bc_coef=0.000 | sps=451
+[ 470/488] step= 481280 | ep=25566 | return= 1.787 | guided%= 52.6 | bc=0.0000 | cumQ=262556 | bc_coef=0.000 | sps=451
+[ 480/488] step= 491520 | ep=26135 | return= 1.775 | guided%= 55.4 | bc=0.0000 | cumQ=268235 | bc_coef=0.000 | sps=450
+Generating plots...
+Plots → figures/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed6__1777426568.png
+=== Oracle payant élevé   (cost=0.050) | seed=6 ===
+Run: oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed6__1777427683
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed6__1777427683.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    2 | return= 1.016 | guided%= 17.8 | bc=0.0000 | cumQ=   149 | bc_coef=0.000 | sps=327
+[  10/488] step=  10240 | ep=   26 | return=-0.082 | guided%= 11.3 | bc=0.0000 | cumQ=   931 | bc_coef=0.000 | sps=458
+[  20/488] step=  20480 | ep=   48 | return= 0.128 | guided%=  8.1 | bc=0.0000 | cumQ=  1280 | bc_coef=0.000 | sps=474
+  *** First unguided success — episode 63 ***
+[  30/488] step=  30720 | ep=   67 | return= 0.267 | guided%=  6.2 | bc=0.0000 | cumQ=  1356 | bc_coef=0.000 | sps=480
+[  40/488] step=  40960 | ep=   84 | return= 0.355 | guided%=  5.0 | bc=0.0000 | cumQ=  1378 | bc_coef=0.000 | sps=483
+[  50/488] step=  51200 | ep=  102 | return= 0.428 | guided%=  3.9 | bc=0.0000 | cumQ=  1393 | bc_coef=0.000 | sps=485
+[  60/488] step=  61440 | ep=  119 | return= 0.561 | guided%=  1.8 | bc=0.0000 | cumQ=  1422 | bc_coef=0.000 | sps=487
+[  70/488] step=  71680 | ep=  136 | return= 0.671 | guided%=  0.9 | bc=0.0000 | cumQ=  1427 | bc_coef=0.000 | sps=488
+[  80/488] step=  81920 | ep=  157 | return= 0.773 | guided%=  0.2 | bc=0.0000 | cumQ=  1427 | bc_coef=0.000 | sps=490
+[  90/488] step=  92160 | ep=  173 | return= 0.759 | guided%=  0.1 | bc=0.0000 | cumQ=  1427 | bc_coef=0.000 | sps=491
+[ 100/488] step= 102400 | ep=  190 | return= 0.788 | guided%=  0.1 | bc=0.0000 | cumQ=  1427 | bc_coef=0.000 | sps=492
+[ 110/488] step= 112640 | ep=  210 | return= 0.840 | guided%=  0.0 | bc=0.0000 | cumQ=  1427 | bc_coef=0.000 | sps=492
+[ 120/488] step= 122880 | ep=  233 | return= 0.952 | guided%=  0.0 | bc=0.0000 | cumQ=  1431 | bc_coef=0.000 | sps=492
+[ 130/488] step= 133120 | ep=  253 | return= 1.028 | guided%=  0.0 | bc=0.0000 | cumQ=  1441 | bc_coef=0.000 | sps=492
+[ 140/488] step= 143360 | ep=  276 | return= 1.058 | guided%=  0.0 | bc=0.0000 | cumQ=  1444 | bc_coef=0.000 | sps=492
+[ 150/488] step= 153600 | ep=  299 | return= 1.080 | guided%=  0.1 | bc=0.0000 | cumQ=  1466 | bc_coef=0.000 | sps=492
+[ 160/488] step= 163840 | ep=  321 | return= 1.031 | guided%=  0.2 | bc=0.0000 | cumQ=  1473 | bc_coef=0.000 | sps=492
+[ 170/488] step= 174080 | ep=  338 | return= 0.972 | guided%=  0.2 | bc=0.0000 | cumQ=  1479 | bc_coef=0.000 | sps=492
+[ 180/488] step= 184320 | ep=  356 | return= 0.862 | guided%=  0.2 | bc=0.0000 | cumQ=  1480 | bc_coef=0.000 | sps=492
+[ 190/488] step= 194560 | ep=  379 | return= 0.870 | guided%=  0.1 | bc=0.0000 | cumQ=  1482 | bc_coef=0.000 | sps=492
+[ 200/488] step= 204800 | ep=  400 | return= 0.844 | guided%=  0.1 | bc=0.0000 | cumQ=  1487 | bc_coef=0.000 | sps=492
+[ 210/488] step= 215040 | ep=  417 | return= 0.807 | guided%=  0.0 | bc=0.0000 | cumQ=  1491 | bc_coef=0.000 | sps=492
+[ 220/488] step= 225280 | ep=  435 | return= 0.748 | guided%=  0.0 | bc=0.0000 | cumQ=  1498 | bc_coef=0.000 | sps=492
+[ 230/488] step= 235520 | ep=  453 | return= 0.764 | guided%=  0.1 | bc=0.0000 | cumQ=  1505 | bc_coef=0.000 | sps=492
+[ 240/488] step= 245760 | ep=  470 | return= 0.737 | guided%=  0.1 | bc=0.0000 | cumQ=  1508 | bc_coef=0.000 | sps=492
+[ 250/488] step= 256000 | ep=  490 | return= 0.695 | guided%=  0.1 | bc=0.0000 | cumQ=  1510 | bc_coef=0.000 | sps=492
+[ 260/488] step= 266240 | ep=  508 | return= 0.716 | guided%=  0.0 | bc=0.0000 | cumQ=  1511 | bc_coef=0.000 | sps=492
+[ 270/488] step= 276480 | ep=  530 | return= 0.773 | guided%=  0.0 | bc=0.0000 | cumQ=  1512 | bc_coef=0.000 | sps=492
+[ 280/488] step= 286720 | ep=  553 | return= 0.915 | guided%=  0.0 | bc=0.0000 | cumQ=  1512 | bc_coef=0.000 | sps=492
+[ 290/488] step= 296960 | ep=  575 | return= 0.990 | guided%=  0.0 | bc=0.0000 | cumQ=  1512 | bc_coef=0.000 | sps=492
+[ 300/488] step= 307200 | ep=  596 | return= 1.013 | guided%=  0.0 | bc=0.0000 | cumQ=  1512 | bc_coef=0.000 | sps=492
+[ 310/488] step= 317440 | ep=  616 | return= 1.027 | guided%=  0.0 | bc=0.0000 | cumQ=  1512 | bc_coef=0.000 | sps=492
+[ 320/488] step= 327680 | ep=  637 | return= 1.003 | guided%=  0.0 | bc=0.0000 | cumQ=  1513 | bc_coef=0.000 | sps=492
+[ 330/488] step= 337920 | ep=  660 | return= 1.026 | guided%=  0.0 | bc=0.0000 | cumQ=  1514 | bc_coef=0.000 | sps=492
+[ 340/488] step= 348160 | ep=  683 | return= 1.090 | guided%=  0.0 | bc=0.0000 | cumQ=  1514 | bc_coef=0.000 | sps=492
+[ 350/488] step= 358400 | ep=  709 | return= 1.147 | guided%=  0.0 | bc=0.0000 | cumQ=  1515 | bc_coef=0.000 | sps=492
+[ 360/488] step= 368640 | ep=  730 | return= 1.180 | guided%=  0.0 | bc=0.0000 | cumQ=  1516 | bc_coef=0.000 | sps=492
+[ 370/488] step= 378880 | ep=  753 | return= 1.187 | guided%=  0.0 | bc=0.0000 | cumQ=  1516 | bc_coef=0.000 | sps=492
+[ 380/488] step= 389120 | ep=  777 | return= 1.190 | guided%=  0.0 | bc=0.0000 | cumQ=  1518 | bc_coef=0.000 | sps=492
+[ 390/488] step= 399360 | ep=  803 | return= 1.190 | guided%=  0.0 | bc=0.0000 | cumQ=  1521 | bc_coef=0.000 | sps=492
+[ 400/488] step= 409600 | ep=  831 | return= 1.234 | guided%=  0.0 | bc=0.0000 | cumQ=  1523 | bc_coef=0.000 | sps=493
+[ 410/488] step= 419840 | ep=  854 | return= 1.291 | guided%=  0.0 | bc=0.0000 | cumQ=  1523 | bc_coef=0.000 | sps=493
+[ 420/488] step= 430080 | ep=  880 | return= 1.296 | guided%=  0.0 | bc=0.0000 | cumQ=  1526 | bc_coef=0.000 | sps=493
+[ 430/488] step= 440320 | ep=  908 | return= 1.290 | guided%=  0.0 | bc=0.0000 | cumQ=  1526 | bc_coef=0.000 | sps=493
+[ 440/488] step= 450560 | ep=  945 | return= 1.346 | guided%=  0.0 | bc=0.0000 | cumQ=  1527 | bc_coef=0.000 | sps=493
+[ 450/488] step= 460800 | ep=  980 | return= 1.442 | guided%=  0.0 | bc=0.0000 | cumQ=  1527 | bc_coef=0.000 | sps=493
+[ 460/488] step= 471040 | ep= 1006 | return= 1.477 | guided%=  0.0 | bc=0.0000 | cumQ=  1529 | bc_coef=0.000 | sps=493
+[ 470/488] step= 481280 | ep= 1043 | return= 1.508 | guided%=  0.0 | bc=0.0000 | cumQ=  1530 | bc_coef=0.000 | sps=492
+[ 480/488] step= 491520 | ep= 1073 | return= 1.479 | guided%=  0.0 | bc=0.0000 | cumQ=  1531 | bc_coef=0.000 | sps=492
+Generating plots...
+Saved → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed6__1777427683.png
+Plots → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed6__1777427683.png
+=== Baseline PPO                       | seed=6 ===
+Run: baseline__MiniGrid-DoorKey-8x8-v0__seed6__1777428706
+  device=cuda, batch=1024, updates=488
+  CSV → logs/baseline__MiniGrid-DoorKey-8x8-v0__seed6__1777428706.csv
+  obs=(64, 64, 3), n_actions=7, query_action=6
+  params=67,167,496
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=337
+  *** First unguided success — episode 1 ***
+[  10/488] step=  10240 | ep=    9 | return= 0.473 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=467
+[  20/488] step=  20480 | ep=   25 | return= 0.530 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=477
+[  30/488] step=  30720 | ep=   41 | return= 0.555 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[  40/488] step=  40960 | ep=   57 | return= 0.587 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[  50/488] step=  51200 | ep=   74 | return= 0.596 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[  60/488] step=  61440 | ep=   91 | return= 0.618 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=486
+[  70/488] step=  71680 | ep=  108 | return= 0.660 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=487
+[  80/488] step=  81920 | ep=  124 | return= 0.660 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=487
+[  90/488] step=  92160 | ep=  141 | return= 0.679 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 100/488] step= 102400 | ep=  158 | return= 0.674 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 110/488] step= 112640 | ep=  175 | return= 0.644 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 120/488] step= 122880 | ep=  191 | return= 0.618 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 130/488] step= 133120 | ep=  207 | return= 0.588 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 140/488] step= 143360 | ep=  223 | return= 0.553 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 150/488] step= 153600 | ep=  239 | return= 0.515 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 160/488] step= 163840 | ep=  255 | return= 0.463 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 170/488] step= 174080 | ep=  271 | return= 0.467 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 180/488] step= 184320 | ep=  287 | return= 0.454 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[ 190/488] step= 194560 | ep=  303 | return= 0.432 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=489
+[ 200/488] step= 204800 | ep=  319 | return= 0.432 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=489
+[ 210/488] step= 215040 | ep=  336 | return= 0.418 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=489
+[ 220/488] step= 225280 | ep=  352 | return= 0.428 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 230/488] step= 235520 | ep=  368 | return= 0.383 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 240/488] step= 245760 | ep=  384 | return= 0.394 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 250/488] step= 256000 | ep=  400 | return= 0.372 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 260/488] step= 266240 | ep=  416 | return= 0.372 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 270/488] step= 276480 | ep=  432 | return= 0.360 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 280/488] step= 286720 | ep=  449 | return= 0.369 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 290/488] step= 296960 | ep=  465 | return= 0.395 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 300/488] step= 307200 | ep=  481 | return= 0.364 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 310/488] step= 317440 | ep=  497 | return= 0.368 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 320/488] step= 327680 | ep=  513 | return= 0.394 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 330/488] step= 337920 | ep=  529 | return= 0.429 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 340/488] step= 348160 | ep=  546 | return= 0.449 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 350/488] step= 358400 | ep=  562 | return= 0.485 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 360/488] step= 368640 | ep=  579 | return= 0.548 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 370/488] step= 378880 | ep=  595 | return= 0.571 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 380/488] step= 389120 | ep=  612 | return= 0.566 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 390/488] step= 399360 | ep=  634 | return= 0.647 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 400/488] step= 409600 | ep=  650 | return= 0.673 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 410/488] step= 419840 | ep=  668 | return= 0.721 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 420/488] step= 430080 | ep=  684 | return= 0.717 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 430/488] step= 440320 | ep=  700 | return= 0.727 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 440/488] step= 450560 | ep=  718 | return= 0.706 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 450/488] step= 460800 | ep=  734 | return= 0.677 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 460/488] step= 471040 | ep=  751 | return= 0.667 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 470/488] step= 481280 | ep=  771 | return= 0.689 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 480/488] step= 491520 | ep=  792 | return= 0.771 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+Generating plots...
+Saved → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed6__1777428706.png
+Plots → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed6__1777428706.png
+=== Oracle gratuit        (cost=0.000) | seed=7 ===
+Run: oracle_free__MiniGrid-DoorKey-8x8-v0__seed7__1777429733
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_free__MiniGrid-DoorKey-8x8-v0__seed7__1777429733.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    1 | return= 1.848 | guided%= 12.0 | bc=0.0000 | cumQ=   118 | bc_coef=0.000 | sps=317
+[  10/488] step=  10240 | ep=   94 | return= 1.856 | guided%= 29.1 | bc=0.0000 | cumQ=  2384 | bc_coef=0.000 | sps=450
+[  20/488] step=  20480 | ep=  440 | return= 1.969 | guided%= 74.1 | bc=0.0000 | cumQ=  8852 | bc_coef=0.000 | sps=453
+[  30/488] step=  30720 | ep=  938 | return= 1.974 | guided%= 88.4 | bc=0.0000 | cumQ= 17462 | bc_coef=0.000 | sps=451
+[  40/488] step=  40960 | ep= 1482 | return= 1.975 | guided%= 92.0 | bc=0.0000 | cumQ= 26740 | bc_coef=0.000 | sps=449
+[  50/488] step=  51200 | ep= 2031 | return= 1.976 | guided%= 93.3 | bc=0.0000 | cumQ= 36189 | bc_coef=0.000 | sps=448
+[  60/488] step=  61440 | ep= 2602 | return= 1.977 | guided%= 93.1 | bc=0.0000 | cumQ= 45722 | bc_coef=0.000 | sps=447
+[  70/488] step=  71680 | ep= 3180 | return= 1.976 | guided%= 93.0 | bc=0.0000 | cumQ= 55308 | bc_coef=0.000 | sps=446
+[  80/488] step=  81920 | ep= 3736 | return= 1.976 | guided%= 93.6 | bc=0.0000 | cumQ= 64812 | bc_coef=0.000 | sps=446
+[  90/488] step=  92160 | ep= 4315 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ= 74444 | bc_coef=0.000 | sps=445
+[ 100/488] step= 102400 | ep= 4896 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ= 84089 | bc_coef=0.000 | sps=445
+[ 110/488] step= 112640 | ep= 5474 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ= 93745 | bc_coef=0.000 | sps=445
+[ 120/488] step= 122880 | ep= 6050 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ=103402 | bc_coef=0.000 | sps=444
+[ 130/488] step= 133120 | ep= 6625 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=113063 | bc_coef=0.000 | sps=444
+[ 140/488] step= 143360 | ep= 7205 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=122718 | bc_coef=0.000 | sps=443
+[ 150/488] step= 153600 | ep= 7776 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ=132373 | bc_coef=0.000 | sps=443
+[ 160/488] step= 163840 | ep= 8350 | return= 1.976 | guided%= 94.4 | bc=0.0000 | cumQ=142036 | bc_coef=0.000 | sps=442
+[ 170/488] step= 174080 | ep= 8927 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=151695 | bc_coef=0.000 | sps=442
+[ 180/488] step= 184320 | ep= 9500 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=161361 | bc_coef=0.000 | sps=442
+[ 190/488] step= 194560 | ep=10013 | return= 1.964 | guided%= 69.1 | bc=0.0000 | cumQ=170189 | bc_coef=0.000 | sps=442
+[ 200/488] step= 204800 | ep=10526 | return= 1.976 | guided%= 87.9 | bc=0.0000 | cumQ=178601 | bc_coef=0.000 | sps=442
+[ 210/488] step= 215040 | ep=11102 | return= 1.976 | guided%= 93.6 | bc=0.0000 | cumQ=188006 | bc_coef=0.000 | sps=442
+[ 220/488] step= 225280 | ep=11675 | return= 1.976 | guided%= 93.6 | bc=0.0000 | cumQ=197639 | bc_coef=0.000 | sps=442
+[ 230/488] step= 235520 | ep=12249 | return= 1.978 | guided%= 93.7 | bc=0.0000 | cumQ=207252 | bc_coef=0.000 | sps=442
+[ 240/488] step= 245760 | ep=12829 | return= 1.977 | guided%= 93.9 | bc=0.0000 | cumQ=216885 | bc_coef=0.000 | sps=442
+[ 250/488] step= 256000 | ep=13405 | return= 1.976 | guided%= 94.1 | bc=0.0000 | cumQ=226542 | bc_coef=0.000 | sps=442
+[ 260/488] step= 266240 | ep=13984 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=236192 | bc_coef=0.000 | sps=442
+[ 270/488] step= 276480 | ep=14567 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=245847 | bc_coef=0.000 | sps=442
+[ 280/488] step= 286720 | ep=15141 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=255510 | bc_coef=0.000 | sps=441
+[ 290/488] step= 296960 | ep=15721 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=265163 | bc_coef=0.000 | sps=441
+[ 300/488] step= 307200 | ep=16293 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=274827 | bc_coef=0.000 | sps=441
+[ 310/488] step= 317440 | ep=16869 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=284485 | bc_coef=0.000 | sps=441
+[ 320/488] step= 327680 | ep=17446 | return= 1.977 | guided%= 93.9 | bc=0.0000 | cumQ=294143 | bc_coef=0.000 | sps=441
+[ 330/488] step= 337920 | ep=18020 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=303808 | bc_coef=0.000 | sps=441
+[ 340/488] step= 348160 | ep=18582 | return= 1.976 | guided%= 94.4 | bc=0.0000 | cumQ=313484 | bc_coef=0.000 | sps=441
+[ 350/488] step= 358400 | ep=19163 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=323136 | bc_coef=0.000 | sps=441
+[ 360/488] step= 368640 | ep=19736 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=332801 | bc_coef=0.000 | sps=441
+[ 370/488] step= 378880 | ep=20316 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=342462 | bc_coef=0.000 | sps=441
+[ 380/488] step= 389120 | ep=20893 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=352123 | bc_coef=0.000 | sps=441
+[ 390/488] step= 399360 | ep=21460 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=361792 | bc_coef=0.000 | sps=441
+[ 400/488] step= 409600 | ep=22030 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=371460 | bc_coef=0.000 | sps=441
+[ 410/488] step= 419840 | ep=22614 | return= 1.976 | guided%= 94.3 | bc=0.0000 | cumQ=381115 | bc_coef=0.000 | sps=441
+[ 420/488] step= 430080 | ep=23188 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=390773 | bc_coef=0.000 | sps=441
+[ 430/488] step= 440320 | ep=23769 | return= 1.976 | guided%= 93.8 | bc=0.0000 | cumQ=400422 | bc_coef=0.000 | sps=441
+[ 440/488] step= 450560 | ep=24354 | return= 1.977 | guided%= 93.9 | bc=0.0000 | cumQ=410073 | bc_coef=0.000 | sps=441
+[ 450/488] step= 460800 | ep=24926 | return= 1.977 | guided%= 94.1 | bc=0.0000 | cumQ=419740 | bc_coef=0.000 | sps=441
+[ 460/488] step= 471040 | ep=25501 | return= 1.977 | guided%= 94.0 | bc=0.0000 | cumQ=429403 | bc_coef=0.000 | sps=441
+[ 470/488] step= 481280 | ep=26075 | return= 1.976 | guided%= 94.2 | bc=0.0000 | cumQ=439066 | bc_coef=0.000 | sps=441
+[ 480/488] step= 491520 | ep=26651 | return= 1.977 | guided%= 94.2 | bc=0.0000 | cumQ=448728 | bc_coef=0.000 | sps=441
+Generating plots...
+Plots → figures/oracle_free__MiniGrid-DoorKey-8x8-v0__seed7__1777429733.png
+=== Oracle payant faible  (cost=0.010) | seed=7 ===
+Run: oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed7__1777430875
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed7__1777430875.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    1 | return= 1.718 | guided%= 12.0 | bc=0.0000 | cumQ=   118 | bc_coef=0.000 | sps=318
+[  10/488] step=  10240 | ep=   92 | return= 1.608 | guided%= 29.9 | bc=0.0000 | cumQ=  2284 | bc_coef=0.000 | sps=449
+[  20/488] step=  20480 | ep=  452 | return= 1.800 | guided%= 68.4 | bc=0.0000 | cumQ=  8533 | bc_coef=0.000 | sps=453
+[  30/488] step=  30720 | ep=  934 | return= 1.812 | guided%= 83.2 | bc=0.0000 | cumQ= 16491 | bc_coef=0.000 | sps=450
+[  40/488] step=  40960 | ep= 1450 | return= 1.813 | guided%= 82.9 | bc=0.0000 | cumQ= 24910 | bc_coef=0.000 | sps=449
+[  50/488] step=  51200 | ep= 2002 | return= 1.837 | guided%= 73.3 | bc=0.0000 | cumQ= 32672 | bc_coef=0.000 | sps=447
+[  60/488] step=  61440 | ep= 2560 | return= 1.859 | guided%= 63.6 | bc=0.0000 | cumQ= 39643 | bc_coef=0.000 | sps=446
+[  70/488] step=  71680 | ep= 3124 | return= 1.860 | guided%= 64.0 | bc=0.0000 | cumQ= 46334 | bc_coef=0.000 | sps=446
+[  80/488] step=  81920 | ep= 3689 | return= 1.858 | guided%= 64.1 | bc=0.0000 | cumQ= 53153 | bc_coef=0.000 | sps=445
+[  90/488] step=  92160 | ep= 4256 | return= 1.860 | guided%= 62.1 | bc=0.0000 | cumQ= 59507 | bc_coef=0.000 | sps=446
+[ 100/488] step= 102400 | ep= 4828 | return= 1.865 | guided%= 62.9 | bc=0.0000 | cumQ= 65919 | bc_coef=0.000 | sps=446
+[ 110/488] step= 112640 | ep= 5402 | return= 1.871 | guided%= 56.4 | bc=0.0000 | cumQ= 72035 | bc_coef=0.000 | sps=446
+[ 120/488] step= 122880 | ep= 5964 | return= 1.867 | guided%= 58.9 | bc=0.0000 | cumQ= 78004 | bc_coef=0.000 | sps=446
+[ 130/488] step= 133120 | ep= 6507 | return= 1.873 | guided%= 55.5 | bc=0.0000 | cumQ= 83651 | bc_coef=0.000 | sps=446
+[ 140/488] step= 143360 | ep= 7068 | return= 1.873 | guided%= 56.5 | bc=0.0000 | cumQ= 89380 | bc_coef=0.000 | sps=446
+[ 150/488] step= 153600 | ep= 7617 | return= 1.873 | guided%= 56.1 | bc=0.0000 | cumQ= 95066 | bc_coef=0.000 | sps=445
+[ 160/488] step= 163840 | ep= 8171 | return= 1.874 | guided%= 55.4 | bc=0.0000 | cumQ=100752 | bc_coef=0.000 | sps=445
+[ 170/488] step= 174080 | ep= 8729 | return= 1.881 | guided%= 52.0 | bc=0.0000 | cumQ=106363 | bc_coef=0.000 | sps=445
+[ 180/488] step= 184320 | ep= 9291 | return= 1.872 | guided%= 55.7 | bc=0.0000 | cumQ=112153 | bc_coef=0.000 | sps=445
+[ 190/488] step= 194560 | ep= 9844 | return= 1.872 | guided%= 53.9 | bc=0.0000 | cumQ=117815 | bc_coef=0.000 | sps=445
+[ 200/488] step= 204800 | ep=10411 | return= 1.871 | guided%= 58.6 | bc=0.0000 | cumQ=123695 | bc_coef=0.000 | sps=445
+[ 210/488] step= 215040 | ep=10982 | return= 1.874 | guided%= 55.5 | bc=0.0000 | cumQ=129398 | bc_coef=0.000 | sps=445
+[ 220/488] step= 225280 | ep=11540 | return= 1.874 | guided%= 54.5 | bc=0.0000 | cumQ=135097 | bc_coef=0.000 | sps=445
+[ 230/488] step= 235520 | ep=12102 | return= 1.870 | guided%= 55.9 | bc=0.0000 | cumQ=140804 | bc_coef=0.000 | sps=445
+[ 240/488] step= 245760 | ep=12672 | return= 1.884 | guided%= 52.6 | bc=0.0000 | cumQ=146419 | bc_coef=0.000 | sps=445
+[ 250/488] step= 256000 | ep=13250 | return= 1.875 | guided%= 56.3 | bc=0.0000 | cumQ=152187 | bc_coef=0.000 | sps=445
+[ 260/488] step= 266240 | ep=13820 | return= 1.875 | guided%= 56.4 | bc=0.0000 | cumQ=157901 | bc_coef=0.000 | sps=445
+[ 270/488] step= 276480 | ep=14394 | return= 1.880 | guided%= 53.3 | bc=0.0000 | cumQ=163534 | bc_coef=0.000 | sps=445
+[ 280/488] step= 286720 | ep=14959 | return= 1.879 | guided%= 54.0 | bc=0.0000 | cumQ=169249 | bc_coef=0.000 | sps=445
+[ 290/488] step= 296960 | ep=15529 | return= 1.873 | guided%= 57.8 | bc=0.0000 | cumQ=175015 | bc_coef=0.000 | sps=445
+[ 300/488] step= 307200 | ep=16094 | return= 1.876 | guided%= 55.2 | bc=0.0000 | cumQ=180779 | bc_coef=0.000 | sps=445
+[ 310/488] step= 317440 | ep=16669 | return= 1.878 | guided%= 55.0 | bc=0.0000 | cumQ=186523 | bc_coef=0.000 | sps=445
+[ 320/488] step= 327680 | ep=17236 | return= 1.872 | guided%= 55.7 | bc=0.0000 | cumQ=192277 | bc_coef=0.000 | sps=445
+[ 330/488] step= 337920 | ep=17812 | return= 1.880 | guided%= 55.3 | bc=0.0000 | cumQ=197999 | bc_coef=0.000 | sps=445
+[ 340/488] step= 348160 | ep=18374 | return= 1.872 | guided%= 56.8 | bc=0.0000 | cumQ=203763 | bc_coef=0.000 | sps=445
+[ 350/488] step= 358400 | ep=18943 | return= 1.879 | guided%= 55.4 | bc=0.0000 | cumQ=209471 | bc_coef=0.000 | sps=445
+[ 360/488] step= 368640 | ep=19512 | return= 1.873 | guided%= 55.4 | bc=0.0000 | cumQ=215141 | bc_coef=0.000 | sps=445
+[ 370/488] step= 378880 | ep=20089 | return= 1.874 | guided%= 56.2 | bc=0.0000 | cumQ=220848 | bc_coef=0.000 | sps=445
+[ 380/488] step= 389120 | ep=20657 | return= 1.877 | guided%= 55.6 | bc=0.0000 | cumQ=226560 | bc_coef=0.000 | sps=445
+[ 390/488] step= 399360 | ep=21224 | return= 1.880 | guided%= 54.3 | bc=0.0000 | cumQ=232275 | bc_coef=0.000 | sps=445
+[ 400/488] step= 409600 | ep=21794 | return= 1.873 | guided%= 55.4 | bc=0.0000 | cumQ=238045 | bc_coef=0.000 | sps=445
+[ 410/488] step= 419840 | ep=22368 | return= 1.880 | guided%= 53.9 | bc=0.0000 | cumQ=243705 | bc_coef=0.000 | sps=445
+[ 420/488] step= 430080 | ep=22943 | return= 1.878 | guided%= 54.6 | bc=0.0000 | cumQ=249398 | bc_coef=0.000 | sps=445
+[ 430/488] step= 440320 | ep=23519 | return= 1.876 | guided%= 57.1 | bc=0.0000 | cumQ=255164 | bc_coef=0.000 | sps=445
+[ 440/488] step= 450560 | ep=24096 | return= 1.877 | guided%= 55.2 | bc=0.0000 | cumQ=260932 | bc_coef=0.000 | sps=445
+[ 450/488] step= 460800 | ep=24669 | return= 1.865 | guided%= 57.5 | bc=0.0000 | cumQ=266620 | bc_coef=0.000 | sps=446
+[ 460/488] step= 471040 | ep=25245 | return= 1.880 | guided%= 54.4 | bc=0.0000 | cumQ=272371 | bc_coef=0.000 | sps=446
+[ 470/488] step= 481280 | ep=25817 | return= 1.874 | guided%= 55.9 | bc=0.0000 | cumQ=278020 | bc_coef=0.000 | sps=446
+[ 480/488] step= 491520 | ep=26391 | return= 1.875 | guided%= 56.1 | bc=0.0000 | cumQ=283767 | bc_coef=0.000 | sps=446
+Generating plots...
+Plots → figures/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed7__1777430875.png
+=== Oracle payant moyen   (cost=0.020) | seed=7 ===
+Run: oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed7__1777432004
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed7__1777432004.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    1 | return= 1.588 | guided%= 12.0 | bc=0.0000 | cumQ=   118 | bc_coef=0.000 | sps=315
+[  10/488] step=  10240 | ep=   85 | return= 1.394 | guided%= 24.8 | bc=0.0000 | cumQ=  1941 | bc_coef=0.000 | sps=435
+[  20/488] step=  20480 | ep=  450 | return= 1.649 | guided%= 71.7 | bc=0.0000 | cumQ=  7898 | bc_coef=0.000 | sps=437
+[  30/488] step=  30720 | ep=  869 | return= 1.689 | guided%= 60.9 | bc=0.0000 | cumQ= 14071 | bc_coef=0.000 | sps=438
+[  40/488] step=  40960 | ep= 1350 | return= 1.725 | guided%= 60.6 | bc=0.0000 | cumQ= 20034 | bc_coef=0.000 | sps=438
+[  50/488] step=  51200 | ep= 1901 | return= 1.770 | guided%= 57.3 | bc=0.0000 | cumQ= 25964 | bc_coef=0.000 | sps=437
+[  60/488] step=  61440 | ep= 2413 | return= 1.778 | guided%= 52.7 | bc=0.0000 | cumQ= 31282 | bc_coef=0.000 | sps=437
+[  70/488] step=  71680 | ep= 2970 | return= 1.782 | guided%= 53.0 | bc=0.0000 | cumQ= 36977 | bc_coef=0.000 | sps=437
+[  80/488] step=  81920 | ep= 3530 | return= 1.767 | guided%= 55.4 | bc=0.0000 | cumQ= 42862 | bc_coef=0.000 | sps=437
+[  90/488] step=  92160 | ep= 4083 | return= 1.763 | guided%= 56.9 | bc=0.0000 | cumQ= 48685 | bc_coef=0.000 | sps=436
+[ 100/488] step= 102400 | ep= 4635 | return= 1.779 | guided%= 54.1 | bc=0.0000 | cumQ= 54292 | bc_coef=0.000 | sps=436
+[ 110/488] step= 112640 | ep= 5197 | return= 1.771 | guided%= 56.3 | bc=0.0000 | cumQ= 59944 | bc_coef=0.000 | sps=436
+[ 120/488] step= 122880 | ep= 5760 | return= 1.765 | guided%= 58.5 | bc=0.0000 | cumQ= 65709 | bc_coef=0.000 | sps=436
+[ 130/488] step= 133120 | ep= 6296 | return= 1.762 | guided%= 56.7 | bc=0.0000 | cumQ= 71485 | bc_coef=0.000 | sps=436
+[ 140/488] step= 143360 | ep= 6860 | return= 1.776 | guided%= 55.6 | bc=0.0000 | cumQ= 77244 | bc_coef=0.000 | sps=436
+[ 150/488] step= 153600 | ep= 7411 | return= 1.769 | guided%= 53.1 | bc=0.0000 | cumQ= 82944 | bc_coef=0.000 | sps=436
+[ 160/488] step= 163840 | ep= 7955 | return= 1.767 | guided%= 55.0 | bc=0.0000 | cumQ= 88534 | bc_coef=0.000 | sps=436
+[ 170/488] step= 174080 | ep= 8524 | return= 1.780 | guided%= 54.8 | bc=0.0000 | cumQ= 94274 | bc_coef=0.000 | sps=436
+[ 180/488] step= 184320 | ep= 9086 | return= 1.776 | guided%= 54.7 | bc=0.0000 | cumQ= 99884 | bc_coef=0.000 | sps=436
+[ 190/488] step= 194560 | ep= 9637 | return= 1.780 | guided%= 52.3 | bc=0.0000 | cumQ=105374 | bc_coef=0.000 | sps=436
+[ 200/488] step= 204800 | ep=10175 | return= 1.777 | guided%= 53.3 | bc=0.0000 | cumQ=110871 | bc_coef=0.000 | sps=436
+[ 210/488] step= 215040 | ep=10721 | return= 1.774 | guided%= 54.5 | bc=0.0000 | cumQ=116292 | bc_coef=0.000 | sps=436
+[ 220/488] step= 225280 | ep=11269 | return= 1.772 | guided%= 54.6 | bc=0.0000 | cumQ=121794 | bc_coef=0.000 | sps=436
+[ 230/488] step= 235520 | ep=11835 | return= 1.780 | guided%= 54.1 | bc=0.0000 | cumQ=127412 | bc_coef=0.000 | sps=436
+[ 240/488] step= 245760 | ep=12387 | return= 1.777 | guided%= 55.0 | bc=0.0000 | cumQ=133017 | bc_coef=0.000 | sps=436
+[ 250/488] step= 256000 | ep=12955 | return= 1.781 | guided%= 53.8 | bc=0.0000 | cumQ=138645 | bc_coef=0.000 | sps=436
+[ 260/488] step= 266240 | ep=13517 | return= 1.788 | guided%= 53.0 | bc=0.0000 | cumQ=144293 | bc_coef=0.000 | sps=436
+[ 270/488] step= 276480 | ep=14077 | return= 1.768 | guided%= 55.9 | bc=0.0000 | cumQ=149887 | bc_coef=0.000 | sps=436
+[ 280/488] step= 286720 | ep=14611 | return= 1.773 | guided%= 54.4 | bc=0.0000 | cumQ=155193 | bc_coef=0.000 | sps=436
+[ 290/488] step= 296960 | ep=15156 | return= 1.765 | guided%= 55.2 | bc=0.0000 | cumQ=160733 | bc_coef=0.000 | sps=437
+[ 300/488] step= 307200 | ep=15696 | return= 1.772 | guided%= 55.5 | bc=0.0000 | cumQ=166209 | bc_coef=0.000 | sps=437
+[ 310/488] step= 317440 | ep=16255 | return= 1.781 | guided%= 53.9 | bc=0.0000 | cumQ=171746 | bc_coef=0.000 | sps=437
+[ 320/488] step= 327680 | ep=16820 | return= 1.771 | guided%= 56.6 | bc=0.0000 | cumQ=177529 | bc_coef=0.000 | sps=437
+[ 330/488] step= 337920 | ep=17389 | return= 1.775 | guided%= 55.5 | bc=0.0000 | cumQ=183231 | bc_coef=0.000 | sps=437
+[ 340/488] step= 348160 | ep=17955 | return= 1.770 | guided%= 55.2 | bc=0.0000 | cumQ=188980 | bc_coef=0.000 | sps=437
+[ 350/488] step= 358400 | ep=18508 | return= 1.769 | guided%= 56.4 | bc=0.0000 | cumQ=194624 | bc_coef=0.000 | sps=437
+[ 360/488] step= 368640 | ep=19080 | return= 1.777 | guided%= 54.9 | bc=0.0000 | cumQ=200370 | bc_coef=0.000 | sps=437
+[ 370/488] step= 378880 | ep=19653 | return= 1.774 | guided%= 55.5 | bc=0.0000 | cumQ=206010 | bc_coef=0.000 | sps=436
+[ 380/488] step= 389120 | ep=20221 | return= 1.775 | guided%= 54.7 | bc=0.0000 | cumQ=211720 | bc_coef=0.000 | sps=437
+[ 390/488] step= 399360 | ep=20790 | return= 1.784 | guided%= 53.4 | bc=0.0000 | cumQ=217331 | bc_coef=0.000 | sps=437
+[ 400/488] step= 409600 | ep=21350 | return= 1.773 | guided%= 55.2 | bc=0.0000 | cumQ=223001 | bc_coef=0.000 | sps=437
+[ 410/488] step= 419840 | ep=21921 | return= 1.786 | guided%= 55.2 | bc=0.0000 | cumQ=228705 | bc_coef=0.000 | sps=437
+[ 420/488] step= 430080 | ep=22493 | return= 1.778 | guided%= 54.9 | bc=0.0000 | cumQ=234405 | bc_coef=0.000 | sps=437
+[ 430/488] step= 440320 | ep=23065 | return= 1.768 | guided%= 55.8 | bc=0.0000 | cumQ=240088 | bc_coef=0.000 | sps=437
+[ 440/488] step= 450560 | ep=23644 | return= 1.774 | guided%= 56.4 | bc=0.0000 | cumQ=245797 | bc_coef=0.000 | sps=437
+[ 450/488] step= 460800 | ep=24218 | return= 1.781 | guided%= 55.8 | bc=0.0000 | cumQ=251488 | bc_coef=0.000 | sps=437
+[ 460/488] step= 471040 | ep=24785 | return= 1.781 | guided%= 54.5 | bc=0.0000 | cumQ=257124 | bc_coef=0.000 | sps=437
+[ 470/488] step= 481280 | ep=25354 | return= 1.778 | guided%= 53.8 | bc=0.0000 | cumQ=262736 | bc_coef=0.000 | sps=437
+[ 480/488] step= 491520 | ep=25928 | return= 1.780 | guided%= 53.7 | bc=0.0000 | cumQ=268408 | bc_coef=0.000 | sps=437
+Generating plots...
+Plots → figures/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed7__1777432004.png
+=== Oracle payant élevé   (cost=0.050) | seed=7 ===
+Run: oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed7__1777433156
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed7__1777433156.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    1 | return= 1.198 | guided%= 12.0 | bc=0.0000 | cumQ=   118 | bc_coef=0.000 | sps=321
+[  10/488] step=  10240 | ep=   15 | return=-0.712 | guided%=  8.2 | bc=0.0000 | cumQ=   662 | bc_coef=0.000 | sps=449
+  *** First unguided success — episode 30 ***
+[  20/488] step=  20480 | ep=   31 | return=-0.249 | guided%=  4.6 | bc=0.0000 | cumQ=   692 | bc_coef=0.000 | sps=463
+[  30/488] step=  30720 | ep=   48 | return= 0.078 | guided%=  3.0 | bc=0.0000 | cumQ=   700 | bc_coef=0.000 | sps=468
+[  40/488] step=  40960 | ep=   64 | return= 0.199 | guided%=  2.3 | bc=0.0000 | cumQ=   706 | bc_coef=0.000 | sps=470
+[  50/488] step=  51200 | ep=   81 | return= 0.284 | guided%=  1.8 | bc=0.0000 | cumQ=   714 | bc_coef=0.000 | sps=472
+[  60/488] step=  61440 | ep=   97 | return= 0.353 | guided%=  1.6 | bc=0.0000 | cumQ=   735 | bc_coef=0.000 | sps=473
+[  70/488] step=  71680 | ep=  113 | return= 0.536 | guided%=  0.4 | bc=0.0000 | cumQ=   746 | bc_coef=0.000 | sps=474
+[  80/488] step=  81920 | ep=  129 | return= 0.622 | guided%=  0.1 | bc=0.0000 | cumQ=   749 | bc_coef=0.000 | sps=475
+[  90/488] step=  92160 | ep=  145 | return= 0.588 | guided%=  0.1 | bc=0.0000 | cumQ=   764 | bc_coef=0.000 | sps=476
+[ 100/488] step= 102400 | ep=  161 | return= 0.577 | guided%=  0.1 | bc=0.0000 | cumQ=   780 | bc_coef=0.000 | sps=477
+[ 110/488] step= 112640 | ep=  177 | return= 0.541 | guided%=  0.2 | bc=0.0000 | cumQ=   818 | bc_coef=0.000 | sps=477
+[ 120/488] step= 122880 | ep=  193 | return= 0.506 | guided%=  0.1 | bc=0.0000 | cumQ=   820 | bc_coef=0.000 | sps=478
+[ 130/488] step= 133120 | ep=  209 | return= 0.467 | guided%=  0.1 | bc=0.0000 | cumQ=   820 | bc_coef=0.000 | sps=478
+[ 140/488] step= 143360 | ep=  225 | return= 0.453 | guided%=  0.1 | bc=0.0000 | cumQ=   822 | bc_coef=0.000 | sps=479
+[ 150/488] step= 153600 | ep=  241 | return= 0.449 | guided%=  0.1 | bc=0.0000 | cumQ=   824 | bc_coef=0.000 | sps=479
+[ 160/488] step= 163840 | ep=  257 | return= 0.411 | guided%=  0.1 | bc=0.0000 | cumQ=   827 | bc_coef=0.000 | sps=478
+[ 170/488] step= 174080 | ep=  273 | return= 0.436 | guided%=  0.0 | bc=0.0000 | cumQ=   837 | bc_coef=0.000 | sps=478
+[ 180/488] step= 184320 | ep=  289 | return= 0.444 | guided%=  0.0 | bc=0.0000 | cumQ=   854 | bc_coef=0.000 | sps=479
+[ 190/488] step= 194560 | ep=  305 | return= 0.467 | guided%=  0.1 | bc=0.0000 | cumQ=   857 | bc_coef=0.000 | sps=479
+[ 200/488] step= 204800 | ep=  321 | return= 0.469 | guided%=  0.1 | bc=0.0000 | cumQ=   863 | bc_coef=0.000 | sps=479
+[ 210/488] step= 215040 | ep=  337 | return= 0.488 | guided%=  0.1 | bc=0.0000 | cumQ=   872 | bc_coef=0.000 | sps=479
+[ 220/488] step= 225280 | ep=  353 | return= 0.522 | guided%=  0.1 | bc=0.0000 | cumQ=   873 | bc_coef=0.000 | sps=479
+[ 230/488] step= 235520 | ep=  369 | return= 0.515 | guided%=  0.1 | bc=0.0000 | cumQ=   873 | bc_coef=0.000 | sps=479
+[ 240/488] step= 245760 | ep=  385 | return= 0.537 | guided%=  0.0 | bc=0.0000 | cumQ=   874 | bc_coef=0.000 | sps=480
+[ 250/488] step= 256000 | ep=  401 | return= 0.536 | guided%=  0.0 | bc=0.0000 | cumQ=   877 | bc_coef=0.000 | sps=480
+[ 260/488] step= 266240 | ep=  417 | return= 0.549 | guided%=  0.0 | bc=0.0000 | cumQ=   880 | bc_coef=0.000 | sps=480
+[ 270/488] step= 276480 | ep=  433 | return= 0.563 | guided%=  0.0 | bc=0.0000 | cumQ=   882 | bc_coef=0.000 | sps=480
+[ 280/488] step= 286720 | ep=  449 | return= 0.581 | guided%=  0.0 | bc=0.0000 | cumQ=   883 | bc_coef=0.000 | sps=480
+[ 290/488] step= 296960 | ep=  465 | return= 0.585 | guided%=  0.0 | bc=0.0000 | cumQ=   884 | bc_coef=0.000 | sps=480
+[ 300/488] step= 307200 | ep=  481 | return= 0.585 | guided%=  0.0 | bc=0.0000 | cumQ=   888 | bc_coef=0.000 | sps=480
+[ 310/488] step= 317440 | ep=  497 | return= 0.590 | guided%=  0.0 | bc=0.0000 | cumQ=   890 | bc_coef=0.000 | sps=481
+[ 320/488] step= 327680 | ep=  513 | return= 0.598 | guided%=  0.0 | bc=0.0000 | cumQ=   891 | bc_coef=0.000 | sps=481
+[ 330/488] step= 337920 | ep=  529 | return= 0.587 | guided%=  0.0 | bc=0.0000 | cumQ=   897 | bc_coef=0.000 | sps=482
+[ 340/488] step= 348160 | ep=  546 | return= 0.602 | guided%=  0.0 | bc=0.0000 | cumQ=   900 | bc_coef=0.000 | sps=482
+[ 350/488] step= 358400 | ep=  562 | return= 0.615 | guided%=  0.0 | bc=0.0000 | cumQ=   904 | bc_coef=0.000 | sps=483
+[ 360/488] step= 368640 | ep=  578 | return= 0.638 | guided%=  0.0 | bc=0.0000 | cumQ=   909 | bc_coef=0.000 | sps=483
+[ 370/488] step= 378880 | ep=  594 | return= 0.682 | guided%=  0.0 | bc=0.0000 | cumQ=   911 | bc_coef=0.000 | sps=483
+[ 380/488] step= 389120 | ep=  610 | return= 0.674 | guided%=  0.0 | bc=0.0000 | cumQ=   914 | bc_coef=0.000 | sps=483
+[ 390/488] step= 399360 | ep=  628 | return= 0.700 | guided%=  0.0 | bc=0.0000 | cumQ=   917 | bc_coef=0.000 | sps=483
+[ 400/488] step= 409600 | ep=  644 | return= 0.704 | guided%=  0.0 | bc=0.0000 | cumQ=   920 | bc_coef=0.000 | sps=483
+[ 410/488] step= 419840 | ep=  661 | return= 0.719 | guided%=  0.0 | bc=0.0000 | cumQ=   925 | bc_coef=0.000 | sps=483
+[ 420/488] step= 430080 | ep=  677 | return= 0.708 | guided%=  0.0 | bc=0.0000 | cumQ=   928 | bc_coef=0.000 | sps=483
+[ 430/488] step= 440320 | ep=  693 | return= 0.680 | guided%=  0.0 | bc=0.0000 | cumQ=   929 | bc_coef=0.000 | sps=483
+[ 440/488] step= 450560 | ep=  709 | return= 0.675 | guided%=  0.0 | bc=0.0000 | cumQ=   930 | bc_coef=0.000 | sps=483
+[ 450/488] step= 460800 | ep=  725 | return= 0.655 | guided%=  0.0 | bc=0.0000 | cumQ=   932 | bc_coef=0.000 | sps=483
+[ 460/488] step= 471040 | ep=  741 | return= 0.636 | guided%=  0.0 | bc=0.0000 | cumQ=   934 | bc_coef=0.000 | sps=483
+[ 470/488] step= 481280 | ep=  757 | return= 0.644 | guided%=  0.0 | bc=0.0000 | cumQ=   936 | bc_coef=0.000 | sps=482
+[ 480/488] step= 491520 | ep=  773 | return= 0.633 | guided%=  0.0 | bc=0.0000 | cumQ=   937 | bc_coef=0.000 | sps=482
+Generating plots...
+Saved → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed7__1777433156.png
+Plots → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed7__1777433156.png
+=== Baseline PPO                       | seed=7 ===
+Run: baseline__MiniGrid-DoorKey-8x8-v0__seed7__1777434201
+  device=cuda, batch=1024, updates=488
+  CSV → logs/baseline__MiniGrid-DoorKey-8x8-v0__seed7__1777434201.csv
+  obs=(64, 64, 3), n_actions=7, query_action=6
+  params=67,167,496
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=359
+  *** First unguided success — episode 1 ***
+[  10/488] step=  10240 | ep=    8 | return= 0.562 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=466
+[  20/488] step=  20480 | ep=   24 | return= 0.542 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=473
+[  30/488] step=  30720 | ep=   40 | return= 0.512 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=475
+[  40/488] step=  40960 | ep=   57 | return= 0.539 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=476
+[  50/488] step=  51200 | ep=   78 | return= 0.622 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=477
+[  60/488] step=  61440 | ep=  100 | return= 0.716 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=478
+[  70/488] step=  71680 | ep=  117 | return= 0.759 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=478
+[  80/488] step=  81920 | ep=  135 | return= 0.845 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=479
+[  90/488] step=  92160 | ep=  157 | return= 0.954 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=479
+[ 100/488] step= 102400 | ep=  177 | return= 0.981 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=480
+[ 110/488] step= 112640 | ep=  199 | return= 0.984 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=481
+[ 120/488] step= 122880 | ep=  223 | return= 1.082 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=481
+[ 130/488] step= 133120 | ep=  246 | return= 1.142 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=481
+[ 140/488] step= 143360 | ep=  281 | return= 1.254 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=481
+[ 150/488] step= 153600 | ep=  312 | return= 1.318 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 160/488] step= 163840 | ep=  340 | return= 1.407 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 170/488] step= 174080 | ep=  379 | return= 1.467 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=482
+[ 180/488] step= 184320 | ep=  424 | return= 1.526 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 190/488] step= 194560 | ep=  476 | return= 1.621 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 200/488] step= 204800 | ep=  531 | return= 1.722 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 210/488] step= 215040 | ep=  566 | return= 1.662 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 220/488] step= 225280 | ep=  634 | return= 1.689 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 230/488] step= 235520 | ep=  677 | return= 1.703 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 240/488] step= 245760 | ep=  716 | return= 1.658 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 250/488] step= 256000 | ep=  768 | return= 1.636 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 260/488] step= 266240 | ep=  813 | return= 1.602 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 270/488] step= 276480 | ep=  870 | return= 1.678 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 280/488] step= 286720 | ep=  930 | return= 1.723 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 290/488] step= 296960 | ep= 1010 | return= 1.737 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=484
+[ 300/488] step= 307200 | ep= 1070 | return= 1.772 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 310/488] step= 317440 | ep= 1123 | return= 1.703 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 320/488] step= 327680 | ep= 1180 | return= 1.702 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 330/488] step= 337920 | ep= 1273 | return= 1.801 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 340/488] step= 348160 | ep= 1330 | return= 1.759 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 350/488] step= 358400 | ep= 1417 | return= 1.802 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 360/488] step= 368640 | ep= 1521 | return= 1.860 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 370/488] step= 378880 | ep= 1619 | return= 1.821 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 380/488] step= 389120 | ep= 1734 | return= 1.867 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 390/488] step= 399360 | ep= 1845 | return= 1.861 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 400/488] step= 409600 | ep= 1967 | return= 1.871 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 410/488] step= 419840 | ep= 2059 | return= 1.828 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 420/488] step= 430080 | ep= 2182 | return= 1.869 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 430/488] step= 440320 | ep= 2322 | return= 1.892 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 440/488] step= 450560 | ep= 2489 | return= 1.914 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 450/488] step= 460800 | ep= 2619 | return= 1.878 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 460/488] step= 471040 | ep= 2763 | return= 1.900 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 470/488] step= 481280 | ep= 2924 | return= 1.914 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[ 480/488] step= 491520 | ep= 3095 | return= 1.924 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+Generating plots...
+Saved → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed7__1777434201.png
+Plots → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed7__1777434201.png
+=== Oracle gratuit        (cost=0.000) | seed=8 ===
+Run: oracle_free__MiniGrid-DoorKey-8x8-v0__seed8__1777435242
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_free__MiniGrid-DoorKey-8x8-v0__seed8__1777435242.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=   111 | bc_coef=0.000 | sps=316
+[  10/488] step=  10240 | ep=   92 | return= 1.848 | guided%= 29.8 | bc=0.0000 | cumQ=  2391 | bc_coef=0.000 | sps=442
+[  20/488] step=  20480 | ep=  461 | return= 1.966 | guided%= 74.5 | bc=0.0000 | cumQ=  9053 | bc_coef=0.000 | sps=447
+[  30/488] step=  30720 | ep=  972 | return= 1.974 | guided%= 86.3 | bc=0.0000 | cumQ= 17779 | bc_coef=0.000 | sps=449
+[  40/488] step=  40960 | ep= 1511 | return= 1.976 | guided%= 92.0 | bc=0.0000 | cumQ= 26920 | bc_coef=0.000 | sps=447
+[  50/488] step=  51200 | ep= 2073 | return= 1.976 | guided%= 92.0 | bc=0.0000 | cumQ= 36341 | bc_coef=0.000 | sps=446
+[  60/488] step=  61440 | ep= 2647 | return= 1.976 | guided%= 93.7 | bc=0.0000 | cumQ= 45920 | bc_coef=0.000 | sps=445
+[  70/488] step=  71680 | ep= 3226 | return= 1.977 | guided%= 93.8 | bc=0.0000 | cumQ= 55515 | bc_coef=0.000 | sps=445
+[  80/488] step=  81920 | ep= 3775 | return= 1.974 | guided%= 89.9 | bc=0.0000 | cumQ= 64943 | bc_coef=0.000 | sps=444
+[  90/488] step=  92160 | ep= 4310 | return= 1.977 | guided%= 90.3 | bc=0.0000 | cumQ= 74025 | bc_coef=0.000 | sps=444
+[ 100/488] step= 102400 | ep= 4864 | return= 1.973 | guided%= 86.3 | bc=0.0000 | cumQ= 83268 | bc_coef=0.000 | sps=444
+[ 110/488] step= 112640 | ep= 5420 | return= 1.976 | guided%= 90.1 | bc=0.0000 | cumQ= 92442 | bc_coef=0.000 | sps=444
+[ 120/488] step= 122880 | ep= 5982 | return= 1.977 | guided%= 91.1 | bc=0.0000 | cumQ=101618 | bc_coef=0.000 | sps=444
+[ 130/488] step= 133120 | ep= 6550 | return= 1.977 | guided%= 92.4 | bc=0.0000 | cumQ=110997 | bc_coef=0.000 | sps=444
+[ 140/488] step= 143360 | ep= 7121 | return= 1.977 | guided%= 91.4 | bc=0.0000 | cumQ=120470 | bc_coef=0.000 | sps=444
+[ 150/488] step= 153600 | ep= 7690 | return= 1.976 | guided%= 90.4 | bc=0.0000 | cumQ=129871 | bc_coef=0.000 | sps=443
+[ 160/488] step= 163840 | ep= 8235 | return= 1.975 | guided%= 84.3 | bc=0.0000 | cumQ=138642 | bc_coef=0.000 | sps=443
+[ 170/488] step= 174080 | ep= 8785 | return= 1.976 | guided%= 89.5 | bc=0.0000 | cumQ=147413 | bc_coef=0.000 | sps=443
+[ 180/488] step= 184320 | ep= 9358 | return= 1.977 | guided%= 93.8 | bc=0.0000 | cumQ=156796 | bc_coef=0.000 | sps=443
+[ 190/488] step= 194560 | ep= 9927 | return= 1.976 | guided%= 93.2 | bc=0.0000 | cumQ=166419 | bc_coef=0.000 | sps=443
+[ 200/488] step= 204800 | ep=10504 | return= 1.976 | guided%= 93.4 | bc=0.0000 | cumQ=176020 | bc_coef=0.000 | sps=442
+[ 210/488] step= 215040 | ep=11076 | return= 1.976 | guided%= 93.1 | bc=0.0000 | cumQ=185511 | bc_coef=0.000 | sps=442
+[ 220/488] step= 225280 | ep=11652 | return= 1.977 | guided%= 92.5 | bc=0.0000 | cumQ=194965 | bc_coef=0.000 | sps=442
+[ 230/488] step= 235520 | ep=12225 | return= 1.976 | guided%= 93.0 | bc=0.0000 | cumQ=204535 | bc_coef=0.000 | sps=443
+[ 240/488] step= 245760 | ep=12805 | return= 1.976 | guided%= 91.2 | bc=0.0000 | cumQ=214042 | bc_coef=0.000 | sps=443
+[ 250/488] step= 256000 | ep=13366 | return= 1.976 | guided%= 79.8 | bc=0.0000 | cumQ=222801 | bc_coef=0.000 | sps=443
+[ 260/488] step= 266240 | ep=13933 | return= 1.976 | guided%= 83.6 | bc=0.0000 | cumQ=230996 | bc_coef=0.000 | sps=443
+[ 270/488] step= 276480 | ep=14489 | return= 1.973 | guided%= 75.1 | bc=0.0000 | cumQ=238955 | bc_coef=0.000 | sps=443
+[ 280/488] step= 286720 | ep=15050 | return= 1.976 | guided%= 78.2 | bc=0.0000 | cumQ=246860 | bc_coef=0.000 | sps=443
+[ 290/488] step= 296960 | ep=15623 | return= 1.977 | guided%= 83.3 | bc=0.0000 | cumQ=255235 | bc_coef=0.000 | sps=443
+[ 300/488] step= 307200 | ep=16200 | return= 1.976 | guided%= 85.6 | bc=0.0000 | cumQ=264225 | bc_coef=0.000 | sps=443
+[ 310/488] step= 317440 | ep=16732 | return= 1.976 | guided%= 88.8 | bc=0.0000 | cumQ=273058 | bc_coef=0.000 | sps=444
+[ 320/488] step= 327680 | ep=17307 | return= 1.976 | guided%= 93.0 | bc=0.0000 | cumQ=282438 | bc_coef=0.000 | sps=443
+[ 330/488] step= 337920 | ep=17885 | return= 1.976 | guided%= 92.6 | bc=0.0000 | cumQ=291977 | bc_coef=0.000 | sps=443
+[ 340/488] step= 348160 | ep=18444 | return= 1.975 | guided%= 92.4 | bc=0.0000 | cumQ=301309 | bc_coef=0.000 | sps=443
+[ 350/488] step= 358400 | ep=19024 | return= 1.977 | guided%= 91.5 | bc=0.0000 | cumQ=310687 | bc_coef=0.000 | sps=443
+[ 360/488] step= 368640 | ep=19596 | return= 1.976 | guided%= 91.1 | bc=0.0000 | cumQ=320091 | bc_coef=0.000 | sps=443
+[ 370/488] step= 378880 | ep=20143 | return= 1.976 | guided%= 89.2 | bc=0.0000 | cumQ=329208 | bc_coef=0.000 | sps=443
+[ 380/488] step= 389120 | ep=20723 | return= 1.977 | guided%= 89.4 | bc=0.0000 | cumQ=338130 | bc_coef=0.000 | sps=443
+[ 390/488] step= 399360 | ep=21290 | return= 1.977 | guided%= 86.6 | bc=0.0000 | cumQ=347108 | bc_coef=0.000 | sps=443
+[ 400/488] step= 409600 | ep=21858 | return= 1.976 | guided%= 87.5 | bc=0.0000 | cumQ=356012 | bc_coef=0.000 | sps=443
+[ 410/488] step= 419840 | ep=22437 | return= 1.977 | guided%= 83.8 | bc=0.0000 | cumQ=364785 | bc_coef=0.000 | sps=443
+[ 420/488] step= 430080 | ep=23009 | return= 1.976 | guided%= 87.0 | bc=0.0000 | cumQ=373774 | bc_coef=0.000 | sps=443
+[ 430/488] step= 440320 | ep=23586 | return= 1.977 | guided%= 80.0 | bc=0.0000 | cumQ=382217 | bc_coef=0.000 | sps=443
+[ 440/488] step= 450560 | ep=24166 | return= 1.977 | guided%= 79.3 | bc=0.0000 | cumQ=390422 | bc_coef=0.000 | sps=443
+[ 450/488] step= 460800 | ep=24740 | return= 1.977 | guided%= 82.2 | bc=0.0000 | cumQ=398601 | bc_coef=0.000 | sps=443
+[ 460/488] step= 471040 | ep=25313 | return= 1.975 | guided%= 90.4 | bc=0.0000 | cumQ=407663 | bc_coef=0.000 | sps=443
+[ 470/488] step= 481280 | ep=25866 | return= 1.977 | guided%= 87.1 | bc=0.0000 | cumQ=416630 | bc_coef=0.000 | sps=443
+[ 480/488] step= 491520 | ep=26416 | return= 1.977 | guided%= 86.3 | bc=0.0000 | cumQ=425350 | bc_coef=0.000 | sps=443
+Generating plots...
+Plots → figures/oracle_free__MiniGrid-DoorKey-8x8-v0__seed8__1777435242.png
+=== Oracle payant faible  (cost=0.010) | seed=8 ===
+Run: oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed8__1777436377
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed8__1777436377.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=   111 | bc_coef=0.000 | sps=338
+[  10/488] step=  10240 | ep=  130 | return= 1.761 | guided%= 43.0 | bc=0.0000 | cumQ=  2790 | bc_coef=0.000 | sps=457
+[  20/488] step=  20480 | ep=  540 | return= 1.808 | guided%= 71.7 | bc=0.0000 | cumQ=  9622 | bc_coef=0.000 | sps=457
+[  30/488] step=  30720 | ep= 1021 | return= 1.814 | guided%= 82.0 | bc=0.0000 | cumQ= 17282 | bc_coef=0.000 | sps=455
+[  40/488] step=  40960 | ep= 1562 | return= 1.813 | guided%= 84.2 | bc=0.0000 | cumQ= 26002 | bc_coef=0.000 | sps=453
+[  50/488] step=  51200 | ep= 2107 | return= 1.819 | guided%= 82.7 | bc=0.0000 | cumQ= 34537 | bc_coef=0.000 | sps=453
+[  60/488] step=  61440 | ep= 2649 | return= 1.859 | guided%= 60.7 | bc=0.0000 | cumQ= 41978 | bc_coef=0.000 | sps=452
+[  70/488] step=  71680 | ep= 3182 | return= 1.851 | guided%= 66.2 | bc=0.0000 | cumQ= 48340 | bc_coef=0.000 | sps=453
+[  80/488] step=  81920 | ep= 3734 | return= 1.862 | guided%= 60.6 | bc=0.0000 | cumQ= 54941 | bc_coef=0.000 | sps=452
+[  90/488] step=  92160 | ep= 4278 | return= 1.865 | guided%= 58.9 | bc=0.0000 | cumQ= 60905 | bc_coef=0.000 | sps=453
+[ 100/488] step= 102400 | ep= 4840 | return= 1.871 | guided%= 59.1 | bc=0.0000 | cumQ= 66753 | bc_coef=0.000 | sps=452
+[ 110/488] step= 112640 | ep= 5394 | return= 1.870 | guided%= 56.9 | bc=0.0000 | cumQ= 72520 | bc_coef=0.000 | sps=452
+[ 120/488] step= 122880 | ep= 5952 | return= 1.865 | guided%= 58.9 | bc=0.0000 | cumQ= 78437 | bc_coef=0.000 | sps=452
+[ 130/488] step= 133120 | ep= 6506 | return= 1.872 | guided%= 55.5 | bc=0.0000 | cumQ= 84200 | bc_coef=0.000 | sps=452
+[ 140/488] step= 143360 | ep= 7070 | return= 1.875 | guided%= 55.3 | bc=0.0000 | cumQ= 90066 | bc_coef=0.000 | sps=452
+[ 150/488] step= 153600 | ep= 7629 | return= 1.875 | guided%= 55.3 | bc=0.0000 | cumQ= 95933 | bc_coef=0.000 | sps=452
+[ 160/488] step= 163840 | ep= 8186 | return= 1.874 | guided%= 55.9 | bc=0.0000 | cumQ=101591 | bc_coef=0.000 | sps=452
+[ 170/488] step= 174080 | ep= 8744 | return= 1.874 | guided%= 54.5 | bc=0.0000 | cumQ=107209 | bc_coef=0.000 | sps=452
+[ 180/488] step= 184320 | ep= 9303 | return= 1.873 | guided%= 53.3 | bc=0.0000 | cumQ=112856 | bc_coef=0.000 | sps=452
+[ 190/488] step= 194560 | ep= 9855 | return= 1.870 | guided%= 56.2 | bc=0.0000 | cumQ=118476 | bc_coef=0.000 | sps=452
+[ 200/488] step= 204800 | ep=10427 | return= 1.871 | guided%= 58.3 | bc=0.0000 | cumQ=124323 | bc_coef=0.000 | sps=452
+[ 210/488] step= 215040 | ep=11002 | return= 1.867 | guided%= 59.3 | bc=0.0000 | cumQ=130360 | bc_coef=0.000 | sps=452
+[ 220/488] step= 225280 | ep=11577 | return= 1.872 | guided%= 58.2 | bc=0.0000 | cumQ=136428 | bc_coef=0.000 | sps=452
+[ 230/488] step= 235520 | ep=12144 | return= 1.874 | guided%= 57.3 | bc=0.0000 | cumQ=142327 | bc_coef=0.000 | sps=452
+[ 240/488] step= 245760 | ep=12722 | return= 1.880 | guided%= 56.1 | bc=0.0000 | cumQ=148230 | bc_coef=0.000 | sps=452
+[ 250/488] step= 256000 | ep=13300 | return= 1.874 | guided%= 58.2 | bc=0.0000 | cumQ=154216 | bc_coef=0.000 | sps=452
+[ 260/488] step= 266240 | ep=13874 | return= 1.874 | guided%= 58.1 | bc=0.0000 | cumQ=160108 | bc_coef=0.000 | sps=452
+[ 270/488] step= 276480 | ep=14451 | return= 1.877 | guided%= 56.2 | bc=0.0000 | cumQ=165967 | bc_coef=0.000 | sps=452
+[ 280/488] step= 286720 | ep=15018 | return= 1.874 | guided%= 56.0 | bc=0.0000 | cumQ=171906 | bc_coef=0.000 | sps=452
+[ 290/488] step= 296960 | ep=15591 | return= 1.873 | guided%= 57.9 | bc=0.0000 | cumQ=177766 | bc_coef=0.000 | sps=452
+[ 300/488] step= 307200 | ep=16156 | return= 1.877 | guided%= 54.5 | bc=0.0000 | cumQ=183537 | bc_coef=0.000 | sps=452
+[ 310/488] step= 317440 | ep=16685 | return= 1.876 | guided%= 56.2 | bc=0.0000 | cumQ=188906 | bc_coef=0.000 | sps=452
+[ 320/488] step= 327680 | ep=17253 | return= 1.868 | guided%= 57.5 | bc=0.0000 | cumQ=194741 | bc_coef=0.000 | sps=452
+[ 330/488] step= 337920 | ep=17826 | return= 1.876 | guided%= 55.4 | bc=0.0000 | cumQ=200511 | bc_coef=0.000 | sps=452
+[ 340/488] step= 348160 | ep=18386 | return= 1.868 | guided%= 57.8 | bc=0.0000 | cumQ=206387 | bc_coef=0.000 | sps=452
+[ 350/488] step= 358400 | ep=18958 | return= 1.879 | guided%= 57.7 | bc=0.0000 | cumQ=212254 | bc_coef=0.000 | sps=452
+[ 360/488] step= 368640 | ep=19535 | return= 1.874 | guided%= 57.5 | bc=0.0000 | cumQ=218056 | bc_coef=0.000 | sps=452
+[ 370/488] step= 378880 | ep=20105 | return= 1.873 | guided%= 57.6 | bc=0.0000 | cumQ=223918 | bc_coef=0.000 | sps=452
+[ 380/488] step= 389120 | ep=20676 | return= 1.873 | guided%= 57.4 | bc=0.0000 | cumQ=229717 | bc_coef=0.000 | sps=452
+[ 390/488] step= 399360 | ep=21243 | return= 1.873 | guided%= 56.8 | bc=0.0000 | cumQ=235588 | bc_coef=0.000 | sps=452
+[ 400/488] step= 409600 | ep=21817 | return= 1.875 | guided%= 55.6 | bc=0.0000 | cumQ=241438 | bc_coef=0.000 | sps=452
+[ 410/488] step= 419840 | ep=22394 | return= 1.877 | guided%= 56.4 | bc=0.0000 | cumQ=247311 | bc_coef=0.000 | sps=452
+[ 420/488] step= 430080 | ep=22968 | return= 1.870 | guided%= 57.8 | bc=0.0000 | cumQ=253201 | bc_coef=0.000 | sps=452
+[ 430/488] step= 440320 | ep=23545 | return= 1.872 | guided%= 58.1 | bc=0.0000 | cumQ=259163 | bc_coef=0.000 | sps=452
+[ 440/488] step= 450560 | ep=24124 | return= 1.879 | guided%= 56.0 | bc=0.0000 | cumQ=264970 | bc_coef=0.000 | sps=452
+[ 450/488] step= 460800 | ep=24698 | return= 1.872 | guided%= 56.2 | bc=0.0000 | cumQ=270816 | bc_coef=0.000 | sps=452
+[ 460/488] step= 471040 | ep=25272 | return= 1.875 | guided%= 55.5 | bc=0.0000 | cumQ=276664 | bc_coef=0.000 | sps=452
+[ 470/488] step= 481280 | ep=25846 | return= 1.873 | guided%= 56.8 | bc=0.0000 | cumQ=282432 | bc_coef=0.000 | sps=452
+[ 480/488] step= 491520 | ep=26419 | return= 1.877 | guided%= 56.0 | bc=0.0000 | cumQ=288234 | bc_coef=0.000 | sps=452
+Generating plots...
+Plots → figures/oracle_paid_001__MiniGrid-DoorKey-8x8-v0__seed8__1777436377.png
+=== Oracle payant moyen   (cost=0.020) | seed=8 ===
+Run: oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed8__1777437491
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed8__1777437491.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=   111 | bc_coef=0.000 | sps=325
+[  10/488] step=  10240 | ep=   22 | return= 0.577 | guided%= 11.7 | bc=0.0000 | cumQ=  1131 | bc_coef=0.000 | sps=457
+[  20/488] step=  20480 | ep=   43 | return= 0.516 | guided%=  9.7 | bc=0.0000 | cumQ=  1828 | bc_coef=0.000 | sps=471
+[  30/488] step=  30720 | ep=   60 | return= 0.401 | guided%=  8.6 | bc=0.0000 | cumQ=  2364 | bc_coef=0.000 | sps=475
+[  40/488] step=  40960 | ep=   78 | return= 0.411 | guided%=  7.3 | bc=0.0000 | cumQ=  2662 | bc_coef=0.000 | sps=478
+[  50/488] step=  51200 | ep=  118 | return= 0.735 | guided%=  6.2 | bc=0.0000 | cumQ=  3266 | bc_coef=0.000 | sps=479
+[  60/488] step=  61440 | ep=  289 | return= 1.616 | guided%= 36.8 | bc=0.0000 | cumQ=  5898 | bc_coef=0.000 | sps=478
+[  70/488] step=  71680 | ep=  690 | return= 1.647 | guided%= 65.6 | bc=0.0000 | cumQ= 12215 | bc_coef=0.000 | sps=475
+[  80/488] step=  81920 | ep= 1136 | return= 1.715 | guided%= 55.5 | bc=0.0000 | cumQ= 18331 | bc_coef=0.000 | sps=472
+[  90/488] step=  92160 | ep= 1615 | return= 1.760 | guided%= 51.3 | bc=0.0000 | cumQ= 23674 | bc_coef=0.000 | sps=471
+[ 100/488] step= 102400 | ep= 2128 | return= 1.763 | guided%= 52.8 | bc=0.0000 | cumQ= 29056 | bc_coef=0.000 | sps=468
+[ 110/488] step= 112640 | ep= 2641 | return= 1.778 | guided%= 51.5 | bc=0.0000 | cumQ= 34204 | bc_coef=0.000 | sps=467
+[ 120/488] step= 122880 | ep= 3168 | return= 1.769 | guided%= 52.5 | bc=0.0000 | cumQ= 39533 | bc_coef=0.000 | sps=466
+[ 130/488] step= 133120 | ep= 3713 | return= 1.765 | guided%= 56.8 | bc=0.0000 | cumQ= 45008 | bc_coef=0.000 | sps=464
+[ 140/488] step= 143360 | ep= 4255 | return= 1.759 | guided%= 55.3 | bc=0.0000 | cumQ= 50583 | bc_coef=0.000 | sps=463
+[ 150/488] step= 153600 | ep= 4800 | return= 1.785 | guided%= 53.2 | bc=0.0000 | cumQ= 55964 | bc_coef=0.000 | sps=463
+[ 160/488] step= 163840 | ep= 5354 | return= 1.774 | guided%= 53.8 | bc=0.0000 | cumQ= 61489 | bc_coef=0.000 | sps=462
+[ 170/488] step= 174080 | ep= 5892 | return= 1.772 | guided%= 53.1 | bc=0.0000 | cumQ= 66887 | bc_coef=0.000 | sps=462
+[ 180/488] step= 184320 | ep= 6419 | return= 1.771 | guided%= 54.4 | bc=0.0000 | cumQ= 72049 | bc_coef=0.000 | sps=461
+[ 190/488] step= 194560 | ep= 6974 | return= 1.786 | guided%= 51.3 | bc=0.0000 | cumQ= 77406 | bc_coef=0.000 | sps=461
+[ 200/488] step= 204800 | ep= 7518 | return= 1.771 | guided%= 52.8 | bc=0.0000 | cumQ= 82833 | bc_coef=0.000 | sps=461
+[ 210/488] step= 215040 | ep= 8079 | return= 1.788 | guided%= 52.2 | bc=0.0000 | cumQ= 88234 | bc_coef=0.000 | sps=460
+[ 220/488] step= 225280 | ep= 8628 | return= 1.777 | guided%= 51.7 | bc=0.0000 | cumQ= 93545 | bc_coef=0.000 | sps=460
+[ 230/488] step= 235520 | ep= 9181 | return= 1.784 | guided%= 52.0 | bc=0.0000 | cumQ= 98925 | bc_coef=0.000 | sps=460
+[ 240/488] step= 245760 | ep= 9738 | return= 1.795 | guided%= 49.1 | bc=0.0000 | cumQ=104380 | bc_coef=0.000 | sps=459
+[ 250/488] step= 256000 | ep=10286 | return= 1.782 | guided%= 51.2 | bc=0.0000 | cumQ=109720 | bc_coef=0.000 | sps=459
+[ 260/488] step= 266240 | ep=10821 | return= 1.779 | guided%= 50.9 | bc=0.0000 | cumQ=114794 | bc_coef=0.000 | sps=459
+[ 270/488] step= 276480 | ep=11369 | return= 1.776 | guided%= 53.5 | bc=0.0000 | cumQ=120121 | bc_coef=0.000 | sps=459
+[ 280/488] step= 286720 | ep=11912 | return= 1.776 | guided%= 50.7 | bc=0.0000 | cumQ=125329 | bc_coef=0.000 | sps=459
+[ 290/488] step= 296960 | ep=12476 | return= 1.786 | guided%= 51.8 | bc=0.0000 | cumQ=130749 | bc_coef=0.000 | sps=458
+[ 300/488] step= 307200 | ep=13028 | return= 1.787 | guided%= 49.8 | bc=0.0000 | cumQ=136016 | bc_coef=0.000 | sps=458
+[ 310/488] step= 317440 | ep=13578 | return= 1.787 | guided%= 51.5 | bc=0.0000 | cumQ=141295 | bc_coef=0.000 | sps=458
+[ 320/488] step= 327680 | ep=14135 | return= 1.778 | guided%= 53.2 | bc=0.0000 | cumQ=146668 | bc_coef=0.000 | sps=458
+[ 330/488] step= 337920 | ep=14695 | return= 1.771 | guided%= 53.4 | bc=0.0000 | cumQ=151971 | bc_coef=0.000 | sps=458
+[ 340/488] step= 348160 | ep=15256 | return= 1.785 | guided%= 52.8 | bc=0.0000 | cumQ=157422 | bc_coef=0.000 | sps=457
+[ 350/488] step= 358400 | ep=15815 | return= 1.782 | guided%= 52.9 | bc=0.0000 | cumQ=162816 | bc_coef=0.000 | sps=457
+[ 360/488] step= 368640 | ep=16377 | return= 1.797 | guided%= 50.0 | bc=0.0000 | cumQ=168166 | bc_coef=0.000 | sps=457
+[ 370/488] step= 378880 | ep=16932 | return= 1.784 | guided%= 51.5 | bc=0.0000 | cumQ=173504 | bc_coef=0.000 | sps=457
+[ 380/488] step= 389120 | ep=17490 | return= 1.787 | guided%= 51.7 | bc=0.0000 | cumQ=178837 | bc_coef=0.000 | sps=457
+[ 390/488] step= 399360 | ep=18048 | return= 1.782 | guided%= 52.7 | bc=0.0000 | cumQ=184167 | bc_coef=0.000 | sps=457
+[ 400/488] step= 409600 | ep=18594 | return= 1.787 | guided%= 50.7 | bc=0.0000 | cumQ=189479 | bc_coef=0.000 | sps=457
+[ 410/488] step= 419840 | ep=19159 | return= 1.789 | guided%= 50.8 | bc=0.0000 | cumQ=194768 | bc_coef=0.000 | sps=457
+[ 420/488] step= 430080 | ep=19711 | return= 1.785 | guided%= 52.5 | bc=0.0000 | cumQ=199990 | bc_coef=0.000 | sps=456
+[ 430/488] step= 440320 | ep=20267 | return= 1.784 | guided%= 51.1 | bc=0.0000 | cumQ=205263 | bc_coef=0.000 | sps=456
+[ 440/488] step= 450560 | ep=20829 | return= 1.790 | guided%= 52.5 | bc=0.0000 | cumQ=210505 | bc_coef=0.000 | sps=456
+[ 450/488] step= 460800 | ep=21388 | return= 1.778 | guided%= 53.1 | bc=0.0000 | cumQ=215915 | bc_coef=0.000 | sps=456
+[ 460/488] step= 471040 | ep=21951 | return= 1.788 | guided%= 52.4 | bc=0.0000 | cumQ=221254 | bc_coef=0.000 | sps=456
+[ 470/488] step= 481280 | ep=22518 | return= 1.792 | guided%= 51.1 | bc=0.0000 | cumQ=226516 | bc_coef=0.000 | sps=456
+[ 480/488] step= 491520 | ep=23076 | return= 1.792 | guided%= 50.9 | bc=0.0000 | cumQ=231800 | bc_coef=0.000 | sps=456
+Generating plots...
+Plots → figures/oracle_paid_002__MiniGrid-DoorKey-8x8-v0__seed8__1777437491.png
+=== Oracle payant élevé   (cost=0.050) | seed=8 ===
+Run: oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed8__1777438594
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed8__1777438594.csv
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=   111 | bc_coef=0.000 | sps=328
+[  10/488] step=  10240 | ep=   22 | return=-0.353 | guided%=  9.6 | bc=0.0000 | cumQ=   865 | bc_coef=0.000 | sps=458
+  *** First unguided success — episode 36 ***
+[  20/488] step=  20480 | ep=   39 | return=-0.126 | guided%=  6.5 | bc=0.0000 | cumQ=  1022 | bc_coef=0.000 | sps=473
+[  30/488] step=  30720 | ep=   55 | return= 0.029 | guided%=  4.7 | bc=0.0000 | cumQ=  1036 | bc_coef=0.000 | sps=479
+[  40/488] step=  40960 | ep=   71 | return= 0.173 | guided%=  3.6 | bc=0.0000 | cumQ=  1039 | bc_coef=0.000 | sps=483
+[  50/488] step=  51200 | ep=   90 | return= 0.310 | guided%=  2.9 | bc=0.0000 | cumQ=  1042 | bc_coef=0.000 | sps=485
+[  60/488] step=  61440 | ep=  106 | return= 0.438 | guided%=  1.9 | bc=0.0000 | cumQ=  1048 | bc_coef=0.000 | sps=486
+[  70/488] step=  71680 | ep=  122 | return= 0.621 | guided%=  0.5 | bc=0.0000 | cumQ=  1055 | bc_coef=0.000 | sps=487
+[  80/488] step=  81920 | ep=  139 | return= 0.708 | guided%=  0.1 | bc=0.0000 | cumQ=  1061 | bc_coef=0.000 | sps=488
+[  90/488] step=  92160 | ep=  157 | return= 0.807 | guided%=  0.0 | bc=0.0000 | cumQ=  1064 | bc_coef=0.000 | sps=488
+[ 100/488] step= 102400 | ep=  173 | return= 0.850 | guided%=  0.0 | bc=0.0000 | cumQ=  1065 | bc_coef=0.000 | sps=489
+[ 110/488] step= 112640 | ep=  190 | return= 0.828 | guided%=  0.0 | bc=0.0000 | cumQ=  1067 | bc_coef=0.000 | sps=489
+[ 120/488] step= 122880 | ep=  206 | return= 0.845 | guided%=  0.0 | bc=0.0000 | cumQ=  1069 | bc_coef=0.000 | sps=489
+[ 130/488] step= 133120 | ep=  225 | return= 0.853 | guided%=  0.0 | bc=0.0000 | cumQ=  1069 | bc_coef=0.000 | sps=489
+[ 140/488] step= 143360 | ep=  248 | return= 0.934 | guided%=  0.0 | bc=0.0000 | cumQ=  1069 | bc_coef=0.000 | sps=490
+[ 150/488] step= 153600 | ep=  266 | return= 0.954 | guided%=  0.0 | bc=0.0000 | cumQ=  1069 | bc_coef=0.000 | sps=490
+[ 160/488] step= 163840 | ep=  285 | return= 0.991 | guided%=  0.0 | bc=0.0000 | cumQ=  1070 | bc_coef=0.000 | sps=491
+[ 170/488] step= 174080 | ep=  308 | return= 1.058 | guided%=  0.0 | bc=0.0000 | cumQ=  1071 | bc_coef=0.000 | sps=491
+[ 180/488] step= 184320 | ep=  328 | return= 1.061 | guided%=  0.0 | bc=0.0000 | cumQ=  1075 | bc_coef=0.000 | sps=491
+[ 190/488] step= 194560 | ep=  347 | return= 1.030 | guided%=  0.0 | bc=0.0000 | cumQ=  1076 | bc_coef=0.000 | sps=492
+[ 200/488] step= 204800 | ep=  366 | return= 1.007 | guided%=  0.0 | bc=0.0000 | cumQ=  1079 | bc_coef=0.000 | sps=492
+[ 210/488] step= 215040 | ep=  385 | return= 1.028 | guided%=  0.0 | bc=0.0000 | cumQ=  1080 | bc_coef=0.000 | sps=492
+[ 220/488] step= 225280 | ep=  405 | return= 0.998 | guided%=  0.0 | bc=0.0000 | cumQ=  1081 | bc_coef=0.000 | sps=492
+[ 230/488] step= 235520 | ep=  425 | return= 0.995 | guided%=  0.0 | bc=0.0000 | cumQ=  1081 | bc_coef=0.000 | sps=492
+[ 240/488] step= 245760 | ep=  446 | return= 1.048 | guided%=  0.0 | bc=0.0000 | cumQ=  1081 | bc_coef=0.000 | sps=492
+[ 250/488] step= 256000 | ep=  466 | return= 1.050 | guided%=  0.0 | bc=0.0000 | cumQ=  1081 | bc_coef=0.000 | sps=492
+[ 260/488] step= 266240 | ep=  484 | return= 0.967 | guided%=  0.0 | bc=0.0000 | cumQ=  1082 | bc_coef=0.000 | sps=492
+[ 270/488] step= 276480 | ep=  501 | return= 0.888 | guided%=  0.0 | bc=0.0000 | cumQ=  1084 | bc_coef=0.000 | sps=492
+[ 280/488] step= 286720 | ep=  518 | return= 0.876 | guided%=  0.0 | bc=0.0000 | cumQ=  1086 | bc_coef=0.000 | sps=492
+[ 290/488] step= 296960 | ep=  537 | return= 0.788 | guided%=  0.0 | bc=0.0000 | cumQ=  1091 | bc_coef=0.000 | sps=492
+[ 300/488] step= 307200 | ep=  556 | return= 0.735 | guided%=  0.0 | bc=0.0000 | cumQ=  1093 | bc_coef=0.000 | sps=492
+[ 310/488] step= 317440 | ep=  572 | return= 0.717 | guided%=  0.1 | bc=0.0000 | cumQ=  1103 | bc_coef=0.000 | sps=492
+[ 320/488] step= 327680 | ep=  589 | return= 0.804 | guided%=  0.0 | bc=0.0000 | cumQ=  1108 | bc_coef=0.000 | sps=492
+[ 330/488] step= 337920 | ep=  610 | return= 0.855 | guided%=  0.0 | bc=0.0000 | cumQ=  1111 | bc_coef=0.000 | sps=492
+[ 340/488] step= 348160 | ep=  634 | return= 0.945 | guided%=  0.1 | bc=0.0000 | cumQ=  1114 | bc_coef=0.000 | sps=492
+[ 350/488] step= 358400 | ep=  655 | return= 1.008 | guided%=  0.0 | bc=0.0000 | cumQ=  1116 | bc_coef=0.000 | sps=492
+[ 360/488] step= 368640 | ep=  676 | return= 1.058 | guided%=  0.0 | bc=0.0000 | cumQ=  1116 | bc_coef=0.000 | sps=492
+[ 370/488] step= 378880 | ep=  703 | return= 1.171 | guided%=  0.0 | bc=0.0000 | cumQ=  1116 | bc_coef=0.000 | sps=492
+[ 380/488] step= 389120 | ep=  727 | return= 1.226 | guided%=  0.0 | bc=0.0000 | cumQ=  1116 | bc_coef=0.000 | sps=492
+[ 390/488] step= 399360 | ep=  752 | return= 1.252 | guided%=  0.0 | bc=0.0000 | cumQ=  1116 | bc_coef=0.000 | sps=492
+[ 400/488] step= 409600 | ep=  772 | return= 1.244 | guided%=  0.0 | bc=0.0000 | cumQ=  1116 | bc_coef=0.000 | sps=492
+[ 410/488] step= 419840 | ep=  793 | return= 1.193 | guided%=  0.0 | bc=0.0000 | cumQ=  1116 | bc_coef=0.000 | sps=492
+[ 420/488] step= 430080 | ep=  819 | return= 1.215 | guided%=  0.0 | bc=0.0000 | cumQ=  1117 | bc_coef=0.000 | sps=492
+[ 430/488] step= 440320 | ep=  841 | return= 1.168 | guided%=  0.0 | bc=0.0000 | cumQ=  1117 | bc_coef=0.000 | sps=492
+[ 440/488] step= 450560 | ep=  859 | return= 1.155 | guided%=  0.0 | bc=0.0000 | cumQ=  1117 | bc_coef=0.000 | sps=492
+[ 450/488] step= 460800 | ep=  878 | return= 1.156 | guided%=  0.0 | bc=0.0000 | cumQ=  1117 | bc_coef=0.000 | sps=492
+[ 460/488] step= 471040 | ep=  897 | return= 1.119 | guided%=  0.0 | bc=0.0000 | cumQ=  1118 | bc_coef=0.000 | sps=492
+[ 470/488] step= 481280 | ep=  918 | return= 1.079 | guided%=  0.0 | bc=0.0000 | cumQ=  1118 | bc_coef=0.000 | sps=492
+[ 480/488] step= 491520 | ep=  941 | return= 1.061 | guided%=  0.0 | bc=0.0000 | cumQ=  1118 | bc_coef=0.000 | sps=492
+Generating plots...
+Saved → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed8__1777438594.png
+Plots → figures/oracle_paid_005__MiniGrid-DoorKey-8x8-v0__seed8__1777438594.png
+=== Baseline PPO                       | seed=8 ===
+Run: baseline__MiniGrid-DoorKey-8x8-v0__seed8__1777439620
+  device=cuda, batch=1024, updates=488
+  CSV → logs/baseline__MiniGrid-DoorKey-8x8-v0__seed8__1777439620.csv
+  obs=(64, 64, 3), n_actions=7, query_action=6
+  params=67,167,496
+[   1/488] step=   1024 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=344
+  *** First unguided success — episode 1 ***
+[  10/488] step=  10240 | ep=    9 | return= 0.630 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=471
+[  20/488] step=  20480 | ep=   25 | return= 0.573 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=479
+[  30/488] step=  30720 | ep=   41 | return= 0.556 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=483
+[  40/488] step=  40960 | ep=   58 | return= 0.564 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=485
+[  50/488] step=  51200 | ep=   74 | return= 0.591 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=486
+[  60/488] step=  61440 | ep=   91 | return= 0.586 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=488
+[  70/488] step=  71680 | ep=  107 | return= 0.589 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=489
+[  80/488] step=  81920 | ep=  126 | return= 0.601 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=489
+[  90/488] step=  92160 | ep=  142 | return= 0.612 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 100/488] step= 102400 | ep=  158 | return= 0.621 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 110/488] step= 112640 | ep=  175 | return= 0.626 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 120/488] step= 122880 | ep=  191 | return= 0.655 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 130/488] step= 133120 | ep=  208 | return= 0.682 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 140/488] step= 143360 | ep=  226 | return= 0.735 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 150/488] step= 153600 | ep=  242 | return= 0.768 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 160/488] step= 163840 | ep=  259 | return= 0.781 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 170/488] step= 174080 | ep=  275 | return= 0.791 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 180/488] step= 184320 | ep=  292 | return= 0.821 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 190/488] step= 194560 | ep=  308 | return= 0.837 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 200/488] step= 204800 | ep=  324 | return= 0.820 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 210/488] step= 215040 | ep=  341 | return= 0.825 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 220/488] step= 225280 | ep=  357 | return= 0.815 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 230/488] step= 235520 | ep=  373 | return= 0.808 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 240/488] step= 245760 | ep=  393 | return= 0.837 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 250/488] step= 256000 | ep=  411 | return= 0.835 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 260/488] step= 266240 | ep=  428 | return= 0.871 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 270/488] step= 276480 | ep=  447 | return= 0.919 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 280/488] step= 286720 | ep=  467 | return= 0.996 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 290/488] step= 296960 | ep=  486 | return= 1.042 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=489
+[ 300/488] step= 307200 | ep=  504 | return= 1.015 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=489
+[ 310/488] step= 317440 | ep=  525 | return= 1.054 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 320/488] step= 327680 | ep=  542 | return= 1.060 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 330/488] step= 337920 | ep=  563 | return= 1.079 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 340/488] step= 348160 | ep=  587 | return= 1.121 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 350/488] step= 358400 | ep=  610 | return= 1.197 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 360/488] step= 368640 | ep=  633 | return= 1.225 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 370/488] step= 378880 | ep=  658 | return= 1.262 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 380/488] step= 389120 | ep=  682 | return= 1.249 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 390/488] step= 399360 | ep=  706 | return= 1.245 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 400/488] step= 409600 | ep=  728 | return= 1.225 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 410/488] step= 419840 | ep=  753 | return= 1.262 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 420/488] step= 430080 | ep=  785 | return= 1.325 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 430/488] step= 440320 | ep=  817 | return= 1.404 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 440/488] step= 450560 | ep=  848 | return= 1.431 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=490
+[ 450/488] step= 460800 | ep=  886 | return= 1.463 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=491
+[ 460/488] step= 471040 | ep=  916 | return= 1.460 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=480
+[ 470/488] step= 481280 | ep=  953 | return= 1.499 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=480
+[ 480/488] step= 491520 | ep=  987 | return= 1.488 | guided%=  0.0 | bc=0.0000 | cumQ=     0 | bc_coef=0.000 | sps=480
+Generating plots...
+Saved → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed8__1777439620.png
+Plots → figures/baseline__MiniGrid-DoorKey-8x8-v0__seed8__1777439620.png
+Tous les runs terminés.
