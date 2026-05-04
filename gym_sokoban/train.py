@@ -1,15 +1,12 @@
 """
-PPO + Behavior Cloning training — Oracle-guided MiniGrid agent.
+PPO + Behavior Cloning training — Oracle-guided agent.
+Adapted for Sokoban (84x84 RGB).
 Style: CleanRL single-file.
 
 Metrics logged per episode to CSV:
     episode, global_step, ep_return, success,
     guided_pct, queries_per_ep, bc_loss,
     agreement_rate, cum_queries, first_unguided_success
-
-Usage:
-    python train.py --env-id MiniGrid-Empty-5x5-v0   --env-type empty
-    python train.py --env-id MiniGrid-DoorKey-5x5-v0 --env-type doorkey
 """
 
 import argparse
@@ -25,20 +22,20 @@ import torch.nn as nn
 import torch.optim as optim
 import gymnasium as gym
 
+# Assumes env_wrapper.py and model.py are in the same directory
 from env_wrapper import make_env
 from model import CNNPolicy
-
 
 # ── Argument parsing ─────────────────────────────────────────────────────────
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument('--env-id',      type=str,   default='MiniGrid-Empty-5x5-v0')
+    p.add_argument('--env-id',      type=str,   default='Sokoban-small-v0')
     p.add_argument('--env-type',    type=str,   default='empty',
-                   choices=['empty', 'doorkey'])
+                   choices=['empty', 'doorkey']) # Kept for bash script compatibility
     p.add_argument('--oracle-cost', type=float, default=0.0)
     p.add_argument('--total-timesteps', type=int,   default=500_000)
-    p.add_argument('--n-envs',          type=int,   default=4)
+    p.add_argument('--n-envs',          type=int,   default=8)
     p.add_argument('--n-steps',         type=int,   default=128)
     p.add_argument('--n-minibatches',   type=int,   default=4)
     p.add_argument('--n-epochs',        type=int,   default=4)
@@ -50,17 +47,13 @@ def parse_args():
     p.add_argument('--max-grad-norm',   type=float, default=0.5)
     p.add_argument('--lr',              type=float, default=2.5e-4)
     p.add_argument('--anneal-lr',       action='store_true', default=True)
-    p.add_argument('--bc-coef',         type=float, default=0.0)
+    p.add_argument('--bc-coef',         type=float, default=1.0) # Boosted for Sokoban BC
     p.add_argument('--bc-anneal',       action='store_true', default=False)
     p.add_argument('--no-oracle',       action='store_true', default=False)
     p.add_argument('--warmup-steps',    type=int,   default=0)
-    # oracle_cost=0.0  → upper bound (oracle gratuit)
-    # oracle_cost>0.0  → VLM réel (agent apprend quand consulter)
-    # --no-oracle      → baseline PPO pur (pas d'action query)
-    # --warmup-steps N → force oracle pendant les N premiers steps
     p.add_argument('--seed',            type=int,   default=1)
-    p.add_argument('--hidden-dim',      type=int,   default=256)
-    p.add_argument('--tile-size',       type=int,   default=8)
+    p.add_argument('--hidden-dim',      type=int,   default=512) # Expanded for 84x84 CNN
+    p.add_argument('--tile-size',       type=int,   default=8) # Kept for bash script compatibility
     p.add_argument('--save-model',      action='store_true', default=False)
     p.add_argument('--exp-name',        type=str,   default='oracle_ppo')
     return p.parse_args()
@@ -114,10 +107,9 @@ def main():
     logger = CSVLogger(f"logs/{run_name}.csv")
 
     # ── Environments ─────────────────────────────────────────────────────────
+    # Note: Simplified make_env call to match our new Russian Doll wrapper
     envs = gym.vector.SyncVectorEnv([
-        make_env(args.env_id, args.env_type, args.tile_size,
-                 args.oracle_cost, seed=args.seed + i,
-                 no_oracle=args.no_oracle)
+        make_env(args.env_id, oracle_cost=args.oracle_cost, seed=args.seed + i)
         for i in range(args.n_envs)
     ])
 
@@ -127,7 +119,8 @@ def main():
     print(f"  obs={obs_shape}, n_actions={n_actions}, query_action={QUERY_ACTION}")
 
     # ── Model ─────────────────────────────────────────────────────────────────
-    model     = CNNPolicy(obs_shape, n_actions, args.hidden_dim).to(device)
+    # Note: Updated to initialize the new Nature CNN correctly
+    model     = CNNPolicy(n_actions=n_actions, hidden_dim=args.hidden_dim).to(device)
     optimiser = optim.Adam(model.parameters(), lr=args.lr, eps=1e-5)
     print(f"  params={sum(p.numel() for p in model.parameters()):,}")
 
@@ -204,12 +197,10 @@ def main():
             next_obs  = torch.tensor(next_obs_np, dtype=torch.uint8).to(device)
 
             # Parse guided flags ──────────────────────────────────────────────
-            # SyncVectorEnv stores terminal-step info in infos['final_info'][i]
             guided_np     = np.zeros(args.n_envs, dtype=bool)
             oracle_act_np = np.zeros(args.n_envs, dtype=np.int64)
 
             for i in range(args.n_envs):
-                # For terminated/truncated envs the step info is in final_info
                 if (term_np[i] or trunc_np[i]) and 'final_info' in infos and infos['final_info'][i] is not None:
                     step_info = infos['final_info'][i]
                 elif 'guided' in infos and isinstance(infos['guided'], np.ndarray):
@@ -366,7 +357,6 @@ def main():
     print("Generating plots...")
     os.system(f"python plot.py --csv {log_path} --out {fig_path} --env {args.env_id}")
     print(f"Plots → {fig_path}")
-
 
 if __name__ == '__main__':
     main()
