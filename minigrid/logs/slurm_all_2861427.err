@@ -1,0 +1,210 @@
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+Traceback (most recent call last):
+  File "/home/tjouven/Upper_Bound/plot.py", line 352, in <module>
+    'first_ug':       int(df['first_unguided_success'].dropna().iloc[0])
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1192, in __getitem__
+    return self._getitem_axis(maybe_callable, axis=axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1753, in _getitem_axis
+    self._validate_integer(key, axis)
+  File "/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pandas/core/indexing.py", line 1686, in _validate_integer
+    raise IndexError("single positional indexer is out-of-bounds")
+IndexError: single positional indexer is out-of-bounds
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists
+/home/tjouven/miniconda3/envs/nanofm/lib/python3.10/site-packages/pygame/pkgdata.py:25: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  from pkg_resources import resource_stream, resource_exists

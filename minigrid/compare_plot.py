@@ -48,14 +48,38 @@ C = {
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-def load_csvs(patterns):
-    """Charge un ou plusieurs CSV (glob patterns), retourne un DataFrame."""
+def load_csvs(patterns, min_steps=0):
+    """Charge un ou plusieurs CSV (glob patterns).
+    Pour chaque seed, garde uniquement le run le plus récent (timestamp max).
+    Filtre les runs qui n'atteignent pas min_steps global_step."""
+    import re
     files = []
     for p in patterns:
         files += glob.glob(p)
     if not files:
         raise FileNotFoundError(f"Aucun CSV trouvé pour : {patterns}")
-    dfs = [pd.read_csv(f) for f in sorted(files)]
+
+    # Groupe par seed, garde le timestamp le plus élevé
+    seed_to_file = {}
+    for f in files:
+        m = re.search(r'seed(\d+)__(\d+)\.csv$', os.path.basename(f))
+        if m:
+            seed, ts = int(m.group(1)), int(m.group(2))
+            if seed not in seed_to_file or ts > seed_to_file[seed][1]:
+                seed_to_file[seed] = (f, ts)
+        else:
+            seed_to_file[f] = (f, 0)  # fallback si nom inattendu
+
+    dfs = []
+    for seed, (f, ts) in sorted(seed_to_file.items()):
+        df = pd.read_csv(f)
+        if df['global_step'].max() >= min_steps:
+            dfs.append(df)
+            print(f"  [load] seed={seed} — {os.path.basename(f)}")
+        else:
+            print(f"  [skip] seed={seed} — {os.path.basename(f)} (max_step={df['global_step'].max()} < {min_steps})")
+    if not dfs:
+        raise ValueError(f"Tous les CSVs filtrés (min_steps={min_steps})")
     return dfs
 
 
@@ -70,8 +94,8 @@ def align_and_aggregate(dfs, n_points=500):
 
     interpolated = {k: [] for k in keys}
     for df in dfs:
-        # query_efficiency calculée par épisode avant interpolation
-        eff = df['success'].values / (df['queries_per_ep'].values + 1e-6)
+        # return / (1 + queries) — ne peut pas exploser, valide pour baseline aussi
+        eff = df['ep_return'].values / (1 + df['queries_per_ep'].values)
         interpolated.setdefault('query_efficiency', []).append(
             np.interp(grid, df['global_step'].values, eff)
         )
@@ -92,12 +116,14 @@ def plot_metric(ax, eps, mean, std, color, label, w=50, clip=None):
     m = smooth(mean, w)
     s = smooth(std,  w)
     if clip is not None:
-        lo, hi = clip
-        m = np.clip(m, lo, hi)
-        s = np.clip(s, 0, (hi - lo) / 2)
+        lo = clip[0] if clip[0] is not None else -np.inf
+        hi = clip[1] if clip[1] is not None else  np.inf
+        m  = np.clip(m, lo, hi)
+        s  = np.clip(s, 0, (hi - lo) / 2 if np.isfinite(hi - lo) else np.inf)
     ax.plot(eps, m, color=color, label=label)
-    ax.fill_between(eps, np.clip(m - s, *clip) if clip else m - s,
-                         np.clip(m + s, *clip) if clip else m + s,
+    ax.fill_between(eps,
+                    np.clip(m - s, lo, hi) if clip else m - s,
+                    np.clip(m + s, lo, hi) if clip else m + s,
                     alpha=0.15, color=color)
 
 
@@ -116,7 +142,7 @@ def build_row(axes, oracle_dfs, base_dfs, row_label):
                 C['baseline'], 'Baseline PPO')
     ax.set_title('Episodic Return')
     ax.set_ylabel(f'{row_label}\nReturn')
-    ax.set_ylim(-0.1, 1.1)
+    ax.set_ylim(-0.1, 2.2)
     ax.legend(fontsize=8)
 
     # ── Success rate ──────────────────────────────────────────────────────
@@ -152,12 +178,12 @@ def build_row(axes, oracle_dfs, base_dfs, row_label):
     ax.set_ylim(bottom=-0.1)
     ax.legend(fontsize=8)
 
-    # ── Query efficiency (oracle only) ────────────────────────────────────
+    # ── Query efficiency ──────────────────────────────────────────────────
     ax = axes[4]
     plot_metric(ax, eps_o, mean_o['query_efficiency'], std_o['query_efficiency'],
                 C['oracle'], 'Oracle PPO', clip=(0, None))
-    ax.set_title('Query Efficiency\n(Success / Query)')
-    ax.set_ylabel('Success / Query')
+    ax.set_title('Query Efficiency\nReturn / (1 + Queries)')
+    ax.set_ylabel('Return / (1 + Queries)')
     ax.set_ylim(bottom=0)
     ax.legend(fontsize=8)
 
@@ -167,29 +193,32 @@ def build_row(axes, oracle_dfs, base_dfs, row_label):
 
 # ── Main figure ───────────────────────────────────────────────────────────────
 
-def make_overview(free_dfs, paid_low_dfs, paid_high_dfs, base_dfs,
-                  env_id, cost_low, cost_high, out):
-    fig = plt.figure(figsize=(25, 14))
+def make_overview(free_dfs, paid_001_dfs, paid_002_dfs, paid_003_dfs,
+                  paid_004_dfs, paid_005_dfs, base_dfs, env_id, out):
+    n_rows = 7
+    fig = plt.figure(figsize=(25, n_rows * 4.5))
     fig.patch.set_facecolor('#FAFAFA')
 
     gs = gridspec.GridSpec(
-        3, 5, figure=fig,
+        n_rows, 5, figure=fig,
         hspace=0.55, wspace=0.35,
         left=0.06, right=0.98,
-        top=0.90,  bottom=0.07,
+        top=0.95,  bottom=0.04,
     )
 
-    row0 = [fig.add_subplot(gs[0, c]) for c in range(5)]
-    row1 = [fig.add_subplot(gs[1, c]) for c in range(5)]
-    row2 = [fig.add_subplot(gs[2, c]) for c in range(5)]
+    rows = [[fig.add_subplot(gs[r, c]) for c in range(5)] for r in range(n_rows)]
 
-    for ax in row0 + row1 + row2:
-        ax.set_facecolor('#F5F5F5')
+    for row in rows:
+        for ax in row:
+            ax.set_facecolor('#F5F5F5')
 
-
-    build_row(row0, free_dfs,      base_dfs, f'Free Oracle\n(cost=0.0)')
-    build_row(row1, paid_low_dfs,  base_dfs, f'Paid Oracle\n(cost={cost_low})')
-    build_row(row2, paid_high_dfs, base_dfs, f'Paid Oracle\n(cost={cost_high})')
+    build_row(rows[0], free_dfs,      base_dfs, 'Free Oracle\n(cost=0.00)')
+    build_row(rows[1], paid_001_dfs,  base_dfs, 'Paid Oracle\n(cost=0.01)')
+    build_row(rows[2], paid_002_dfs,  base_dfs, 'Paid Oracle\n(cost=0.02)')
+    build_row(rows[3], paid_003_dfs,  base_dfs, 'Paid Oracle\n(cost=0.03)')
+    build_row(rows[4], paid_004_dfs,  base_dfs, 'Paid Oracle\n(cost=0.04)')
+    build_row(rows[5], paid_005_dfs,  base_dfs, 'Paid Oracle\n(cost=0.05)')
+    build_row(rows[6], base_dfs,      base_dfs, 'Baseline PPO\n(no oracle)')
 
     handles = [
         Line2D([0], [0], color=C['oracle'],   lw=2, label='PPO + Oracle'),
@@ -214,22 +243,26 @@ def make_overview(free_dfs, paid_low_dfs, paid_high_dfs, base_dfs,
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--free-csv',      nargs='+', required=True)
-    parser.add_argument('--paid-low-csv',  nargs='+', required=True)
-    parser.add_argument('--paid-high-csv', nargs='+', required=True)
+    parser.add_argument('--paid-001-csv',  nargs='+', required=True)
+    parser.add_argument('--paid-002-csv',  nargs='+', required=True)
+    parser.add_argument('--paid-003-csv',  nargs='+', required=True)
+    parser.add_argument('--paid-004-csv',  nargs='+', required=True)
+    parser.add_argument('--paid-005-csv',  nargs='+', required=True)
     parser.add_argument('--base-csv',      nargs='+', required=True)
-    parser.add_argument('--env-id',        type=str,   default='MiniGrid-DoorKey-8x8-v0')
-    parser.add_argument('--cost-low',      type=float, default=0.01)
-    parser.add_argument('--cost-high',     type=float, default=0.05)
-    parser.add_argument('--out',           type=str,   default='figures/overview.png')
+    parser.add_argument('--env-id',        type=str,  default='MiniGrid-DoorKey-8x8-v0')
+    parser.add_argument('--out',           type=str,  default='figures/overview.png')
+    parser.add_argument('--min-steps',     type=int,  default=0)
     args = parser.parse_args()
 
-    free_dfs      = load_csvs(args.free_csv)
-    paid_low_dfs  = load_csvs(args.paid_low_csv)
-    paid_high_dfs = load_csvs(args.paid_high_csv)
-    base_dfs      = load_csvs(args.base_csv)
-
-    make_overview(free_dfs, paid_low_dfs, paid_high_dfs, base_dfs,
-                  env_id=args.env_id,
-                  cost_low=args.cost_low,
-                  cost_high=args.cost_high,
-                  out=args.out)
+    ms = args.min_steps
+    make_overview(
+        free_dfs     = load_csvs(args.free_csv,     ms),
+        paid_001_dfs = load_csvs(args.paid_001_csv, ms),
+        paid_002_dfs = load_csvs(args.paid_002_csv, ms),
+        paid_003_dfs = load_csvs(args.paid_003_csv, ms),
+        paid_004_dfs = load_csvs(args.paid_004_csv, ms),
+        paid_005_dfs = load_csvs(args.paid_005_csv, ms),
+        base_dfs     = load_csvs(args.base_csv,     ms),
+        env_id=args.env_id,
+        out=args.out,
+    )

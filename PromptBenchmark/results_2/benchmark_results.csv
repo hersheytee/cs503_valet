@@ -1,0 +1,1611 @@
+sample_id,model,model_name,view,variant,env,complexity,mission,agent_carrying,optimal_actions,action_names,raw_output,predicted_action,correct,parse_failed,latency_ms
+00000,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,1666
+00001,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,149
+00002,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00003,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00004,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00005,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00006,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,150
+00007,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00008,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,70
+00009,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00010,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00011,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00012,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,150
+00013,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,149
+00014,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00015,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00016,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,149
+00017,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,149
+00018,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,148
+00019,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00020,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,69
+00021,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,150
+00022,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00023,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00024,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00025,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,148
+00026,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00027,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,149
+00028,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00029,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00030,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00031,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00032,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00033,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,149
+00034,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00035,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00036,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00037,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00038,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00039,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,151
+00041,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00042,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00043,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,150
+00044,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00045,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00046,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00047,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,151
+00049,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00050,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00051,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00052,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00053,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00054,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,149
+00055,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00056,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00057,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00059,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,150
+00060,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,151
+00061,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,70
+00062,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00063,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,156
+00065,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00066,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,69
+00067,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00068,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00069,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00070,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00071,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,151
+00072,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00073,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,72
+00074,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,149
+00075,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,150
+00076,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,150
+00077,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00078,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,150
+00079,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,150
+00080,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00081,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,151
+00082,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00083,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00084,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,150
+00085,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,150
+00086,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00087,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00088,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00090,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00091,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00092,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00093,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00094,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,150
+00095,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00096,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00097,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,150
+00098,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,149
+00099,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,69
+00100,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],3,3,True,False,150
+00101,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00102,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,69
+00103,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00104,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00105,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,70
+00106,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,150
+00107,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,150
+00108,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,69
+00109,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],3,3,True,False,69
+00110,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00111,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,69
+00112,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00113,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,150
+00114,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,69
+00115,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 2]","['turn_left', 'forward']",2,2,True,False,150
+00116,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00117,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00118,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,149
+00119,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00120,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00121,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,150
+00122,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00123,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00124,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,149
+00125,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00126,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,149
+00127,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,150
+00128,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,150
+00129,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,149
+00130,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00131,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,150
+00132,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,151
+00133,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,151
+00134,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00135,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00136,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00137,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,70
+00138,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00139,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00140,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00141,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,72
+00142,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00143,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,150
+00145,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,69
+00146,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,151
+00147,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00148,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,151
+00149,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,151
+00150,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00151,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,150
+00152,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00153,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,69
+00154,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,150
+00155,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00156,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,69
+00157,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00158,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00159,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00161,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']",2,2,True,False,150
+00162,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,151
+00163,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00165,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,150
+00167,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,149
+00168,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,151
+00169,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00170,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,150
+00171,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00172,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00173,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']",2,2,True,False,150
+00174,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00175,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,149
+00176,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00177,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,149
+00178,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00179,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00180,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00181,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,150
+00183,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,69
+00184,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,72
+00185,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00186,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,147
+00187,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,150
+00188,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00189,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00190,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,150
+00191,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00192,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,71
+00193,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,69
+00194,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00195,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,150
+00196,internvl3,InternVL3 8B,global,baseline,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,151
+00197,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,150
+00198,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,71
+00199,internvl3,InternVL3 8B,global,baseline,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,149
+00000,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,90
+00001,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00002,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00003,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00004,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00005,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00006,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,101
+00007,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00008,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,86
+00009,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00010,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00011,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00012,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00013,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00014,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00015,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00016,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,101
+00017,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,101
+00018,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00019,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00020,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,86
+00021,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00022,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00023,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00024,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00025,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00026,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,199
+00027,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,101
+00028,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00029,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],3,3,False,False,101
+00030,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00031,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00032,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00033,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00034,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00035,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00036,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00037,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00038,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00039,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00041,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00042,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00043,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00044,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00045,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00046,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00047,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,101
+00049,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00050,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00051,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00052,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00053,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00054,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,101
+00055,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],3,3,False,False,101
+00056,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00057,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00059,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00060,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,102
+00061,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00062,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00063,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,101
+00065,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00066,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,86
+00067,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00068,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00069,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00070,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00071,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00072,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00073,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00074,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,104
+00075,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00076,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00077,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00078,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,101
+00079,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,101
+00080,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00081,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00082,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00083,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00084,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00085,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,101
+00086,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00087,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00088,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00090,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00091,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00092,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00093,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],3,3,False,False,101
+00094,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,101
+00095,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",3,3,False,False,101
+00096,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00097,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],3,3,True,False,101
+00098,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,104
+00099,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,101
+00100,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,101
+00101,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00102,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,86
+00103,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00104,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],3,3,False,False,101
+00105,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00106,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00107,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00108,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,101
+00109,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,101
+00110,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00111,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00112,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00113,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,101
+00114,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,101
+00115,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 2]","['turn_left', 'forward']",2,2,True,False,101
+00116,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00117,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00118,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,101
+00119,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00120,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00121,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,101
+00122,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00123,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00124,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,101
+00125,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00126,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00127,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,102
+00128,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,100
+00129,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,101
+00130,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00131,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,104
+00132,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00133,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00134,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00135,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00136,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00137,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,86
+00138,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00139,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,102
+00140,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00141,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,86
+00142,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00143,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],3,3,False,False,101
+00145,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00146,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00147,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00148,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00149,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00150,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00151,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00152,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00153,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,86
+00154,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,101
+00155,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00156,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00157,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00158,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00159,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00161,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']",2,2,True,False,101
+00162,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00163,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00165,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,101
+00167,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,101
+00168,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00169,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,102
+00170,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,100
+00171,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00172,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00173,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']",2,2,True,False,101
+00174,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00175,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,104
+00176,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00177,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,101
+00178,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00179,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00180,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00181,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00183,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,86
+00184,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00185,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00186,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00187,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],3,3,True,False,102
+00188,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00189,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,86
+00190,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,102
+00191,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00192,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00193,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,87
+00194,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00195,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],3,3,True,False,101
+00196,internvl3,InternVL3 8B,global,history,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,102
+00197,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00198,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,101
+00199,internvl3,InternVL3 8B,global,history,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00000,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,93
+00001,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00002,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,105
+00003,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,105
+00004,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00005,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,105
+00006,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,105
+00007,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,105
+00008,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00009,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,105
+00010,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00011,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,105
+00012,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00013,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00014,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,105
+00015,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00016,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,105
+00017,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,105
+00018,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00019,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00020,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,102
+00021,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,105
+00022,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00023,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00024,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,105
+00025,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00026,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00027,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,105
+00028,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00029,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],3,3,False,False,104
+00030,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00031,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,103
+00032,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,105
+00033,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00034,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00035,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00036,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00037,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00038,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00039,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00041,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00042,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00043,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00044,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,105
+00045,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00046,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00047,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00049,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00050,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00051,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00052,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00053,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00054,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,104
+00055,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00056,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00057,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00059,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00060,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,105
+00061,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,101
+00062,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00063,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00065,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00066,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00067,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00068,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00069,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,103
+00070,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00071,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00072,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00073,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00074,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,104
+00075,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00076,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,105
+00077,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00078,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00079,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00080,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00081,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00082,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00083,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00084,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00085,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00086,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00087,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00088,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,105
+00090,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00091,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00092,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00093,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],3,3,False,False,104
+00094,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00095,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00096,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00097,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00098,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,104
+00099,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00100,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00101,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00102,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,103
+00103,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00104,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00105,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00106,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00107,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00108,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,105
+00109,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],3,3,True,False,101
+00110,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00111,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00112,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00113,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,106
+00114,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00115,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 2]","['turn_left', 'forward']",2,2,True,False,104
+00116,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00117,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00118,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,104
+00119,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00120,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00121,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00122,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00123,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00124,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,105
+00125,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,103
+00126,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00127,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00128,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00129,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,105
+00130,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00131,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,104
+00132,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00133,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00134,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00135,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00136,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00137,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,102
+00138,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00139,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00140,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00141,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,86
+00142,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00143,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00145,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00146,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00147,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00148,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00149,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00150,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00151,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00152,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00153,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00154,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00155,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00156,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,101
+00157,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00158,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00159,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00161,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']",2,2,True,False,104
+00162,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00163,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00165,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00167,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,104
+00168,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00169,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00170,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00171,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00172,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00173,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']",2,2,True,False,104
+00174,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00175,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,104
+00176,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00177,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,105
+00178,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00179,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00180,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00181,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,105
+00183,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,102
+00184,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,101
+00185,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00186,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00187,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,105
+00188,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00189,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,102
+00190,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00191,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00192,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00193,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,101
+00194,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00195,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00196,internvl3,InternVL3 8B,global,history_reason,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00197,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00198,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,104
+00199,internvl3,InternVL3 8B,global,history_reason,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,103
+00000,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located to the right of the agent.
+2. The path is blocked by a black wall.
+3. The agent needs to move forward to progress towards the goal.
+
+REPLY: 2",1,True,False,1008
+00001,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,102
+00002,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located to the right of the agent.
+2. The yellow square with the minus sign is blocking the path.
+3. The most effective action is to pick up the key (action 3) to remove the obstacle.
+
+REPLY: 3",1,True,False,1260
+00003,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located at the bottom right corner of the grid.
+2. The key is to the left of the agent, and the door is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+Action: 3",1,True,False,1283
+00004,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall in the middle of the grid.
+3. The most progress can be made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1216
+00005,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,102
+00006,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located to the right of the agent.
+2. The key is blocking the path to the right.
+3. The agent should pick up the key to progress.
+
+Action: 3 (pickup)",1,False,False,1041
+00007,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located to the right of the agent.
+2. The key is blocking the path to the goal.
+3. The single action that makes the most progress is to pick up the key.
+
+REPLY: 3",1,True,False,1107
+00008,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,73
+00009,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square directly in front of the agent.
+3. The most effective action is to move forward to clear the path.
+
+REPLY: 2",1,True,False,1216
+00010,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,101
+00011,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the left side and a yellow square with a minus sign.
+3. The most progress can be made by moving forward to clear the path.
+
+REPLY: 2",1,True,False,1370
+00012,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares, and there is a red triangle in the second column from the left, second row from the top.
+3. The most progress can be made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1527
+00013,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+Action: 3",1,False,False,1040
+00014,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,True,False,1064
+00015,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a shaded area.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1023
+00016,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1065
+00017,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a shaded area in the middle of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,True,False,1219
+00018,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall in the top row.
+3. The most progress is made by moving forward.
+
+REPLY: 2",1,False,False,1066
+00019,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located to the right of the agent.
+2. The door is blocking the path to the right.
+3. The agent needs to pick up the key first to open the door.
+
+Action: 3 (pickup)",1,False,False,1129
+00020,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located to the right of the agent.
+2. The yellow square with the minus sign is blocking the path.
+3. The most effective action is to pick up the key (action 3) to remove the obstacle.
+
+REPLY: 3",1,True,False,1231
+00021,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],1,1,False,False,102
+00022,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path between the agent and the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1130
+00023,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1066
+00024,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+Action: 3",1,True,False,1041
+00025,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a dark gray square in the middle of the grid.
+3. The most progress can be made by moving forward to bypass the blockage.
+
+REPLY: 2",1,False,False,1285
+00026,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00027,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by the red triangle.
+3. The agent needs to move forward to bypass the obstacle.
+
+REPLY: 2",1,True,False,1043
+00028,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom right corner of the grid.
+2. The path is blocked by a wall of gray squares.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1066
+00029,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The single action that makes the most progress is to pick up the key.
+
+REPLY: 3",1,False,False,1151
+00030,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The door is blocking the path, and it requires the key to open.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1173
+00031,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a shaded area.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1022
+00032,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal, and there is a door that needs to be opened.
+3. The most progress can be made by picking up the key.
+
+REPLY: 3",1,True,False,1326
+00033,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The agent should pick up the key to progress.
+
+REPLY: 3",1,False,False,1042
+00034,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a red triangle.
+3. The agent needs to move forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1044
+00035,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,102
+00036,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a gray section in the middle of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1219
+00037,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall in the middle of the grid.
+3. The most progress can be made by moving forward to bypass the wall.
+
+REPLY: 2",1,False,False,1217
+00038,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located to the right of the agent.
+2. The yellow square with the minus sign is blocking the path to the right.
+3. The most progress can be made by picking up the key (action 3) to remove the obstacle.
+
+REPLY: 3",1,True,False,1349
+00039,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side and a black wall below the key.
+3. The most progress can be made by moving forward to reach the key.
+
+REPLY: 2",1,True,False,1347
+00041,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square directly in front of the agent.
+3. The agent needs to move forward to progress towards the goal.
+
+REPLY: 2",1,True,False,1198
+00042,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares, and there is a red triangle in the second column from the left, second row from the bottom.
+3. The most progress can be made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1525
+00043,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],1,1,False,False,102
+00044,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located in the bottom right corner of the grid.
+2. The key is in the middle of the grid, and there is a wall blocking the path to the goal.
+3. The agent should move forward to get closer to the key.
+
+REPLY: 2",1,True,False,1348
+00045,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square directly in front of the agent.
+3. The agent needs to move forward to progress towards the goal.
+
+REPLY: 2",1,False,False,1197
+00046,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located at the bottom-right corner of the grid.
+2. The path is blocked by a gray square.
+3. The agent needs to move forward to bypass the blockage.
+
+REPLY: 2",1,False,False,1066
+00047,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],"1. The goal is located in the bottom-right corner of the grid.
+2. The yellow square with a minus sign is blocking the path to the goal.
+3. The most progress is made by moving forward to reach the yellow square.
+
+Action: 2",1,False,False,1216
+00049,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1064
+00050,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1066
+00051,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square in the middle.
+3. The most direct action to make progress is to move forward.
+
+REPLY: 2",1,False,False,1129
+00052,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a gray square in the upper-left quadrant.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1197
+00053,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00054,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[0],['turn_left'],"1. The goal is located in the bottom-right corner of the grid.
+2. There is no immediate obstacle blocking the path from the agent's current position to the goal.
+3. The most direct action to make progress towards the goal is to move forward.
+
+REPLY: 2",1,False,False,1328
+00055,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,102
+00056,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located at the bottom-right corner of the grid.
+2. The path is blocked by a wall on the left side of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1219
+00057,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a shaded area in the middle of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1219
+00059,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The most direct action is to move forward.
+
+REPLY: 2",1,False,False,978
+00060,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1063
+00061,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square directly in front of the agent.
+3. The most effective action is to move forward to clear the path.
+
+REPLY: 2",1,True,False,1187
+00062,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a gray section.
+3. The agent needs to move forward to bypass the blockage.
+
+REPLY: 2",1,False,False,1067
+00063,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],1,1,False,False,102
+00065,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a gray section in the middle of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1219
+00066,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square in the middle.
+3. The most direct action to make progress is to move forward.
+
+REPLY: 2",1,False,False,1100
+00067,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is in the same room as the agent, and the door is in the adjacent room to the right.
+3. The agent needs to move forward to reach the key first.
+
+REPLY: 2",1,False,False,1370
+00068,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located in the bottom right corner of the grid.
+2. The path is blocked by a wall on the right side of the grid.
+3. The most progress can be made by moving forward to reach the key.
+
+REPLY: 2",1,True,False,1238
+00069,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00070,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located at the bottom-right corner of the grid.
+2. The path is blocked by a gray square in the middle of the grid.
+3. The most progress can be made by moving forward to bypass the blockage.
+
+REPLY: 2",1,False,False,1263
+00071,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side of the grid.
+3. The most progress can be made by moving forward to reach the key.
+
+REPLY: 2",1,False,False,1260
+00072,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1066
+00073,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1034
+00074,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],"1. The goal is located in the bottom right corner of the grid.
+2. The path is blocked by black squares, and there is a red triangle in the way.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1285
+00075,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located in the bottom-right corner of the grid.
+2. The yellow square is blocking the path to the goal.
+3. The most progress is made by moving forward to reach the yellow square.
+
+REPLY: 2",1,False,False,1153
+00076,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],1,1,False,False,99
+00077,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1035
+00078,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],"1. The goal is to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress is made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1063
+00079,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located in the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The single action that makes the most progress is to pick up the key.
+
+REPLY: 3",1,False,False,1151
+00080,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall of gray squares on the left side of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1285
+00081,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located in the bottom right corner of the grid.
+2. The yellow square with a minus sign is blocking the path to the goal.
+3. The most direct action to make progress is to move forward.
+
+REPLY: 2",1,True,False,1195
+00082,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located at the bottom-right corner of the grid.
+2. The path is blocked by a gray square in the middle of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1219
+00083,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path between the agent and the door.
+3. The single action that makes the most progress is to pick up the key.
+
+REPLY: 3",1,False,False,1216
+00084,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located at the bottom-right corner of the grid.
+2. The path is blocked by a gray square in the middle of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1220
+00085,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],"1. The goal is located to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress is made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1085
+00086,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black vertical wall on the left side of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1263
+00087,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00088,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side and a yellow square that needs to be toggled.
+3. The most progress can be made by toggling the yellow square to clear the path.
+
+REPLY: 5",1,True,False,1478
+00090,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00091,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00092,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a shaded area.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1023
+00093,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1063
+00094,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located at the bottom right corner of the grid.
+2. The door is blocking the path, and it requires the key to open.
+3. The single action that makes the most progress is to move forward to reach the key.
+
+REPLY: 2",1,False,False,1304
+00095,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall (black square) and the key is in the way.
+3. The most progress is made by picking up the key.
+
+Action: 3 (pickup)",1,True,False,1304
+00096,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located to the right of the agent.
+2. The black blocks are blocking the path to the right.
+3. The most progress is made by moving forward to clear the path.
+
+REPLY: 2",1,True,False,1088
+00097,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located in the bottom right corner of the grid.
+2. The key is in the top left corner, and there is a wall blocking the path to the goal.
+3. The most progress can be made by picking up the key first.
+
+REPLY: 3",1,False,False,1346
+00098,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares, with the closest being directly in front of the agent.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,True,False,1306
+00099,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],"1. The goal is to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress is made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1034
+00100,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located in the bottom-right corner of the grid.
+2. The key is in the top-left corner, and there is a wall (black square) directly in front of the agent's initial position.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1457
+00101,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1063
+00102,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],"1. The goal is to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress is made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1035
+00103,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The door is blocking the path, and it requires the key to open.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1173
+00104,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side of the grid.
+3. The most progress is made by moving forward to reach the key.
+
+REPLY: 2",1,False,False,1239
+00105,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1034
+00106,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00107,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+Action: 3",1,False,False,1042
+00108,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],"1. The goal is located to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress is made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1056
+00109,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located in the bottom-right corner of the grid.
+2. The key is in the top-left corner, and there is a wall (black square) directly in front of the agent's initial position.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1427
+00110,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square directly in front of the agent.
+3. The agent needs to move forward to bypass the blockage.
+
+REPLY: 2",1,False,False,1187
+00111,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall in the middle of the grid.
+3. The most progress can be made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1189
+00112,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side of the agent.
+3. The most progress can be made by moving forward to clear the path.
+
+REPLY: 2",1,False,False,1258
+00113,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],1,1,False,False,102
+00114,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],"1. The goal is to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress is made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1034
+00115,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 2]","['turn_left', 'forward']","1. The goal is located at the bottom right corner of the grid.
+2. The path is blocked by a wall in the middle of the grid.
+3. The most progress is made by moving forward to reach the key.
+
+Action: 2",1,False,False,1173
+00116,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00117,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located at the bottom-right corner of the grid.
+2. The path is blocked by a wall of gray squares.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1066
+00118,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by the black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1088
+00119,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located in the right grid, below the key.
+2. The path is blocked by the wall separating the two grids.
+3. The agent needs to move forward to reach the key first.
+
+REPLY: 2",1,True,False,1129
+00120,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom right corner of the grid.
+2. The path is blocked by a wall of black squares on the left side and a wall of black squares on the right side.
+3. The most progress can be made by moving forward to align with the key.
+
+REPLY: 2",1,False,False,1479
+00121,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],1,1,False,False,93
+00122,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is clear except for the agent's current position.
+3. Moving forward (DOWN) is the most direct action to progress towards the goal.
+
+REPLY: 2",1,False,False,1219
+00123,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side of the agent.
+3. The most progress can be made by moving forward to clear the path.
+
+REPLY: 2",1,False,False,1260
+00124,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,104
+00125,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The door is blocking the path, and it is located in the middle of the grid.
+3. The most progress can be made by picking up the key.
+
+REPLY: 3",1,False,False,1260
+00126,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The most direct action is to move forward.
+
+REPLY: 2",1,True,False,979
+00127,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress can be made by moving forward to clear the path.
+
+REPLY: 2",1,False,False,1107
+00128,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall of gray squares.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1066
+00129,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,104
+00130,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall on the right side of the agent.
+3. The most progress is made by moving forward to align with the key.
+
+REPLY: 2",1,True,False,1238
+00131,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,104
+00132,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],1,1,False,False,102
+00133,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located in the right grid, at the bottom right corner.
+2. The path is blocked by the wall between the two grids.
+3. The agent needs to move forward to reach the key first.
+
+REPLY: 2",1,False,False,1173
+00134,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,102
+00135,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located at the bottom right corner of the grid.
+2. The door is blocking the path to the goal.
+3. The agent needs to pick up the key to open the door.
+
+Action: 3 (pickup)",1,True,False,1151
+00136,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,72
+00137,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square directly in front of the agent.
+3. The most effective action is to move forward to clear the path.
+
+REPLY: 2",1,True,False,1187
+00138,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located to the right of the agent.
+2. The black square is blocking the path directly in front of the agent.
+3. The most progress is made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,True,False,1151
+00139,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the right grid.
+2. The door is blocking the path, and it is located in the middle of the left grid.
+3. The single action that makes the most progress is to move forward to reach the key.
+
+REPLY: 2",1,False,False,1413
+00140,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,72
+00141,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],"1. The goal is located in the bottom right corner of the grid.
+2. The path is blocked by black squares, and there is a red triangle in the way.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1252
+00142,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1034
+00143,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,101
+00145,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square in the middle.
+3. The most direct action to make progress is to move forward.
+
+REPLY: 2",1,False,False,1099
+00146,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+Action: 3",1,False,False,1042
+00147,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall.
+3. The most progress is made by moving forward to reach the key.
+
+REPLY: 2",1,False,False,1085
+00148,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,True,False,1063
+00149,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],1,1,False,False,102
+00150,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black vertical wall on the left side.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1197
+00151,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress is made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1085
+00152,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1035
+00153,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square in the middle.
+3. The most direct action to make progress is to move forward.
+
+REPLY: 2",1,False,False,1099
+00154,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall on the right side of the grid.
+3. The most progress can be made by moving forward to reach the key.
+
+REPLY: 2",1,True,False,1238
+00155,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall on the right side of the grid.
+3. To make the most progress, the agent should move forward.
+
+REPLY: 2",1,False,False,1197
+00156,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located to the right of the agent.
+2. The black square is blocking the path to the goal.
+3. The most progress can be made by moving forward to clear the path.
+
+REPLY: 2",1,False,False,1077
+00157,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side of the grid.
+3. The most progress can be made by moving forward to clear the path.
+
+REPLY: 2",1,False,False,1260
+00158,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square in the middle of the grid.
+3. The most progress can be made by moving forward to reach the yellow square, which can then be used to toggle the black square to open the path.
+
+Action: 2 (forward)",1,False,False,1632
+00159,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a gray square.
+3. The agent needs to move forward to bypass the blockage.
+
+REPLY: 2",1,False,False,1066
+00161,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']","1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side of the grid.
+3. The most progress can be made by moving forward to clear the path.
+
+REPLY: 2",1,True,False,1260
+00162,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],1,1,False,False,102
+00163,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall on the right side of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1219
+00165,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located in the bottom-right corner of the grid.
+2. The key is in the top-right corner, and the door is in the top-right corner blocking the path.
+3. The most progress is made by picking up the key.
+
+Action: 3 (pickup)",1,False,False,1369
+00167,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall in the bottom row.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1088
+00168,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black wall on the right side and a yellow square with a minus sign.
+3. The most progress can be made by moving forward to clear the path.
+
+REPLY: 2",1,True,False,1370
+00169,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,False,False,1063
+00170,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],"1. The goal is located to the right of the agent.
+2. The yellow square with a minus sign is blocking the path.
+3. The most progress is made by moving forward.
+
+REPLY: 2",1,False,False,1020
+00171,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a gray wall.
+3. The agent needs to move forward to progress towards the goal.
+
+REPLY: 2",1,False,False,1066
+00172,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,73
+00173,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']","1. The goal is to the right of the agent.
+2. The yellow square with a minus sign is blocking the path.
+3. The most progress is made by moving forward.
+
+REPLY: 2",1,True,False,998
+00174,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The door is blocking the path, and it is located to the right of the agent.
+3. The single action that makes the most progress is to move forward to reach the door.
+
+REPLY: 2",1,False,False,1370
+00175,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares.
+3. The most direct action is to move forward.
+
+REPLY: 2",1,True,False,979
+00176,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located at the bottom right corner of the grid.
+2. The door is blocking the path, and it is located to the left of the agent.
+3. The single action that makes the most progress is to move forward to reach the door.
+
+REPLY: 2",1,False,False,1370
+00177,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a shaded area.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,True,False,1022
+00178,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,72
+00179,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00180,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a shaded area.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1023
+00181,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares, with a yellow square acting as a key in the way.
+3. The most progress is made by moving forward to reach the key.
+
+REPLY: 2",1,False,False,1326
+00183,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall in the middle of the grid.
+3. The most progress can be made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1187
+00184,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares, and there is a red triangle in the second column from the left, second row from the top.
+3. The most progress can be made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1493
+00185,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,72
+00186,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The agent is currently facing right, and there is a block of gray squares blocking the path to the goal.
+3. The agent needs to move forward to progress towards the goal.
+
+REPLY: 2",1,False,False,1350
+00187,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located in the green square, which is directly to the right of the agent.
+2. The black square with the minus sign is blocking the path to the goal.
+3. The most direct action to make progress is to move forward (DOWN).
+
+REPLY: 2",1,False,False,1369
+00188,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a wall of gray squares on the left side of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1286
+00189,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by black squares, and there is a red triangle in the second column from the left, second row from the top.
+3. The most progress can be made by moving forward to bypass the obstacle.
+
+REPLY: 2",1,False,False,1492
+00190,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,100
+00191,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located at the bottom-right corner of the grid.
+2. The path is blocked by a gray square in the middle of the grid.
+3. The agent needs to move forward to make progress towards the goal.
+
+REPLY: 2",1,False,False,1220
+00192,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square directly in front of the agent.
+3. The agent needs to move forward to bypass the blockage.
+
+REPLY: 2",1,False,False,1165
+00193,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is blocked by a black square in the middle.
+3. The most direct action to make progress is to move forward.
+
+REPLY: 2",1,False,False,1100
+00194,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom-right corner of the grid.
+2. The path is clear except for the agent's current position.
+3. Moving forward (DOWN) is the most direct action to progress towards the goal.
+
+REPLY: 2",1,False,False,1219
+00195,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The goal is located in the bottom right corner of the grid.
+2. The path is blocked by black squares, and there is a yellow square with a minus sign that needs to be toggled to open the door.
+3. The most progress is made by toggling the yellow square to open the door.
+
+REPLY: 5",1,False,False,1588
+00196,internvl3,InternVL3 8B,global,cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The goal is located at the bottom right corner of the grid.
+2. The key is blocking the path to the goal.
+3. The most progress is made by picking up the key.
+
+REPLY: 3",1,True,False,1063
+00197,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom right corner of the grid.
+2. The path is blocked by a wall of gray squares.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1066
+00198,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,72
+00199,internvl3,InternVL3 8B,global,cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],"1. The goal is located in the bottom right corner of the grid.
+2. The path is blocked by a wall of gray squares.
+3. The agent needs to move forward to make progress.
+
+REPLY: 2",1,False,False,1066
+00000,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,91
+00001,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00002,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,90
+00003,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1
+2
+3",1,True,False,191
+00004,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00005,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,104
+00006,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],1,1,False,False,104
+00007,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,104
+00008,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00009,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1
+2",1,True,False,148
+00010,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00011,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,104
+00012,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00013,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2",1,False,False,148
+00014,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,103
+00015,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00016,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,106
+00017,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,106
+00018,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00019,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,104
+00020,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00021,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00022,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2",1,False,False,148
+00023,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00024,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1. Yes, your past actions made progress toward the goal. You picked up the key and are now facing the correct direction to reach the goal.
+2. The goal is to the right of your current position.
+3. The most progress now is to move forward.
+
+Action: 2",1,True,False,1350
+00025,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00026,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00027,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,106
+00028,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00029,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00030,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,104
+00031,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00032,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,104
+00033,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00034,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,105
+00035,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,104
+00036,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00037,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,103
+00038,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00039,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00041,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,106
+00042,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00043,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],1,1,False,False,104
+00044,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,104
+00045,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00046,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00047,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00049,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00050,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00051,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2
+3",1,False,False,191
+00052,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00053,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00054,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,106
+00055,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00056,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00057,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00059,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00060,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],1,1,False,False,104
+00061,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00062,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00063,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,103
+00065,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00066,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2",1,False,False,148
+00067,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00068,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,104
+00069,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00070,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00071,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00072,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00073,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,105
+00074,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,106
+00075,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00076,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00077,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,105
+00078,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,106
+00079,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],1,1,False,False,102
+00080,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00081,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,105
+00082,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00083,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2",1,False,False,148
+00084,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00085,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00086,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00087,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00088,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00090,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00091,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00092,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00093,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2
+3",1,False,False,191
+00094,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,104
+00095,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,104
+00096,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00097,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],1,1,False,False,104
+00098,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,106
+00099,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,112
+00100,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. The past actions did not make progress toward the goal. The agent turned around, which means it is still facing the same direction it started with, and did not move forward to reach the key or the goal.
+2. The goal is located in the bottom-right corner of the grid, which is the green square.
+3. The most progress can be made by moving forward to reach the key.
+
+Action: 2",1,False,False,1933
+00101,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,104
+00102,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00103,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,104
+00104,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2
+3",1,False,False,191
+00105,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00106,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00107,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00108,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00109,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1. Yes, your past actions made progress toward the goal. You picked up the key and moved closer to the door.
+2. The goal is to the right of your current position.
+3. The most progress now is to move forward.
+
+Action: 2",1,False,False,1241
+00110,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00111,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00112,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00113,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00114,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00115,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,"[0, 2]","['turn_left', 'forward']",2,2,True,False,104
+00116,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00117,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00118,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],1,1,False,False,105
+00119,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. Yes, your past actions have made progress toward the goal. You picked up the key and moved closer to the door.
+2. The goal is to the right of your current position.
+3. The most progress now is to move forward.
+
+Action: 2",1,True,False,1262
+00120,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00121,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],2,2,False,False,103
+00122,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00123,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00124,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,106
+00125,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,104
+00126,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,"[0, 1]","['turn_left', 'turn_right']",1,1,True,False,106
+00127,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00128,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00129,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,105
+00130,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00131,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,106
+00132,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00133,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00134,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00135,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00136,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00137,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],"1. The past actions (turn_left, turn_left, turn_left, turn_right, pickup) suggest the agent is moving around the environment and picking up an item. However, without knowing the exact layout or the goal's location, it's unclear if progress toward the goal has been made.
+
+2. The goal's relative position is unknown, but the agent is currently facing forward (UP).
+
+3. The most logical action to make progress now is to move forward (2) to see if it leads toward the goal.
+
+Action: 2",1,True,False,2467
+00138,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']",2,2,False,False,104
+00139,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,104
+00140,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00141,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,104
+00142,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,105
+00143,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,103
+00145,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2",1,False,False,148
+00146,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00147,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00148,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],1,1,True,False,104
+00149,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00150,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00151,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00152,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00153,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],"1. Yes, your past actions made progress toward the goal. You picked up the key and moved forward, which brought you closer to the goal.
+2. The goal is to the right of your current position.
+3. The most progress now is to move forward.
+
+Action: 2",1,False,False,1350
+00154,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[0, 1]","['turn_left', 'turn_right']","1
+2
+3",1,True,False,191
+00155,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00156,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00157,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,103
+00158,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00159,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00161,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']",2,2,True,False,104
+00162,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,105
+00163,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,104
+00165,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],"1
+2",1,False,False,148
+00167,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[0],['turn_left'],2,2,False,False,106
+00168,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,103
+00169,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],"1
+2",1,False,False,148
+00170,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[5],['toggle'],2,2,False,False,104
+00171,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00172,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00173,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,"[1, 2]","['turn_right', 'forward']",2,2,True,False,104
+00174,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,104
+00175,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,105
+00176,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00177,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[1],['turn_right'],1,1,True,False,106
+00178,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00179,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00180,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],1,1,False,False,106
+00181,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[0],['turn_left'],2,2,False,False,104
+00183,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,104
+00184,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00185,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00186,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00187,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],1,1,False,False,104
+00188,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00189,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00190,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],2,2,True,False,105
+00191,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00192,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,104
+00193,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-5x5-v0,medium,use the key to open the door and then get to the goal,,[2],['forward'],1,1,False,False,104
+00194,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,105
+00195,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-8x8-v0,medium,use the key to open the door and then get to the goal,,[3],['pickup'],1,1,False,False,104
+00196,internvl3,InternVL3 8B,global,history_cot,MiniGrid-DoorKey-16x16-v0,hard,use the key to open the door and then get to the goal,,[1],['turn_right'],2,2,False,False,104
+00197,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106
+00198,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-8x8-v0,simple,get to the green goal square,,[1],['turn_right'],2,2,False,False,105
+00199,internvl3,InternVL3 8B,global,history_cot,MiniGrid-Empty-16x16-v0,simple,get to the green goal square,,[2],['forward'],2,2,True,False,106

@@ -2,7 +2,7 @@
 #SBATCH --job-name=upperbound_all
 #SBATCH --output=logs/slurm_all_%j.out
 #SBATCH --error=logs/slurm_all_%j.err
-#SBATCH --time=10:00:00
+#SBATCH --time=20:00:00
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
@@ -17,32 +17,47 @@ conda activate nanofm
 pip install -q -r requirements.txt
 
 cd $SLURM_SUBMIT_DIR
-mkdir -p logs figures
+mkdir -p logs figures checkpoints
 
 ENV_ID="MiniGrid-DoorKey-8x8-v0"
 ENV_TYPE="doorkey"
 
 for SEED in 4 5 6 7 8; do
 
-    echo "=== Oracle gratuit       (cost=0.000) | seed=$SEED ==="
+    echo "=== Oracle gratuit        (cost=0.000) | seed=$SEED ==="
     python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
-        --seed "$SEED" --oracle-cost 0.0 \
-        --exp-name oracle_free --total-timesteps 500000
+        --seed "$SEED" --oracle-cost 0.0 --reward-shaping \
+        --exp-name oracle_free --total-timesteps 500000 --save-model
 
-    echo "=== Oracle payant faible (cost=0.005) | seed=$SEED ==="
+    echo "=== Oracle payant         (cost=0.010) | seed=$SEED ==="
     python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
-        --seed "$SEED" --oracle-cost 0.005 \
-        --exp-name oracle_paid_0005 --total-timesteps 500000
+        --seed "$SEED" --oracle-cost 0.01 --reward-shaping \
+        --exp-name oracle_paid_001 --total-timesteps 500000 --save-model
 
-    echo "=== Oracle payant moyen  (cost=0.010) | seed=$SEED ==="
+    echo "=== Oracle payant         (cost=0.020) | seed=$SEED ==="
     python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
-        --seed "$SEED" --oracle-cost 0.01 \
-        --exp-name oracle_paid_001 --total-timesteps 500000
+        --seed "$SEED" --oracle-cost 0.02 --reward-shaping \
+        --exp-name oracle_paid_002 --total-timesteps 500000 --save-model
 
-    echo "=== Baseline PPO                      | seed=$SEED ==="
+    echo "=== Oracle payant         (cost=0.030) | seed=$SEED ==="
     python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
-        --seed "$SEED" --no-oracle \
-        --exp-name baseline --total-timesteps 500000
+        --seed "$SEED" --oracle-cost 0.03 --reward-shaping \
+        --exp-name oracle_paid_003 --total-timesteps 500000 --save-model
+
+    echo "=== Oracle payant         (cost=0.040) | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --oracle-cost 0.04 --reward-shaping \
+        --exp-name oracle_paid_004 --total-timesteps 500000 --save-model
+
+    echo "=== Oracle payant élevé   (cost=0.050) | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --oracle-cost 0.05 --reward-shaping \
+        --exp-name oracle_paid_005 --total-timesteps 500000 --save-model
+
+    echo "=== Baseline PPO                       | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --no-oracle --reward-shaping \
+        --exp-name baseline --total-timesteps 500000 --save-model
 
 done
 

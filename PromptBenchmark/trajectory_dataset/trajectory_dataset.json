@@ -1,0 +1,5548 @@
+[
+  {
+    "id": "00000",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 0,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00000_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "forward",
+      "forward",
+      "pickup"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00001",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 1,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00001_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "pickup",
+      "turn_left",
+      "toggle"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00002",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 2,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00002_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "turn_left",
+      "pickup",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00003",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 3,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      5,
+      4
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00003_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00004",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 4,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00004_global.png",
+    "action_history": [
+      "turn_left",
+      "pickup",
+      "turn_right",
+      "toggle",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00005",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 5,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      8,
+      7
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00005_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_right",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00006",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 6,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      10
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00006_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00007",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 7,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      3
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00007_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_left",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00008",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 8,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00008_global.png",
+    "action_history": [
+      "turn_right",
+      "pickup",
+      "turn_left",
+      "forward",
+      "toggle"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00009",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 9,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00009_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "pickup",
+      "turn_left",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00010",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 10,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      6,
+      11
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00010_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00011",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 11,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      3
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00011_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "pickup",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00012",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 12,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00012_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00013",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 13,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      4
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00013_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "turn_right",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00014",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 14,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      3
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00014_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "turn_right",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00015",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 15,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      13,
+      8
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00015_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00016",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 16,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      2,
+      4
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00016_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00017",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 17,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      9
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00017_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00018",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 18,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      5
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00018_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00019",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 19,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      5,
+      10
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00019_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00020",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 20,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00020_global.png",
+    "action_history": [
+      "turn_right",
+      "pickup",
+      "turn_left",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00021",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 21,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      9
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00021_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "turn_left",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00022",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 22,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      6,
+      4
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00022_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "turn_left",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00023",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 23,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00023_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00024",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 24,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      3
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00024_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_right",
+      "turn_left",
+      "pickup"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00025",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 25,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      11
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00025_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00026",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 26,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      5
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00026_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00027",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 27,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      6
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00027_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00028",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 28,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      13
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00028_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00029",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 29,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      7,
+      7
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00029_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00030",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 30,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      10
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00030_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00031",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 31,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      14,
+      6
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00031_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_left",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00032",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 32,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      5,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00032_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00033",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 33,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      5
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00033_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "turn_left",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00034",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 34,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00034_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "turn_right",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00035",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 35,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      5
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00035_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00036",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 36,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      8,
+      7
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00036_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00037",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 37,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00037_global.png",
+    "action_history": [
+      "forward",
+      "pickup",
+      "turn_left",
+      "toggle",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00038",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 38,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00038_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "pickup"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00039",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 39,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00039_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "pickup"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00041",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 41,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      5
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00041_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "turn_left",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00042",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 42,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      2,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00042_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00043",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 43,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      6,
+      5
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00043_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "turn_left",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00044",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 44,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      3
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00044_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00045",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 45,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00045_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00046",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 46,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      7,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00046_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "turn_left",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00047",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 47,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      3
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00047_global.png",
+    "action_history": [
+      "turn_left",
+      "pickup",
+      "turn_left",
+      "turn_left",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00049",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 49,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00049_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "pickup",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00050",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 50,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00050_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00051",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 51,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00051_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "pickup",
+      "turn_left",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00052",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 52,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      3,
+      3
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00052_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00053",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 53,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00053_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00054",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 54,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      14
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00054_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00055",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 55,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      6
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00055_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00056",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 56,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      2,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00056_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00057",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 57,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      7,
+      8
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00057_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00059",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 59,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      2
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00059_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00060",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 60,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      3
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00060_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00061",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 61,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00061_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_left",
+      "pickup",
+      "forward"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00062",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 62,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      14,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00062_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00063",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 63,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      4
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00063_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00065",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 65,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      8,
+      5
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00065_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00066",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 66,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00066_global.png",
+    "action_history": [
+      "turn_right",
+      "pickup",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00067",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 67,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      5,
+      6
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00067_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00068",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 68,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00068_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_left",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00069",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 69,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00069_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "turn_left",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00070",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 70,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      7,
+      8
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00070_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00071",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 71,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      3
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00071_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "pickup",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00072",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 72,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      3
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00072_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00073",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 73,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00073_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00074",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 74,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      3,
+      6
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00074_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "forward",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00075",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 75,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      3
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00075_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "pickup",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00076",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 76,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      6,
+      8
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00076_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "turn_left",
+      "turn_left",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00077",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 77,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00077_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_right",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00078",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 78,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00078_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "forward",
+      "pickup",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00079",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 79,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00079_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00080",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 80,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      7
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00080_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00081",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 81,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      1
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00081_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "pickup",
+      "forward"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00082",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 82,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      4
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00082_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00083",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 83,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      6,
+      8
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00083_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "turn_left",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00084",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 84,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      5
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00084_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00085",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 85,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00085_global.png",
+    "action_history": [
+      "pickup",
+      "turn_right",
+      "turn_right",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00086",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 86,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      1
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00086_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "turn_left",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00087",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 87,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      3,
+      3
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00087_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00088",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 88,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      4
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00088_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "turn_left",
+      "pickup"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00090",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 90,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      3,
+      4
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00090_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_left",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00091",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 91,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      3
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00091_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00092",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 92,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      12,
+      10
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00092_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00093",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 93,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      5,
+      9
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00093_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00094",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 94,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00094_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_left",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00095",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 95,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      6
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00095_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_left",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00096",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 96,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      3
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00096_global.png",
+    "action_history": [
+      "pickup",
+      "forward",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00097",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 97,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00097_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00098",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 98,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      2,
+      4
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00098_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "forward",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00099",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 99,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00099_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_left",
+      "pickup",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00100",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 100,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00100_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00101",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 101,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00101_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00102",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 102,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00102_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "forward",
+      "pickup",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00103",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 103,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      9
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00103_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00104",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 104,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      4
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00104_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00105",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 105,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00105_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00106",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 106,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00106_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00107",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 107,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      8
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00107_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00108",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 108,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00108_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "pickup",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00109",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 109,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00109_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "turn_left",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00110",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 110,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      1
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00110_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_right",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00111",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 111,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00111_global.png",
+    "action_history": [
+      "turn_right",
+      "pickup",
+      "turn_left",
+      "toggle",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00112",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 112,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      3
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00112_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "forward",
+      "pickup"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00113",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 113,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00113_global.png",
+    "action_history": [
+      "turn_right",
+      "pickup",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00114",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 114,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00114_global.png",
+    "action_history": [
+      "pickup",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00115",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 115,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00115_global.png",
+    "action_history": [
+      "turn_left",
+      "pickup",
+      "forward",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0,
+      2
+    ],
+    "action_names": [
+      "turn_left",
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00116",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 116,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00116_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00117",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 117,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      2,
+      3
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00117_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00118",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 118,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00118_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00119",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 119,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      5,
+      9
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00119_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "pickup"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00120",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 120,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      3
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00120_global.png",
+    "action_history": [
+      "turn_right",
+      "pickup",
+      "turn_left",
+      "turn_left",
+      "toggle"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00121",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 121,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00121_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "turn_right",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00122",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 122,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      13
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00122_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00123",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 123,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00123_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "pickup",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00124",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 124,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      5
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00124_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00125",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 125,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      3
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00125_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00126",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 126,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      3
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00126_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "forward",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00127",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 127,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      1
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00127_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "pickup",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00128",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 128,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      12,
+      11
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00128_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00129",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 129,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00129_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00130",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 130,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00130_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00131",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 131,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00131_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "turn_right",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00132",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 132,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      8,
+      6
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00132_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_right",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00133",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 133,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      11
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00133_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "forward",
+      "pickup",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00134",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 134,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      3
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00134_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00135",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 135,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      6,
+      8
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00135_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00136",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 136,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00136_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00137",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 137,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00137_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "turn_left",
+      "turn_right",
+      "pickup"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00138",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 138,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00138_global.png",
+    "action_history": [
+      "pickup",
+      "turn_right",
+      "toggle",
+      "turn_left",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00139",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 139,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      6,
+      10
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00139_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00140",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 140,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00140_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00141",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 141,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      3,
+      6
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00141_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00142",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 142,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00142_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "turn_right",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00143",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 143,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      5
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00143_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_right",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00145",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 145,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00145_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "pickup",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00146",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 146,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      5,
+      10
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00146_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "turn_left",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00147",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 147,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00147_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "turn_right",
+      "turn_left",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00148",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 148,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      7
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00148_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "turn_right",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00149",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 149,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      4
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00149_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "pickup",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00150",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 150,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      2,
+      4
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00150_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00151",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 151,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00151_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "pickup",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00152",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 152,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00152_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00153",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 153,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00153_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_left",
+      "forward",
+      "pickup"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00154",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 154,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      1
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00154_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "turn_left",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00155",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 155,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      10
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00155_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00156",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 156,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      1
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00156_global.png",
+    "action_history": [
+      "turn_left",
+      "pickup",
+      "forward",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00157",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 157,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00157_global.png",
+    "action_history": [
+      "pickup",
+      "turn_left",
+      "turn_left",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00158",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 158,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      5
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00158_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "pickup",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00159",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 159,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      11,
+      7
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00159_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00161",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 161,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00161_global.png",
+    "action_history": [
+      "turn_left",
+      "pickup",
+      "forward",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1,
+      2
+    ],
+    "action_names": [
+      "turn_right",
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00162",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 162,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      5
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00162_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00163",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 163,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      3,
+      4
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00163_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "turn_left",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00165",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 165,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      4
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00165_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "turn_left",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00167",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 167,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      6
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00167_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00168",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 168,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      3
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00168_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "pickup",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00169",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 169,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      5,
+      7
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00169_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "pickup",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00170",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 170,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      4,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00170_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_right",
+      "pickup",
+      "forward"
+    ],
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00171",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 171,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      9,
+      9
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00171_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00172",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 172,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      3
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00172_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00173",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 173,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      4
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00173_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "pickup",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      1,
+      2
+    ],
+    "action_names": [
+      "turn_right",
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00174",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 174,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      3
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00174_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "forward",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00175",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 175,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      5,
+      3
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00175_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_left",
+      "forward",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00176",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 176,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      7
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00176_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "turn_left",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00177",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 177,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      11,
+      12
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00177_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00178",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 178,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00178_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00179",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 179,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      3,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00179_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "forward",
+      "turn_right",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00180",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 180,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      14,
+      8
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00180_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_right",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00181",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 181,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      2
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00181_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "turn_right",
+      "turn_left",
+      "pickup"
+    ],
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00183",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 183,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      2,
+      2
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00183_global.png",
+    "action_history": [
+      "turn_right",
+      "pickup",
+      "turn_right",
+      "toggle",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00184",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 184,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00184_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00185",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 185,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      4,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00185_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "turn_left",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00186",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 186,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      7
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00186_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00187",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 187,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00187_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "turn_right",
+      "turn_left",
+      "forward"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00188",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 188,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      6
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00188_global.png",
+    "action_history": [
+      "forward",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00189",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 189,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      1,
+      5
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00189_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00190",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 190,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      1
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00190_global.png",
+    "action_history": [
+      "turn_left",
+      "turn_right",
+      "pickup",
+      "turn_left",
+      "toggle"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00191",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 191,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      6
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00191_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "turn_left",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00192",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 192,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      1
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00192_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_left",
+      "turn_left",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00193",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "seed": 193,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00193_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "pickup",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00194",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 194,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      7,
+      13
+    ],
+    "agent_dir": 1,
+    "agent_dir_str": "\u2193",
+    "global_image": "images/00194_global.png",
+    "action_history": [
+      "turn_left",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00195",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "seed": 195,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      1,
+      2
+    ],
+    "agent_dir": 3,
+    "agent_dir_str": "\u2191",
+    "global_image": "images/00195_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "forward",
+      "forward",
+      "forward"
+    ],
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00196",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "seed": 196,
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_pos": [
+      3,
+      13
+    ],
+    "agent_dir": 2,
+    "agent_dir_str": "\u2190",
+    "global_image": "images/00196_global.png",
+    "action_history": [
+      "turn_right",
+      "forward",
+      "turn_right",
+      "turn_right",
+      "turn_right"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00197",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 197,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      12,
+      14
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00197_global.png",
+    "action_history": [
+      "forward",
+      "turn_right",
+      "forward",
+      "forward",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00198",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "seed": 198,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      6,
+      5
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00198_global.png",
+    "action_history": [
+      "turn_right",
+      "turn_right",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  },
+  {
+    "id": "00199",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "seed": 199,
+    "mission": "get to the green goal square",
+    "agent_pos": [
+      8,
+      14
+    ],
+    "agent_dir": 0,
+    "agent_dir_str": "\u2192",
+    "global_image": "images/00199_global.png",
+    "action_history": [
+      "forward",
+      "turn_left",
+      "forward",
+      "turn_right",
+      "turn_left"
+    ],
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "agent_carrying": null,
+    "oracle_valid": true
+  }
+]

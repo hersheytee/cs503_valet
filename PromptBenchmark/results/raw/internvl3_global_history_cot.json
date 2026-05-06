@@ -1,0 +1,4218 @@
+[
+  {
+    "sample_id": "00000",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 810
+  },
+  {
+    "sample_id": "00001",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has already picked up the key and toggled the door open. The goal is directly in front of the agent. The agent needs to move forward to reach the goal. \n\n1. The past actions have made progress by picking up the key and opening the door.\n2. The green goal is directly in front of the agent.\n3. There are no obstacles blocking the path to the goal.\n4. Moving forward (action 2) is the best action to reach the goal.\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2349
+  },
+  {
+    "sample_id": "00002",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 112
+  },
+  {
+    "sample_id": "00003",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned right twice, positioning it to face the door. The goal is to the right of the door. The agent needs to pick up the key first to open the door and then proceed to the goal. The door is blocking the path directly to the goal. The best action is to move forward to reach the door.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1707
+  },
+  {
+    "sample_id": "00004",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has already picked up the key and opened the door. The goal is to the right of the agent. The agent can now move forward to reach the goal. The path is clear, so moving forward is the best action.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1175
+  },
+  {
+    "sample_id": "00005",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing right and has just moved forward, which was blocked by the door. The key is to the left of the agent, and the door is directly ahead. The agent needs to pick up the key first to open the door and then proceed to the goal. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1639
+  },
+  {
+    "sample_id": "00006",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and turned right, positioning it to face the door. The key is to the left of the agent, and the door is directly in front of it. The agent needs to pick up the key to open the door and then proceed to the goal. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1662
+  },
+  {
+    "sample_id": "00007",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing left and is blocked by a wall or door when moving forward. The key is to the left of the agent, and the door is also to the left. The agent needs to pick up the key first to proceed. Moving forward is not possible due to the blockage, so the best action is to turn right to face the key and then pick it up.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1861
+  },
+  {
+    "sample_id": "00008",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1. The past actions have made progress toward the goal. The agent has picked up the key and toggled the door open.\n2. The green goal is directly below the agent.\n3. The path is clear except for the door, which is now open.\n4. The agent needs to move forward to reach the goal.\n\n\\boxed{2}",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1657
+  },
+  {
+    "sample_id": "00009",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 821
+  },
+  {
+    "sample_id": "00010",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turning left and right initially to face the key. The key is directly in front of the agent, and the door is also in front. The agent needs to pick up the key first to proceed. The green goal is to the right of the door. The agent should move forward to reach the key. \n\nREPLY: 2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1772
+  },
+  {
+    "sample_id": "00011",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and moved forward twice, reaching the door. The goal is to the right of the agent. The agent needs to open the door to proceed. The door is directly in front of the agent, so the best action is to move forward to open it.\n\n2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1441
+  },
+  {
+    "sample_id": "00012",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, facing down, and is currently blocked by a wall or closed door. The green goal is to the right of the agent. To progress, the agent needs to turn right to face the goal and then move forward. Since the agent is already facing down, turning right will align it with the goal. \n\n1. The past actions did not make progress toward the goal due to the blockage.\n2. The green goal is to the right of the agent.\n3. The path is blocked by a wall or closed door.\n4. Turning right (action 1) will align the agent",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2902
+  },
+  {
+    "sample_id": "00013",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward and is now facing the door. The key is to the left of the agent, and the door is directly in front. The agent needs to pick up the key first to open the door and then proceed to the goal. Since the agent is facing the door and the key is accessible, the best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1784
+  },
+  {
+    "sample_id": "00014",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing right and needs to move forward to reach the key, then proceed to the goal. The path is clear to move forward.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 798
+  },
+  {
+    "sample_id": "00015",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and is now facing down. The goal is directly in front of the agent, but it is blocked by a wall. To progress, the agent needs to move forward to reach the goal. Since the path is blocked, the agent should continue moving forward until it can reach the goal. \n\n\\boxed{2}",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1684
+  },
+  {
+    "sample_id": "00016",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward and turning right, but it is currently facing left and blocked by a wall. The green goal is to the right of the agent. To progress, the agent should turn right to face the goal and then move forward. However, since the agent is blocked by a wall, it needs to turn right again to face the wall and then use the action to open the door if possible. The best action now is to turn right to face the wall and attempt to open it if it's a door. \n\nREPLY: 1",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2614
+  },
+  {
+    "sample_id": "00017",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 288
+  },
+  {
+    "sample_id": "00018",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving towards the goal, but it is currently facing right and needs to move forward to reach the goal. The path is clear, so moving forward (action 2) will bring the agent closer to the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1175
+  },
+  {
+    "sample_id": "00019",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing down and is blocked by a wall or door. The goal is to the right of the agent. The agent needs to move forward to reach the door, pick up the key, and then proceed to the goal. Moving forward (action 2) will allow the agent to reach the door and then pick up the key.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1684
+  },
+  {
+    "sample_id": "00020",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The goal is to the right of the door. The agent needs to open the door to proceed. The best action is to move forward (action 2) to open the door and then continue towards the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1397
+  },
+  {
+    "sample_id": "00021",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned left twice, and is now facing right. The goal is to the right of the agent, but there is a door blocking the path. The agent needs to pick up the key to open the door and then proceed to the goal. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1617
+  },
+  {
+    "sample_id": "00022",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward, turned left twice, and then right, positioning it to face the key. The goal is to the right of the door, which is currently blocking the path. The agent needs to pick up the key first to open the door and then proceed to the goal. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1684
+  },
+  {
+    "sample_id": "00023",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 157
+  },
+  {
+    "sample_id": "00024",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 820
+  },
+  {
+    "sample_id": "00025",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 289
+  },
+  {
+    "sample_id": "00026",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 156
+  },
+  {
+    "sample_id": "00027",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "1. The past actions (turn_left \u2192 forward \u2192 forward \u2192 forward \u2192 turn_left) have moved the agent closer to the goal but have not yet cleared the path.\n2. The green goal is to the right of the agent.\n3. The agent is facing up, and there is a wall directly in front of it, blocking forward movement.\n4. To make progress, the agent should turn right to face the goal.\n\n\\boxed{1}",
+    "predicted_action": 1,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2104
+  },
+  {
+    "sample_id": "00028",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 289
+  },
+  {
+    "sample_id": "00029",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and is now facing down. The goal is to the right of the agent. The path is blocked by a door. The agent needs to pick up the key first to open the door. The key is to the left of the agent. The best action is to move forward to align with the key.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1640
+  },
+  {
+    "sample_id": "00030",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times, reaching the key. The goal is to the right of the agent. The path is blocked by a wall or door. The agent should move forward to reach the key and then proceed to the goal. \n\nREPLY: 2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1331
+  },
+  {
+    "sample_id": "00031",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward, but it is blocked by a wall. The goal is to the right of the agent. The agent needs to move right to reach the goal. Therefore, the best action is to move forward (action 2) to bypass the wall and continue toward the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1441
+  },
+  {
+    "sample_id": "00032",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times, reaching the key. The goal is to the right of the agent. The path is blocked by a door. The agent needs to pick up the key first to open the door. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1375
+  },
+  {
+    "sample_id": "00033",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing up and is blocked by a wall when trying to move forward. The key is to the left of the agent, and the door is directly ahead. The agent needs to move left to pick up the key first. Moving forward is blocked, so turning left (action 1) is the best action to make progress toward the goal.",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1728
+  },
+  {
+    "sample_id": "00034",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned right, and moved forward again, positioning it to face the goal. The path is clear, and the agent should move forward to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 976
+  },
+  {
+    "sample_id": "00035",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing left and is blocked by a wall or closed door when trying to move forward. The key is to the left of the agent, and the door is also to the left. The agent needs to pick up the key first to proceed. Since the agent is facing left and the key is directly in front of it, moving forward (action 2) will allow the agent to pick up the key. This action will enable the agent to open the door and then proceed towards the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2392
+  },
+  {
+    "sample_id": "00036",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n1. The past actions (forward \u2192 turn_right \u2192 turn_left \u2192 forward \u2192 forward) have moved the agent closer to the goal but are not directly progressing toward it due to the agent's current orientation and the blocked path.\n2. The green goal is located at the bottom-right corner of the grid.\n3. The agent is currently facing right, and the path to the goal is blocked by a wall or closed door.\n4. Turning left will align the agent to face the direction of the goal, allowing forward movement toward it.\n\nREPLY: 1",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2613
+  },
+  {
+    "sample_id": "00037",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1. The past actions have made progress toward the goal. The agent has picked up the key and toggled the door open.\n2. The green goal is to the right of the agent's current position.\n3. The path is now clear except for the door, which is already open.\n4. The agent should move forward to reach the goal.\n\n\\boxed{2}",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1773
+  },
+  {
+    "sample_id": "00038",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 820
+  },
+  {
+    "sample_id": "00039",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 821
+  },
+  {
+    "sample_id": "00041",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has turned around and is now facing the correct direction to move towards the goal. The path is clear, and the agent can move forward to reach the green goal square.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 932
+  },
+  {
+    "sample_id": "00042",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 156
+  },
+  {
+    "sample_id": "00043",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing left and is blocked by a door. To progress, the agent must first pick up the key and then open the door. The key is directly in front of the agent, so moving forward (action 2) will allow the agent to pick up the key. This action is necessary to unlock the door and continue toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1728
+  },
+  {
+    "sample_id": "00044",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing up and is blocked by a wall when trying to move forward. The key is directly in front of the agent, and the door is to the right. The agent needs to pick up the key first to proceed. The key is in the cell directly up from the agent's current position. \n\n1. The past actions have not yet made progress toward the goal because the agent is blocked by a wall.\n2. The green goal is to the right of the door.\n3. The wall is blocking the path forward.\n4. The best action is to move forward to pick up the key.\n\n\\boxed",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2902
+  },
+  {
+    "sample_id": "00045",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1. The past actions have moved the agent closer to the goal but have not yet addressed the obstacle.\n2. The green goal is to the right of the agent's current position.\n3. The agent is facing right, but there is a wall or closed door blocking direct movement to the goal.\n4. The agent needs to pick up the key to proceed.\n\n\\boxed{3}",
+    "predicted_action": 3,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1806
+  },
+  {
+    "sample_id": "00046",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned left, then right, and moved forward again, positioning it to face the right side of the grid. The goal is directly below the agent. The path is clear to the goal, but the agent needs to move forward to reach it. \n\n1. The past actions have positioned the agent closer to the goal.\n2. The green goal is directly below the agent.\n3. No obstacles are blocking the path to the goal.\n4. Moving forward will directly progress the agent toward the goal.\n\n\\boxed{2}",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2613
+  },
+  {
+    "sample_id": "00047",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 112
+  },
+  {
+    "sample_id": "00049",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The goal is to the right of the door. The agent needs to open the door to proceed. The action to open the door is to move forward (action 2) to face the door and then use the key to open it. \n\nREPLY: 2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1640
+  },
+  {
+    "sample_id": "00050",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and then turned right, positioning it to face the door. The goal is to the right of the agent, but the path is blocked by a wall. To progress, the agent should move forward to reach the goal. \n\nREPLY: 2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1396
+  },
+  {
+    "sample_id": "00051",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing left. The goal is to the right of the agent. The agent needs to move forward to reach the goal. The path is clear, so moving forward (action 2) is the best action.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1285
+  },
+  {
+    "sample_id": "00052",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 289
+  },
+  {
+    "sample_id": "00053",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and is now facing right. The green goal is directly to the right of the agent. There are no obstacles in the path to the goal, so the best action is to move forward.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1130
+  },
+  {
+    "sample_id": "00054",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, facing down, but is currently blocked by a wall or closed door. The green goal is to the right of the agent. To progress, the agent should turn right to face the goal and then move forward. \n\nREPLY: 1",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1373
+  },
+  {
+    "sample_id": "00055",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times and then turned right. The goal is to the right of the agent, but the path is blocked by a wall. The agent needs to move forward to reach the key, then pick it up, and proceed to the goal. The best action is to move forward to get closer to the key.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1618
+  },
+  {
+    "sample_id": "00056",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward, but it is currently facing the wrong direction to reach the goal. The goal is to the right of the agent. To make progress, the agent should turn right to face the direction of the goal and then move forward.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1264
+  },
+  {
+    "sample_id": "00057",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, reaching the bottom of the grid. The goal is to the right of the agent. The path is blocked by a wall or closed door directly in front of the agent. To proceed, the agent should move forward to reach the right side of the grid where the goal is located.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1551
+  },
+  {
+    "sample_id": "00059",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 154
+  },
+  {
+    "sample_id": "00060",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and turned left, positioning it to face the key. The goal is to the right of the agent. The key is directly in front of the agent, so picking it up will allow the agent to proceed. The door is to the left, but the agent needs the key first. \n\n1. The past actions have positioned the agent to face the key.\n2. The goal is to the right of the agent.\n3. The key is blocking the path to the goal.\n4. Picking up the key is the most direct action to progress toward the goal.\n\n\\boxed{3}",
+    "predicted_action": 3,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2902
+  },
+  {
+    "sample_id": "00061",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 810
+  },
+  {
+    "sample_id": "00062",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and then turned right, positioning it to face the right side of the grid. The goal is located at the bottom right corner of the grid. Currently, the agent is facing down, and there is a wall or closed door directly in front of it, blocking its path. To progress toward the goal, the agent should move right to bypass the obstacle.\n\n1. The past actions have not yet reached the goal, but they have positioned the agent to potentially bypass the obstacle.\n2. The green goal is at the bottom right corner of the grid.\n3. The agent is blocked by a wall",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2902
+  },
+  {
+    "sample_id": "00063",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "3\n\n1. The past actions (forward \u2192 turn_left \u2192 forward \u2192 forward \u2192 turn_left) have positioned the agent near the key, but the agent is not carrying the key yet.\n2. The green goal is located to the right of the agent.\n3. The key is in the cell directly to the right of the agent, and the agent needs to pick it up to proceed.\n4. The most direct action to make progress is to pick up the key.\n\nREPLY: 3",
+    "predicted_action": 3,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2295
+  },
+  {
+    "sample_id": "00065",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and turned right, positioning it to face the right side of the grid. The goal is located at the bottom right corner of the grid. The agent is currently blocked by a wall or a closed door. To progress, the agent should move forward to bypass the obstacle. \n\nREPLY: 2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1617
+  },
+  {
+    "sample_id": "00066",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The path to the goal is blocked by the door. The agent needs to open the door to proceed. The best action is to move forward to open the door.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1176
+  },
+  {
+    "sample_id": "00067",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing down and is blocked by a wall when trying to move forward. The key is directly below the agent, and the door is to the right. The agent needs to pick up the key first to proceed. Moving forward is blocked, so turning right to face the door is the next logical step to eventually reach the key and then the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1752
+  },
+  {
+    "sample_id": "00068",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing up and is blocked by a wall when trying to move forward. The key is to the left of the agent, and the door is directly in front of the agent. The agent needs to pick up the key first to open the door and then proceed to the goal. Since the agent is facing up and the key is to the left, the best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2014
+  },
+  {
+    "sample_id": "00069",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has turned left three times and then right, moving forward once. It is now facing right again, and the path to the green goal is blocked by a wall. To progress, the agent should move forward to bypass the wall.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1196
+  },
+  {
+    "sample_id": "00070",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned left, and moved forward again, positioning it to face the right side of the grid. The goal is directly in front of the agent, but it is blocked by a wall or a closed door. To progress, the agent needs to move forward to reach the goal. The path is clear once the agent moves forward.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1719
+  },
+  {
+    "sample_id": "00071",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 821
+  },
+  {
+    "sample_id": "00072",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned right, positioning it closer to the goal. The goal is directly ahead, but the path is blocked by a wall. To progress, the agent should move forward again to bypass the wall.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1152
+  },
+  {
+    "sample_id": "00073",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1. The past actions (turn_right \u2192 forward \u2192 forward \u2192 forward \u2192 turn_right) have positioned the agent closer to the goal but have not yet opened any doors or picked up keys.\n2. The green goal is directly to the right of the agent.\n3. The agent is currently facing down, and the path to the goal is blocked by a wall or a closed door.\n4. To progress, the agent needs to open the door below it to continue moving right.\n\n\\boxed{5}",
+    "predicted_action": 5,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2326
+  },
+  {
+    "sample_id": "00074",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing down and is blocked by a wall from moving forward. To progress, the agent needs to move right to avoid the wall. Moving right (action 2) will allow the agent to continue toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1175
+  },
+  {
+    "sample_id": "00075",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing left. The goal is to the right of the agent. The agent needs to move forward to reach the green goal square. The path is clear, so moving forward is the best action.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1220
+  },
+  {
+    "sample_id": "00076",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "3\n\n1. The past actions (turn_left \u2192 forward \u2192 turn_left \u2192 turn_left) have positioned the agent to face the key, preparing it to pick it up.\n2. The green goal is located to the right of the door.\n3. The door is blocking the path to the goal.\n4. The best action is to pick up the key to open the door and then proceed to the goal.\n\nREPLY: 3",
+    "predicted_action": 3,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2038
+  },
+  {
+    "sample_id": "00077",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 156
+  },
+  {
+    "sample_id": "00078",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "1. The past actions have made progress toward the goal. The agent has picked up the key and is now facing the door.\n2. The green goal is to the right of the current position.\n3. The door is blocking the path to the goal.\n4. The single action that makes the most progress is to open the door.\n\n\\boxed{5}",
+    "predicted_action": 5,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1707
+  },
+  {
+    "sample_id": "00079",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing down and is blocked by a wall when trying to move forward. The key is to the left of the agent, and the door is directly below. The agent needs to pick up the key first to open the door and then proceed to the goal. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1618
+  },
+  {
+    "sample_id": "00080",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 156
+  },
+  {
+    "sample_id": "00081",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed to the goal. The path is clear after the previous actions.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1020
+  },
+  {
+    "sample_id": "00082",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 113
+  },
+  {
+    "sample_id": "00083",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward and is now facing up, with the key in the cell directly above it. The goal is to the right of the door, which is currently closed. The agent needs to pick up the key first to open the door and then proceed to the goal. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1638
+  },
+  {
+    "sample_id": "00084",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned left, and moved forward again, positioning it to face the right side of the grid. The goal is located at the bottom right corner. The path is currently blocked by a wall or a closed door. To progress, the agent should move forward to bypass the obstacle.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1506
+  },
+  {
+    "sample_id": "00085",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing right. The goal is directly in front of the agent, but it is blocked by a closed door. To progress, the agent needs to open the door. The action to open the door is to move forward (action 2), which will toggle the door open. This will allow the agent to reach the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1795
+  },
+  {
+    "sample_id": "00086",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving towards the goal but is currently blocked by a wall. To progress, the agent needs to move forward. The green goal is directly ahead, but the agent is facing the wall. Moving forward will allow the agent to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1286
+  },
+  {
+    "sample_id": "00087",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times, reaching the third cell from the left. The goal is to the right of the agent, but the path is blocked by a wall. To proceed, the agent should turn right to face the wall and then move forward to reach the goal. \n\n1. The past actions have brought the agent closer to the goal but are blocked by a wall.\n2. The green goal is to the right of the agent's current position.\n3. The wall blocks the path directly to the goal.\n4. Turning right (action 1) and then moving forward (action 2) will allow the",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2901
+  },
+  {
+    "sample_id": "00088",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 809
+  },
+  {
+    "sample_id": "00090",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has turned around and is now facing left. The green goal is to the right of the agent. The path is clear, so moving forward is the best action to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 997
+  },
+  {
+    "sample_id": "00091",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned left, and then right, positioning it to face the right side of the grid. The goal is to the right of the agent, but there is a wall blocking the direct path. The agent needs to move forward to bypass the wall and reach the goal.\n\n1. The past actions have positioned the agent closer to the goal but are blocked by a wall.\n2. The green goal is directly to the right of the agent.\n3. A wall is blocking the path to the goal.\n4. Moving forward will bypass the wall and bring the agent closer to the goal.\n\nThus, the",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2902
+  },
+  {
+    "sample_id": "00092",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times, reaching the bottom row of the grid. The goal is directly to the right of the agent. The path is blocked by a wall or closed door. To progress, the agent should move forward to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1254
+  },
+  {
+    "sample_id": "00093",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and turned right, positioning it to face the door. The key is above the agent, and the door is directly ahead. The agent needs to pick up the key first to open the door and then proceed to the goal. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1552
+  },
+  {
+    "sample_id": "00094",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward, but it is blocked by a wall. The goal is to the right of the agent. The agent needs to move right to reach the key, then pick it up, and proceed to the goal. The best action is to move forward to align with the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1440
+  },
+  {
+    "sample_id": "00095",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 112
+  },
+  {
+    "sample_id": "00096",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and moved forward twice, then turned left. The goal is directly ahead, but the path is blocked by a wall. The agent needs to move forward to reach the goal. \n\n1. The past actions have made progress by picking up the key and moving closer to the goal.\n2. The green goal is directly ahead.\n3. The path is blocked by a wall.\n4. Moving forward will clear the path to the goal.\n\nThus, the best action is to move forward.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2438
+  },
+  {
+    "sample_id": "00097",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, reaching the key. The goal is to the right of the agent. The path is blocked by a wall. The agent needs to turn right to face the goal and then move forward to reach it. \n\n1. The agent has picked up the key.\n2. The goal is to the right.\n3. The path is blocked by a wall.\n4. Turning right to face the goal is the best action to make progress.\n\n\\boxed{1}",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2327
+  },
+  {
+    "sample_id": "00098",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has been moving towards the goal but is currently blocked by a wall. To proceed, the agent needs to move forward. The green goal is directly ahead, but the path is blocked by a wall. Moving forward will help the agent reach the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1285
+  },
+  {
+    "sample_id": "00099",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 113
+  },
+  {
+    "sample_id": "00100",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 113
+  },
+  {
+    "sample_id": "00101",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and turned right, positioning it to face the door. The key is below the agent, and the door is directly in front of it. The agent needs to pick up the key first to open the door and then proceed to the goal. The current path is blocked by the door, which must be opened using the key. \n\n1. The past actions have positioned the agent to face the door, but the door is blocking the path.\n2. The green goal is located at the bottom right corner of the grid.\n3. The door is blocking the path to the goal.\n4. The",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2902
+  },
+  {
+    "sample_id": "00102",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 101
+  },
+  {
+    "sample_id": "00103",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing up and is blocked by a wall when trying to move forward. The key is to the left of the agent, and the door is directly in front of it. The agent needs to move forward to reach the key, pick it up, and then proceed to the goal.\n\n1. The past actions have not yet made progress toward the goal because the agent is blocked by the wall.\n2. The green goal is located to the right of the door.\n3. The wall is blocking the path to the key.\n4. Moving forward will allow the agent to reach the key.\n\nThus, the best action",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2902
+  },
+  {
+    "sample_id": "00104",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, reaching the key. The goal is to the right of the agent. The path is blocked by a door. The agent needs to pick up the key and open the door to proceed. The best action is to move forward to align with the door.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1385
+  },
+  {
+    "sample_id": "00105",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward, but it is currently blocked by a wall. To progress, the agent needs to turn left to avoid the wall and continue moving towards the goal. The green goal is to the right of the agent's current position. Turning left will allow the agent to move forward towards the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1523
+  },
+  {
+    "sample_id": "00106",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward, but it is now blocked by a wall. To progress, the agent needs to turn left to find an alternative path to the goal. Turning left will allow the agent to move forward again without being blocked.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1197
+  },
+  {
+    "sample_id": "00107",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and turned right, positioning it to face the door. The key is to the left of the agent, and the door is directly ahead. The agent needs to pick up the key first to open the door and then proceed to the goal. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1618
+  },
+  {
+    "sample_id": "00108",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The goal is to the right of the door. The agent needs to open the door to proceed. The best action is to move forward to open the door.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1148
+  },
+  {
+    "sample_id": "00109",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward and is now facing the key. The next step is to pick up the key to progress toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 733
+  },
+  {
+    "sample_id": "00110",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving towards the goal but is currently blocked by a wall. To progress, the agent needs to move forward. The green goal is directly ahead, but the agent is facing the wall. Moving forward will allow the agent to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1286
+  },
+  {
+    "sample_id": "00111",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has already picked up the key and toggled the door open. The goal is to the right of the agent. The agent can now move forward to reach the goal. The path is clear, so moving forward is the best action.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1214
+  },
+  {
+    "sample_id": "00112",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 156
+  },
+  {
+    "sample_id": "00113",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and moved towards the door. The goal is to the right of the door. The agent needs to open the door to proceed. The door is directly in front of the agent, so the best action is to move forward to open it.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1353
+  },
+  {
+    "sample_id": "00114",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 113
+  },
+  {
+    "sample_id": "00115",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      2
+    ],
+    "action_names": [
+      "turn_left",
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and moved forward twice, turning right to face the door. The goal is to the right of the agent, but the door is blocking the path. The agent needs to open the door to proceed. The best action is to move forward to open the door.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1442
+  },
+  {
+    "sample_id": "00116",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, reaching the cell adjacent to the goal. The path is now blocked by a wall or closed door. To proceed, the agent should move forward to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1042
+  },
+  {
+    "sample_id": "00117",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned left twice, positioning it to face the goal. The path is clear, and the agent needs to move forward to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 909
+  },
+  {
+    "sample_id": "00118",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward and turning right, but it is currently facing left and blocked by a wall. The green goal is to the right of the agent. To progress, the agent should turn right to face the goal and then move forward. However, since the agent is blocked by a wall, it needs to turn right again to face the wall and then use the action to open the door if possible. The best action now is to turn right to face the wall and attempt to open it if it is a door. \n\nREPLY: 1",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2613
+  },
+  {
+    "sample_id": "00119",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 290
+  },
+  {
+    "sample_id": "00120",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has already picked up the key and toggled the door open. The goal is to the right of the agent. The agent can now move forward to reach the goal. The path is clear, so moving forward (action 2) is the best action to progress toward the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1441
+  },
+  {
+    "sample_id": "00121",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned right twice, positioning it to face the key. The goal is to the right of the agent, but the path is blocked by a door. The agent needs to pick up the key first to open the door. The best action is to move forward to reach the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1530
+  },
+  {
+    "sample_id": "00122",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward, turned left, forward, and then right, but is still blocked by a wall or closed door. The goal is to the right of the agent. The agent needs to move forward to reach the goal. Since the path is blocked, the agent should turn left to avoid the obstacle and then move forward. However, the best immediate action to make progress is to move forward if the path is now clear. Given the agent's current position and facing direction, moving forward (action 2) is the best choice to continue toward the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2658
+  },
+  {
+    "sample_id": "00123",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The path to the goal is blocked by the door. The agent needs to open the door to proceed. The best action is to move forward to reach the door and then use the key to open it.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1352
+  },
+  {
+    "sample_id": "00124",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward multiple times, but it is still blocked by a wall or a closed door. The green goal is to the right of the agent. To progress, the agent needs to turn right to face the goal and then move forward. Therefore, turning right (action 1) is the best action to make progress toward the goal.",
+    "predicted_action": 1,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1706
+  },
+  {
+    "sample_id": "00125",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 290
+  },
+  {
+    "sample_id": "00126",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has turned around and is now facing the correct direction to move towards the green goal. The path is clear, and the agent can move forward to reach the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 909
+  },
+  {
+    "sample_id": "00127",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The goal is to the right of the door. The agent needs to open the door and then move forward to reach the goal. The action to open the door is to move forward (action 2) since the door is directly in front of the agent. This will allow the agent to then proceed to the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1862
+  },
+  {
+    "sample_id": "00128",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward multiple times, but it is still blocked by a wall or a closed door. The green goal is directly below the agent, but it is blocked. The agent needs to move forward to reach the goal. \n\n1. Past actions have not made progress toward the goal because the agent is blocked.\n2. The green goal is directly below the agent.\n3. The path is blocked by a wall or closed door.\n4. Moving forward (action 2) is the best action to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2503
+  },
+  {
+    "sample_id": "00129",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, facing right, and is now at the bottom-right corner of the grid. The green goal is directly in front of the agent. There are no obstacles blocking the path to the goal. The agent should move forward to reach the goal.\n\n\\boxed{2}",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1462
+  },
+  {
+    "sample_id": "00130",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing down and needs to move forward to reach the key, then proceed to the goal. The path is blocked by a wall, so moving forward is the best action to make progress.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1043
+  },
+  {
+    "sample_id": "00131",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing right and needs to move forward to reach the green goal square. The path is clear, so moving forward (action 2) is the best action to make progress toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1064
+  },
+  {
+    "sample_id": "00132",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing left and needs to move forward to reach the key, then proceed to the door to pick it up and open it to reach the goal. The path is clear to move forward.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1042
+  },
+  {
+    "sample_id": "00133",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 821
+  },
+  {
+    "sample_id": "00134",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing right and needs to move forward to reach the key, then proceed to the goal. The path is clear to move forward.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 798
+  },
+  {
+    "sample_id": "00135",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "3\n\n1. The past actions (turn_left \u2192 turn_left \u2192 forward \u2192 forward \u2192 turn_left) have positioned the agent closer to the key, but the agent is still not carrying the key and is facing the wrong direction to reach the goal directly.\n2. The green goal is located to the right of the agent.\n3. The agent is currently facing left and is blocked by a wall or door to reach the key.\n4. The best action is to pick up the key (action 3) to progress toward the goal.\n\n\\boxed{3}",
+    "predicted_action": 3,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2592
+  },
+  {
+    "sample_id": "00136",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned left once, positioning it to face the right side of the grid. The goal is directly in front of the agent, but it is blocked by a wall. To progress, the agent needs to move forward to reach the goal. \n\n1. The past actions have positioned the agent closer to the goal.\n2. The green goal is directly in front of the agent.\n3. A wall is blocking the path to the goal.\n4. Moving forward (action 2) will help the agent reach the goal.\n\n\\boxed{2}",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2697
+  },
+  {
+    "sample_id": "00137",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 113
+  },
+  {
+    "sample_id": "00138",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has already picked up the key and toggled the door open. The goal is directly in front of the agent. The agent needs to move forward to reach the goal. The path is clear now that the door is open. \n\n\\boxed{2}",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1307
+  },
+  {
+    "sample_id": "00139",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "3\n\n1. The past actions (turn_right \u2192 forward \u2192 forward \u2192 forward \u2192 turn_right) have positioned the agent near the key, but the agent is still not carrying the key.\n2. The green goal is located to the right of the agent.\n3. The key is directly below the agent, and the agent needs to pick it up to proceed.\n4. The most direct action to make progress is to pick up the key.\n\nREPLY: 3",
+    "predicted_action": 3,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2172
+  },
+  {
+    "sample_id": "00140",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned left, and then right, positioning it to face the right side of the grid. The goal is to the right of the agent, but it is blocked by a wall. The agent needs to move forward to reach the goal. \n\n1. The past actions have positioned the agent closer to the goal but are blocked by a wall.\n2. The green goal is directly to the right of the agent.\n3. The wall blocks the path to the goal.\n4. Moving forward will help the agent reach the goal.\n\nThus, the best action is to move forward.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2835
+  },
+  {
+    "sample_id": "00141",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 151
+  },
+  {
+    "sample_id": "00142",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 157
+  },
+  {
+    "sample_id": "00143",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has already moved forward twice, turning right twice before moving forward, positioning it to face the key. The key is directly in front of the agent, and the door is to the right. The agent needs to pick up the key first to progress toward the goal. The best action is to move forward to pick up the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1639
+  },
+  {
+    "sample_id": "00145",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal. The path is clear after the previous actions, so moving forward will allow the agent to open the door and continue to the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1397
+  },
+  {
+    "sample_id": "00146",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned left, then right, and is now facing right again. The goal is to the right of the agent, but the path is blocked by a door. The agent needs to pick up the key first to open the door. The key is directly in front of the agent, so the best action is to pick it up. \n\nREPLY: 3",
+    "predicted_action": 3,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1884
+  },
+  {
+    "sample_id": "00147",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 113
+  },
+  {
+    "sample_id": "00148",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing left and is blocked by a wall when trying to move forward. The key is to the left of the agent, and the door is also to the left. The agent needs to pick up the key first to proceed. Moving forward (action 2) is blocked, so the best action is to turn right (action 1) to face the key and then pick it up.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1950
+  },
+  {
+    "sample_id": "00149",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 290
+  },
+  {
+    "sample_id": "00150",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward, but it is currently blocked by a wall. To progress toward the goal, the agent needs to turn left to find an alternative path. The green goal is to the right of the agent's current position. The agent should turn left to face the wall and then move forward to find an open path to the goal. \n\nREPLY: 1",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1816
+  },
+  {
+    "sample_id": "00151",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to open the door and proceed to the goal. The agent needs to move forward to open the door.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 998
+  },
+  {
+    "sample_id": "00152",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned right, positioning it closer to the goal. The goal is directly ahead, but the path is blocked by a wall. To proceed, the agent should move forward again to bypass the wall.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1152
+  },
+  {
+    "sample_id": "00153",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to open the door and proceed towards the goal. The agent needs to move forward to open the door. \n\n1. The past actions have made progress by picking up the key.\n2. The green goal is to the right of the door.\n3. The door is blocking the path.\n4. Moving forward will open the door, allowing the agent to proceed towards the goal.\n\n\\boxed{2}",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2337
+  },
+  {
+    "sample_id": "00154",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing up and is blocked by a wall when trying to move forward. The key is to the left of the agent, and the door is directly in front of the agent. The agent needs to move forward to reach the key, pick it up, and then proceed to the goal. Since the agent is blocked, moving forward is the only viable action to make progress toward obtaining the key.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1940
+  },
+  {
+    "sample_id": "00155",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, reaching the bottom of the grid. The goal is to the right of the agent. The path is blocked by a wall or closed door. To proceed, the agent should move forward to reach the green goal square.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1263
+  },
+  {
+    "sample_id": "00156",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The path to the goal is blocked by the door. The agent needs to open the door to proceed. The best action is to move forward to open the door.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1176
+  },
+  {
+    "sample_id": "00157",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 157
+  },
+  {
+    "sample_id": "00158",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to open the door and proceed towards the goal. The agent should move forward to open the door.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 975
+  },
+  {
+    "sample_id": "00159",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, facing right, and is now at the edge of the grid. The green goal is directly below the agent. There is no immediate obstacle blocking the path to the goal, so the best action is to move forward.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1263
+  },
+  {
+    "sample_id": "00161",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1,
+      2
+    ],
+    "action_names": [
+      "turn_right",
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and moved towards the door. The goal is to the right of the door. The agent needs to open the door to proceed. The door is directly in front of the agent, so the best action is to move forward to open it.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1354
+  },
+  {
+    "sample_id": "00162",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing right and needs to move forward to reach the key, then proceed to the goal. The path is clear to move forward.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 797
+  },
+  {
+    "sample_id": "00163",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned right, positioning it to face the green goal square. The path is clear, and the agent is now directly above the goal. The best action is to move forward to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1152
+  },
+  {
+    "sample_id": "00165",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice, turned left twice, and turned right once, effectively moving forward twice in the initial steps. The goal is to the right of the agent, but the path is blocked by a wall or a closed door. The key is directly above the agent, so picking it up is the next logical step to progress toward the goal. \n\n1. The past actions have not yet made progress toward the goal since the agent is still blocked.\n2. The green goal is to the right of the agent.\n3. The path is blocked by a wall or a closed door.\n4. Picking up the key",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2902
+  },
+  {
+    "sample_id": "00167",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward multiple times, but it is still blocked by a wall or a closed door. The green goal is directly ahead, but the path is blocked. To make progress, the agent needs to turn right to find an alternative path to the goal. Turning right will allow the agent to move forward without being blocked. \n\nREPLY: 1",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1739
+  },
+  {
+    "sample_id": "00168",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The path to the goal is blocked by the door. The agent needs to open the door to proceed. The best action is to move forward to reach the door and then use the key to open it.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1352
+  },
+  {
+    "sample_id": "00169",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to move forward to open the door and proceed toward the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 820
+  },
+  {
+    "sample_id": "00170",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      5
+    ],
+    "action_names": [
+      "toggle"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to open the door and proceed to the goal. The agent needs to move forward to open the door.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 999
+  },
+  {
+    "sample_id": "00171",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, reaching the bottom of the grid. The goal is to the right of the agent. The path is blocked by a wall or closed door directly in front of the agent. To proceed, the agent should move forward to reach the right side of the grid where the goal is located.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1551
+  },
+  {
+    "sample_id": "00172",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward and is now facing right, with the goal directly in front of it. The path is clear, so moving forward (action 2) will bring the agent closer to the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1086
+  },
+  {
+    "sample_id": "00173",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1,
+      2
+    ],
+    "action_names": [
+      "turn_right",
+      "forward"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 290
+  },
+  {
+    "sample_id": "00174",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward, turned right, and moved forward again, and then turned left. The goal is to the right of the agent, but the path is blocked by a door. The agent needs to pick up the key first to open the door. The key is directly below the agent, so the best action is to move forward to pick it up.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1751
+  },
+  {
+    "sample_id": "00175",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has been moving left, right, left, forward, and right, but it is still blocked by a wall or a closed door. The green goal is to the right of the agent. The agent needs to move forward to reach the goal. Since the path is blocked, the agent should continue moving forward once the blockage is cleared. \n\nThe best action is to move forward (action 2).",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1971
+  },
+  {
+    "sample_id": "00176",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward, turned left twice, and is now facing left. The goal is to the right of the agent. The agent is currently blocked by a wall or door. The key is to the left of the agent, and the door is directly below the agent. The best action is to move forward to reach the door and then pick up the key. \n\nREPLY: 2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1905
+  },
+  {
+    "sample_id": "00177",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 289
+  },
+  {
+    "sample_id": "00178",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 156
+  },
+  {
+    "sample_id": "00179",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned left and right, positioning it to face the right side of the grid. The green goal is directly to the right of the agent. There are no obstacles in the path to the goal, so the best action is to move forward.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1352
+  },
+  {
+    "sample_id": "00180",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward and is now facing down, but the path is blocked by a wall. The goal is to the right of the agent. The best action is to move forward to bypass the wall.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1064
+  },
+  {
+    "sample_id": "00181",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0
+    ],
+    "action_names": [
+      "turn_left"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing left. The goal is to the right of the agent. The agent needs to move forward to reach the goal. The path is clear except for the door, which the agent can open with the key. Moving forward (action 2) will allow the agent to reach the goal.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1640
+  },
+  {
+    "sample_id": "00183",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has already picked up the key and toggled the door open. The goal is to the right of the agent. The agent can now move forward to reach the goal. The path is clear, so moving forward is the best action.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1214
+  },
+  {
+    "sample_id": "00184",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 156
+  },
+  {
+    "sample_id": "00185",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing right and needs to move forward to reach the green goal square. The path is clear, so moving forward (action 2) will make progress toward the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 975
+  },
+  {
+    "sample_id": "00186",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1\n2\n3\n4\n\n1",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 289
+  },
+  {
+    "sample_id": "00187",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "2\n\nThe agent has turned around and is now facing the door. The key is directly below the agent, and the door is in front of the agent. The agent needs to pick up the key first to open the door and then proceed to the goal. Since the agent is facing the door and the key is below, the best action is to move forward to reach the key. \n\nREPLY: 2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1927
+  },
+  {
+    "sample_id": "00188",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has been moving forward multiple times, but it is still blocked by a wall or a closed door. The green goal is located at the bottom right corner of the grid. The agent needs to move forward to reach the goal. Since the path is blocked, the agent should continue moving forward until it can reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1595
+  },
+  {
+    "sample_id": "00189",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "1. The past actions (turn_left \u2192 forward \u2192 forward \u2192 forward) have moved the agent closer to the goal but have not yet addressed the obstacle.\n2. The green goal is located to the right of the agent.\n3. The agent is facing down, and the path to the goal is blocked by a wall or a closed door.\n4. To progress, the agent needs to move right to bypass the obstacle.\n\n\\boxed{1}",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 2082
+  },
+  {
+    "sample_id": "00190",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has already picked up the key and toggled the door open. The goal is directly in front of the agent. The agent needs to move forward to reach the goal. \n\n1. The past actions have made progress by picking up the key and opening the door.\n2. The green goal is directly in front of the agent.\n3. There are no obstacles blocking the path to the goal.\n4. Moving forward (action 2) is the best action to reach the goal.\n\n2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2348
+  },
+  {
+    "sample_id": "00191",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward twice and turned right, positioning it closer to the goal. The goal is directly in front of the agent, but it is blocked by a wall. To progress, the agent should move forward to bypass the wall.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1196
+  },
+  {
+    "sample_id": "00192",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has turned left twice and then right, positioning it to face the goal. The path is clear, and the agent can move forward to reach the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 865
+  },
+  {
+    "sample_id": "00193",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has picked up the key and is now facing the door. The next step is to open the door and proceed towards the goal. The agent needs to move forward to open the door and then continue towards the goal. \n\n1. The past actions have made progress by picking up the key.\n2. The green goal is to the right of the current position.\n3. The door is blocking the path.\n4. Moving forward (action 2) will open the door and allow the agent to proceed towards the goal.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2482
+  },
+  {
+    "sample_id": "00194",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward four times, facing down, but is currently blocked by a wall or closed door. The green goal is to the right of the agent. To progress, the agent should turn right to face the goal and then move forward. \n\nREPLY: 1",
+    "predicted_action": 1,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1374
+  },
+  {
+    "sample_id": "00195",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      3
+    ],
+    "action_names": [
+      "pickup"
+    ],
+    "raw_output": "3\n\n1. The past actions (turn_right \u2192 forward \u2192 forward \u2192 forward \u2192 forward) have moved the agent closer to the key but have not yet picked it up or opened the door.\n2. The green goal is located to the right of the agent.\n3. The agent is currently facing the key, which is directly above it, but it is not carrying the key yet.\n4. The best action to make progress is to pick up the key (action 3).",
+    "predicted_action": 3,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2238
+  },
+  {
+    "sample_id": "00196",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent is currently facing left and is blocked by a wall when trying to move forward. The key is to the left of the agent, and the door is also to the left. The agent needs to pick up the key first to proceed. Moving forward is not possible due to the wall, so turning right to face the key is the next logical step.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 1728
+  },
+  {
+    "sample_id": "00197",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward three times and turned left, positioning it to face the right side of the grid. The goal is located at the bottom right corner of the grid. The agent is currently facing right, and there is a wall directly in front of it. To progress, the agent should move forward to bypass the wall and continue toward the goal. \n\nThe single best action to make progress toward the goal is to move forward (action 2).",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 2148
+  },
+  {
+    "sample_id": "00198",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-8x8-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2\n\nThe agent has been moving towards the goal but is currently blocked by a wall. To proceed, the agent needs to move forward to reach the green goal square.",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 842
+  },
+  {
+    "sample_id": "00199",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_cot",
+    "env": "MiniGrid-Empty-16x16-v0",
+    "complexity": "simple",
+    "mission": "get to the green goal square",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2\n\nThe agent has moved forward and turned left, but the path to the goal is blocked by a wall. The goal is to the right of the agent. The agent should move forward to clear the path.",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 1041
+  }
+]
