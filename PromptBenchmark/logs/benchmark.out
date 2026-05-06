@@ -1,0 +1,81 @@
+Job ID        : 2868548
+Node          : i27
+Start time    : lun 04 mai 2026 20:21:03 CEST
+
+  Dataset loaded: 190 samples from /home/lafont/cs503_project/cs503_project/PromptBenchmark/trajectory_dataset/trajectory_dataset.json
+  Prompt variants: ['baseline', 'history', 'history_reason', 'cot', 'history_cot']
+
+═════════════════════════════════════════════════════════════════
+  MODEL: InternVL3 8B  (OpenGVLab/InternVL3-8B)
+═════════════════════════════════════════════════════════════════
+  Starting vLLM server for InternVL3 8B ...
+  CMD: /home/lafont/miniconda3/envs/bench_env/bin/python -m vllm.entrypoints.openai.api_server --model OpenGVLab/InternVL3-8B --dtype float16 --gpu-memory-utilization 0.85 --host 127.0.0.1 --port 8000 --trust-remote-code --max-model-len 4096 --download-dir /scratch/izar/lafont/vlm_models
+  Waiting for server to be ready (up to 10 min) ...
+  ✅  Server ready.
+  → [baseline] Accuracy: 105/190 (55.3%)  |  API failures: 0  |  Parse errors: 0
+  → Saved to /home/lafont/cs503_project/cs503_project/PromptBenchmark/results/raw/internvl3_global_baseline.json
+  → [history] Accuracy: 100/190 (52.6%)  |  API failures: 0  |  Parse errors: 0
+  → Saved to /home/lafont/cs503_project/cs503_project/PromptBenchmark/results/raw/internvl3_global_history.json
+  → [history_reason] Accuracy: 102/190 (53.7%)  |  API failures: 0  |  Parse errors: 0
+  → Saved to /home/lafont/cs503_project/cs503_project/PromptBenchmark/results/raw/internvl3_global_history_reason.json
+  → [cot] Accuracy: 105/190 (55.3%)  |  API failures: 0  |  Parse errors: 0
+  → Saved to /home/lafont/cs503_project/cs503_project/PromptBenchmark/results/raw/internvl3_global_cot.json
+  → [history_cot] Accuracy: 100/190 (52.6%)  |  API failures: 0  |  Parse errors: 0
+  → Saved to /home/lafont/cs503_project/cs503_project/PromptBenchmark/results/raw/internvl3_global_history_cot.json
+  Stopping vLLM server ...
+  GPU memory released.
+
+  CSV saved → /home/lafont/cs503_project/cs503_project/PromptBenchmark/results/benchmark_results.csv
+  Summary saved → /home/lafont/cs503_project/cs503_project/PromptBenchmark/results/benchmark_summary.json
+
+══════════════════════════════════════════════════════════════════════════════
+  BENCHMARK RESULTS
+══════════════════════════════════════════════════════════════════════════════
+  Model                     View     Variant           Accuracy      N   Lat(ms)
+  ───────────────────────── ──────── ──────────────── ─────────  ─────  ────────
+  InternVL3 8B              global   baseline             55.3%    190      215ms
+  InternVL3 8B              global   cot                  55.3%    190      123ms
+  InternVL3 8B              global   history              52.6%    190       90ms
+  InternVL3 8B              global   history_cot          52.6%    190     1363ms
+  InternVL3 8B              global   history_reason       53.7%    190       99ms
+
+══════════════════════════════════════════════════════════════════════════════
+  PER-VARIANT LEADERBOARD  (models ranked within each variant × view)
+══════════════════════════════════════════════════════════════════════════════
+
+  Variant: baseline  |  View: global
+  Model                      Accuracy      N   Parse errors
+  ───────────────────────── ─────────  ─────  ─────────────
+  InternVL3 8B                  55.3%    190              0
+
+  Variant: cot  |  View: global
+  Model                      Accuracy      N   Parse errors
+  ───────────────────────── ─────────  ─────  ─────────────
+  InternVL3 8B                  55.3%    190              0
+
+  Variant: history  |  View: global
+  Model                      Accuracy      N   Parse errors
+  ───────────────────────── ─────────  ─────  ─────────────
+  InternVL3 8B                  52.6%    190              0
+
+  Variant: history_cot  |  View: global
+  Model                      Accuracy      N   Parse errors
+  ───────────────────────── ─────────  ─────  ─────────────
+  InternVL3 8B                  52.6%    190              0
+
+  Variant: history_reason  |  View: global
+  Model                      Accuracy      N   Parse errors
+  ───────────────────────── ─────────  ─────  ─────────────
+  InternVL3 8B                  53.7%    190              0
+
+══════════════════════════════════════════════════════════════════════════════
+  PER-ACTION ACCURACY  (global view)
+══════════════════════════════════════════════════════════════════════════════
+  Model / Variant                                  forward      pickup      toggle   turn_left  turn_right
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  InternVL3 8B / baseline                            97.1%       16.7%        0.0%        2.7%        6.7%
+  InternVL3 8B / cot                                 99.1%        8.3%        0.0%        0.0%        4.4%
+  InternVL3 8B / history                             85.7%       83.3%        0.0%        2.7%        4.4%
+  InternVL3 8B / history_cot                         89.5%       25.0%       11.1%        2.7%        8.9%
+  InternVL3 8B / history_reason                      91.4%       41.7%        0.0%        2.7%        6.7%
+

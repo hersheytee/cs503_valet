@@ -1,0 +1,116 @@
+[
+  {
+    "sample_id": "00000",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_reason",
+    "env": "MiniGrid-DoorKey-8x8-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 90
+  },
+  {
+    "sample_id": "00001",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_reason",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 100
+  },
+  {
+    "sample_id": "00002",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_reason",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      1
+    ],
+    "action_names": [
+      "turn_right"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 100
+  },
+  {
+    "sample_id": "00003",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_reason",
+    "env": "MiniGrid-DoorKey-16x16-v0",
+    "complexity": "hard",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      0,
+      1
+    ],
+    "action_names": [
+      "turn_left",
+      "turn_right"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": false,
+    "parse_failed": false,
+    "latency_ms": 100
+  },
+  {
+    "sample_id": "00004",
+    "model": "internvl3",
+    "model_name": "InternVL3 8B",
+    "view": "global",
+    "variant": "history_reason",
+    "env": "MiniGrid-DoorKey-5x5-v0",
+    "complexity": "medium",
+    "mission": "use the key to open the door and then get to the goal",
+    "agent_carrying": null,
+    "optimal_actions": [
+      2
+    ],
+    "action_names": [
+      "forward"
+    ],
+    "raw_output": "2",
+    "predicted_action": 2,
+    "correct": true,
+    "parse_failed": false,
+    "latency_ms": 99
+  }
+]
