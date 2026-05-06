@@ -52,8 +52,9 @@ def parse_args():
     p.add_argument('--anneal-lr',       action='store_true', default=True)
     p.add_argument('--bc-coef',         type=float, default=0.0)
     p.add_argument('--bc-anneal',       action='store_true', default=False)
-    p.add_argument('--no-oracle',       action='store_true', default=False)
-    p.add_argument('--warmup-steps',    type=int,   default=0)
+    p.add_argument('--no-oracle',        action='store_true', default=False)
+    p.add_argument('--warmup-steps',     type=int,   default=0)
+    p.add_argument('--reward-shaping',   action='store_true', default=False)
     # oracle_cost=0.0  → upper bound (oracle gratuit)
     # oracle_cost>0.0  → VLM réel (agent apprend quand consulter)
     # --no-oracle      → baseline PPO pur (pas d'action query)
@@ -117,7 +118,8 @@ def main():
     envs = gym.vector.SyncVectorEnv([
         make_env(args.env_id, args.env_type, args.tile_size,
                  args.oracle_cost, seed=args.seed + i,
-                 no_oracle=args.no_oracle)
+                 no_oracle=args.no_oracle,
+                 reward_shaping=args.reward_shaping)
         for i in range(args.n_envs)
     ])
 
@@ -244,7 +246,7 @@ def main():
 
                 episode_count += 1
                 ret     = float(ep_ret[i])
-                success = float(ret > 0)
+                success = float(term_np[i])  # terminated = reached goal, not timeout
                 n_q     = int(ep_n_queries[i])
                 pct     = n_q / max(int(ep_len[i]), 1) * 100
                 agree   = (ep_agree[i] / ep_n_queries[i]
