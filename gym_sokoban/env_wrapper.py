@@ -17,16 +17,71 @@ if not hasattr(np, 'bool8'):
     np.bool8 = np.bool_
 # --------------------------------------------
 
+class SokobanRewardShaper:
+    """
+    Potential-based reward shaper for Sokoban.
+    Rewards the agent for reducing the Manhattan distance between boxes and targets.
+    Penalizes pushing boxes away from targets.
+    """
+    def __init__(self, distance_scale=0.1):
+        self.distance_scale = distance_scale
+        self._previous_box_dist = None
+
+    def _get_state_coordinates(self, env_unwrapped):
+        # 3 and 4 are boxes (4 is a box on a target)
+        boxes = np.argwhere((env_unwrapped.room_state == 3) | (env_unwrapped.room_state == 4))
+        # 2 is a target
+        targets = np.argwhere(env_unwrapped.room_fixed == 2)
+        return boxes, targets
+
+    def _calculate_total_box_distance(self, boxes, targets):
+        """Calculates the sum of distances from each box to its *nearest* target."""
+        if len(boxes) == 0 or len(targets) == 0:
+            return 0.0
+            
+        total_dist = 0.0
+        for b in boxes:
+            # Manhattan distance from this box to all targets
+            dists = np.sum(np.abs(targets - b), axis=1)
+            total_dist += np.min(dists) # Only care about the closest target
+        return total_dist
+
+    def reset(self, env_unwrapped):
+        boxes, targets = self._get_state_coordinates(env_unwrapped)
+        self._previous_box_dist = self._calculate_total_box_distance(boxes, targets)
+
+    def shape(self, env_unwrapped, base_reward):
+        bonus = 0.0
+        boxes, targets = self._get_state_coordinates(env_unwrapped)
+        current_box_dist = self._calculate_total_box_distance(boxes, targets)
+
+        # Potential-based shaping: Reward the difference in state potential
+        if self._previous_box_dist is not None:
+            dist_diff = self._previous_box_dist - current_box_dist
+            # If dist_diff > 0, boxes got closer (+ bonus)
+            # If dist_diff < 0, boxes got further (- penalty)
+            bonus += dist_diff * self.distance_scale
+
+        self._previous_box_dist = current_box_dist
+
+        # Note: gym-sokoban natively gives +1 for pushing a box onto a target
+        # and -1 for pushing it off. We leave that base_reward intact.
+        return base_reward + bonus
+
 class SokobanOracleWrapper(gym.Env):
     """
     A modern Gymnasium environment that wraps the old Gym Sokoban environment.
     """
     metadata = {'render_modes': ['rgb_array']}
 
-    def __init__(self, env_id: str = 'Sokoban-small-v0', oracle_cost: float = 0.0):
+    def __init__(self, env_id: str = 'Sokoban-small-v0', oracle_cost: float = 0.0, reward_shaping: bool = False):
         # Build the environment using the OLD gym
         self.env = old_gym.make(env_id)
         self.oracle_cost = oracle_cost
+        
+        # Initialize the reward shaper if enabled
+        self.reward_shaping = reward_shaping
+        self._shaper = SokobanRewardShaper(distance_scale=0.1) if reward_shaping else None
         
         # Extend action space: 9 original actions + 1 oracle action
         n_original = 9
@@ -58,6 +113,10 @@ class SokobanOracleWrapper(gym.Env):
         unwrapped = self.env.unwrapped
         if hasattr(unwrapped, '_oracle_cache'): unwrapped._oracle_cache = None
         if hasattr(unwrapped, '_expected_state'): unwrapped._expected_state = None
+        
+        # Reset the reward shaper so it can calculate the initial board potential
+        if self._shaper:
+            self._shaper.reset(unwrapped)
             
         # Return modern format: obs, info
         return self._process_obs(), {}
@@ -83,6 +142,10 @@ class SokobanOracleWrapper(gym.Env):
         # Take the step in the old environment (which returns 4 values)
         _, reward, done, info = self.env.step(action)
 
+        # Apply potential-based reward shaping
+        if self._shaper:
+            reward = self._shaper.shape(self.env.unwrapped, reward)
+
         if guided and not info.get('fatal_deadlock', False):
             reward -= self.oracle_cost
 
@@ -99,10 +162,10 @@ class SokobanOracleWrapper(gym.Env):
         return self.env.render(mode='rgb_array')
 
 
-def make_env(env_id: str, oracle_cost: float = 0.0, seed: int = 0):
+def make_env(env_id: str, oracle_cost: float = 0.0, seed: int = 0, reward_shaping: bool = False):
     """Factory function for SyncVectorEnv."""
     def _init():
-        env = SokobanOracleWrapper(env_id, oracle_cost)
+        env = SokobanOracleWrapper(env_id, oracle_cost, reward_shaping=reward_shaping)
         env.action_space.seed(seed)
         env.observation_space.seed(seed)
         return env

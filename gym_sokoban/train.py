@@ -30,32 +30,47 @@ from model import CNNPolicy
 
 def parse_args():
     p = argparse.ArgumentParser()
-    p.add_argument('--env-id',      type=str,   default='Sokoban-small-v0')
-    p.add_argument('--env-type',    type=str,   default='empty',
-                   choices=['empty', 'doorkey']) # Kept for bash script compatibility
-    p.add_argument('--oracle-cost', type=float, default=0.0)
-    p.add_argument('--total-timesteps', type=int,   default=500_000)
-    p.add_argument('--n-envs',          type=int,   default=8)
-    p.add_argument('--n-steps',         type=int,   default=128)
-    p.add_argument('--n-minibatches',   type=int,   default=4)
-    p.add_argument('--n-epochs',        type=int,   default=4)
-    p.add_argument('--gamma',           type=float, default=0.99)
-    p.add_argument('--gae-lambda',      type=float, default=0.95)
-    p.add_argument('--clip-coef',       type=float, default=0.2)
-    p.add_argument('--ent-coef',        type=float, default=0.01)
-    p.add_argument('--vf-coef',         type=float, default=0.5)
-    p.add_argument('--max-grad-norm',   type=float, default=0.5)
-    p.add_argument('--lr',              type=float, default=2.5e-4)
-    p.add_argument('--anneal-lr',       action='store_true', default=True)
-    p.add_argument('--bc-coef',         type=float, default=1.0) # Boosted for Sokoban BC
-    p.add_argument('--bc-anneal',       action='store_true', default=False)
-    p.add_argument('--no-oracle',       action='store_true', default=False)
-    p.add_argument('--warmup-steps',    type=int,   default=0)
-    p.add_argument('--seed',            type=int,   default=1)
-    p.add_argument('--hidden-dim',      type=int,   default=512) # Expanded for 84x84 CNN
-    p.add_argument('--tile-size',       type=int,   default=8) # Kept for bash script compatibility
-    p.add_argument('--save-model',      action='store_true', default=False)
-    p.add_argument('--exp-name',        type=str,   default='oracle_ppo')
+    
+    # --- Environment Settings ---
+    p.add_argument('--env-id',          type=str,   default='Sokoban-small-v0')    # The exact name of the Gym environment to load
+    p.add_argument('--env-type',        type=str,   default='empty',               # Legacy MiniGrid argument (kept so your old bash scripts don't crash)
+                   choices=['empty', 'doorkey']) 
+    
+    # --- Oracle & Shaping Settings ---
+    p.add_argument('--oracle-cost',     type=float, default=0.0)                   # Negative reward penalty applied every time the agent asks the Oracle for a move
+    p.add_argument('--no-oracle',       action='store_true', default=False)        # If True, removes the Oracle action entirely (runs as a pure PPO baseline)
+    p.add_argument('--reward-shaping',  action='store_true', default=True)         # Enables the potential-based dense rewards (e.g., getting closer to a target)
+    p.add_argument('--warmup-steps',    type=int,   default=0)                     # Forces the agent to ONLY use the Oracle for the first N steps to build a good starting buffer
+    
+    # --- Training Loop Dimensions ---
+    p.add_argument('--total-timesteps', type=int,   default=500_000)               # Total number of environment frames the agent will experience during the entire run
+    p.add_argument('--n-envs',          type=int,   default=8)                     # Number of parallel environments running at the same time (speeds up data collection)
+    p.add_argument('--n-steps',         type=int,   default=128)                   # Number of steps each parallel environment takes before pausing to update the neural network
+    p.add_argument('--n-minibatches',   type=int,   default=4)                     # How many chunks the collected data (n_envs * n_steps) is split into for gradient descent
+    p.add_argument('--n-epochs',        type=int,   default=4)                     # How many times the network iterates over the collected batch of data per update phase
+    
+    # --- Standard PPO Hyperparameters ---
+    p.add_argument('--gamma',           type=float, default=0.99)                  # Discount factor: How much the agent cares about future rewards vs immediate rewards (0.99 is standard)
+    p.add_argument('--gae-lambda',      type=float, default=0.95)                  # Smoothing parameter for Advantage estimation (balances bias vs variance in reward predictions)
+    p.add_argument('--clip-coef',       type=float, default=0.2)                   # PPO's core feature: prevents the policy from changing more than 20% in a single update step
+    p.add_argument('--ent-coef',        type=float, default=0.01)                  # Entropy bonus: encourages exploration by penalizing the network if it becomes too certain of its actions
+    p.add_argument('--vf-coef',         type=float, default=0.5)                   # Value function coefficient: scales how much the Value head's errors impact the overall network loss
+    p.add_argument('--max-grad-norm',   type=float, default=0.5)                   # Gradient clipping threshold: prevents "exploding gradients" from destroying the network weights
+    
+    # --- Learning Rate & Behavior Cloning (BC) ---
+    p.add_argument('--lr',              type=float, default=2.5e-4)                # The starting step size for the Adam optimizer
+    p.add_argument('--anneal-lr',       action='store_true', default=True)         # If True, linearly decreases the learning rate to 0 by the end of training
+    p.add_argument('--bc-coef',         type=float, default=0.0)                   # How strongly to penalize the network for disagreeing with the Oracle (0.0 means no imitation learning)
+    p.add_argument('--bc-anneal',       action='store_true', default=False)        # If True, linearly fades out the Behavior Cloning strength to 0 over training, forcing self-reliance
+    
+    # --- Architecture & Reproducibility ---
+    p.add_argument('--seed',            type=int,   default=1)                     # Random seed to ensure you get the exact same results if you run the script twice
+    p.add_argument('--hidden-dim',      type=int,   default=512)                   # Size of the linear layer connecting the CNN feature extractor to the output Action/Value heads
+    p.add_argument('--tile-size',       type=int,   default=8)                     # Legacy MiniGrid argument (kept for bash script compatibility)
+    
+    # --- Output/Saving ---
+    p.add_argument('--save-model',      action='store_true', default=False)        # If True, saves the final PyTorch weights (.pt file) in the /checkpoints folder
+    p.add_argument('--exp-name',        type=str,   default='oracle_ppo')          # The prefix name used for saving CSV logs, PNG plots, and Model checkpoints
     return p.parse_args()
 
 
@@ -109,7 +124,7 @@ def main():
     # ── Environments ─────────────────────────────────────────────────────────
     # Note: Simplified make_env call to match our new Russian Doll wrapper
     envs = gym.vector.SyncVectorEnv([
-        make_env(args.env_id, oracle_cost=args.oracle_cost, seed=args.seed + i)
+        make_env(args.env_id, oracle_cost=args.oracle_cost, seed=args.seed + i, reward_shaping=args.reward_shaping)
         for i in range(args.n_envs)
     ])
 

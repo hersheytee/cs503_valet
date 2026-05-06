@@ -6,6 +6,5 @@ numpy==2.4.4
 openai==2.33.0
 pandas==3.0.2
 Pillow==12.2.0
-torch==2.8.0
-torch==2.8.0+cu126
+torch
 tqdm==4.67.3

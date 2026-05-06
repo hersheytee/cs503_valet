@@ -1,49 +1,58 @@
 """
-Tests the SokobanOracleWrapper to ensure observation shapes, 
-oracle interceptions, and reward penalties work as expected.
+Tests the SokobanOracleWrapper and saves a GIF of the run.
 """
 
 from env_wrapper import SokobanOracleWrapper
-import matplotlib.pyplot as plt
+import numpy as np
+import imageio
+import os
 
 def main():
     print("Initializing Wrapper...")
-    # We set a high oracle cost so we can clearly see it being subtracted
-    env = SokobanOracleWrapper(env_id='Sokoban-small-v0', oracle_cost=0.5)
+    env = SokobanOracleWrapper(env_id='Sokoban-small-v0', oracle_cost=0.5, reward_shaping=True)
     
-    # 1. Test Reset & Observation Shape
-    obs, info = env.reset(seed=42)
-    print("\n--- RESET ---")
-    print(f"Observation shape: {obs.shape} (Expected: (84, 84, 3))")
-    print(f"Observation dtype: {obs.dtype} (Expected: uint8)")
+    obs, info = env.reset(seed=12)
     
-    # Show the downsampled 84x84 image just to prove it looks right
-    plt.imshow(obs)
-    plt.title("Downsampled 84x84 Sokoban")
-    plt.axis('off')
-    plt.show(block=False)
-    plt.pause(2)
-    plt.close()
-
-    # 2. Test a Normal Action (Action 1: Push Up)
-    print("\n--- NORMAL ACTION (1: Push Up) ---")
-    obs, reward, terminated, truncated, info = env.step(1)
-    print(f"Reward: {reward}")
-    print(f"Guided: {info.get('guided')}")
-    print(f"Oracle Action Taken: {info.get('oracle_action')}")
-
-    # 3. Test the Oracle Action (Action 9)
-    print("\n--- ORACLE ACTION (9: Query Oracle) ---")
-    obs, reward, terminated, truncated, info = env.step(9)
-    print(f"Reward: {reward} (Should include the -0.5 penalty!)")
-    print(f"Guided: {info.get('guided')} (Expected: True)")
-    print(f"Oracle Action Taken: {info.get('oracle_action')} (Expected: 1, 2, 3, or 4)")
+    # List to store our frames for the GIF
+    frames = []
     
-    if info.get('fatal_deadlock'):
-        print("\n[!] FATAL DEADLOCK TRIGGERED! The oracle returned 0.")
+    # We grab the high-resolution render for the GIF (160x160) rather than the 84x84 obs
+    frames.append(env.render())
 
+    QUERY_ACTION = env.action_space.n - 1
+
+    print("\n--- RUNNING ORACLE ---")
+    total_reward = 0.0
+    
+    # Let the oracle play until it wins or hits 20 steps
+    for step in range(1, 21):
+        obs, reward, terminated, truncated, info = env.step(QUERY_ACTION)
+        total_reward += reward
+        
+        # Capture the frame after the step
+        frames.append(env.render())
+        
+        oracle_action = info.get('oracle_action')
+        current_dist = env._shaper._previous_box_dist if env._shaper else None
+
+        print(f"Step {step:2d} | Oracle chose: {oracle_action} | "
+              f"Reward: {reward:+.2f} | Current Dist: {current_dist}")
+
+        if terminated or info.get('fatal_deadlock'):
+            print(f"\n[!] Episode ended at step {step}")
+            # Add a few duplicate frames at the end so the GIF pauses on the victory screen
+            for _ in range(5):
+                frames.append(env.render())
+            break
+
+    print(f"\nTotal shaped reward: {total_reward:.2f}")
     env.close()
-    print("\nWrapper Test Complete!")
+
+    # Save the GIF
+    gif_path = "sokoban_oracle_test.gif"
+    print(f"\nSaving visual to {gif_path}...")
+    imageio.mimsave(gif_path, frames, fps=4) # fps=4 gives a nice, readable speed
+    print("Done! Open the GIF to see the agent move.")
 
 if __name__ == "__main__":
     main()

@@ -98,7 +98,6 @@ def simulate(n_eps=2000, seed=42):
     agreement  = np.clip(agreement, 0, 1)
 
     # First unguided success episode
-    # Find where rolling success is decent AND guided_pct is below 15%
     smooth_sr  = smooth(success, 50)
     smooth_gp  = smooth(guided_pct, 50)
     candidates = np.where((smooth_sr > 0.5) & (smooth_gp < 15))[0]
@@ -141,7 +140,16 @@ def plot_episodic_return(ax, d):
     ax.set_title('Episodic Return')
     ax.set_xlabel('Episode')
     ax.set_ylabel('Return')
-    ax.set_ylim(-0.05, 1.05)
+    
+    # --- DYNAMIC Y-AXIS SCALING ---
+    min_val = min(np.min(d['ep_return']), np.min(d['ppo_return']))
+    max_val = max(np.max(d['ep_return']), np.max(d['ppo_return']))
+    
+    # Add 10% padding to bounds, maintaining a minimum scale of [-0.05, 1.05]
+    y_lower = min(-0.05, min_val - abs(min_val)*0.1)
+    y_upper = max(1.05, max_val + abs(max_val)*0.1)
+    
+    ax.set_ylim(y_lower, y_upper)
     ax.legend(fontsize=9)
 
 
@@ -178,6 +186,7 @@ def plot_queries_per_ep(ax, d):
     ax.set_title('Oracle Queries per Episode')
     ax.set_xlabel('Episode')
     ax.set_ylabel('Queries')
+    # Leaving the upper bound blank allows Matplotlib to auto-scale it dynamically!
     ax.set_ylim(bottom=0)
 
 
@@ -258,13 +267,20 @@ def plot_pareto(ax, d):
     ax.set_title('Sample Efficiency\n(Return vs Oracle Calls)')
     ax.set_xlabel('Cumulative Oracle Calls')
     ax.set_ylabel('Episodic Return')
-    ax.set_ylim(-0.05, 1.05)
+    
+    # --- DYNAMIC Y-AXIS SCALING ---
+    min_val = min(np.min(d['ep_return']), np.min(d['ppo_return']))
+    max_val = max(np.max(d['ep_return']), np.max(d['ppo_return']))
+    y_lower = min(-0.05, min_val - abs(min_val)*0.1)
+    y_upper = max(1.05, max_val + abs(max_val)*0.1)
+    ax.set_ylim(y_lower, y_upper)
+    
     ax.legend(fontsize=9)
 
 
 # ── Master figure ────────────────────────────────────────────────────────────
 
-def make_figure(d, title='Oracle-Guided PPO — MiniGrid Training Metrics', out=None):
+def make_figure(d, title='Oracle-Guided PPO Training Metrics', out=None):
     fig, axes = plt.subplots(2, 2, figsize=(14, 9))
     fig.patch.set_facecolor('#FAFAFA')
     axes = axes.flatten()
@@ -301,7 +317,7 @@ if __name__ == '__main__':
                         help='Use simulated data (default)')
     parser.add_argument('--out',  type=str, default='figures/metrics.png',
                         help='Output image path')
-    parser.add_argument('--env',  type=str, default='MiniGrid-Empty-5x5',
+    parser.add_argument('--env',  type=str, default='Unknown-Env',
                         help='Env name for plot title')
     parser.add_argument('--seed', type=int, default=42)
     args = parser.parse_args()
