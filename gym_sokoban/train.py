@@ -122,16 +122,24 @@ def main():
     logger = CSVLogger(f"logs/{run_name}.csv")
 
     # ── Environments ─────────────────────────────────────────────────────────
-    # Note: Simplified make_env call to match our new Russian Doll wrapper
     envs = gym.vector.SyncVectorEnv([
-        make_env(args.env_id, oracle_cost=args.oracle_cost, seed=args.seed + i, reward_shaping=args.reward_shaping)
+        make_env(
+            args.env_id, 
+            oracle_cost=args.oracle_cost, 
+            seed=args.seed * 1000 + i, 
+            reward_shaping=args.reward_shaping, 
+            no_oracle=args.no_oracle
+            )
         for i in range(args.n_envs)
     ])
 
     obs_shape    = envs.single_observation_space.shape
     n_actions    = envs.single_action_space.n
-    QUERY_ACTION = n_actions - 1
+    
+    # ---> SAFEGUARD THE QUERY ACTION INDEX <---
+    QUERY_ACTION = n_actions - 1 if not args.no_oracle else None
     print(f"  obs={obs_shape}, n_actions={n_actions}, query_action={QUERY_ACTION}")
+
 
     # ── Model ─────────────────────────────────────────────────────────────────
     # Note: Updated to initialize the new Nature CNN correctly
@@ -189,16 +197,21 @@ def main():
             obs_buf[step]   = next_obs
             dones_buf[step] = next_done
 
+
             with torch.no_grad():
                 logits, value = model(next_obs)
                 dist = torch.distributions.Categorical(logits=logits)
+                
                 if args.warmup_steps > 0 and global_step < args.warmup_steps and not args.no_oracle:
                     action = torch.full((args.n_envs,), QUERY_ACTION, dtype=torch.long, device=device)
                 else:
                     action = dist.sample()
                 logprob = dist.log_prob(action)
+            
                 logits_masked = logits.clone()
-                logits_masked[:, QUERY_ACTION] = -float('inf')
+                if not args.no_oracle:
+                    logits_masked[:, QUERY_ACTION] = -float('inf')
+                
                 greedy = logits_masked.argmax(dim=-1)
 
             actions_buf[step]  = action

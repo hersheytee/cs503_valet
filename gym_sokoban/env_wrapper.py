@@ -74,11 +74,16 @@ class SokobanOracleWrapper(gym.Env):
     """
     metadata = {'render_modes': ['rgb_array']}
 
-    def __init__(self, env_id: str = 'Sokoban-small-v0', oracle_cost: float = 0.0, reward_shaping: bool = False):
+    def __init__(self, env_id: str = 'Sokoban-small-v0', oracle_cost: float = 0.0, reward_shaping: bool = False, no_oracle: bool = False):
+
+
         # Build the environment using the OLD gym
         self.env = old_gym.make(env_id)
         self.oracle_cost = oracle_cost
         
+        # include no oracle flag
+        self.no_oracle = no_oracle
+
         # Initialize the reward shaper if enabled
         self.reward_shaping = reward_shaping
         self._shaper = SokobanRewardShaper(distance_scale=0.1) if reward_shaping else None
@@ -162,10 +167,10 @@ class SokobanOracleWrapper(gym.Env):
         return self.env.render(mode='rgb_array')
 
 
-def make_env(env_id: str, oracle_cost: float = 0.0, seed: int = 0, reward_shaping: bool = False):
+def make_env(env_id: str, oracle_cost: float = 0.0, seed: int = 0, reward_shaping: bool = False, no_oracle: bool = False):
     """Factory function for SyncVectorEnv."""
     def _init():
-        env = SokobanOracleWrapper(env_id, oracle_cost, reward_shaping=reward_shaping)
+        env = SokobanOracleWrapper(env_id, oracle_cost, reward_shaping=reward_shaping, no_oracle=no_oracle)
         env.action_space.seed(seed)
         env.observation_space.seed(seed)
         return env

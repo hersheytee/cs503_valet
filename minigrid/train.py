@@ -117,7 +117,7 @@ def main():
     # ── Environments ─────────────────────────────────────────────────────────
     envs = gym.vector.SyncVectorEnv([
         make_env(args.env_id, args.env_type, args.tile_size,
-                 args.oracle_cost, seed=args.seed + i,
+                 args.oracle_cost, seed=args.seed * 1000 + i,
                  no_oracle=args.no_oracle,
                  reward_shaping=args.reward_shaping)
         for i in range(args.n_envs)

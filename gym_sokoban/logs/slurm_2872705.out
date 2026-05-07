@@ -1,0 +1,1298 @@
+=== Job 2872705 — exp=oracle_paid_05 seed=1 ===
+Node: i42
+Start: jeu 07 mai 2026 12:26:10 CEST
+Saved → figures/oracle_paid_05__Sokoban-small-v0__seed1__1778149595.png
+Run: oracle_paid_05__Sokoban-small-v0__seed1__1778149595
+  device=cuda, batch=1024, updates=488
+  CSV → logs/oracle_paid_05__Sokoban-small-v0__seed1__1778149595.csv
+  obs=(84, 84, 3), n_actions=10, query_action=9
+  params=1,687,723
+[   1/488] step=   1024 | ep=   20 | return=-1.465 | guided%= 12.9 | bc=0.0000 | cumQ=   107 | bc_coef=0.000 | sps=77
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[  10/488] step=  10240 | ep=  210 | return= 4.289 | guided%= 34.6 | bc=0.0000 | cumQ=  2146 | bc_coef=0.000 | sps=136
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  20/488] step=  20480 | ep=  813 | return=10.299 | guided%= 79.3 | bc=0.0000 | cumQ=  8942 | bc_coef=0.000 | sps=134
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  30/488] step=  30720 | ep= 1612 | return=10.672 | guided%= 83.5 | bc=0.0000 | cumQ= 17720 | bc_coef=0.000 | sps=131
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[  40/488] step=  40960 | ep= 2414 | return=10.663 | guided%= 89.3 | bc=0.0000 | cumQ= 26753 | bc_coef=0.000 | sps=130
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  50/488] step=  51200 | ep= 3245 | return=10.681 | guided%= 88.9 | bc=0.0000 | cumQ= 36030 | bc_coef=0.000 | sps=129
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[  60/488] step=  61440 | ep= 4076 | return=10.464 | guided%= 89.5 | bc=0.0000 | cumQ= 45307 | bc_coef=0.000 | sps=128
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  70/488] step=  71680 | ep= 4922 | return=10.813 | guided%= 87.9 | bc=0.0000 | cumQ= 54614 | bc_coef=0.000 | sps=127
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  80/488] step=  81920 | ep= 5768 | return=10.617 | guided%= 88.2 | bc=0.0000 | cumQ= 63894 | bc_coef=0.000 | sps=127
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  90/488] step=  92160 | ep= 6602 | return=10.557 | guided%= 89.4 | bc=0.0000 | cumQ= 73171 | bc_coef=0.000 | sps=127
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 100/488] step= 102400 | ep= 7421 | return=10.465 | guided%= 88.6 | bc=0.0000 | cumQ= 82473 | bc_coef=0.000 | sps=127
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 110/488] step= 112640 | ep= 8253 | return=10.630 | guided%= 89.6 | bc=0.0000 | cumQ= 91732 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 120/488] step= 122880 | ep= 9118 | return=10.738 | guided%= 88.1 | bc=0.0000 | cumQ=101048 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 130/488] step= 133120 | ep= 9959 | return=10.715 | guided%= 88.9 | bc=0.0000 | cumQ=110434 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 140/488] step= 143360 | ep=10814 | return=10.745 | guided%= 89.4 | bc=0.0000 | cumQ=119812 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 150/488] step= 153600 | ep=11644 | return=10.673 | guided%= 89.5 | bc=0.0000 | cumQ=129215 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#2) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 160/488] step= 163840 | ep=12494 | return=10.699 | guided%= 89.5 | bc=0.0000 | cumQ=138590 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 170/488] step= 174080 | ep=13350 | return=10.693 | guided%= 89.5 | bc=0.0000 | cumQ=147962 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 180/488] step= 184320 | ep=14177 | return=10.641 | guided%= 89.1 | bc=0.0000 | cumQ=157348 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 190/488] step= 194560 | ep=15031 | return=10.761 | guided%= 88.4 | bc=0.0000 | cumQ=166697 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 200/488] step= 204800 | ep=15883 | return=10.739 | guided%= 88.0 | bc=0.0000 | cumQ=176042 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 210/488] step= 215040 | ep=16722 | return=10.768 | guided%= 88.8 | bc=0.0000 | cumQ=185433 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 220/488] step= 225280 | ep=17589 | return=10.618 | guided%= 90.1 | bc=0.0000 | cumQ=194801 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 230/488] step= 235520 | ep=18417 | return=10.529 | guided%= 89.5 | bc=0.0000 | cumQ=204207 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 240/488] step= 245760 | ep=19253 | return=10.631 | guided%= 90.0 | bc=0.0000 | cumQ=213612 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 250/488] step= 256000 | ep=20113 | return=10.740 | guided%= 89.4 | bc=0.0000 | cumQ=222990 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 260/488] step= 266240 | ep=20966 | return=10.685 | guided%= 89.3 | bc=0.0000 | cumQ=232374 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 270/488] step= 276480 | ep=21834 | return=10.762 | guided%= 89.4 | bc=0.0000 | cumQ=241744 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 280/488] step= 286720 | ep=22701 | return=10.588 | guided%= 90.0 | bc=0.0000 | cumQ=251115 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 290/488] step= 296960 | ep=23564 | return=10.708 | guided%= 90.0 | bc=0.0000 | cumQ=260492 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 300/488] step= 307200 | ep=24395 | return=10.662 | guided%= 90.4 | bc=0.0000 | cumQ=269892 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 310/488] step= 317440 | ep=25239 | return=10.587 | guided%= 90.1 | bc=0.0000 | cumQ=279208 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 320/488] step= 327680 | ep=26106 | return=10.601 | guided%= 89.3 | bc=0.0000 | cumQ=288507 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 330/488] step= 337920 | ep=26962 | return=10.849 | guided%= 89.1 | bc=0.0000 | cumQ=297854 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 340/488] step= 348160 | ep=27812 | return=10.758 | guided%= 88.9 | bc=0.0000 | cumQ=307217 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 350/488] step= 358400 | ep=28653 | return=10.735 | guided%= 89.1 | bc=0.0000 | cumQ=316608 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 360/488] step= 368640 | ep=29493 | return=10.611 | guided%= 90.1 | bc=0.0000 | cumQ=325994 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 370/488] step= 378880 | ep=30321 | return=10.732 | guided%= 88.7 | bc=0.0000 | cumQ=335391 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 380/488] step= 389120 | ep=31154 | return=10.493 | guided%= 90.6 | bc=0.0000 | cumQ=344788 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 390/488] step= 399360 | ep=31993 | return=10.569 | guided%= 90.2 | bc=0.0000 | cumQ=354187 | bc_coef=0.000 | sps=126
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 400/488] step= 409600 | ep=32838 | return=10.682 | guided%= 90.0 | bc=0.0000 | cumQ=363580 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 410/488] step= 419840 | ep=33717 | return=10.867 | guided%= 88.8 | bc=0.0000 | cumQ=372936 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 420/488] step= 430080 | ep=34587 | return=10.865 | guided%= 88.5 | bc=0.0000 | cumQ=382303 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 430/488] step= 440320 | ep=35452 | return=10.799 | guided%= 88.9 | bc=0.0000 | cumQ=391673 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 440/488] step= 450560 | ep=36323 | return=10.826 | guided%= 88.4 | bc=0.0000 | cumQ=401041 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 450/488] step= 460800 | ep=37172 | return=10.735 | guided%= 89.1 | bc=0.0000 | cumQ=410429 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[ 460/488] step= 471040 | ep=38004 | return=10.670 | guided%= 90.1 | bc=0.0000 | cumQ=419834 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 470/488] step= 481280 | ep=38851 | return=10.821 | guided%= 89.2 | bc=0.0000 | cumQ=429220 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[ 480/488] step= 491520 | ep=39727 | return=10.713 | guided%= 89.0 | bc=0.0000 | cumQ=438584 | bc_coef=0.000 | sps=125
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+Saved → checkpoints/oracle_paid_05__Sokoban-small-v0__seed1__1778149595.pt
+Generating plots...
+Plots → figures/oracle_paid_05__Sokoban-small-v0__seed1__1778149595.png
+End: jeu 07 mai 2026 13:33:34 CEST
