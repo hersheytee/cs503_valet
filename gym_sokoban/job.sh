@@ -20,7 +20,7 @@ echo "Start: $(date)"
 
 # ── Environment Setup ─────────────────────────────────────────────────────────
 source ~/.bashrc
-conda activate nanofm
+conda activate cs503_proj
 
 # This puts us in the cs503_project root folder
 cd $SLURM_SUBMIT_DIR

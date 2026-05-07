@@ -8,3 +8,5 @@ pandas==3.0.2
 Pillow==12.2.0
 torch
 tqdm==4.67.3
+opencv-python
+gym-sokoban
