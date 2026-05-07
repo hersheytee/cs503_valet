@@ -4,35 +4,37 @@
 
 set -e
 
-SEEDS=(1 2 3)
+SEEDS=(1)
 
 # Create necessary directories
 mkdir -p logs figures checkpoints
 
 for SEED in "${SEEDS[@]}"; do
 
-    # 1. Free Oracle (cost = 0.0)
     echo "Submitting oracle_free seed${SEED} ..."
     sbatch \
         --job-name="soko_free_s${SEED}" \
         --export=ALL,EXP_NAME="oracle_free",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.0" \
         job.sh
 
-    # 2. Paid Oracle (cost = 0.01)
-    echo "Submitting oracle_paid_01 seed${SEED} ..."
+    echo "Submitting oracle_paid_02 seed${SEED} ..."
     sbatch \
-        --job-name="soko_paid01_s${SEED}" \
-        --export=ALL,EXP_NAME="oracle_paid_01",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.01" \
+        --job-name="soko_paid02_s${SEED}" \
+        --export=ALL,EXP_NAME="oracle_paid_02",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.2" \
         job.sh
 
-    # 3. Paid Oracle (cost = 0.05)
+    echo "Submitting oracle_paid_03 seed${SEED} ..."
+    sbatch \
+        --job-name="soko_paid03_s${SEED}" \
+        --export=ALL,EXP_NAME="oracle_paid_03",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.3" \
+        job.sh
+
     echo "Submitting oracle_paid_05 seed${SEED} ..."
     sbatch \
         --job-name="soko_paid05_s${SEED}" \
-        --export=ALL,EXP_NAME="oracle_paid_05",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.05" \
+        --export=ALL,EXP_NAME="oracle_paid_05",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.5" \
         job.sh
 
-    # 4. Pure PPO Baseline (no oracle)
     echo "Submitting baseline seed${SEED} ..."
     sbatch \
         --job-name="soko_base_s${SEED}" \
@@ -42,4 +44,4 @@ for SEED in "${SEEDS[@]}"; do
 done
 
 echo ""
-echo "12 jobs submitted to Izar! Monitor with: squeue -u $USER"
+echo "All jobs submitted to Izar! Monitor with: squeue -u $USER"

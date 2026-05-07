@@ -1,0 +1,62 @@
+#!/bin/bash
+#SBATCH --job-name=minigrid_all
+#SBATCH --output=logs/slurm_all_%j.out
+#SBATCH --error=logs/slurm_all_%j.err
+#SBATCH --time=20:00:00
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16G
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --account=cs-503
+
+set -e
+
+# ── Environment Setup ─────────────────────────────────────────────────────────
+source ~/.bashrc
+conda activate cs503_proj
+
+cd $SLURM_SUBMIT_DIR
+mkdir -p logs figures checkpoints
+
+ENV_ID="MiniGrid-DoorKey-8x8-v0"
+ENV_TYPE="doorkey"
+
+# ── Execution Loop ────────────────────────────────────────────────────────────
+# Note: These run sequentially on a single GPU allocation.
+
+for SEED in 1; do
+
+    echo "=== Free Oracle          (cost=0.00) | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --oracle-cost 0.0 --reward-shaping \
+        --exp-name oracle_free --total-timesteps 500000 --save-model
+
+    echo "=== Paid Oracle          (cost=0.01) | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --oracle-cost 0.2 --reward-shaping \
+        --exp-name oracle_paid_001 --total-timesteps 500000 --save-model
+
+    echo "=== Paid Oracle          (cost=0.03) | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --oracle-cost 0.35 --reward-shaping \
+        --exp-name oracle_paid_003 --total-timesteps 500000 --save-model
+
+    echo "=== Paid Oracle          (cost=0.02) | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --oracle-cost 0.5 --reward-shaping \
+        --exp-name oracle_paid_002 --total-timesteps 500000 --save-model
+
+    echo "=== Paid Oracle          (cost=0.03) | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --oracle-cost 1 --reward-shaping \
+        --exp-name oracle_paid_003 --total-timesteps 500000 --save-model
+
+    echo "=== Pure PPO Baseline    (no oracle) | seed=$SEED ==="
+    python -u train.py --env-id "$ENV_ID" --env-type "$ENV_TYPE" \
+        --seed "$SEED" --no-oracle --reward-shaping \
+        --exp-name baseline --total-timesteps 500000 --save-model
+
+done
+
+echo "All runs completed successfully."

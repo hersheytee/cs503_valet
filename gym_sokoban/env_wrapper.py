@@ -90,8 +90,13 @@ class SokobanOracleWrapper(gym.Env):
         
         # Extend action space: 9 original actions + 1 oracle action
         n_original = 9
-        self.QUERY_ACTION = n_original
-        self.action_space = spaces.Discrete(n_original + 1)
+
+        if self.no_oracle:
+            self.action_space = spaces.Discrete(n_original)
+            self.QUERY_ACTION = -1  # Kill the Oracle index entirely
+        else:
+            self.action_space = spaces.Discrete(n_original + 1)
+            self.QUERY_ACTION = n_original
         
         # Downsample observation space from 160x160 to 84x84
         self.obs_size = 84
