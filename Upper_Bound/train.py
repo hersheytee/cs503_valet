@@ -26,7 +26,8 @@ import torch.optim as optim
 import gymnasium as gym
 
 from env_wrapper import make_env
-from model import CNNPolicy
+from model import CNNPolicy as CNNPolicySmall
+from model_large import CNNPolicy as CNNPolicyLarge
 
 
 # ── Argument parsing ─────────────────────────────────────────────────────────
@@ -64,6 +65,8 @@ def parse_args():
     p.add_argument('--tile-size',       type=int,   default=8)
     p.add_argument('--save-model',      action='store_true', default=False)
     p.add_argument('--exp-name',        type=str,   default='oracle_ppo')
+    p.add_argument('--large-model',     action='store_true', default=False,
+                   help='Use strided CNN for large obs (e.g. 16x16 grid)')
     return p.parse_args()
 
 
@@ -129,6 +132,7 @@ def main():
     print(f"  obs={obs_shape}, n_actions={n_actions}, query_action={QUERY_ACTION}")
 
     # ── Model ─────────────────────────────────────────────────────────────────
+    CNNPolicy = CNNPolicyLarge if args.large_model else CNNPolicySmall
     model     = CNNPolicy(obs_shape, n_actions, args.hidden_dim).to(device)
     optimiser = optim.Adam(model.parameters(), lr=args.lr, eps=1e-5)
     print(f"  params={sum(p.numel() for p in model.parameters()):,}")

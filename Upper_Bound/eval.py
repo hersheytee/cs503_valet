@@ -17,7 +17,16 @@ import gymnasium as gym
 import imageio
 from minigrid.wrappers import FullyObsWrapper, RGBImgObsWrapper
 
-from oracle import get_oracle_action
+from oracle_transfer import get_oracle_action as _get_oracle_action_transfer
+from oracle import get_oracle_action as _get_oracle_action_doorkey
+
+_TRANSFER_ENV_TYPES = {'fetch', 'gotodoor', 'gotoobject'}
+
+def get_oracle_action(env_unwrapped, env_type):
+    if env_type in _TRANSFER_ENV_TYPES:
+        return _get_oracle_action_transfer(env_unwrapped, env_type)
+    return _get_oracle_action_doorkey(env_unwrapped, env_type)
+
 from model import CNNPolicy
 
 
