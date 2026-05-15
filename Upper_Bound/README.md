@@ -323,6 +323,100 @@ python eval.py \
 
 ---
 
+## VLM oracle — setup and usage
+
+### New files
+
+```
+Upper_Bound/
+├── download_models.py   # Downloads VLMs from HuggingFace
+├── vlm_oracle.py        # Replaces the BFS oracle with a real VLM (vLLM server)
+└── job_vlm.sh           # Ready-to-use SLURM job for BFS or VLM runs
+```
+
+### Available models
+
+| Key | Model |
+|---|---|
+| `qwen2vl` | Qwen2-VL 7B |
+| `qwen3b` | Qwen2.5-VL 3B |
+| `qwen7b` | Qwen2.5-VL 7B |
+| `internvl` | InternVL2.5 4B |
+| `internvl3` | InternVL3 8B |
+| `internvl8b_mpo` | InternVL2.5 8B MPO |
+| `wethink` | WeThink-Qwen2.5VL 7B |
+| `smolvlm` | SmolVLM 2B |
+
+### 1. Download models
+
+Do this **once** from the login node, before submitting any jobs.
+
+> **Adapt the path** to your own Izar scratch directory: replace `/scratch/izar/<username>/vlm_models` with your actual username.
+
+```bash
+# Download all models
+python download_models.py --cache_dir /scratch/izar/<username>/vlm_models
+
+# Download specific models only
+python download_models.py qwen2vl internvl3 --cache_dir /scratch/izar/<username>/vlm_models
+
+# Check what is already cached (no download)
+python download_models.py --list --cache_dir /scratch/izar/<username>/vlm_models
+```
+
+### 2. Run a simulation
+
+#### Option A — job_vlm.sh (recommended)
+
+Edit the parameters at the top of `job_vlm.sh`:
+
+```bash
+VLM_MODEL="qwen2vl"                          # model key, or "" to use the BFS oracle
+CACHE_DIR="/scratch/izar/<username>/vlm_models"  # adapt to your username
+TOTAL_TIMESTEPS=1000                         # 500000 for a full run
+```
+
+Then submit:
+
+```bash
+sbatch job_vlm.sh
+```
+
+#### Option B — manual sbatch
+
+```bash
+# BFS oracle (upper bound)
+sbatch \
+    --export=ENV_ID="MiniGrid-DoorKey-8x8-v0",ENV_TYPE="doorkey",SEED="1",EXTRA_ARGS="--exp-name bfs_free" \
+    job.sh
+
+# VLM oracle (adapt --cache-dir to your username)
+sbatch \
+    --export=ENV_ID="MiniGrid-DoorKey-8x8-v0",ENV_TYPE="doorkey",SEED="1",EXTRA_ARGS="--vlm-model qwen2vl --cache-dir /scratch/izar/<username>/vlm_models --exp-name vlm_qwen2vl" \
+    job.sh
+```
+
+#### Option C — launch_all.sh (all conditions, multiple seeds)
+
+```bash
+./launch_all.sh                   # BFS oracle, all conditions
+./launch_all.sh --vlm qwen2vl     # VLM oracle, all conditions
+```
+
+### 3. Monitor logs
+
+```bash
+# Stream output in real time
+tail -f logs/slurm_vlm_<job_id>.out
+
+# Check running jobs
+squeue -u $USER
+```
+
+Results are written to `logs/` in the same CSV format as BFS runs — all existing plot scripts work without modification.
+
+---
+
 ## Sending files to cluster
 
 ```bash

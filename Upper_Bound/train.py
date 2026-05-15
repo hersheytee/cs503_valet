@@ -67,6 +67,11 @@ def parse_args():
     p.add_argument('--exp-name',        type=str,   default='oracle_ppo')
     p.add_argument('--large-model',     action='store_true', default=False,
                    help='Use strided CNN for large obs (e.g. 16x16 grid)')
+    p.add_argument('--vlm-model',       type=str,   default='',
+                   help='VLM key to use as oracle (e.g. qwen3b). Empty = BFS oracle.')
+    p.add_argument('--cache-dir',       type=str,
+                   default=os.environ.get('HF_HOME', './hf_cache'),
+                   help='HuggingFace model cache directory')
     return p.parse_args()
 
 
@@ -117,12 +122,34 @@ def main():
 
     logger = CSVLogger(f"logs/{run_name}.csv")
 
+    # ── VLM server (optional) ─────────────────────────────────────────────────
+    vlm_proc         = None
+    vlm_client       = None
+    vlm_served_name  = ''
+
+    if args.vlm_model and not args.no_oracle:
+        from vlm_oracle import (start_vlm_server, wait_for_server,
+                                make_vlm_client, get_served_model_name)
+        print(f"  VLM oracle : {args.vlm_model}  (cache: {args.cache_dir})")
+        vlm_proc = start_vlm_server(args.vlm_model, args.cache_dir)
+        if not wait_for_server(timeout=900):
+            vlm_proc.kill()
+            raise RuntimeError("vLLM server failed to start within 900s.")
+        vlm_client      = make_vlm_client()
+        vlm_served_name = get_served_model_name(vlm_client)
+        print(f"  vLLM ready : {vlm_served_name}")
+    else:
+        print("  Oracle     : BFS")
+
     # ── Environments ─────────────────────────────────────────────────────────
     envs = gym.vector.SyncVectorEnv([
         make_env(args.env_id, args.env_type, args.tile_size,
                  args.oracle_cost, seed=args.seed + i,
                  no_oracle=args.no_oracle,
-                 reward_shaping=args.reward_shaping)
+                 reward_shaping=args.reward_shaping,
+                 vlm_client=vlm_client,
+                 vlm_model_key=args.vlm_model or 'qwen3b',
+                 vlm_served_name=vlm_served_name)
         for i in range(args.n_envs)
     ])
 
@@ -366,6 +393,10 @@ def main():
 
     logger.close()
     envs.close()
+
+    if vlm_proc is not None:
+        from vlm_oracle import stop_vlm_server
+        stop_vlm_server(vlm_proc)
 
     log_path = f"logs/{run_name}.csv"
     fig_path = f"figures/{run_name}.png"

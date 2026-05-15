@@ -3,9 +3,32 @@
 #   - oracle gratuit  (--oracle-cost 0.0)
 #   - oracle payant   (--oracle-cost 0.01)
 #   - baseline PPO    (--no-oracle)
+#
+# Usage:
+#   ./launch_all.sh                  # BFS oracle (défaut)
+#   ./launch_all.sh --vlm qwen3b     # VLM oracle (Qwen2.5-VL 3B)
+#   ./launch_all.sh --vlm qwen7b     # VLM oracle (Qwen2.5-VL 7B)
 
 set -e
 
+# ── Paramètre VLM (optionnel) ─────────────────────────────────────────────────
+VLM_MODEL=""
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --vlm) VLM_MODEL="$2"; shift 2 ;;
+        *) echo "Unknown argument: $1"; exit 1 ;;
+    esac
+done
+
+VLM_ARG=""
+if [[ -n "$VLM_MODEL" ]]; then
+    VLM_ARG="--vlm-model $VLM_MODEL"
+    echo "VLM oracle : $VLM_MODEL"
+else
+    echo "VLM oracle : none (BFS)"
+fi
+
+# ── Configuration ─────────────────────────────────────────────────────────────
 SEEDS=(1 2 3)
 ENVS=(
     "MiniGrid-Empty-5x5-v0,empty"
@@ -24,14 +47,14 @@ for env_entry in "${ENVS[@]}"; do
         echo "Submitting oracle_free  ${ENV_TYPE} seed${SEED} ..."
         sbatch \
             --job-name="ub_free_${ENV_TYPE}_s${SEED}" \
-            --export=ENV_ID="$ENV_ID",ENV_TYPE="$ENV_TYPE",SEED="$SEED",EXTRA_ARGS="" \
+            --export=ENV_ID="$ENV_ID",ENV_TYPE="$ENV_TYPE",SEED="$SEED",EXTRA_ARGS="$VLM_ARG" \
             job.sh
 
         # Oracle payant
         echo "Submitting oracle_paid  ${ENV_TYPE} seed${SEED} ..."
         sbatch \
             --job-name="ub_paid_${ENV_TYPE}_s${SEED}" \
-            --export=ENV_ID="$ENV_ID",ENV_TYPE="$ENV_TYPE",SEED="$SEED",EXTRA_ARGS="--oracle-cost ${ORACLE_COST}" \
+            --export=ENV_ID="$ENV_ID",ENV_TYPE="$ENV_TYPE",SEED="$SEED",EXTRA_ARGS="--oracle-cost ${ORACLE_COST} $VLM_ARG" \
             job.sh
 
         # Baseline PPO pur

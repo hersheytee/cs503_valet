@@ -1,0 +1,20 @@
+=== Job 2903894 — VLM oracle: qwen2vl ===
+Node: i28
+Start: ven 15 mai 2026 20:02:31 CEST
+Run: test_vlm_qwen2vl__MiniGrid-DoorKey-8x8-v0__seed1__1778868205
+  device=cuda, batch=128, updates=7
+  CSV → logs/test_vlm_qwen2vl__MiniGrid-DoorKey-8x8-v0__seed1__1778868205.csv
+  VLM oracle : qwen2vl  (cache: /scratch/izar/lafont/vlm_models)
+[vlm_oracle] Starting vLLM server for Qwen2-VL 7B ...
+[vlm_oracle] CMD: /home/lafont/miniconda3/envs/bench_env/bin/python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2-VL-7B-Instruct --dtype float16 --gpu-memory-utilization 0.7 --host 127.0.0.1 --port 8000 --trust-remote-code --max-model-len 4096 --enforce-eager --download-dir /scratch/izar/lafont/vlm_models
+[vlm_oracle] Waiting for server at http://127.0.0.1:8000/health ...
+[vlm_oracle] Server ready (336s).
+  vLLM ready : Qwen/Qwen2-VL-7B-Instruct
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/7] step=    128 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=    11 | bc_coef=0.000 | sps=11
+[vlm_oracle] Server stopped.
+Saved → figures/test_vlm_qwen2vl__MiniGrid-DoorKey-8x8-v0__seed1__1778868205.png
+Generating plots...
+Plots → figures/test_vlm_qwen2vl__MiniGrid-DoorKey-8x8-v0__seed1__1778868205.png
+End: ven 15 mai 2026 20:09:52 CEST
