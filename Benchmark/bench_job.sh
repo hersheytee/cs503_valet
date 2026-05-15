@@ -49,9 +49,9 @@ python run_benchmark.py \
     --dataset        $DATASET \
     --results        $RESULTS \
     --cache_dir      $HF_HOME \
-    --models         qwen3b qwen7b internvl internvl3 internvl8b_mpo wethink qwen2vl \
+    --models         wethink qwen7b qwen2vl internvl8b_mpo \
     --views          global \
-    --history_images 5 \
+    --history_images 0 3 5 \
     --modes          baseline cot thinking
     # --max_samples 5
     # --debug

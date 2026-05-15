@@ -2,26 +2,37 @@
 Preview the exact prompt that would be sent to a model for a given sample.
 No model inference — purely text output for debugging and prompt design.
 
+Shows 4 sections:
+  HISTORY            — all available history steps (which are included marked ►)
+  IMAGE FILES        — file paths with existence check
+  INTERLEAVED CONTENT — exact sequence sent to the model (text label → image → … → prompt)
+  PROMPT TEXT        — the main text prompt with line numbers
+
 Usage:
-    # First sample, default params
+    # First sample, optimal variant, baseline mode, 3 history images (default)
     python preview_prompt.py --dataset ./history_dataset/dataset.json
 
-    # Sample by index or by id
+    # Select sample by index or id
     python preview_prompt.py --idx 5
     python preview_prompt.py --id 00042
 
-    # With history images and CoT
-    python preview_prompt.py --idx 10 --history_images 3 --variant verbose --mode cot
+    # Select by phase or oracle action
+    python preview_prompt.py --phase find_key
+    python preview_prompt.py --action pickup
+    python preview_prompt.py --action turn_right
 
-    # Filter by phase or action
-    python preview_prompt.py --phase find_key --variant if_then
-    python preview_prompt.py --action pickup --mode thinking
+    # Change variant, mode, number of history images
+    python preview_prompt.py --idx 10 --variant optimal --mode thinking --history_images 5
+    python preview_prompt.py --idx 10 --variant negative_rules --mode cot --history_images 0
 
-    # Show all variants for one sample
+    # Compare all variants for one sample
     python preview_prompt.py --idx 0 --all_variants
 
-    # Compare all modes side-by-side for one variant
-    python preview_prompt.py --idx 0 --variant verbose --all_modes
+    # Compare all modes for one variant
+    python preview_prompt.py --idx 0 --variant optimal --all_modes
+
+    # Use InternVL image marker style (shows Image-i: <image> in INTERLEAVED CONTENT)
+    python preview_prompt.py --idx 0 --model internvl8b_mpo
 """
 
 import argparse
@@ -35,9 +46,8 @@ from run_benchmark import (
     MODELS,
     PROMPT_VARIANTS,
     _MODE_CONFIGS,
+    _DIR_WORD,
     _detect_phase,
-    _history_context,
-    _image_markers,
 )
 
 
@@ -129,6 +139,22 @@ def show_prompt(sample: dict, dataset_root: Path,
         exists = "✓" if path.exists() else "✗ MISSING"
         print(f"  [{exists}]  {label:30s}  {path}")
 
+    _divider("INTERLEAVED CONTENT (as sent to model)")
+    history  = sample.get("history", [])
+    recent   = history[-n_hist_use:] if n_hist_use > 0 else []
+    for i, h in enumerate(recent):
+        fw    = _DIR_WORD.get(h.get("agent_dir_str", "?"), h.get("agent_dir_str", "?"))
+        carry = "key" if h.get("agent_carrying") == "key" else "nothing"
+        act   = h.get("action_name", "?")
+        marker = f"Image-{i+1}: <image>  " if img_style == "internvl" else ""
+        print(f"  [TEXT ] {marker}[Step {h['step']:+d} | facing {fw} | carrying {carry} | action: {act}]")
+        print(f"  [IMAGE] history img {i+1}")
+    cur_n   = n_hist_use + 1
+    cur_mrk = f"Image-{cur_n}: <image>  " if img_style == "internvl" else ""
+    print(f"  [TEXT ] {cur_mrk}[CURRENT STATE — image {cur_n}]")
+    print(f"  [IMAGE] current")
+    print(f"  [TEXT ] (main prompt — see PROMPT TEXT below)")
+
     _divider("PROMPT TEXT")
     prompt_text = variant["fn"](
         sample, view, n_hist_use, img_style,
@@ -164,7 +190,7 @@ def parse_args():
                    help="Pick the first sample with this history_type")
     p.add_argument("--view",          type=str, default="global",
                    choices=["global", "partial"])
-    p.add_argument("--variant",       type=str, default="verbose",
+    p.add_argument("--variant",       type=str, default="optimal",
                    choices=[v["name"] for v in PROMPT_VARIANTS])
     p.add_argument("--mode",          type=str, default="baseline",
                    choices=list(_MODE_CONFIGS.keys()))

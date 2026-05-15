@@ -77,6 +77,7 @@ from utils.generate_dataset import (
     ENV_POOL,
     TILE_SIZE,
     _get_successors,
+    _bfs_dist,
     bfs_oracle,
     randomize_agent,
 )
@@ -88,6 +89,23 @@ from utils.sample_rare_actions import (
 )
 
 _RANDOM_ACTIONS = [0, 1, 2]   # turn_left, turn_right, forward
+
+
+def _all_optimal_actions(state, grid, W, H, key_pos, door_pos, goal_pos):
+    """
+    Returns all equally optimal first actions from a given state tuple,
+    using the same two-phase approach as bfs_oracle (avoid symmetric-path collapse).
+    """
+    best_len = _bfs_dist(state, goal_pos, grid, W, H, key_pos, door_pos)
+    if best_len is None:
+        return []
+    if best_len == 0:
+        return [2]
+    return sorted(
+        action for action, next_state
+        in _get_successors(state, grid, W, H, key_pos, door_pos)
+        if _bfs_dist(next_state, goal_pos, grid, W, H, key_pos, door_pos) == best_len - 1
+    )
 
 
 # ── BFS helpers ──────────────────────────────────────────────────────────────
@@ -305,18 +323,38 @@ def capture_optimal_history(env_name, seed, rng, history_len=5):
     mission = env_g.unwrapped.mission
 
     path, oracle_info = bfs_full_path(env_g)
-    env_g.close()
 
     if not path:
+        env_g.close()
         raise ValueError(f"BFS failed: {oracle_info}")
 
     path_len = len(path) - 1
     if path_len - 1 < history_len:
+        env_g.close()
         raise ValueError(f"Path too short ({path_len} steps) for history_len={history_len}")
 
     current_idx = rng.randint(history_len, path_len - 1)
     _, current_state = path[current_idx]
     cur_pos, cur_dir, cur_has_key, cur_door_open = current_state
+
+    # Extract grid info to compute ALL optimal actions (not just the one on the BFS path)
+    raw  = env_g.unwrapped
+    grid = raw.grid
+    W, H = grid.width, grid.height
+    goal_pos = key_pos = door_pos = None
+    for x in range(W):
+        for y in range(H):
+            cell = grid.get(x, y)
+            if cell is None: continue
+            if cell.type == "goal": goal_pos = (x, y)
+            elif cell.type == "key": key_pos  = (x, y)
+            elif cell.type == "door": door_pos = (x, y)
+
+    optimal_actions = _all_optimal_actions(current_state, grid, W, H, key_pos, door_pos, goal_pos)
+    env_g.close()
+
+    if not optimal_actions:
+        optimal_actions = [int(path[current_idx + 1][0])]  # fallback to path action
 
     return {
         "env":             env_name,
@@ -327,7 +365,7 @@ def capture_optimal_history(env_name, seed, rng, history_len=5):
         "agent_dir":       int(cur_dir),
         "has_key":         bool(cur_has_key),
         "door_open":       bool(cur_door_open),
-        "optimal_action":  int(path[current_idx + 1][0]),
+        "optimal_actions": optimal_actions,
         "history":         _extract_history(path, current_idx, history_len),
         "history_type":    "optimal",
     }
@@ -382,7 +420,7 @@ def capture_suboptimal_history(env_name, seed, rng, history_len=5):
         "agent_dir":       cur_dir,
         "has_key":         cur_has_key,
         "door_open":       cur_door_open,
-        "optimal_action":  optimal_actions[0],
+        "optimal_actions": optimal_actions,
         "history":         history,
         "history_type":    "suboptimal",
     }
@@ -483,7 +521,7 @@ def capture_rare_with_history(env_name, seed, rng, history_len=5,
         "agent_dir":       int(agent_dir),
         "has_key":         target_has_key,
         "door_open":       target_door_open,
-        "optimal_action":  optimal_action,
+        "optimal_actions": [optimal_action],
         "history":         history,
         "history_type":    "optimal",
     }
@@ -528,8 +566,8 @@ def _save_and_build(data, env_name, seed, sid, img_dir, complexity):
             "action_name":    ACTION_NAMES[h["action_taken"]],
         })
 
-    optimal_action = data["optimal_action"]
-    remaining      = data["remaining_steps"]
+    optimal_actions = data["optimal_actions"]
+    remaining       = data["remaining_steps"]
 
     return {
         "id":              sid,
@@ -544,8 +582,8 @@ def _save_and_build(data, env_name, seed, sid, img_dir, complexity):
         "door_open":       data["door_open"],
         "global_image":    f"images/{sid}_global.png",
         "partial_image":   f"images/{sid}_partial.png",
-        "optimal_actions": [optimal_action],
-        "action_names":    [ACTION_NAMES[optimal_action]],
+        "optimal_actions": optimal_actions,
+        "action_names":    [ACTION_NAMES[a] for a in optimal_actions],
         "oracle_info":     f"remaining={remaining}",
         "oracle_valid":    True,
         "history_type":    data["history_type"],

@@ -167,43 +167,6 @@ def _image_block(path: Path) -> dict:
 
 # ── Prompt building ───────────────────────────────────────────────────────────
 
-def _image_markers(n_images: int, img_style: str) -> list[str]:
-    """
-    Returns per-image text markers for models that need them (InternVL, SmolVLM).
-    Qwen models handle ordering automatically → returns empty strings.
-    """
-    if img_style == "internvl":
-        return [f"Image-{i+1}: <image>\n" for i in range(n_images)]
-    return [""] * n_images
-
-
-def _history_context(sample: dict, n_history: int, img_style: str) -> str:
-    """
-    Builds the text block that contextualises the history images.
-    Lists each history step with direction, carrying state, and action taken.
-    """
-    history = sample.get("history", [])
-    recent  = history[-n_history:] if n_history > 0 else []
-    if not recent:
-        return ""
-
-    markers = _image_markers(n_history + 1, img_style)
-
-    lines = ["TRAJECTORY HISTORY (oldest → most recent):"]
-    for i, h in enumerate(recent):
-        fw    = _DIR_WORD.get(h.get("agent_dir_str", "?"), h.get("agent_dir_str", "?"))
-        carry = "key" if h.get("agent_carrying") == "key" else "nothing"
-        act   = h.get("action_name", "?")
-        lines.append(
-            f"  {markers[i]}Step {h['step']:+d}: "
-            f"facing {fw}, carrying {carry} → action taken: {act}"
-        )
-
-    lines.append(
-        f"  {markers[n_history]}CURRENT STATE (image {n_history + 1}): "
-        f"choose the optimal next action."
-    )
-    return "\n".join(lines)
 
 
 def _phase_goal(phase: str, fw: str) -> str:
@@ -248,15 +211,14 @@ def _v_ifthen(sample: dict, view: str, n_history: int,
     fw    = _DIR_WORD.get(d, d)
     phase = _detect_phase(sample)
     carry = sample.get("agent_carrying")
-    hist  = _history_context(sample, n_history, img_style)
 
     lines = [
         f"Grid navigation. Agent faces {fw}. "
         f"{'Carrying: ' + carry + '.' if carry else 'Carrying: nothing.'}",
         f"Mission: {sample['mission']}",
     ]
-    if hist:
-        lines += ["", hist]
+    if n_history > 0:
+        lines += ["", f"({n_history} history frame(s) shown above — each labeled with step, direction, carrying state and action taken.)"]
     lines += [
         "",
         _phase_goal(phase, fw),
@@ -279,15 +241,14 @@ def _v_negative(sample: dict, view: str, n_history: int,
     fw    = _DIR_WORD.get(d, d)
     phase = _detect_phase(sample)
     carry = sample.get("agent_carrying")
-    hist  = _history_context(sample, n_history, img_style)
 
     lines = [
         f"Grid agent faces {fw}. "
         f"{'Carrying: ' + carry + '.' if carry else 'Carrying: nothing.'}  "
         f"Mission: {sample['mission']}",
     ]
-    if hist:
-        lines += ["", hist]
+    if n_history > 0:
+        lines += ["", f"({n_history} history frame(s) shown above — each labeled with step, direction, carrying state and action taken.)"]
     lines += [
         "",
         _phase_goal(phase, fw),
@@ -313,7 +274,6 @@ def _v_verbose(sample: dict, view: str, n_history: int,
     fw    = _DIR_WORD.get(d, d)
     phase = _detect_phase(sample)
     carry = sample.get("agent_carrying")
-    hist  = _history_context(sample, n_history, img_style)
 
     view_ctx = (
         f"Full top-down view — every cell is visible. "
@@ -358,8 +318,8 @@ def _v_verbose(sample: dict, view: str, n_history: int,
         f"  Direction: {fw}",
         f"  Carrying:  {carry if carry else 'nothing'}",
     ]
-    if hist:
-        lines += ["", hist]
+    if n_history > 0:
+        lines += ["", f"({n_history} history frame(s) shown above — each labeled with step, direction, carrying state and action taken.)"]
     lines += [
         "",
         phase_section,
@@ -377,10 +337,81 @@ def _v_verbose(sample: dict, view: str, n_history: int,
     return "\n".join(lines)
 
 
+def _v_optimal(sample: dict, view: str, n_history: int,
+               img_style: str, cot: bool, thinking: bool) -> str:
+    d     = sample.get("agent_dir_str", "?")
+    fw    = _DIR_WORD.get(d, d)
+    phase = _detect_phase(sample)
+    carry = sample.get("agent_carrying")
+
+    view_desc = (
+        f"Full top-down view. The red triangle = you, pointing {fw}."
+        if view == "global" else
+        f"7×7 egocentric view. You are at the bottom-centre, pointing {fw}."
+    )
+
+    if phase == "find_key":
+        goal_desc  = "the YELLOW KEY (you do not have it yet)"
+        phase_goal = (
+            f"GOAL: Pick up the YELLOW KEY.\n"
+            f"  → When the key is directly {fw} of you and you are facing {fw}: action 3 (pickup).\n"
+            f"  → The key is always on YOUR SIDE of the wall, never past the door.\n"
+            f"  → If the key is not directly ahead, turn to face it or move toward it.\n"
+            f"  → Ignore the door entirely until you have the key."
+        )
+    elif phase == "open_door":
+        goal_desc  = "the DOOR (you carry the key)"
+        phase_goal = (
+            f"GOAL: Unlock and open the DOOR.\n"
+            f"  → When the door is directly {fw} of you and you are facing {fw} AND you carry the key: action 5 (toggle).\n"
+            f"  → After opening, walk through toward the green goal."
+        )
+    else:
+        goal_desc  = "the GREEN GOAL square"
+        phase_goal = (
+            f"GOAL: Reach the GREEN GOAL square.\n"
+            f"  → Path is clear. Navigate directly to the green square."
+        )
+
+    return f"""{view_desc}
+
+STATE:
+  Mission : {sample['mission']}
+  Facing  : {fw}
+  Carrying: {carry if carry else 'nothing'}
+
+{phase_goal}
+
+ACTIONS:
+  0 = turn_left   (rotate 90° CCW — stay in place)
+  1 = turn_right  (rotate 90° CW  — stay in place)
+  2 = forward     (move one cell {fw} — blocked by walls and closed doors)
+  3 = pickup      (grab object directly {fw})
+  5 = toggle      (open door directly {fw} — requires key)
+
+REASONING GUIDE:
+  Step 1 — Check what is directly {fw}: wall? key? door? goal? empty?
+  Step 2 — Locate your target ({goal_desc}). Which direction is it from you?
+  Step 3 — Choose your rotation:
+      • target is {fw}          → action 2 (forward) if path is clear
+      • target is to your LEFT  → turn_right (1) gets you there in 1 step, NOT turn_left
+      • target is to your RIGHT → turn_left (0) gets you there in 1 step, NOT turn_right
+      • target is BEHIND you    → either turn_left or turn_right (both need 2 steps)
+{"  Step 4 — Check the labeled frames above. Are you making progress toward " + goal_desc + "?" + chr(10) + "      If the last few steps show you going back and forth, CHANGE direction." + chr(10) if n_history > 0 else ""}
+⚠️  ANTI-BIAS RULES:
+  • turn_right (1) is just as valid as turn_left (0). Do NOT systematically prefer one.
+  • forward (2) is only correct when you are ALREADY facing your target AND the cell is free.
+  • NEVER go forward into a wall or a closed door.
+  • pickup (3) ONLY if the KEY is the cell directly {fw}. Not beside you — DIRECTLY {fw}.
+  • toggle (5) ONLY if the DOOR is directly {fw} AND you hold the key.
+{_cot_suffix(cot, thinking)}"""
+
+
 PROMPT_VARIANTS = [
-    {"id": 0, "name": "if_then",        "fn": _v_ifthen,   "base_max_out": 16},
+    # {"id": 0, "name": "if_then",        "fn": _v_ifthen,   "base_max_out": 16},
     {"id": 1, "name": "negative_rules", "fn": _v_negative, "base_max_out": 16},
-    {"id": 2, "name": "verbose",        "fn": _v_verbose,  "base_max_out": 16},
+    # {"id": 2, "name": "verbose",        "fn": _v_verbose,  "base_max_out": 16},
+    {"id": 3, "name": "optimal",        "fn": _v_optimal,  "base_max_out": 600},
 ]
 
 
@@ -500,34 +531,40 @@ def run_inference(
         if not sample.get("oracle_valid", True):
             continue
 
-        # ── Build image blocks ────────────────────────────────────────────────
-        history      = sample.get("history", [])
-        n_hist_use   = min(history_images, len(history))
-        recent_hist  = history[-n_hist_use:] if n_hist_use > 0 else []
+        # ── Build interleaved content (label → image → label → image → …) ───────
+        history     = sample.get("history", [])
+        n_hist_use  = min(history_images, len(history))
+        recent_hist = history[-n_hist_use:] if n_hist_use > 0 else []
+        fallback    = dataset_root / sample[f"{view}_image"]
 
-        img_blocks = []
-        for h in recent_hist:
+        content = []
+        for i, h in enumerate(recent_hist):
+            fw    = _DIR_WORD.get(h.get("agent_dir_str", "?"), h.get("agent_dir_str", "?"))
+            carry = "key" if h.get("agent_carrying") == "key" else "nothing"
+            act   = h.get("action_name", "?")
+            # InternVL needs explicit "Image-i: <image>" in the text
+            marker = f"Image-{i+1}: <image>\n" if img_style == "internvl" else ""
+            label  = f"{marker}[Step {h['step']:+d} | facing {fw} | carrying {carry} | action taken: {act}]"
+            content.append({"type": "text", "text": label})
             img_path = dataset_root / h[f"{view}_image"]
-            if img_path.exists():
-                img_blocks.append(_image_block(img_path))
-            else:
-                # history image missing — fill with current as placeholder
-                img_blocks.append(_image_block(dataset_root / sample[f"{view}_image"]))
+            content.append(_image_block(img_path if img_path.exists() else fallback))
 
+        cur_n    = len(recent_hist) + 1
+        cur_mark = f"Image-{cur_n}: <image>\n" if img_style == "internvl" else ""
+        content.append({"type": "text", "text": f"{cur_mark}[CURRENT STATE — image {cur_n}]"})
         cur_img_path = dataset_root / sample[f"{view}_image"]
         if cur_img_path.exists():
-            img_blocks.append(_image_block(cur_img_path))
+            content.append(_image_block(cur_img_path))
 
-        actual_n_hist = len(img_blocks) - 1   # = len(img_blocks) - current
+        actual_n_hist = len(recent_hist)
 
-        # ── Build text prompt ─────────────────────────────────────────────────
+        # ── Build text prompt — pass actual_n_hist so variants adapt ────────
         user_text = variant["fn"](
             sample, view, actual_n_hist, img_style, cot, thinking
         )
+        content.append({"type": "text", "text": user_text})
 
-        messages = [{"role": "user", "content": img_blocks + [
-            {"type": "text", "text": user_text}
-        ]}]
+        messages = [{"role": "user", "content": content}]
 
         # ── Call the model ────────────────────────────────────────────────────
         t_start = time.time()
@@ -737,12 +774,14 @@ def run_benchmark(
     model_keys: list[str],
     views: list[str],
     max_samples: int | None,
-    history_images: int = 0,
+    history_images: list[int] = None,
     modes: list[str] = None,
     debug: bool = False,
 ):
     if modes is None:
         modes = ["baseline"]
+    if history_images is None:
+        history_images = [0]
 
     dataset_root    = Path(dataset_path).parent
     results_path    = Path(results_dir)
@@ -755,12 +794,12 @@ def run_benchmark(
     with open(dataset_path) as f:
         samples = json.load(f)
 
-    max_images_per_prompt = history_images + 1
+    max_images_per_prompt = max(history_images) + 1
 
-    print(f"\n  Dataset loaded : {len(samples)} samples from {dataset_path}")
-    print(f"  History images : {history_images} + 1 current = {max_images_per_prompt} images/prompt")
-    print(f"  Modes          : {modes}")
-    print(f"  Prompt variants: {[v['name'] for v in PROMPT_VARIANTS]}")
+    print(f"\n  Dataset loaded   : {len(samples)} samples from {dataset_path}")
+    print(f"  History images   : {history_images}  (max {max_images_per_prompt} images/prompt)")
+    print(f"  Modes            : {modes}")
+    print(f"  Prompt variants  : {[v['name'] for v in PROMPT_VARIANTS]}")
 
     from collections import Counter
     phases = [_detect_phase(s) for s in samples]
@@ -786,21 +825,22 @@ def run_benchmark(
         for view in views:
             for variant in PROMPT_VARIANTS:
                 for mode_name in modes:
-                    mode_cfg = _MODE_CONFIGS[mode_name]
-                    results = run_inference(
-                        samples=samples,
-                        model_key=model_key,
-                        view=view,
-                        variant=variant,
-                        dataset_root=dataset_root,
-                        results_raw_dir=results_raw_dir,
-                        max_samples=max_samples,
-                        history_images=history_images,
-                        cot=mode_cfg["cot"],
-                        thinking=mode_cfg["thinking"],
-                        debug=debug,
-                    )
-                    all_results.extend(results)
+                    for n_hist in history_images:
+                        mode_cfg = _MODE_CONFIGS[mode_name]
+                        results = run_inference(
+                            samples=samples,
+                            model_key=model_key,
+                            view=view,
+                            variant=variant,
+                            dataset_root=dataset_root,
+                            results_raw_dir=results_raw_dir,
+                            max_samples=max_samples,
+                            history_images=n_hist,
+                            cot=mode_cfg["cot"],
+                            thinking=mode_cfg["thinking"],
+                            debug=debug,
+                        )
+                        all_results.extend(results)
 
         print("  Stopping vLLM server ...")
         stop_vllm_server(proc)
@@ -839,10 +879,10 @@ def parse_args():
     p.add_argument("--views",          nargs="+", default=["global", "partial"],
                    choices=["global", "partial"])
     p.add_argument("--max_samples",    type=int,  default=None)
-    p.add_argument("--history_images", type=int,  default=0,
-                   help="Number of history frames alongside the current frame "
-                        "(0 = current only). vLLM launched with --limit-mm-per-prompt "
-                        "image=N+1 automatically.")
+    p.add_argument("--history_images", nargs="+", type=int, default=[0],
+                   help="Number(s) of history frames to compare. Pass several values to "
+                        "evaluate them in one run: --history_images 0 3 5  "
+                        "vLLM is launched with max(values)+1 images/prompt.")
     p.add_argument("--modes", nargs="+",
                    default=["baseline"],
                    choices=list(_MODE_CONFIGS.keys()),
@@ -863,7 +903,7 @@ if __name__ == "__main__":
         model_keys=args.models,
         views=args.views,
         max_samples=args.max_samples,
-        history_images=args.history_images,
+        history_images=args.history_images,  # now a list
         modes=args.modes,
         debug=args.debug,
     )
