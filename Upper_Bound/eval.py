@@ -27,7 +27,9 @@ def get_oracle_action(env_unwrapped, env_type):
         return _get_oracle_action_transfer(env_unwrapped, env_type)
     return _get_oracle_action_doorkey(env_unwrapped, env_type)
 
-from model import CNNPolicy
+from model import CNNPolicy as CNNPolicySmall
+from model_large import CNNPolicy as CNNPolicyLarge
+from model_partial import CNNPolicy as CNNPolicyPartial
 
 
 ACTION_NAMES = {0: 'Left', 1: 'Right', 2: 'Forward',
@@ -48,16 +50,25 @@ def parse_args():
     p.add_argument('--fps',            type=int, default=6)
     p.add_argument('--out',            type=str, default='figures/eval.gif')
     p.add_argument('--seed',           type=int, default=42)
+    p.add_argument('--large-model',    action='store_true', default=False,
+                   help='Use large CNN (must match training setting)')
+    p.add_argument('--partial-obs',    action='store_true', default=False,
+                   help='Use partial observability (must match training setting)')
     return p.parse_args()
 
 
-def make_eval_env(env_id, env_type, tile_size, no_oracle, oracle_cost, reward_shaping):
+def make_eval_env(env_id, env_type, tile_size, no_oracle, oracle_cost,
+                  reward_shaping, partial_obs=False):
     """Build env with render_mode='rgb_array' for visualization."""
     from env_wrapper import RewardShaper
+    from minigrid.wrappers import RGBImgPartialObsWrapper
 
     inner = gym.make(env_id, render_mode='rgb_array')
-    inner = FullyObsWrapper(inner)
-    inner = RGBImgObsWrapper(inner, tile_size=tile_size)
+    if partial_obs:
+        inner = RGBImgPartialObsWrapper(inner, tile_size=tile_size)
+    else:
+        inner = FullyObsWrapper(inner)
+        inner = RGBImgObsWrapper(inner, tile_size=tile_size)
 
     class EvalWrapper(gym.Wrapper):
         def __init__(self, env):
@@ -153,8 +164,15 @@ def main():
     print(f"Checkpoint: {ckpt_path}")
 
     env = make_eval_env(args.env_id, args.env_type, args.tile_size,
-                        args.no_oracle, args.oracle_cost, args.reward_shaping)
+                        args.no_oracle, args.oracle_cost, args.reward_shaping,
+                        partial_obs=args.partial_obs)
 
+    if args.partial_obs:
+        CNNPolicy = CNNPolicyPartial
+    elif args.large_model:
+        CNNPolicy = CNNPolicyLarge
+    else:
+        CNNPolicy = CNNPolicySmall
     model = CNNPolicy(env.observation_space.shape, env.n_actions, args.hidden_dim).to(device)
     model.load_state_dict(torch.load(ckpt_path, map_location=device))
     model.eval()

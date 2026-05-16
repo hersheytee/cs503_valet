@@ -15,8 +15,9 @@ Upper_Bound/
 ├── env_wrapper.py        # Gym wrapper — adds oracle action to MiniGrid
 ├── oracle.py             # BFS oracle for DoorKey / Empty envs
 ├── oracle_transfer.py    # BFS oracle for transfer envs (Fetch, GoToDoor, GoToObject)
-├── model.py              # CNN policy for 8x8 grids
-├── model_large.py        # CNN policy for 16x16 grids (strided conv + AdaptiveAvgPool)
+├── model.py              # CNN policy for 8x8 grids (full obs, 40x40x3)
+├── model_large.py        # CNN policy for 16x16 grids (full obs, 128x128x3)
+├── model_partial.py      # CNN policy for partial obs (56x56x3, any grid size)
 ├── eval.py               # Inference script — runs a checkpoint and saves a GIF
 ├── compare_plot.py       # Multi-condition plot (one row per condition)
 ├── merged_plot.py        # Merged plot (all conditions overlaid, 3 vertical subplots)
@@ -73,6 +74,7 @@ Standard CleanRL-style PPO with one extra BC (behavioural cloning) loss term on 
 | `--seed` | `1` | Random seed |
 | `--save-model` | `False` | Save checkpoint to `checkpoints/` at end of training |
 | `--large-model` | `False` | Use `model_large.py` (required for 16x16 grids) |
+| `--partial-obs` | `False` | Partial observability: agent sees only its 7×7 FOV (56×56px) instead of the full grid |
 | `--exp-name` | `oracle_ppo` | Prefix for log CSV and checkpoint filenames |
 
 **Output:** CSV log at `logs/{exp_name}__{env_id}__seed{seed}__{timestamp}.csv`
@@ -90,6 +92,10 @@ Wraps any MiniGrid environment with:
 The dispatcher routes oracle calls automatically:
 - `env_type ∈ {empty, doorkey}` → `oracle.py`
 - `env_type ∈ {fetch, gotodoor, gotoobject}` → `oracle_transfer.py`
+
+**Observability modes:**
+- `partial_obs=False` (default): `FullyObsWrapper` + `RGBImgObsWrapper` → full grid visible, image shape `(H*tile, W*tile, 3)`
+- `partial_obs=True`: `RGBImgPartialObsWrapper` → agent sees only its 7×7 FOV, image always `(56, 56, 3)` for `tile_size=8`
 
 ---
 
@@ -120,9 +126,15 @@ Three conv layers (stride=1), flatten, FC(→256), policy head + value head. Des
 
 ---
 
-### `model_large.py` — CNN policy for 16×16 grids
+### `model_large.py` — CNN policy for 16×16 grids (full obs)
 
-Same interface as `model.py` but uses strided convolutions (stride=2, 2, 1) + `AdaptiveAvgPool2d(8, 8)` to keep the FC input at a fixed 4096 dimensions regardless of grid size. Required for 16×16 or larger environments.
+Uses strided convolutions (stride=2, 2, 1) + `AdaptiveAvgPool2d(8, 8)`. For a 128×128 input the feature maps are 32×32 before the pool → 8×8×64 = 4096 FC input. Required for 16×16 full-obs environments.
+
+---
+
+### `model_partial.py` — CNN policy for partial observability (56×56)
+
+One strided conv (stride=2, 1, 1) + `AdaptiveAvgPool2d(8, 8)`. For a 56×56 input the feature maps stay at 28×28 before the pool, preserving 4× more spatial resolution than `model_large.py` would on the same input. Same FC dimension (4096) and same parameter count (~1.1M). Selected automatically when `--partial-obs` is passed.
 
 ---
 
@@ -145,6 +157,7 @@ Loads a saved checkpoint, runs N episodes, and saves a GIF.
 | `--tile-size` | `8` | Must match the training tile size |
 | `--fps` | `6` | GIF frame rate |
 | `--out` | `figures/eval.gif` | Output GIF path |
+| `--partial-obs` | `False` | Must match the training setting |
 | `--seed` | `42` | Starting seed (incremented per episode) |
 
 ---
@@ -202,10 +215,15 @@ Seeds: 4, 5, 6, 7, 8.
 
 ### `submit_16x16.sh` — SLURM job for DoorKey-16x16
 
-Same structure as `submit_all.sh` but for `MiniGrid-DoorKey-16x16-v0` with:
-- `--large-model` flag on all runs
-- `--total-timesteps 2000000` (4× more than 8×8)
-- 24h time limit
+Runs two series of experiments on `MiniGrid-DoorKey-16x16-v0` (48h time limit):
+
+**Full observability** (5 conditions × 5 seeds):
+`oracle_free_16`, `oracle_paid_001_16`, `oracle_paid_002_16`, `oracle_paid_005_16`, `baseline_16`
+
+**Partial observability** (4 conditions × 5 seeds):
+`oracle_free_16_partial`, `oracle_paid_002_16_partial`, `oracle_paid_005_16_partial`, `baseline_16_partial`
+
+All runs use `--large-model` and `--total-timesteps 2000000`.
 
 ---
 
@@ -250,13 +268,38 @@ python train.py \
     --total-timesteps 100000 --seed 1 --exp-name test_baseline
 ```
 
+### DoorKey-16x16 (full + partial observability)
+
+```bash
+# Full observability — oracle free
+python train.py \
+    --env-id MiniGrid-DoorKey-16x16-v0 --env-type doorkey \
+    --oracle-cost 0.0 --reward-shaping --large-model \
+    --total-timesteps 2000000 --seed 1 --exp-name oracle_free_16 --save-model
+
+# Partial observability — oracle free
+python train.py \
+    --env-id MiniGrid-DoorKey-16x16-v0 --env-type doorkey \
+    --oracle-cost 0.0 --reward-shaping --large-model --partial-obs \
+    --total-timesteps 2000000 --seed 1 --exp-name oracle_free_16_partial --save-model
+
+# Partial observability — paid oracle (cost=0.02)
+python train.py \
+    --env-id MiniGrid-DoorKey-16x16-v0 --env-type doorkey \
+    --oracle-cost 0.02 --reward-shaping --large-model --partial-obs \
+    --total-timesteps 2000000 --seed 1 --exp-name oracle_paid_002_16_partial --save-model
+```
+
+> **Note:** `--large-model` is required for 16×16. Both full and partial obs use `model_large.py`
+> (full: 128×128×3 input, partial: 56×56×3 input — `AdaptiveAvgPool` handles both).
+
 ### On cluster (SLURM)
 
 ```bash
 # From the Upper_Bound/ directory:
 cd ~/Upper_Bound
 sbatch submit_all.sh      # DoorKey-8x8, all conditions
-sbatch submit_16x16.sh    # DoorKey-16x16, all conditions
+sbatch submit_16x16.sh    # DoorKey-16x16, full + partial obs
 ```
 
 ### Transfer environment (Fetch-8x8)

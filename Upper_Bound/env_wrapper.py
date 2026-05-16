@@ -18,7 +18,7 @@ Info dict always contains:
 import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
-from minigrid.wrappers import FullyObsWrapper, RGBImgObsWrapper
+from minigrid.wrappers import FullyObsWrapper, RGBImgObsWrapper, RGBImgPartialObsWrapper
 
 from oracle import get_oracle_action as _get_oracle_action_doorkey
 from oracle_transfer import get_oracle_action as _get_oracle_action_transfer
@@ -107,10 +107,14 @@ class OracleWrapper(gym.Wrapper):
                  tile_size: int = 8, oracle_cost: float = 0.0,
                  reward_shaping: bool = False,
                  vlm_client=None, vlm_model_key: str = 'qwen3b',
-                 vlm_served_name: str = ''):
+                 vlm_served_name: str = '',
+                 partial_obs: bool = False):
         inner = gym.make(env_id)
-        inner = FullyObsWrapper(inner)
-        inner = RGBImgObsWrapper(inner, tile_size=tile_size)
+        if partial_obs:
+            inner = RGBImgPartialObsWrapper(inner, tile_size=tile_size)
+        else:
+            inner = FullyObsWrapper(inner)
+            inner = RGBImgObsWrapper(inner, tile_size=tile_size)
 
         super().__init__(inner)
 
@@ -193,10 +197,13 @@ class BaselineWrapper(gym.Wrapper):
     """Env sans action oracle — baseline PPO pur."""
 
     def __init__(self, env_id: str, tile_size: int = 8,
-                 reward_shaping: bool = False):
+                 reward_shaping: bool = False, partial_obs: bool = False):
         inner = gym.make(env_id)
-        inner = FullyObsWrapper(inner)
-        inner = RGBImgObsWrapper(inner, tile_size=tile_size)
+        if partial_obs:
+            inner = RGBImgPartialObsWrapper(inner, tile_size=tile_size)
+        else:
+            inner = FullyObsWrapper(inner)
+            inner = RGBImgObsWrapper(inner, tile_size=tile_size)
         super().__init__(inner)
 
         self.reward_shaping = reward_shaping
@@ -234,17 +241,19 @@ def make_env(env_id: str, env_type: str = 'empty',
              seed: int = 0, no_oracle: bool = False,
              reward_shaping: bool = False,
              vlm_client=None, vlm_model_key: str = 'qwen3b',
-             vlm_served_name: str = ''):
+             vlm_served_name: str = '',
+             partial_obs: bool = False):
     """
     Factory function compatible avec gymnasium's SyncVectorEnv.
     """
     def _init():
         if no_oracle:
-            env = BaselineWrapper(env_id, tile_size, reward_shaping)
+            env = BaselineWrapper(env_id, tile_size, reward_shaping, partial_obs)
         else:
             env = OracleWrapper(env_id, env_type, tile_size,
                                 oracle_cost, reward_shaping,
-                                vlm_client, vlm_model_key, vlm_served_name)
+                                vlm_client, vlm_model_key, vlm_served_name,
+                                partial_obs)
         env.reset(seed=seed)
         return env
     return _init

@@ -28,6 +28,7 @@ import gymnasium as gym
 from env_wrapper import make_env
 from model import CNNPolicy as CNNPolicySmall
 from model_large import CNNPolicy as CNNPolicyLarge
+from model_partial import CNNPolicy as CNNPolicyPartial
 
 
 # ── Argument parsing ─────────────────────────────────────────────────────────
@@ -67,6 +68,8 @@ def parse_args():
     p.add_argument('--exp-name',        type=str,   default='oracle_ppo')
     p.add_argument('--large-model',     action='store_true', default=False,
                    help='Use strided CNN for large obs (e.g. 16x16 grid)')
+    p.add_argument('--partial-obs',     action='store_true', default=False,
+                   help='Use partial observability (agent 7x7 FOV instead of full grid)')
     p.add_argument('--vlm-model',       type=str,   default='',
                    help='VLM key to use as oracle (e.g. qwen3b). Empty = BFS oracle.')
     p.add_argument('--cache-dir',       type=str,
@@ -149,7 +152,8 @@ def main():
                  reward_shaping=args.reward_shaping,
                  vlm_client=vlm_client,
                  vlm_model_key=args.vlm_model or 'qwen3b',
-                 vlm_served_name=vlm_served_name)
+                 vlm_served_name=vlm_served_name,
+                 partial_obs=args.partial_obs)
         for i in range(args.n_envs)
     ])
 
@@ -159,7 +163,12 @@ def main():
     print(f"  obs={obs_shape}, n_actions={n_actions}, query_action={QUERY_ACTION}")
 
     # ── Model ─────────────────────────────────────────────────────────────────
-    CNNPolicy = CNNPolicyLarge if args.large_model else CNNPolicySmall
+    if args.partial_obs:
+        CNNPolicy = CNNPolicyPartial
+    elif args.large_model:
+        CNNPolicy = CNNPolicyLarge
+    else:
+        CNNPolicy = CNNPolicySmall
     model     = CNNPolicy(obs_shape, n_actions, args.hidden_dim).to(device)
     optimiser = optim.Adam(model.parameters(), lr=args.lr, eps=1e-5)
     print(f"  params={sum(p.numel() for p in model.parameters()):,}")
