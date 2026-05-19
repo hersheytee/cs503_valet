@@ -1,0 +1,11 @@
+=== Job 2903789 — VLM oracle: qwen2vl ===
+Node: i19
+Start: ven 15 mai 2026 19:49:29 CEST
+Run: test_vlm_qwen2vl__MiniGrid-DoorKey-8x8-v0__seed1__1778867417
+  device=cuda, batch=128, updates=7
+  CSV → logs/test_vlm_qwen2vl__MiniGrid-DoorKey-8x8-v0__seed1__1778867417.csv
+  VLM oracle : qwen2vl  (cache: /scratch/izar/lafont/vlm_models)
+[vlm_oracle] Starting vLLM server for Qwen2-VL 7B ...
+[vlm_oracle] CMD: /home/lafont/miniconda3/envs/bench_env/bin/python -m vllm.entrypoints.openai.api_server --model Qwen/Qwen2-VL-7B-Instruct --dtype float16 --gpu-memory-utilization 0.7 --host 127.0.0.1 --port 8000 --trust-remote-code --max-model-len 4096 --download-dir /scratch/izar/lafont/vlm_models
+[vlm_oracle] Waiting for server at http://127.0.0.1:8000/health ...
+[vlm_oracle] Server did not start within 600s.

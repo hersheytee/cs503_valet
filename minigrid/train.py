@@ -26,7 +26,9 @@ import torch.optim as optim
 import gymnasium as gym
 
 from env_wrapper import make_env
-from model import CNNPolicy
+from model import CNNPolicy as CNNPolicySmall
+from model_large import CNNPolicy as CNNPolicyLarge
+from model_partial import CNNPolicy as CNNPolicyPartial
 
 
 # ── Argument parsing ─────────────────────────────────────────────────────────
@@ -64,6 +66,15 @@ def parse_args():
     p.add_argument('--tile-size',       type=int,   default=8)
     p.add_argument('--save-model',      action='store_true', default=False)
     p.add_argument('--exp-name',        type=str,   default='oracle_ppo')
+    p.add_argument('--large-model',     action='store_true', default=False,
+                   help='Use strided CNN for large obs (e.g. 16x16 grid)')
+    p.add_argument('--partial-obs',     action='store_true', default=False,
+                   help='Use partial observability (agent 7x7 FOV instead of full grid)')
+    p.add_argument('--vlm-model',       type=str,   default='',
+                   help='VLM key to use as oracle (e.g. qwen3b). Empty = BFS oracle.')
+    p.add_argument('--cache-dir',       type=str,
+                   default=os.environ.get('HF_HOME', './hf_cache'),
+                   help='HuggingFace model cache directory')
     return p.parse_args()
 
 
@@ -114,12 +125,35 @@ def main():
 
     logger = CSVLogger(f"logs/{run_name}.csv")
 
+    # ── VLM server (optional) ─────────────────────────────────────────────────
+    vlm_proc         = None
+    vlm_client       = None
+    vlm_served_name  = ''
+
+    if args.vlm_model and not args.no_oracle:
+        from vlm_oracle import (start_vlm_server, wait_for_server,
+                                make_vlm_client, get_served_model_name)
+        print(f"  VLM oracle : {args.vlm_model}  (cache: {args.cache_dir})")
+        vlm_proc = start_vlm_server(args.vlm_model, args.cache_dir)
+        if not wait_for_server(timeout=900):
+            vlm_proc.kill()
+            raise RuntimeError("vLLM server failed to start within 900s.")
+        vlm_client      = make_vlm_client()
+        vlm_served_name = get_served_model_name(vlm_client)
+        print(f"  vLLM ready : {vlm_served_name}")
+    else:
+        print("  Oracle     : BFS")
+
     # ── Environments ─────────────────────────────────────────────────────────
     envs = gym.vector.SyncVectorEnv([
         make_env(args.env_id, args.env_type, args.tile_size,
                  args.oracle_cost, seed=args.seed * 1000 + i,
                  no_oracle=args.no_oracle,
-                 reward_shaping=args.reward_shaping)
+                 reward_shaping=args.reward_shaping,
+                 vlm_client=vlm_client,
+                 vlm_model_key=args.vlm_model or 'qwen3b',
+                 vlm_served_name=vlm_served_name,
+                 partial_obs=args.partial_obs)
         for i in range(args.n_envs)
     ])
 
@@ -129,6 +163,12 @@ def main():
     print(f"  obs={obs_shape}, n_actions={n_actions}, query_action={QUERY_ACTION}")
 
     # ── Model ─────────────────────────────────────────────────────────────────
+    if args.partial_obs:
+        CNNPolicy = CNNPolicyPartial
+    elif args.large_model:
+        CNNPolicy = CNNPolicyLarge
+    else:
+        CNNPolicy = CNNPolicySmall
     model     = CNNPolicy(obs_shape, n_actions, args.hidden_dim).to(device)
     optimiser = optim.Adam(model.parameters(), lr=args.lr, eps=1e-5)
     print(f"  params={sum(p.numel() for p in model.parameters()):,}")
@@ -362,6 +402,10 @@ def main():
 
     logger.close()
     envs.close()
+
+    if vlm_proc is not None:
+        from vlm_oracle import stop_vlm_server
+        stop_vlm_server(vlm_proc)
 
     log_path = f"logs/{run_name}.csv"
     fig_path = f"figures/{run_name}.png"

@@ -18,9 +18,17 @@ Info dict always contains:
 import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
-from minigrid.wrappers import FullyObsWrapper, RGBImgObsWrapper
+from minigrid.wrappers import FullyObsWrapper, RGBImgObsWrapper, RGBImgPartialObsWrapper
 
-from oracle import get_oracle_action
+from oracle import get_oracle_action as _get_oracle_action_doorkey
+from oracle_transfer import get_oracle_action as _get_oracle_action_transfer
+
+_TRANSFER_ENV_TYPES = {'fetch', 'gotodoor', 'gotoobject'}
+
+def get_oracle_action(env_unwrapped, env_type):
+    if env_type in _TRANSFER_ENV_TYPES:
+        return _get_oracle_action_transfer(env_unwrapped, env_type)
+    return _get_oracle_action_doorkey(env_unwrapped, env_type)
 
 
 # ── Reward shaping ────────────────────────────────────────────────────────────
@@ -75,31 +83,51 @@ class RewardShaper:
 
 # ── Oracle Wrapper ────────────────────────────────────────────────────────────
 
+_ACTION_NAMES = {0: "turn_left", 1: "turn_right", 2: "forward",
+                 3: "pickup", 4: "drop", 5: "toggle"}
+_HISTORY_LEN  = 5   # number of past actions kept for VLM context
+
+
 class OracleWrapper(gym.Wrapper):
     """
     Wraps a MiniGrid environment to add a query_oracle action.
 
     Args:
-        env_id        : Gymnasium env id, e.g. 'MiniGrid-DoorKey-8x8-v0'
-        env_type      : 'empty' or 'doorkey' — selects the BFS oracle
-        tile_size     : pixel size of each grid tile (default 8)
-        oracle_cost   : reward penalty for querying oracle (default 0.0)
-        reward_shaping: add intermediate rewards for key/door (default False)
+        env_id          : Gymnasium env id, e.g. 'MiniGrid-DoorKey-8x8-v0'
+        env_type        : 'empty' or 'doorkey' — selects the BFS oracle
+        tile_size       : pixel size of each grid tile (default 8)
+        oracle_cost     : reward penalty for querying oracle (default 0.0)
+        reward_shaping  : add intermediate rewards for key/door (default False)
+        vlm_client      : OpenAI client for VLM queries (None = use BFS oracle)
+        vlm_model_key   : key in vlm_oracle.MODELS (e.g. 'qwen3b')
+        vlm_served_name : model ID as reported by the vLLM server
     """
 
     def __init__(self, env_id: str, env_type: str = 'empty',
                  tile_size: int = 8, oracle_cost: float = 0.0,
-                 reward_shaping: bool = False):
+                 reward_shaping: bool = False,
+                 vlm_client=None, vlm_model_key: str = 'qwen3b',
+                 vlm_served_name: str = '',
+                 partial_obs: bool = False):
         inner = gym.make(env_id)
-        inner = FullyObsWrapper(inner)
-        inner = RGBImgObsWrapper(inner, tile_size=tile_size)
+        if partial_obs:
+            inner = RGBImgPartialObsWrapper(inner, tile_size=tile_size)
+        else:
+            inner = FullyObsWrapper(inner)
+            inner = RGBImgObsWrapper(inner, tile_size=tile_size)
 
         super().__init__(inner)
 
-        self.env_type       = env_type
-        self.oracle_cost    = oracle_cost
-        self.reward_shaping = reward_shaping
-        self._shaper        = RewardShaper() if reward_shaping else None
+        self.env_type        = env_type
+        self.oracle_cost     = oracle_cost
+        self.reward_shaping  = reward_shaping
+        self._shaper         = RewardShaper() if reward_shaping else None
+
+        self._vlm_client      = vlm_client
+        self._vlm_model_key   = vlm_model_key
+        self._vlm_served_name = vlm_served_name
+        self._last_obs        = None   # current RGB obs, updated at reset/step
+        self._action_history  = []     # rolling window of past action names
 
         n_original        = inner.action_space.n
         self.QUERY_ACTION = n_original
@@ -113,23 +141,43 @@ class OracleWrapper(gym.Wrapper):
     def _get_obs(self, obs_dict):
         return obs_dict['image']
 
+    def _record_action(self, action: int):
+        name = _ACTION_NAMES.get(action, str(action))
+        self._action_history.append(name)
+        if len(self._action_history) > _HISTORY_LEN:
+            self._action_history.pop(0)
+
     def reset(self, **kwargs):
         obs_dict, info = self.env.reset(**kwargs)
         if self._shaper:
             self._shaper.reset(self.env.unwrapped)
-        return self._get_obs(obs_dict), info
+        self._last_obs       = self._get_obs(obs_dict)
+        self._action_history = []
+        return self._last_obs, info
 
     def step(self, action: int):
         guided        = False
         oracle_action = None
 
         if action == self.QUERY_ACTION:
-            inner_unwrapped = self.env.unwrapped
-            oracle_action   = get_oracle_action(inner_unwrapped, self.env_type)
-            guided          = True
-            action          = oracle_action
+            if self._vlm_client is not None:
+                from vlm_oracle import query_vlm
+                oracle_action = query_vlm(
+                    obs_img           = self._last_obs,
+                    env_unwrapped     = self.env.unwrapped,
+                    client            = self._vlm_client,
+                    served_model_name = self._vlm_served_name,
+                    model_key         = self._vlm_model_key,
+                    action_history    = list(self._action_history),
+                )
+            else:
+                oracle_action = get_oracle_action(self.env.unwrapped, self.env_type)
+            guided = True
+            action = oracle_action
 
+        self._record_action(action)
         obs_dict, reward, terminated, truncated, info = self.env.step(action)
+        self._last_obs = self._get_obs(obs_dict)
 
         if guided:
             reward -= self.oracle_cost
@@ -140,7 +188,7 @@ class OracleWrapper(gym.Wrapper):
         info['guided']        = guided
         info['oracle_action'] = int(oracle_action) if oracle_action is not None else -1
 
-        return self._get_obs(obs_dict), reward, terminated, truncated, info
+        return self._last_obs, reward, terminated, truncated, info
 
 
 # ── Baseline Wrapper ──────────────────────────────────────────────────────────
@@ -149,10 +197,13 @@ class BaselineWrapper(gym.Wrapper):
     """Env sans action oracle — baseline PPO pur."""
 
     def __init__(self, env_id: str, tile_size: int = 8,
-                 reward_shaping: bool = False):
+                 reward_shaping: bool = False, partial_obs: bool = False):
         inner = gym.make(env_id)
-        inner = FullyObsWrapper(inner)
-        inner = RGBImgObsWrapper(inner, tile_size=tile_size)
+        if partial_obs:
+            inner = RGBImgPartialObsWrapper(inner, tile_size=tile_size)
+        else:
+            inner = FullyObsWrapper(inner)
+            inner = RGBImgObsWrapper(inner, tile_size=tile_size)
         super().__init__(inner)
 
         self.reward_shaping = reward_shaping
@@ -188,16 +239,21 @@ class BaselineWrapper(gym.Wrapper):
 def make_env(env_id: str, env_type: str = 'empty',
              tile_size: int = 8, oracle_cost: float = 0.0,
              seed: int = 0, no_oracle: bool = False,
-             reward_shaping: bool = False):
+             reward_shaping: bool = False,
+             vlm_client=None, vlm_model_key: str = 'qwen3b',
+             vlm_served_name: str = '',
+             partial_obs: bool = False):
     """
     Factory function compatible avec gymnasium's SyncVectorEnv.
     """
     def _init():
         if no_oracle:
-            env = BaselineWrapper(env_id, tile_size, reward_shaping)
+            env = BaselineWrapper(env_id, tile_size, reward_shaping, partial_obs)
         else:
             env = OracleWrapper(env_id, env_type, tile_size,
-                                oracle_cost, reward_shaping)
+                                oracle_cost, reward_shaping,
+                                vlm_client, vlm_model_key, vlm_served_name,
+                                partial_obs)
         env.reset(seed=seed)
         return env
     return _init

@@ -1,0 +1,14 @@
+=== Job 2903428 — VLM oracle:  ===
+Node: i05
+Start: ven 15 mai 2026 19:18:42 CEST
+Saved → figures/test_vlm___MiniGrid-DoorKey-8x8-v0__seed1__1778865685.png
+Run: test_vlm___MiniGrid-DoorKey-8x8-v0__seed1__1778865685
+  device=cuda, batch=128, updates=7
+  CSV → logs/test_vlm___MiniGrid-DoorKey-8x8-v0__seed1__1778865685.csv
+  Oracle     : BFS
+  obs=(64, 64, 3), n_actions=8, query_action=7
+  params=67,167,753
+[   1/7] step=    128 | ep=    0 | return=   nan | guided%=  nan | bc=0.0000 | cumQ=    11 | bc_coef=0.000 | sps=10
+Generating plots...
+Plots → figures/test_vlm___MiniGrid-DoorKey-8x8-v0__seed1__1778865685.png
+End: ven 15 mai 2026 19:22:26 CEST
