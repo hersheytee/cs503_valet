@@ -15,13 +15,17 @@ Info dict always contains:
     'oracle_action' : int   — which action the oracle chose (if guided)
 """
 
+import random as _random
+
 import gymnasium as gym
 import numpy as np
 from gymnasium import spaces
 from minigrid.wrappers import FullyObsWrapper, RGBImgObsWrapper, RGBImgPartialObsWrapper
 
 from oracle import get_oracle_action as _get_oracle_action_doorkey
+from oracle import get_all_oracle_actions as _get_all_oracle_actions_doorkey
 from oracle_transfer import get_oracle_action as _get_oracle_action_transfer
+from oracle_transfer import get_all_oracle_actions as _get_all_oracle_actions_transfer
 
 _TRANSFER_ENV_TYPES = {'fetch', 'gotodoor', 'gotoobject'}
 
@@ -29,6 +33,11 @@ def get_oracle_action(env_unwrapped, env_type):
     if env_type in _TRANSFER_ENV_TYPES:
         return _get_oracle_action_transfer(env_unwrapped, env_type)
     return _get_oracle_action_doorkey(env_unwrapped, env_type)
+
+def get_all_oracle_actions(env_unwrapped, env_type):
+    if env_type in _TRANSFER_ENV_TYPES:
+        return _get_all_oracle_actions_transfer(env_unwrapped, env_type)
+    return _get_all_oracle_actions_doorkey(env_unwrapped, env_type)
 
 
 # ── Reward shaping ────────────────────────────────────────────────────────────
@@ -107,8 +116,9 @@ class OracleWrapper(gym.Wrapper):
                  tile_size: int = 8, oracle_cost: float = 0.0,
                  reward_shaping: bool = False,
                  vlm_client=None, vlm_model_key: str = 'qwen3b',
-                 vlm_served_name: str = '',
-                 partial_obs: bool = False):
+                 vlm_served_name: str = '', vlm_mode: str = 'baseline',
+                 partial_obs: bool = False,
+                 oracle_noise: float = 1.0):
         inner = gym.make(env_id)
         if partial_obs:
             inner = RGBImgPartialObsWrapper(inner, tile_size=tile_size)
@@ -126,6 +136,8 @@ class OracleWrapper(gym.Wrapper):
         self._vlm_client      = vlm_client
         self._vlm_model_key   = vlm_model_key
         self._vlm_served_name = vlm_served_name
+        self._vlm_mode        = vlm_mode
+        self._oracle_noise    = oracle_noise  # 1.0 = perfect BFS, 0.5 = 50% accuracy
         self._last_obs        = None   # current RGB obs, updated at reset/step
         self._action_history  = []     # rolling window of past action names
 
@@ -156,22 +168,40 @@ class OracleWrapper(gym.Wrapper):
         return self._last_obs, info
 
     def step(self, action: int):
-        guided        = False
-        oracle_action = None
+        guided           = False
+        oracle_action    = None
+        vlm_correct      = -1    # -1 = not applicable (BFS mode or non-guided step)
+        vlm_parse_failed = False  # True only when VLM response was unparsable/failed
 
         if action == self.QUERY_ACTION:
             if self._vlm_client is not None:
                 from vlm_oracle import query_vlm
-                oracle_action = query_vlm(
+                oracle_action, vlm_parse_failed = query_vlm(
                     obs_img           = self._last_obs,
                     env_unwrapped     = self.env.unwrapped,
                     client            = self._vlm_client,
                     served_model_name = self._vlm_served_name,
                     model_key         = self._vlm_model_key,
                     action_history    = list(self._action_history),
+                    mode              = self._vlm_mode,
                 )
+                # Compare VLM action against all BFS-optimal actions.
+                # vlm_correct=1 if the VLM chose any optimal action, 0 otherwise.
+                bfs_optimal = get_all_oracle_actions(self.env.unwrapped, self.env_type)
+                vlm_correct = int(oracle_action in bfs_optimal) if bfs_optimal else -1
             else:
-                oracle_action = get_oracle_action(self.env.unwrapped, self.env_type)
+                # BFS oracle — optionally noisy
+                bfs_action  = get_oracle_action(self.env.unwrapped, self.env_type)
+                bfs_optimal = get_all_oracle_actions(self.env.unwrapped, self.env_type)
+                if self._oracle_noise < 1.0 and _random.random() > self._oracle_noise:
+                    # Return a random non-optimal action
+                    all_acts   = set(range(self.QUERY_ACTION))
+                    wrong_acts = list(all_acts - set(bfs_optimal or [bfs_action]))
+                    oracle_action = _random.choice(wrong_acts) if wrong_acts else bfs_action
+                    vlm_correct   = 0
+                else:
+                    oracle_action = bfs_action
+                    vlm_correct   = 1 if self._oracle_noise < 1.0 else -1
             guided = True
             action = oracle_action
 
@@ -185,8 +215,10 @@ class OracleWrapper(gym.Wrapper):
         if self._shaper:
             reward = self._shaper.shape(self.env.unwrapped, reward)
 
-        info['guided']        = guided
-        info['oracle_action'] = int(oracle_action) if oracle_action is not None else -1
+        info['guided']           = guided
+        info['oracle_action']    = int(oracle_action) if oracle_action is not None else -1
+        info['vlm_correct']      = vlm_correct      # 1=correct, 0=wrong, -1=N/A
+        info['vlm_parse_failed'] = vlm_parse_failed # True when VLM response was unparsable
 
         return self._last_obs, reward, terminated, truncated, info
 
@@ -229,8 +261,10 @@ class BaselineWrapper(gym.Wrapper):
         if self._shaper:
             reward = self._shaper.shape(self.env.unwrapped, reward)
 
-        info['guided']        = False
-        info['oracle_action'] = -1
+        info['guided']           = False
+        info['oracle_action']    = -1
+        info['vlm_correct']      = -1
+        info['vlm_parse_failed'] = False
         return self._get_obs(obs_dict), reward, terminated, truncated, info
 
 
@@ -241,8 +275,9 @@ def make_env(env_id: str, env_type: str = 'empty',
              seed: int = 0, no_oracle: bool = False,
              reward_shaping: bool = False,
              vlm_client=None, vlm_model_key: str = 'qwen3b',
-             vlm_served_name: str = '',
-             partial_obs: bool = False):
+             vlm_served_name: str = '', vlm_mode: str = 'baseline',
+             partial_obs: bool = False,
+             oracle_noise: float = 1.0):
     """
     Factory function compatible avec gymnasium's SyncVectorEnv.
     """
@@ -253,7 +288,7 @@ def make_env(env_id: str, env_type: str = 'empty',
             env = OracleWrapper(env_id, env_type, tile_size,
                                 oracle_cost, reward_shaping,
                                 vlm_client, vlm_model_key, vlm_served_name,
-                                partial_obs)
+                                vlm_mode, partial_obs, oracle_noise)
         env.reset(seed=seed)
         return env
     return _init

@@ -56,7 +56,7 @@ def parse_args():
     p.add_argument('--bc-anneal',       action='store_true', default=False)
     p.add_argument('--no-oracle',        action='store_true', default=False)
     p.add_argument('--warmup-steps',     type=int,   default=0)
-    p.add_argument('--reward-shaping',   action='store_true', default=False)
+    p.add_argument('--reward-shaping',   action='store_true', default=True)
     # oracle_cost=0.0  → upper bound (oracle gratuit)
     # oracle_cost>0.0  → VLM réel (agent apprend quand consulter)
     # --no-oracle      → baseline PPO pur (pas d'action query)
@@ -72,9 +72,18 @@ def parse_args():
                    help='Use partial observability (agent 7x7 FOV instead of full grid)')
     p.add_argument('--vlm-model',       type=str,   default='',
                    help='VLM key to use as oracle (e.g. qwen3b). Empty = BFS oracle.')
+    p.add_argument('--vlm-no-start',    action='store_true', default=False,
+                   help='Skip starting the vLLM server (assumes it is already running on localhost:8000).')
+    p.add_argument('--vlm-mode',        type=str,   default='baseline',
+                   choices=['baseline', 'cot', 'thinking'],
+                   help='VLM prompting mode: baseline (1 token), cot (chain-of-thought), thinking (WeThink-style).')
     p.add_argument('--cache-dir',       type=str,
                    default=os.environ.get('HF_HOME', './hf_cache'),
                    help='HuggingFace model cache directory')
+    p.add_argument('--oracle-noise',    type=float, default=1.0,
+                   help='Fraction of BFS oracle calls that return the optimal action '
+                        '(1.0=perfect, 0.5=50%% accuracy). Simulates an imperfect VLM. '
+                        'Has no effect when --vlm-model is set.')
     return p.parse_args()
 
 
@@ -86,6 +95,8 @@ CSV_FIELDS = [
     'guided_pct', 'queries_per_ep',
     'bc_loss', 'agreement_rate',
     'cum_queries', 'first_unguided_success',
+    'vlm_accuracy',
+    'vlm_fallback_rate',
 ]
 
 class CSVLogger:
@@ -121,7 +132,7 @@ def main():
     torch.manual_seed(args.seed)
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(f"  device={device}, batch={batch_size}, updates={n_updates}")
+    print(f"  device={device}, batch={batch_size}, updates={n_updates}, reward_shaping={args.reward_shaping}")
 
     logger = CSVLogger(f"logs/{run_name}.csv")
 
@@ -133,11 +144,16 @@ def main():
     if args.vlm_model and not args.no_oracle:
         from vlm_oracle import (start_vlm_server, wait_for_server,
                                 make_vlm_client, get_served_model_name)
-        print(f"  VLM oracle : {args.vlm_model}  (cache: {args.cache_dir})")
-        vlm_proc = start_vlm_server(args.vlm_model, args.cache_dir)
-        if not wait_for_server(timeout=900):
-            vlm_proc.kill()
-            raise RuntimeError("vLLM server failed to start within 900s.")
+        if args.vlm_no_start:
+            print(f"  VLM oracle : {args.vlm_model} (server already running)")
+            if not wait_for_server(timeout=60):
+                raise RuntimeError("vLLM server not reachable on localhost:8000.")
+        else:
+            print(f"  VLM oracle : {args.vlm_model}  (cache: {args.cache_dir})")
+            vlm_proc = start_vlm_server(args.vlm_model, args.cache_dir)
+            if not wait_for_server(timeout=900):
+                vlm_proc.kill()
+                raise RuntimeError("vLLM server failed to start within 900s.")
         vlm_client      = make_vlm_client()
         vlm_served_name = get_served_model_name(vlm_client)
         print(f"  vLLM ready : {vlm_served_name}")
@@ -153,7 +169,9 @@ def main():
                  vlm_client=vlm_client,
                  vlm_model_key=args.vlm_model or 'qwen3b',
                  vlm_served_name=vlm_served_name,
-                 partial_obs=args.partial_obs)
+                 vlm_mode=args.vlm_mode,
+                 partial_obs=args.partial_obs,
+                 oracle_noise=args.oracle_noise)
         for i in range(args.n_envs)
     ])
 
@@ -185,10 +203,13 @@ def main():
     oracle_actions_buf = torch.zeros((args.n_steps, args.n_envs), dtype=torch.long).to(device)
 
     # ── Episode accumulators (one per parallel env) ───────────────────────────
-    ep_ret       = np.zeros(args.n_envs)
-    ep_len       = np.zeros(args.n_envs, dtype=int)
-    ep_n_queries = np.zeros(args.n_envs, dtype=int)   # oracle calls this ep
-    ep_agree     = np.zeros(args.n_envs, dtype=int)   # guided steps where greedy==oracle
+    ep_ret        = np.zeros(args.n_envs)
+    ep_len        = np.zeros(args.n_envs, dtype=int)
+    ep_n_queries  = np.zeros(args.n_envs, dtype=int)   # oracle calls this ep
+    ep_agree      = np.zeros(args.n_envs, dtype=int)   # guided steps where greedy==oracle
+    ep_vlm_calls    = np.zeros(args.n_envs, dtype=int)  # VLM calls with a correctness signal
+    ep_vlm_correct  = np.zeros(args.n_envs, dtype=int)  # VLM calls where action was BFS-optimal
+    ep_vlm_fallbacks = np.zeros(args.n_envs, dtype=int) # VLM calls with unparsable response
 
     # Global counters
     episode_count          = 0
@@ -247,8 +268,9 @@ def main():
 
             # Parse guided flags ──────────────────────────────────────────────
             # SyncVectorEnv stores terminal-step info in infos['final_info'][i]
-            guided_np     = np.zeros(args.n_envs, dtype=bool)
-            oracle_act_np = np.zeros(args.n_envs, dtype=np.int64)
+            guided_np      = np.zeros(args.n_envs, dtype=bool)
+            oracle_act_np  = np.zeros(args.n_envs, dtype=np.int64)
+            vlm_correct_np = np.full(args.n_envs, -1, dtype=np.int64)
 
             for i in range(args.n_envs):
                 # For terminated/truncated envs the step info is in final_info
@@ -261,9 +283,12 @@ def main():
                 else:
                     step_info = {}
 
-                guided_np[i]     = step_info.get('guided', False)
-                oa               = step_info.get('oracle_action', -1)
-                oracle_act_np[i] = oa if oa >= 0 else 0
+                guided_np[i]      = step_info.get('guided', False)
+                oa                = step_info.get('oracle_action', -1)
+                oracle_act_np[i]  = oa if oa >= 0 else 0
+                vlm_correct_np[i] = int(step_info.get('vlm_correct', -1))
+                if step_info.get('vlm_parse_failed', False):
+                    ep_vlm_fallbacks[i] += 1
 
             guided_buf[step]         = torch.tensor(guided_np).to(device)
             oracle_actions_buf[step] = torch.tensor(oracle_act_np).to(device)
@@ -278,6 +303,9 @@ def main():
             for i in range(args.n_envs):
                 if guided_np[i] and greedy_np[i] == oracle_act_np[i]:
                     ep_agree[i] += 1
+                if vlm_correct_np[i] >= 0:  # VLM was called with a correctness signal
+                    ep_vlm_calls[i]   += 1
+                    ep_vlm_correct[i] += vlm_correct_np[i]
 
             # Episode end ─────────────────────────────────────────────────────
             for i in range(args.n_envs):
@@ -289,8 +317,12 @@ def main():
                 success = float(term_np[i])  # terminated = reached goal, not timeout
                 n_q     = int(ep_n_queries[i])
                 pct     = n_q / max(int(ep_len[i]), 1) * 100
-                agree   = (ep_agree[i] / ep_n_queries[i]
-                           if ep_n_queries[i] > 0 else float('nan'))
+                agree    = (ep_agree[i] / ep_n_queries[i]
+                            if ep_n_queries[i] > 0 else float('nan'))
+                vlm_acc  = (ep_vlm_correct[i] / ep_vlm_calls[i]
+                            if ep_vlm_calls[i] > 0 else float('nan'))
+                vlm_fb   = (ep_vlm_fallbacks[i] / ep_n_queries[i]
+                            if ep_n_queries[i] > 0 else float('nan'))
 
                 # First unguided success
                 fug = ''
@@ -310,6 +342,8 @@ def main():
                     'agreement_rate':        round(agree, 4) if not np.isnan(agree) else '',
                     'cum_queries':           cum_queries,
                     'first_unguided_success': fug,
+                    'vlm_accuracy':          round(vlm_acc, 4) if not np.isnan(vlm_acc) else '',
+                    'vlm_fallback_rate':     round(vlm_fb,  4) if not np.isnan(vlm_fb)  else '',
                 })
 
                 ep_returns.append(ret)
@@ -317,6 +351,7 @@ def main():
 
                 # Reset accumulators
                 ep_ret[i] = ep_len[i] = ep_n_queries[i] = ep_agree[i] = 0
+                ep_vlm_calls[i] = ep_vlm_correct[i] = ep_vlm_fallbacks[i] = 0
 
         # ── GAE ───────────────────────────────────────────────────────────────
         with torch.no_grad():
