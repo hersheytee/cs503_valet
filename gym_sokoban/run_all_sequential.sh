@@ -1,46 +1,43 @@
 #!/bin/bash
-# Runs all experiments sequentially on a single GPU/CPU
-# Optimized for 1 seed to reduce local training time
+# Run the Sokoban RGB PPO experiment matrix sequentially.
 
-set -e
+set -euo pipefail
 
-# Create directories in the root folder
+ENV_ID="${ENV_ID:-Sokoban-small-v0}"
+TOTAL_TIMESTEPS="${TOTAL_TIMESTEPS:-500000}"
+SEEDS=(${SEEDS:-1})
+PYTHON_EXE="${PYTHON_EXE:-python}"
+SAVE_MODEL="${SAVE_MODEL:-0}"
+
 mkdir -p logs figures checkpoints
 
-# Reduced to 1 seed to save time on laptop execution[cite: 4]
-SEEDS=(1)
+run_one() {
+    local exp_name="$1"
+    local seed="$2"
+    local extra_args="$3"
+    local save_args=""
 
-# The environment we are testing
-ENV_ID="Sokoban-small-v0"
+    if [[ "$SAVE_MODEL" == "1" ]]; then
+        save_args="--save-model"
+    fi
 
-# Path to your virtual environment's Python[cite: 4]
-PYTHON_EXE="venv/Scripts/python.exe"
+    echo "=== ${exp_name} | ${ENV_ID} | seed=${seed} | ${extra_args} ==="
+    $PYTHON_EXE gym_sokoban/train.py \
+        --env-id "$ENV_ID" \
+        --seed "$seed" \
+        --exp-name "$exp_name" \
+        --total-timesteps "$TOTAL_TIMESTEPS" \
+        $save_args \
+        $extra_args
+}
 
-# Path to the training script
-TRAIN_SCRIPT="gym_sokoban/train.py"
-
-for SEED in "${SEEDS[@]}"; do
-
-    echo "=== Free Oracle (cost=0.0) | $ENV_ID | seed=$SEED ==="
-    $PYTHON_EXE $TRAIN_SCRIPT --env-id "$ENV_ID" \
-        --seed "$SEED" --oracle-cost 0.0 \
-        --exp-name oracle_free --total-timesteps 500000
-
-    echo "=== Paid Oracle (cost=0.01) | $ENV_ID | seed=$SEED ==="
-    $PYTHON_EXE $TRAIN_SCRIPT --env-id "$ENV_ID" \
-        --seed "$SEED" --oracle-cost 0.01 \
-        --exp-name oracle_paid_01 --total-timesteps 500000
-
-    echo "=== Paid Oracle (cost=0.05) | $ENV_ID | seed=$SEED ==="
-    $PYTHON_EXE $TRAIN_SCRIPT --env-id "$ENV_ID" \
-        --seed "$SEED" --oracle-cost 0.05 \
-        --exp-name oracle_paid_05 --total-timesteps 500000
-
-    echo "=== Baseline PPO (no oracle) | $ENV_ID | seed=$SEED ==="
-    $PYTHON_EXE $TRAIN_SCRIPT --env-id "$ENV_ID" \
-        --seed "$SEED" --no-oracle \
-        --exp-name baseline --total-timesteps 500000
-
+for seed in "${SEEDS[@]}"; do
+    run_one "oracle_free" "$seed" "--oracle-cost 0.0"
+    run_one "oracle_paid_001" "$seed" "--oracle-cost 0.01"
+    run_one "oracle_paid_005" "$seed" "--oracle-cost 0.05"
+    run_one "oracle_paid_010" "$seed" "--oracle-cost 0.10"
+    run_one "oracle_paid_020" "$seed" "--oracle-cost 0.20"
+    run_one "baseline" "$seed" "--no-oracle"
 done
 
-echo "All runs completed successfully."
+echo "All sequential runs completed."

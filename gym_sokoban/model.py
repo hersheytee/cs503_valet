@@ -1,55 +1,69 @@
+"""
+MiniGrid-large style CNN policy for RGB Sokoban observations.
+
+This matches the visual policy family used for 16x16 MiniGrid: strided
+3x3 convolutions, adaptive 8x8 pooling, then shared actor/critic heads.
+"""
+
+import numpy as np
 import torch
 import torch.nn as nn
 from torch.distributions import Categorical
-import numpy as np
+
 
 def layer_init(layer, std=np.sqrt(2), bias_const=0.0):
     nn.init.orthogonal_(layer.weight, std)
     nn.init.constant_(layer.bias, bias_const)
     return layer
 
+
 class CNNPolicy(nn.Module):
-    def __init__(self, n_actions: int, hidden_dim: int = 512):
+    def __init__(self, obs_shape, n_actions: int, hidden_dim: int = 256):
         super().__init__()
-        
-        # The classic "Nature CNN" architecture for 84x84 RGB images
-        self.network = nn.Sequential(
-            layer_init(nn.Conv2d(in_channels=3, out_channels=32, kernel_size=8, stride=4)),
+
+        height, width, channels = obs_shape
+
+        self.cnn = nn.Sequential(
+            layer_init(nn.Conv2d(channels, 32, kernel_size=3, stride=2, padding=1)),
             nn.ReLU(),
-            layer_init(nn.Conv2d(in_channels=32, out_channels=64, kernel_size=4, stride=2)),
+            layer_init(nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1)),
             nn.ReLU(),
-            layer_init(nn.Conv2d(in_channels=64, out_channels=64, kernel_size=3, stride=1)),
+            layer_init(nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1)),
             nn.ReLU(),
+            nn.AdaptiveAvgPool2d((8, 8)),
             nn.Flatten(),
-            # 64 channels * 7 * 7 spatial dimensions = 3136 flat features
-            layer_init(nn.Linear(3136, hidden_dim)),
+        )
+
+        with torch.no_grad():
+            dummy = torch.zeros(1, channels, height, width)
+            cnn_out = self.cnn(dummy).shape[1]
+
+        self.fc = nn.Sequential(
+            layer_init(nn.Linear(cnn_out, hidden_dim)),
             nn.ReLU(),
         )
-        
-        # Action distribution and Value estimation
+
         self.policy_head = layer_init(nn.Linear(hidden_dim, n_actions), std=0.01)
         self.value_head = layer_init(nn.Linear(hidden_dim, 1), std=1.0)
 
+    def _preprocess(self, obs):
+        if obs.ndim == 3:
+            obs = obs.unsqueeze(0)
+        if obs.dtype == torch.uint8:
+            obs = obs.float() / 255.0
+        return obs.permute(0, 3, 1, 2)
+
     def forward(self, obs):
-        # Convert from numpy/gym format (B, 84, 84, 3) to PyTorch format (B, 3, 84, 84)
-        # Also normalize pixel values from [0, 255] to [0.0, 1.0]
-        x = obs.float() / 255.0
-        
-        if len(x.shape) == 3: # Single observation (unbatched)
-            x = x.unsqueeze(0)
-            
-        x = x.permute(0, 3, 1, 2)
-        
-        hidden = self.network(x)
-        return self.policy_head(hidden), self.value_head(hidden).squeeze(-1)
+        x = self._preprocess(obs)
+        x = self.cnn(x)
+        x = self.fc(x)
+        return self.policy_head(x), self.value_head(x).squeeze(-1)
 
     def get_action_and_value(self, obs, action=None):
         logits, value = self.forward(obs)
         dist = Categorical(logits=logits)
-        
         if action is None:
             action = dist.sample()
-            
         return action, dist.log_prob(action), dist.entropy(), value
 
     def get_value(self, obs):

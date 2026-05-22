@@ -1,6 +1,6 @@
 """
 PPO + Behavior Cloning training — Oracle-guided agent.
-Adapted for Sokoban (84x84 RGB).
+Adapted for Sokoban (128x128 RGB).
 Style: CleanRL single-file.
 
 Metrics logged per episode to CSV:
@@ -13,6 +13,8 @@ import argparse
 import csv
 import os
 import random
+import subprocess
+import sys
 import time
 from collections import deque
 
@@ -39,8 +41,10 @@ def parse_args():
     # --- Oracle & Shaping Settings ---
     p.add_argument('--oracle-cost',     type=float, default=0.0)                   # Negative reward penalty applied every time the agent asks the Oracle for a move
     p.add_argument('--no-oracle',       action='store_true', default=False)        # If True, removes the Oracle action entirely (runs as a pure PPO baseline)
-    p.add_argument('--reward-shaping',  action='store_true', default=True)         # Enables the potential-based dense rewards (e.g., getting closer to a target)
+    p.add_argument('--reward-shaping',  action='store_true', default=False)        # Enables potential-based dense rewards
     p.add_argument('--warmup-steps',    type=int,   default=0)                     # Forces the agent to ONLY use the Oracle for the first N steps to build a good starting buffer
+    p.add_argument('--max-episode-steps', type=int, default=120)                   # Time-limit truncation for old gym-sokoban envs
+    p.add_argument('--obs-size',        type=int,   default=128)                   # RGB observation resize target
     
     # --- Training Loop Dimensions ---
     p.add_argument('--total-timesteps', type=int,   default=500_000)               # Total number of environment frames the agent will experience during the entire run
@@ -65,7 +69,7 @@ def parse_args():
     
     # --- Architecture & Reproducibility ---
     p.add_argument('--seed',            type=int,   default=1)                     # Random seed to ensure you get the exact same results if you run the script twice
-    p.add_argument('--hidden-dim',      type=int,   default=512)                   # Size of the linear layer connecting the CNN feature extractor to the output Action/Value heads
+    p.add_argument('--hidden-dim',      type=int,   default=256)                   # Size of the FC layer after the CNN
     p.add_argument('--tile-size',       type=int,   default=8)                     # Legacy MiniGrid argument (kept for bash script compatibility)
     
     # --- Output/Saving ---
@@ -108,6 +112,11 @@ def main():
     batch_size     = args.n_envs * args.n_steps
     minibatch_size = batch_size // args.n_minibatches
     n_updates      = args.total_timesteps // batch_size
+    if n_updates < 1:
+        raise ValueError(
+            f"total_timesteps={args.total_timesteps} is smaller than one rollout "
+            f"batch={batch_size}. Increase timesteps or reduce n-envs/n-steps."
+        )
 
     run_name = f"{args.exp_name}__{args.env_id}__seed{args.seed}__{int(time.time())}"
     print(f"Run: {run_name}")
@@ -120,6 +129,7 @@ def main():
     print(f"  device={device}, batch={batch_size}, updates={n_updates}")
 
     logger = CSVLogger(f"logs/{run_name}.csv")
+    os.makedirs('figures', exist_ok=True)
 
     # ── Environments ─────────────────────────────────────────────────────────
     envs = gym.vector.SyncVectorEnv([
@@ -128,7 +138,9 @@ def main():
             oracle_cost=args.oracle_cost, 
             seed=args.seed * 1000 + i, 
             reward_shaping=args.reward_shaping, 
-            no_oracle=args.no_oracle
+            no_oracle=args.no_oracle,
+            max_episode_steps=args.max_episode_steps,
+            obs_size=args.obs_size,
             )
         for i in range(args.n_envs)
     ])
@@ -142,8 +154,7 @@ def main():
 
 
     # ── Model ─────────────────────────────────────────────────────────────────
-    # Note: Updated to initialize the new Nature CNN correctly
-    model     = CNNPolicy(n_actions=n_actions, hidden_dim=args.hidden_dim).to(device)
+    model     = CNNPolicy(obs_shape=obs_shape, n_actions=n_actions, hidden_dim=args.hidden_dim).to(device)
     optimiser = optim.Adam(model.parameters(), lr=args.lr, eps=1e-5)
     print(f"  params={sum(p.numel() for p in model.parameters()):,}")
 
@@ -227,6 +238,7 @@ def main():
             # Parse guided flags ──────────────────────────────────────────────
             guided_np     = np.zeros(args.n_envs, dtype=bool)
             oracle_act_np = np.zeros(args.n_envs, dtype=np.int64)
+            success_np    = np.zeros(args.n_envs, dtype=bool)
 
             for i in range(args.n_envs):
                 if (term_np[i] or trunc_np[i]) and 'final_info' in infos and infos['final_info'][i] is not None:
@@ -241,6 +253,7 @@ def main():
                 guided_np[i]     = step_info.get('guided', False)
                 oa               = step_info.get('oracle_action', -1)
                 oracle_act_np[i] = oa if oa >= 0 else 0
+                success_np[i]    = bool(step_info.get('success', False))
 
             guided_buf[step]         = torch.tensor(guided_np).to(device)
             oracle_actions_buf[step] = torch.tensor(oracle_act_np).to(device)
@@ -263,7 +276,7 @@ def main():
 
                 episode_count += 1
                 ret     = float(ep_ret[i])
-                success = float(ret > 0)
+                success = float(success_np[i])
                 n_q     = int(ep_n_queries[i])
                 pct     = n_q / max(int(ep_len[i]), 1) * 100
                 agree   = (ep_agree[i] / ep_n_queries[i]
@@ -320,12 +333,17 @@ def main():
         b_guided      = guided_buf.reshape(-1)
         b_oracle_acts = oracle_actions_buf.reshape(-1)
 
+        approx_kl = torch.tensor(0.0, device=device)
+        clipfracs = []
         for _ in range(args.n_epochs):
             for mb in np.array_split(np.random.permutation(batch_size), args.n_minibatches):
 
                 _, new_lp, entropy, new_val = model.get_action_and_value(b_obs[mb], b_actions[mb])
 
                 ratio  = (new_lp - b_logprobs[mb]).exp()
+                with torch.no_grad():
+                    approx_kl = ((ratio - 1) - (new_lp - b_logprobs[mb])).mean()
+                    clipfracs.append(((ratio - 1.0).abs() > args.clip_coef).float().mean().item())
                 mb_adv = b_advantages[mb]
                 mb_adv = (mb_adv - mb_adv.mean()) / (mb_adv.std() + 1e-8)
 
@@ -358,6 +376,11 @@ def main():
 
             last_bc_loss = bc_loss.item()
 
+        y_pred = b_values.detach().cpu().numpy()
+        y_true = b_returns.detach().cpu().numpy()
+        var_y = np.var(y_true)
+        explained_var = np.nan if var_y == 0 else 1 - np.var(y_true - y_pred) / var_y
+
         # ── Console log ───────────────────────────────────────────────────────
         if update % 10 == 0 or update == 1:
             sps = int(global_step / (time.time() - t0))
@@ -367,7 +390,8 @@ def main():
                 f"return={np.mean(ep_returns) if ep_returns else float('nan'):6.3f} | "
                 f"guided%={np.mean(ep_guided_pct) if ep_guided_pct else float('nan'):5.1f} | "
                 f"bc={last_bc_loss:.4f} | cumQ={cum_queries:6d} | "
-                f"bc_coef={bc_coef:.3f} | sps={sps}"
+                f"bc_coef={bc_coef:.3f} | kl={approx_kl.item():.4f} | "
+                f"clip={np.mean(clipfracs):.3f} | ev={explained_var:.3f} | sps={sps}"
             )
 
     # ── Save & plot ───────────────────────────────────────────────────────────
@@ -383,7 +407,14 @@ def main():
     log_path = f"logs/{run_name}.csv"
     fig_path = f"figures/{run_name}.png"
     print("Generating plots...")
-    os.system(f"python plot.py --csv {log_path} --out {fig_path} --env {args.env_id}")
+    plot_script = os.path.join(os.getcwd(), "plot.py")
+    if os.path.exists(plot_script):
+        subprocess.run(
+            [sys.executable, plot_script, "--csv", log_path, "--out", fig_path, "--env", args.env_id],
+            check=False,
+        )
+    else:
+        print("Skipping plot generation: plot.py not found in current working directory.")
     print(f"Plots → {fig_path}")
 
 if __name__ == '__main__':

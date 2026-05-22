@@ -1,47 +1,33 @@
 #!/bin/bash
-# Launches all runs in parallel on Izar
-# 4 conditions × 3 seeds = 12 SLURM jobs
+# Submit the Sokoban RGB PPO experiment matrix to SLURM.
 
-set -e
+set -euo pipefail
 
-SEEDS=(1)
+ENV_ID="${ENV_ID:-Sokoban-small-v0}"
+TOTAL_TIMESTEPS="${TOTAL_TIMESTEPS:-500000}"
+SEEDS=(${SEEDS:-1 2 3})
 
-# Create necessary directories
 mkdir -p logs figures checkpoints
 
-for SEED in "${SEEDS[@]}"; do
+submit_run() {
+    local exp_name="$1"
+    local seed="$2"
+    local extra_args="$3"
 
-    echo "Submitting oracle_free seed${SEED} ..."
+    echo "Submitting ${exp_name} | seed=${seed} | ${extra_args}"
     sbatch \
-        --job-name="soko_free_s${SEED}" \
-        --export=ALL,EXP_NAME="oracle_free",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.0" \
-        job.sh
+        --job-name="soko_${exp_name}_s${seed}" \
+        --export=ALL,ENV_ID="$ENV_ID",EXP_NAME="$exp_name",SEED="$seed",TOTAL_TIMESTEPS="$TOTAL_TIMESTEPS",EXTRA_ARGS="$extra_args" \
+        gym_sokoban/job.sh
+}
 
-    echo "Submitting oracle_paid_02 seed${SEED} ..."
-    sbatch \
-        --job-name="soko_paid02_s${SEED}" \
-        --export=ALL,EXP_NAME="oracle_paid_02",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.2" \
-        job.sh
-
-    echo "Submitting oracle_paid_03 seed${SEED} ..."
-    sbatch \
-        --job-name="soko_paid03_s${SEED}" \
-        --export=ALL,EXP_NAME="oracle_paid_03",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.3" \
-        job.sh
-
-    echo "Submitting oracle_paid_05 seed${SEED} ..."
-    sbatch \
-        --job-name="soko_paid05_s${SEED}" \
-        --export=ALL,EXP_NAME="oracle_paid_05",SEED="$SEED",EXTRA_ARGS="--oracle-cost 0.5" \
-        job.sh
-
-    echo "Submitting baseline seed${SEED} ..."
-    sbatch \
-        --job-name="soko_base_s${SEED}" \
-        --export=ALL,EXP_NAME="baseline",SEED="$SEED",EXTRA_ARGS="--no-oracle" \
-        job.sh
-
+for seed in "${SEEDS[@]}"; do
+    submit_run "oracle_free" "$seed" "--oracle-cost 0.0"
+    submit_run "oracle_paid_001" "$seed" "--oracle-cost 0.01"
+    submit_run "oracle_paid_005" "$seed" "--oracle-cost 0.05"
+    submit_run "oracle_paid_010" "$seed" "--oracle-cost 0.10"
+    submit_run "oracle_paid_020" "$seed" "--oracle-cost 0.20"
+    submit_run "baseline" "$seed" "--no-oracle"
 done
 
-echo ""
-echo "All jobs submitted to Izar! Monitor with: squeue -u $USER"
+echo "All jobs submitted. Monitor with: squeue -u \$USER"

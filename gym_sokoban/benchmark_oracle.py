@@ -5,6 +5,7 @@ Calculates average solve time and effective Steps-Per-Second (SPS).
 
 import gym
 import gym_sokoban
+import argparse
 import time
 import numpy as np
 from bfs_oracle import extract_state, bfs_sokoban
@@ -13,14 +14,14 @@ from bfs_oracle import extract_state, bfs_sokoban
 if not hasattr(np, 'bool8'):
     np.bool8 = np.bool_
 
-def run_benchmark(episodes=100):
-    env = gym.make('Sokoban-small-v0')
+def run_benchmark(env_id='Sokoban-small-v0', episodes=100):
+    env = gym.make(env_id)
     
     solve_times = []
     total_steps_cached = 0
     failures = 0
     
-    print(f"Starting Benchmark: 7x7 Sokoban, {episodes} episodes...")
+    print(f"Starting benchmark: {env_id}, {episodes} episodes...")
     
     t_start_total = time.time()
     
@@ -49,6 +50,8 @@ def run_benchmark(episodes=100):
         return
         
     avg_solve = np.mean(solve_times)
+    med_solve = np.median(solve_times)
+    p95_solve = np.percentile(solve_times, 95)
     max_solve = np.max(solve_times)
     
     # Calculate Effective SPS (Assuming Cache Hits)
@@ -63,9 +66,15 @@ def run_benchmark(episodes=100):
     print(f"Total Valid Steps : {total_steps_cached}")
     print("-"*40)
     print(f"Avg Solve Time    : {avg_solve:.4f} seconds")
+    print(f"Median Solve Time : {med_solve:.4f} seconds")
+    print(f"P95 Solve Time    : {p95_solve:.4f} seconds")
     print(f"Max Solve Time    : {max_solve:.4f} seconds")
     print(f"Effective SPS     : {effective_sps:.0f} steps / second")
     print("="*40)
     
 if __name__ == "__main__":
-    run_benchmark(100)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--env-id", default="Sokoban-small-v0")
+    parser.add_argument("--episodes", type=int, default=100)
+    args = parser.parse_args()
+    run_benchmark(args.env_id, args.episodes)

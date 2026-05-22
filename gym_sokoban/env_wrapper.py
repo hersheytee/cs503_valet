@@ -1,7 +1,7 @@
 """
 Environment wrapper for gym-sokoban.
 Translates old Gym v0.21 environments into modern Gymnasium v0.28+ environments.
-Adds the `query_oracle` action and downsamples RGB images to 84x84.
+Adds the `query_oracle` action and resizes RGB images to 128x128.
 """
 
 import gym as old_gym          # The old library where Sokoban lives
@@ -74,12 +74,20 @@ class SokobanOracleWrapper(gym.Env):
     """
     metadata = {'render_modes': ['rgb_array']}
 
-    def __init__(self, env_id: str = 'Sokoban-small-v0', oracle_cost: float = 0.0, reward_shaping: bool = False, no_oracle: bool = False):
-
-
+    def __init__(
+        self,
+        env_id: str = 'Sokoban-small-v0',
+        oracle_cost: float = 0.0,
+        reward_shaping: bool = False,
+        no_oracle: bool = False,
+        max_episode_steps: int = 120,
+        obs_size: int = 128,
+    ):
         # Build the environment using the OLD gym
         self.env = old_gym.make(env_id)
         self.oracle_cost = oracle_cost
+        self.max_episode_steps = max_episode_steps
+        self.elapsed_steps = 0
         
         # include no oracle flag
         self.no_oracle = no_oracle
@@ -98,8 +106,8 @@ class SokobanOracleWrapper(gym.Env):
             self.action_space = spaces.Discrete(n_original + 1)
             self.QUERY_ACTION = n_original
         
-        # Downsample observation space from 160x160 to 84x84
-        self.obs_size = 84
+        # Resize observation space from the raw render to MiniGrid-large size.
+        self.obs_size = obs_size
         self.observation_space = spaces.Box(
             low=0, high=255, 
             shape=(self.obs_size, self.obs_size, 3), 
@@ -107,7 +115,7 @@ class SokobanOracleWrapper(gym.Env):
         )
 
     def _process_obs(self):
-        """Grabs the raw RGB image from the old env and resizes it to 84x84."""
+        """Grabs the raw RGB image from the old env and resizes it."""
         obs = self.env.render(mode='rgb_array')
         resized = cv2.resize(obs, (self.obs_size, self.obs_size), interpolation=cv2.INTER_AREA)
         return resized
@@ -118,6 +126,7 @@ class SokobanOracleWrapper(gym.Env):
             self.env.seed(seed)
             
         self.env.reset()
+        self.elapsed_steps = 0
         
         # Clear the state-aware cache
         unwrapped = self.env.unwrapped
@@ -143,7 +152,12 @@ class SokobanOracleWrapper(gym.Env):
             # Fatal deadlock
             if oracle_action == 0:
                 self.env.reset() 
-                info = {'guided': True, 'oracle_action': 0, 'fatal_deadlock': True}
+                info = {
+                    'guided': True,
+                    'oracle_action': 0,
+                    'fatal_deadlock': True,
+                    'success': False,
+                }
                 # Return modern format: obs, reward, terminated, truncated, info
                 return self._process_obs(), -1.0, True, False, info
                 
@@ -151,6 +165,8 @@ class SokobanOracleWrapper(gym.Env):
 
         # Take the step in the old environment (which returns 4 values)
         _, reward, done, info = self.env.step(action)
+        self.elapsed_steps += 1
+        base_reward = reward
 
         # Apply potential-based reward shaping
         if self._shaper:
@@ -161,21 +177,40 @@ class SokobanOracleWrapper(gym.Env):
 
         info['guided'] = guided
         info['oracle_action'] = int(oracle_action) if oracle_action is not None else -1
+        info['success'] = bool(done and base_reward > 0)
 
         # Convert old 'done' to modern 'terminated' and 'truncated'
         terminated = bool(done)
-        truncated = False
+        truncated = bool(not terminated and self.elapsed_steps >= self.max_episode_steps)
 
         return self._process_obs(), reward, terminated, truncated, info
 
     def render(self):
         return self.env.render(mode='rgb_array')
 
+    def close(self):
+        self.env.close()
 
-def make_env(env_id: str, oracle_cost: float = 0.0, seed: int = 0, reward_shaping: bool = False, no_oracle: bool = False):
+
+def make_env(
+    env_id: str,
+    oracle_cost: float = 0.0,
+    seed: int = 0,
+    reward_shaping: bool = False,
+    no_oracle: bool = False,
+    max_episode_steps: int = 120,
+    obs_size: int = 128,
+):
     """Factory function for SyncVectorEnv."""
     def _init():
-        env = SokobanOracleWrapper(env_id, oracle_cost, reward_shaping=reward_shaping, no_oracle=no_oracle)
+        env = SokobanOracleWrapper(
+            env_id,
+            oracle_cost,
+            reward_shaping=reward_shaping,
+            no_oracle=no_oracle,
+            max_episode_steps=max_episode_steps,
+            obs_size=obs_size,
+        )
         env.action_space.seed(seed)
         env.observation_space.seed(seed)
         return env

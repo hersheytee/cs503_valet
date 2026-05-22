@@ -12,11 +12,13 @@ def main():
     env = SokobanOracleWrapper(env_id='Sokoban-small-v0', oracle_cost=0.5, reward_shaping=True)
     
     obs, info = env.reset(seed=12)
+    assert obs.shape == (128, 128, 3), obs.shape
+    assert env.action_space.n == 10, env.action_space.n
     
     # List to store our frames for the GIF
     frames = []
     
-    # We grab the high-resolution render for the GIF (160x160) rather than the 84x84 obs
+    # We grab the high-resolution render for the GIF rather than the resized policy obs.
     frames.append(env.render())
 
     QUERY_ACTION = env.action_space.n - 1
@@ -48,11 +50,21 @@ def main():
     print(f"\nTotal shaped reward: {total_reward:.2f}")
     env.close()
 
+    baseline_env = SokobanOracleWrapper(env_id='Sokoban-small-v0', no_oracle=True)
+    baseline_obs, _ = baseline_env.reset(seed=12)
+    assert baseline_obs.shape == (128, 128, 3), baseline_obs.shape
+    assert baseline_env.action_space.n == 9, baseline_env.action_space.n
+    baseline_env.close()
+
     # Save the GIF
-    gif_path = "sokoban_oracle_test.gif"
+    os.makedirs("gym_sokoban/figures", exist_ok=True)
+    gif_path = "gym_sokoban/figures/sokoban_oracle_test.gif"
     print(f"\nSaving visual to {gif_path}...")
-    imageio.mimsave(gif_path, frames, fps=4) # fps=4 gives a nice, readable speed
-    print("Done! Open the GIF to see the agent move.")
+    try:
+        imageio.mimsave(gif_path, frames, fps=4)
+        print("Done! Open the GIF to see the agent move.")
+    except PermissionError as exc:
+        print(f"Could not write GIF ({exc}); wrapper/oracle checks already passed.")
 
 if __name__ == "__main__":
     main()
