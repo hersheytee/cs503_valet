@@ -222,3 +222,7 @@ __marimo__/
 
 /.claude
 /Benchmark/history_dataset
+
+/Upper_Bound/checkpoints/
+/Upper_Bound/logs/
+/Upper_Bound/figures/

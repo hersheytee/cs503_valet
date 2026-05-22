@@ -247,3 +247,136 @@ def get_oracle_action(env_unwrapped, env_type):
         raise ValueError(f"Unknown env_type: {env_type}")
 
     return 6 if action is None else action  # 6 = done
+
+
+# ── Multi-action BFS (two-phase) ─────────────────────────────────────────────
+
+def _successors_fetch(state, grid, W, H, target):
+    x, y, d, ho = state
+    succs = [
+        (ACTION_LEFT,  (x, y, (d - 1) % 4, ho)),
+        (ACTION_RIGHT, (x, y, (d + 1) % 4, ho)),
+    ]
+    fx, fy = _front_pos((x, y), d)
+    if _can_walk(grid, fx, fy, W, H):
+        succs.append((ACTION_FORWARD, (fx, fy, d, ho)))
+    if not ho and target is not None and (fx, fy) == target:
+        succs.append((ACTION_PICKUP, (x, y, d, True)))
+    return succs
+
+
+def _bfs_len_fetch(start, grid, W, H, target):
+    if start[3]:  # has_object
+        return 0
+    queue   = deque([(start, 0)])
+    visited = {start}
+    while queue:
+        state, dist = queue.popleft()
+        for _, nxt in _successors_fetch(state, grid, W, H, target):
+            if nxt in visited:
+                continue
+            if nxt[3]:
+                return dist + 1
+            visited.add(nxt)
+            queue.append((nxt, dist + 1))
+    return None
+
+
+def bfs_all_fetch(env_unwrapped):
+    if env_unwrapped.carrying is not None:
+        return []
+    grid   = env_unwrapped.grid
+    W, H   = env_unwrapped.width, env_unwrapped.height
+    color, obj_type = _parse_mission(env_unwrapped.mission)
+    target = _find_target(grid, W, H, color, obj_type)
+    if target is None:
+        return []
+
+    start_pos = tuple(int(v) for v in env_unwrapped.agent_pos)
+    start     = (*start_pos, int(env_unwrapped.agent_dir), False)
+
+    best_len = _bfs_len_fetch(start, grid, W, H, target)
+    if best_len is None or best_len == 0:
+        return []
+
+    best_actions = []
+    for action, nxt in _successors_fetch(start, grid, W, H, target):
+        rem = _bfs_len_fetch(nxt, grid, W, H, target)
+        if rem is not None and rem == best_len - 1:
+            best_actions.append(action)
+    return sorted(best_actions)
+
+
+def _successors_nav(state, grid, W, H):
+    x, y, d = state
+    succs = [
+        (ACTION_LEFT,  (x, y, (d - 1) % 4)),
+        (ACTION_RIGHT, (x, y, (d + 1) % 4)),
+    ]
+    fx, fy = _front_pos((x, y), d)
+    if _can_walk(grid, fx, fy, W, H):
+        succs.append((ACTION_FORWARD, (fx, fy, d)))
+    return succs
+
+
+def _bfs_len_nav(start, grid, W, H, target):
+    if max(abs(start[0] - target[0]), abs(start[1] - target[1])) <= 1:
+        return 0
+    queue   = deque([(start, 0)])
+    visited = {start}
+    while queue:
+        state, dist = queue.popleft()
+        for _, nxt in _successors_nav(state, grid, W, H):
+            if nxt in visited:
+                continue
+            if max(abs(nxt[0] - target[0]), abs(nxt[1] - target[1])) <= 1:
+                return dist + 1
+            visited.add(nxt)
+            queue.append((nxt, dist + 1))
+    return None
+
+
+def _bfs_all_nav(env_unwrapped, target):
+    if target is None:
+        return []
+    grid  = env_unwrapped.grid
+    W, H  = env_unwrapped.width, env_unwrapped.height
+
+    start_pos = tuple(int(v) for v in env_unwrapped.agent_pos)
+    if max(abs(start_pos[0] - target[0]), abs(start_pos[1] - target[1])) <= 1:
+        return []
+
+    start    = (*start_pos, int(env_unwrapped.agent_dir))
+    best_len = _bfs_len_nav(start, grid, W, H, target)
+    if best_len is None or best_len == 0:
+        return []
+
+    best_actions = []
+    for action, nxt in _successors_nav(start, grid, W, H):
+        rem = _bfs_len_nav(nxt, grid, W, H, target)
+        if rem is not None and rem == best_len - 1:
+            best_actions.append(action)
+    return sorted(best_actions)
+
+
+def get_all_oracle_actions(env_unwrapped, env_type):
+    """
+    Returns a list of all equally-optimal first actions (may contain several).
+    Used to evaluate VLM correctness: vlm_action in get_all_oracle_actions(...).
+    """
+    if env_type == 'fetch':
+        return bfs_all_fetch(env_unwrapped)
+    elif env_type == 'gotodoor':
+        grid   = env_unwrapped.grid
+        W, H   = env_unwrapped.width, env_unwrapped.height
+        color, _ = _parse_mission(env_unwrapped.mission)
+        target   = _find_target(grid, W, H, color, 'door')
+        return _bfs_all_nav(env_unwrapped, target)
+    elif env_type == 'gotoobject':
+        grid   = env_unwrapped.grid
+        W, H   = env_unwrapped.width, env_unwrapped.height
+        color, obj_type = _parse_mission(env_unwrapped.mission)
+        target = _find_target(grid, W, H, color, obj_type)
+        return _bfs_all_nav(env_unwrapped, target)
+    else:
+        raise ValueError(f"Unknown env_type: {env_type}")

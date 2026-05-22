@@ -42,36 +42,18 @@ VLLM_URL  = f"http://{VLLM_HOST}:{VLLM_PORT}/v1"
 # MiniGrid direction index → arrow symbol
 _DIR_ARROW = {0: "→", 1: "↓", 2: "←", 3: "↑"}
 
-# Mirrors prompt_builder.py
-_DIR_DESCRIPTION = {"→": "RIGHT →", "↓": "DOWN ↓", "←": "LEFT ←", "↑": "UP ↑"}
-_DIR_WORD        = {"→": "RIGHT",   "↓": "DOWN",   "←": "LEFT",   "↑": "UP"}
-
-_ACTIONS = {
-    0: ("turn_left",  "Turn left  — rotate 90° counter-clockwise, stay in place"),
-    1: ("turn_right", "Turn right — rotate 90° clockwise, stay in place"),
-    2: ("forward",    "Move forward — move one cell in the direction you are facing"),
-    3: ("pickup",     "Pick up — grab the object directly in front of you"),
-    4: ("drop",       "Drop — place the object you are carrying in front of you"),
-    5: ("toggle",     "Toggle — open/close the door directly in front of you"),
-}
-
-_VIEW_CONTEXT = (
-    "The image shows a TOP-DOWN view of the ENTIRE grid. "
-    "You can see all objects, walls, doors, keys, and the goal. "
-    "The red triangle is the agent — its pointy tip shows which direction it faces. "
-    "The agent's exact facing direction is stated in text below: use the text as ground truth."
-)
+_DIR_WORD = {"→": "RIGHT", "↓": "DOWN", "←": "LEFT", "↑": "UP"}
 
 _SYSTEM_PROMPT = """\
 You are an expert navigation assistant for a grid-world agent.
 Your role is to analyze the agent's current visual observation and recommend \
-the single best action to make progress toward the mission goal.
-
-You must respond with ONLY a single integer corresponding to the action number. \
-No explanation, no text, no punctuation — just the integer.\
+the single best action to make progress toward the mission goal.\
 """
 
 _VALID_ACTIONS = {0, 1, 2, 3, 5}   # turn_left, turn_right, forward, pickup, toggle
+
+MODES = ("baseline", "cot", "thinking")
+_MAX_TOKENS = {"baseline": 8, "cot": 300, "thinking": 600}
 
 
 # ── vLLM server lifecycle ─────────────────────────────────────────────────────
@@ -169,71 +151,130 @@ def _obs_to_b64(obs: np.ndarray) -> str:
     return base64.b64encode(buf.getvalue()).decode("utf-8")
 
 
+# ── Phase detection ───────────────────────────────────────────────────────────
+
+def _detect_phase(env_unwrapped) -> str:
+    """
+    Mirrors _detect_phase from run_benchmark.py, but operates on a live env.
+      "navigate"  — Empty env, or DoorKey with door already open
+      "find_key"  — DoorKey env, key not yet carried
+      "open_door" — DoorKey env, key in hand, door still closed
+    """
+    grid = env_unwrapped.grid
+    W, H = env_unwrapped.width, env_unwrapped.height
+
+    door_cell = None
+    for x in range(W):
+        for y in range(H):
+            cell = grid.get(x, y)
+            if cell is not None and cell.type == 'door':
+                door_cell = cell
+                break
+        if door_cell is not None:
+            break
+
+    if door_cell is None:
+        return "navigate"
+
+    carrying = env_unwrapped.carrying
+    has_key  = carrying is not None and carrying.type == 'key'
+
+    if not has_key:
+        return "find_key"
+    if not door_cell.is_open:
+        return "open_door"
+    return "navigate"
+
+
 # ── State extraction from env ─────────────────────────────────────────────────
 
 def _extract_state(env_unwrapped) -> dict:
     """Pulls agent state metadata from a raw MiniGrid env."""
-    dir_idx     = int(env_unwrapped.agent_dir)
-    dir_arrow   = _DIR_ARROW.get(dir_idx, "?")
-    carrying    = env_unwrapped.carrying
+    dir_idx      = int(env_unwrapped.agent_dir)
+    dir_arrow    = _DIR_ARROW.get(dir_idx, "?")
+    carrying     = env_unwrapped.carrying
     carrying_str = f"{carrying.color} {carrying.type}" if carrying is not None else None
-    mission     = getattr(env_unwrapped, "mission", "reach the goal")
+    mission      = getattr(env_unwrapped, "mission", "reach the goal")
     return {
-        "agent_dir_str":   dir_arrow,
-        "agent_carrying":  carrying_str,
-        "mission":         mission,
+        "agent_dir_str":  dir_arrow,
+        "agent_carrying": carrying_str,
+        "mission":        mission,
+        "phase":          _detect_phase(env_unwrapped),
     }
 
 
-# ── Prompt builder (baseline — mirrors prompt_builder.py) ─────────────────────
+# ── Prompt builder — negative_rules variant (mirrors run_benchmark.py) ────────
 
-def _describe_state(state: dict) -> str:
-    dir_str  = state["agent_dir_str"]
-    carrying = state["agent_carrying"]
-    mission  = state["mission"]
-
-    lines = [f"Mission: {mission}"]
-    lines.append(
-        f"Agent is facing: {_DIR_DESCRIPTION.get(dir_str, dir_str)} "
-        f"— moving forward will move the agent {_DIR_WORD.get(dir_str, '')} in the grid."
-    )
-    if carrying:
-        lines.append(f"Agent is currently carrying: a {carrying}")
-    else:
-        lines.append("Agent is not carrying anything")
-    return "\n".join(lines)
-
-
-def _build_action_menu(carrying: str | None, dir_str: str) -> str:
-    forward_dir = _DIR_WORD.get(dir_str, "")
-    lines = ["Available actions:"]
-    for idx, (_, description) in _ACTIONS.items():
-        if idx == 4 and carrying is None:
-            continue
-        if idx == 2 and forward_dir:
-            lines.append(f"  {idx}: Move forward — move one cell {forward_dir} (the direction the agent is facing)")
-        else:
-            lines.append(f"  {idx}: {description}")
-    lines.append("\nRespond with the action number only !")
-    return "\n".join(lines)
-
-
-def _build_user_text(state: dict) -> str:
-    """Baseline prompt — identical structure to prompt_builder.py."""
+def _phase_goal(phase: str, fw: str) -> str:
+    if phase == "find_key":
+        return (
+            f"CURRENT SUB-GOAL: Pick up the YELLOW KEY — you do not have it yet.\n"
+            f"  Navigate toward the key. Use action 3 (pickup) only when the key is "
+            f"directly {fw} of you. Ignore the door for now."
+        )
+    if phase == "open_door":
+        return (
+            f"CURRENT SUB-GOAL: Open the DOOR — you ARE carrying the key.\n"
+            f"  Navigate toward the door. Use action 5 (toggle) only when the door "
+            f"is directly {fw} of you. Then walk through to the goal."
+        )
     return (
-        f"{_VIEW_CONTEXT}\n\n"
-        f"{_describe_state(state)}\n\n"
-        f"{_build_action_menu(state['agent_carrying'], state['agent_dir_str'])}"
+        f"CURRENT SUB-GOAL: Reach the GREEN GOAL square.\n"
+        f"  The path is clear (or the door is open). Navigate directly to the goal."
     )
 
 
-def _build_messages(obs_b64: str, state: dict, model_key: str) -> list[dict]:
+def _cot_suffix(cot: bool, thinking: bool) -> str:
+    if thinking:
+        return (
+            "\n\nThink step by step about what you see and what you should do. "
+            "Then write your final answer as: <answer>N</answer>  (N is the action integer)."
+        )
+    if cot:
+        return (
+            "\n\nBriefly reason step by step (2-3 sentences), "
+            "then give your final answer as ONE integer."
+        )
+    return "\n\nREPLY WITH ONE INTEGER ONLY."
+
+
+def _build_user_text(state: dict, cot: bool = False, thinking: bool = False) -> str:
+    """Negative-rules prompt — mirrors _v_negative from run_benchmark.py."""
+    dir_str = state["agent_dir_str"]
+    fw      = _DIR_WORD.get(dir_str, dir_str)
+    carry   = state["agent_carrying"]
+    phase   = state["phase"]
+
+    lines = [
+        f"Grid agent faces {fw}. "
+        f"{'Carrying: ' + carry + '.' if carry else 'Carrying: nothing.'}  "
+        f"Mission: {state['mission']}",
+        "",
+        _phase_goal(phase, fw),
+        "",
+        "Rules:",
+        f"  ✗ Do NOT pickup (3) unless a KEY is DIRECTLY {fw} and you hold nothing.",
+        f"  ✗ Do NOT toggle (5) unless a DOOR is DIRECTLY {fw} AND you hold the key.",
+        f"  ✗ Do NOT move forward (2) into a wall or closed door.",
+        f"  ✓ DO pickup the key if it is directly {fw}.",
+        f"  ✓ DO toggle the door if directly {fw} and key held.",
+        f"  ✓ DO move forward when path is clear and moves you closer to target.",
+        f"  ✓ DO turn (0 or 1) to face your next sub-goal.",
+        "",
+        f"Actions: 0=turn_left  1=turn_right  2=forward({fw})  3=pickup  5=toggle",
+        _cot_suffix(cot, thinking),
+    ]
+    return "\n".join(lines)
+
+
+def _build_messages(obs_b64: str, state: dict, model_key: str,
+                    cot: bool = False, thinking: bool = False) -> list[dict]:
     """Assembles chat messages in OpenAI format for the given model."""
     image_block = {
         "type": "image_url",
         "image_url": {"url": f"data:image/png;base64,{obs_b64}"},
     }
-    user_text = _build_user_text(state)
+    user_text = _build_user_text(state, cot, thinking)
 
     if model_key in _SIMPLE_FORMAT_MODELS:
         return [{
@@ -255,14 +296,23 @@ def _build_messages(obs_b64: str, state: dict, model_key: str) -> list[dict]:
 
 # ── Response parser ───────────────────────────────────────────────────────────
 
-def _parse_response(raw: str) -> Optional[int]:
+def _parse_response(raw: str, thinking: bool = False) -> Optional[int]:
     """
     Extracts the action integer from a VLM response.
+    In thinking mode, looks for <answer>N</answer> first.
     Returns None if no valid action can be extracted.
     """
     if not raw:
         return None
     text = raw.strip()
+
+    # Thinking mode: <answer>N</answer> takes priority
+    if thinking:
+        m = re.search(r"<answer>\s*(\d+)\s*</answer>", text, re.IGNORECASE)
+        if m:
+            a = int(m.group(1))
+            if a in _VALID_ACTIONS:
+                return a
 
     # Explicit answer keyword
     m = re.search(
@@ -307,9 +357,10 @@ def query_vlm(
     model_key:         str,
     action_history:    list[str] | None = None,
     fallback_action:   int = 2,
-) -> int:
+    mode:              str = "baseline",
+) -> tuple[int, bool]:
     """
-    Queries the VLM server and returns an action integer.
+    Queries the VLM server and returns (action, fallback_used).
 
     Parameters
     ----------
@@ -320,20 +371,23 @@ def query_vlm(
     model_key         : key in MODELS dict (e.g. "qwen3b")
     action_history    : list of recent action names, most recent last (optional)
     fallback_action   : action to return if the VLM response cannot be parsed
+    mode              : "baseline" | "cot" | "thinking"
 
     Returns
     -------
-    int : action index (0=turn_left, 1=turn_right, 2=forward, 3=pickup, 5=toggle)
+    (int, bool) : action index, and whether a fallback was used
     """
     if action_history is None:
         action_history = []
 
+    cot      = (mode == "cot")
+    thinking = (mode == "thinking")
+
     state    = _extract_state(env_unwrapped)
     obs_b64  = _obs_to_b64(obs_img)
-    messages = _build_messages(obs_b64, state, model_key)
+    messages = _build_messages(obs_b64, state, model_key, cot, thinking)
 
-    # Max tokens: CoT-style prompt needs more room; baseline needs just 1 digit
-    max_tokens = 8
+    max_tokens = _MAX_TOKENS.get(mode, 8)
 
     try:
         response = client.chat.completions.create(
@@ -346,14 +400,14 @@ def query_vlm(
         raw = response.choices[0].message.content or ""
     except Exception as e:
         print(f"[vlm_oracle] VLM call failed: {e}", flush=True)
-        return fallback_action
+        return fallback_action, True  # (action, fallback_used)
 
-    action = _parse_response(raw)
+    action = _parse_response(raw, thinking=thinking)
     if action is None:
         print(f"[vlm_oracle] Could not parse response {repr(raw)!r}, using fallback {fallback_action}.", flush=True)
-        return fallback_action
+        return fallback_action, True  # (action, fallback_used)
 
-    return action
+    return action, False  # (action, fallback_used)
 
 
 # ── CLI self-test ─────────────────────────────────────────────────────────────

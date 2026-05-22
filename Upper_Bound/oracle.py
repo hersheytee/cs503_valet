@@ -232,3 +232,166 @@ def get_oracle_action(env_unwrapped, env_type='empty'):
     if action is None:
         return 6  # done action
     return action
+
+
+# ── Multi-action BFS (two-phase) ─────────────────────────────────────────────
+# Returns ALL equally-optimal first actions (there can be several, e.g. two
+# symmetric 180° pivots). Used to evaluate VLM correctness fairly.
+
+def _successors_empty(state, grid, width, height):
+    x, y, d = state
+    succs = [
+        (ACTION_LEFT,  (x, y, (d - 1) % 4)),
+        (ACTION_RIGHT, (x, y, (d + 1) % 4)),
+    ]
+    fx, fy = _front_pos((x, y), d)
+    if 0 <= fx < width and 0 <= fy < height:
+        cell = grid.get(fx, fy)
+        if cell is None or cell.type in ('empty', 'goal', 'floor'):
+            succs.append((ACTION_FORWARD, (fx, fy, d)))
+    return succs
+
+
+def _bfs_len_empty(start, goal_pos, grid, width, height):
+    if (start[0], start[1]) == goal_pos:
+        return 0
+    queue   = deque([(start, 0)])
+    visited = {start}
+    while queue:
+        state, dist = queue.popleft()
+        for _, nxt in _successors_empty(state, grid, width, height):
+            if nxt in visited:
+                continue
+            if (nxt[0], nxt[1]) == goal_pos:
+                return dist + 1
+            visited.add(nxt)
+            queue.append((nxt, dist + 1))
+    return None
+
+
+def bfs_all_empty(env_unwrapped):
+    grid   = env_unwrapped.grid
+    width  = env_unwrapped.width
+    height = env_unwrapped.height
+
+    goal_pos = None
+    for x in range(width):
+        for y in range(height):
+            cell = grid.get(x, y)
+            if cell is not None and cell.type == 'goal':
+                goal_pos = (x, y)
+                break
+        if goal_pos:
+            break
+    if goal_pos is None:
+        return []
+
+    start_pos = tuple(int(v) for v in env_unwrapped.agent_pos)
+    start     = (start_pos[0], start_pos[1], int(env_unwrapped.agent_dir))
+
+    if (start[0], start[1]) == goal_pos:
+        return []
+
+    best_len = _bfs_len_empty(start, goal_pos, grid, width, height)
+    if best_len is None or best_len == 0:
+        return []
+
+    best_actions = []
+    for action, nxt in _successors_empty(start, grid, width, height):
+        rem = _bfs_len_empty(nxt, goal_pos, grid, width, height)
+        if rem is not None and rem == best_len - 1:
+            best_actions.append(action)
+    return sorted(best_actions)
+
+
+def _successors_doorkey(state, grid, width, height, key_pos, door_pos):
+    x, y, d, hk, do = state
+    succs = [
+        (ACTION_LEFT,  (x, y, (d - 1) % 4, hk, do)),
+        (ACTION_RIGHT, (x, y, (d + 1) % 4, hk, do)),
+    ]
+    fx, fy = _front_pos((x, y), d)
+    if 0 <= fx < width and 0 <= fy < height:
+        cell    = grid.get(fx, fy)
+        blocked = cell is not None and (
+            cell.type == 'wall' or (cell.type == 'door' and not do)
+        )
+        if not blocked:
+            succs.append((ACTION_FORWARD, (fx, fy, d, hk, do)))
+        if not hk and key_pos is not None and (fx, fy) == key_pos:
+            succs.append((ACTION_PICKUP, (x, y, d, True, do)))
+        if hk and not do and door_pos is not None and (fx, fy) == door_pos:
+            succs.append((ACTION_TOGGLE, (x, y, d, hk, True)))
+    return succs
+
+
+def _bfs_len_doorkey(start, goal_pos, grid, width, height, key_pos, door_pos):
+    if (start[0], start[1]) == goal_pos:
+        return 0
+    queue   = deque([(start, 0)])
+    visited = {start}
+    while queue:
+        state, dist = queue.popleft()
+        for _, nxt in _successors_doorkey(state, grid, width, height, key_pos, door_pos):
+            if nxt in visited:
+                continue
+            if (nxt[0], nxt[1]) == goal_pos:
+                return dist + 1
+            visited.add(nxt)
+            queue.append((nxt, dist + 1))
+    return None
+
+
+def bfs_all_doorkey(env_unwrapped):
+    grid   = env_unwrapped.grid
+    width  = env_unwrapped.width
+    height = env_unwrapped.height
+
+    key_pos = door_pos = goal_pos = None
+    for x in range(width):
+        for y in range(height):
+            cell = grid.get(x, y)
+            if cell is None:
+                continue
+            if cell.type == 'key':
+                key_pos = (x, y)
+            elif cell.type == 'door':
+                door_pos = (x, y)
+            elif cell.type == 'goal':
+                goal_pos = (x, y)
+    if goal_pos is None:
+        return []
+
+    start_pos = tuple(int(v) for v in env_unwrapped.agent_pos)
+    has_key   = env_unwrapped.carrying is not None
+    door_cell = grid.get(*door_pos) if door_pos else None
+    door_open = (door_cell is None or door_cell.is_open) if door_cell else True
+
+    start = (start_pos[0], start_pos[1], int(env_unwrapped.agent_dir), has_key, door_open)
+
+    if (start[0], start[1]) == goal_pos:
+        return []
+
+    best_len = _bfs_len_doorkey(start, goal_pos, grid, width, height, key_pos, door_pos)
+    if best_len is None or best_len == 0:
+        return []
+
+    best_actions = []
+    for action, nxt in _successors_doorkey(start, grid, width, height, key_pos, door_pos):
+        rem = _bfs_len_doorkey(nxt, goal_pos, grid, width, height, key_pos, door_pos)
+        if rem is not None and rem == best_len - 1:
+            best_actions.append(action)
+    return sorted(best_actions)
+
+
+def get_all_oracle_actions(env_unwrapped, env_type='empty'):
+    """
+    Returns a list of all equally-optimal first actions (may contain several).
+    Used to evaluate VLM correctness: vlm_action in get_all_oracle_actions(...).
+    """
+    if env_type == 'empty':
+        return bfs_all_empty(env_unwrapped)
+    elif env_type == 'doorkey':
+        return bfs_all_doorkey(env_unwrapped)
+    else:
+        raise ValueError(f"Unknown env_type: {env_type}")
