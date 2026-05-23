@@ -11,3 +11,4 @@ tqdm==4.67.3
 opencv-python
 gym-sokoban
 setuptools<70
+wandb

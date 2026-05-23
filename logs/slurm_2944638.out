@@ -1,0 +1,66 @@
+=== Job 2944638 | env=Sokoban-small-v0 exp=worldcoder_speed_8 seed=1 ===
+Node: i23
+Start: sam 23 mai 2026 14:08:41 CEST
+Run: worldcoder_speed_8__Sokoban-small-v0__seed1__1779538182
+  device=cuda, batch=2048, updates=32
+  CSV → logs/worldcoder_speed_8__Sokoban-small-v0__seed1__1779538182.csv
+  obs=(56, 56, 3), n_actions=9, query_action=None
+  params=76,794
+[   1/32] step=   2048 | ep=   40 | return=-4.575 | guided%=  0.0 | cumQ=     0 | kl=0.0003 | clip=0.000 | ev=-0.004 | sps=69
+  *** First unguided success — episode 41 ***
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  10/32] step=  20480 | ep=  404 | return=-4.585 | guided%=  0.0 | cumQ=     0 | kl=0.0007 | clip=0.000 | ev=0.015 | sps=131
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  20/32] step=  40960 | ep=  809 | return=-4.504 | guided%=  0.0 | cumQ=     0 | kl=0.0014 | clip=0.000 | ev=0.023 | sps=138
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Not enough free spots (#3) to place 1 player and 2 boxes.
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[  30/32] step=  61440 | ep= 1221 | return=-4.178 | guided%=  0.0 | cumQ=     0 | kl=0.0002 | clip=0.000 | ev=0.002 | sps=139
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+[SOKOBAN] Runtime Error/Warning: Generated Model with score == 0
+[SOKOBAN] Retry . . .
+Saved → checkpoints/worldcoder_speed_8__Sokoban-small-v0__seed1__1779538182.pt
+Generating plots...
+Saved → figures/worldcoder_speed_8__Sokoban-small-v0__seed1__1779538182.png
+Plots → figures/worldcoder_speed_8__Sokoban-small-v0__seed1__1779538182.png
+End: sam 23 mai 2026 14:18:35 CEST

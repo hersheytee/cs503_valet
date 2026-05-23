@@ -73,6 +73,17 @@ def parse_args():
     # --- Output/Saving ---
     p.add_argument('--save-model',      action='store_true', default=False)        # If True, saves the final PyTorch weights (.pt file) in the /checkpoints folder
     p.add_argument('--exp-name',        type=str,   default='worldcoder_ppo')      # The prefix name used for saving CSV logs, PNG plots, and Model checkpoints
+
+    # --- Optional W&B Tracking ---
+    p.add_argument('--track',            action=argparse.BooleanOptionalAction, default=True,
+                   help='Enable W&B logging by default; use --no-track to disable.')
+    p.add_argument('--wandb-project',    type=str, default='cs503-sokoban')
+    p.add_argument('--wandb-entity',     type=str, default='')
+    p.add_argument('--wandb-group',      type=str, default='')
+    p.add_argument('--wandb-tags',       type=str, default='')
+    p.add_argument('--wandb-mode',       type=str, default='online',
+                   choices=['online', 'offline', 'disabled'])
+    p.add_argument('--upload-checkpoint', action='store_true', default=False)
     return p.parse_args()
 
 
@@ -154,7 +165,52 @@ def main():
     # ── Model ─────────────────────────────────────────────────────────────────
     model     = CNNPolicy(obs_shape=obs_shape, n_actions=n_actions, hidden_dim=args.hidden_dim).to(device)
     optimiser = optim.Adam(model.parameters(), lr=args.lr, eps=1e-5)
-    print(f"  params={sum(p.numel() for p in model.parameters()):,}")
+    param_count = sum(p.numel() for p in model.parameters())
+    print(f"  params={param_count:,}")
+
+    # ── Optional W&B ──────────────────────────────────────────────────────────
+    wandb_run = None
+    if args.track and args.wandb_mode != 'disabled':
+        try:
+            import wandb
+        except ImportError as exc:
+            raise RuntimeError(
+                "W&B tracking was requested with --track, but wandb is not installed. "
+                "Install it with: pip install wandb"
+            ) from exc
+
+        try:
+            git_commit = subprocess.check_output(
+                ['git', 'rev-parse', 'HEAD'],
+                stderr=subprocess.DEVNULL,
+                text=True,
+            ).strip()
+        except Exception:
+            git_commit = ''
+
+        wandb_config = vars(args).copy()
+        wandb_config.update({
+            'batch_size': batch_size,
+            'minibatch_size': minibatch_size,
+            'n_updates': n_updates,
+            'obs_shape': tuple(obs_shape),
+            'n_actions': n_actions,
+            'parameter_count': param_count,
+            'device': str(device),
+            'git_commit': git_commit,
+        })
+        tags = [t.strip() for t in args.wandb_tags.split(',') if t.strip()]
+
+        wandb_run = wandb.init(
+            project=args.wandb_project,
+            entity=args.wandb_entity or None,
+            group=args.wandb_group or None,
+            name=run_name,
+            config=wandb_config,
+            tags=tags,
+            mode=args.wandb_mode,
+            save_code=True,
+        )
 
     # ── Rollout buffers ───────────────────────────────────────────────────────
     obs_buf            = torch.zeros((args.n_steps, args.n_envs) + obs_shape,
@@ -295,6 +351,18 @@ def main():
                     'first_unguided_success': fug,
                 })
 
+                if wandb_run is not None:
+                    wandb.log({
+                        'episode/return': ret,
+                        'episode/success': success,
+                        'episode/length': int(ep_len[i]),
+                        'episode/guided_pct': pct,
+                        'episode/queries_per_ep': n_q,
+                        'episode/agreement_rate': agree if not np.isnan(agree) else None,
+                        'episode/cum_queries': cum_queries,
+                        'episode/first_success_episode': first_unguided_success or 0,
+                    }, step=global_step)
+
                 ep_returns.append(ret)
                 ep_guided_pct.append(pct)
 
@@ -327,6 +395,9 @@ def main():
 
         approx_kl = torch.tensor(0.0, device=device)
         clipfracs = []
+        last_pg_loss = torch.tensor(0.0, device=device)
+        last_v_loss = torch.tensor(0.0, device=device)
+        last_entropy = torch.tensor(0.0, device=device)
         for _ in range(args.n_epochs):
             for mb in np.array_split(np.random.permutation(batch_size), args.n_minibatches):
 
@@ -352,6 +423,9 @@ def main():
                 ent_loss = entropy[~mb_g].mean() if (~mb_g).any() else torch.tensor(0.0, device=device)
 
                 loss = pg_loss - args.ent_coef * ent_loss + args.vf_coef * v_loss
+                last_pg_loss = pg_loss.detach()
+                last_v_loss = v_loss.detach()
+                last_entropy = ent_loss.detach()
 
                 optimiser.zero_grad()
                 loss.backward()
@@ -366,6 +440,7 @@ def main():
         # ── Console log ───────────────────────────────────────────────────────
         if update % 10 == 0 or update == 1:
             sps = int(global_step / (time.time() - t0))
+            current_lr = optimiser.param_groups[0]['lr']
             print(
                 f"[{update:4d}/{n_updates}] step={global_step:7d} | "
                 f"ep={episode_count:5d} | "
@@ -376,12 +451,29 @@ def main():
                 f"clip={np.mean(clipfracs):.3f} | ev={explained_var:.3f} | sps={sps}"
             )
 
+        if wandb_run is not None:
+            wandb.log({
+                'charts/global_step': global_step,
+                'charts/SPS': int(global_step / (time.time() - t0)),
+                'charts/learning_rate': optimiser.param_groups[0]['lr'],
+                'losses/policy_loss': last_pg_loss.item(),
+                'losses/value_loss': last_v_loss.item(),
+                'losses/entropy': last_entropy.item(),
+                'losses/approx_kl': approx_kl.item(),
+                'losses/clipfrac': float(np.mean(clipfracs)) if clipfracs else 0.0,
+                'losses/explained_variance': explained_var,
+            }, step=global_step)
+
     # ── Save & plot ───────────────────────────────────────────────────────────
     if args.save_model:
         os.makedirs('checkpoints', exist_ok=True)
         ckpt = f'checkpoints/{run_name}.pt'
         torch.save(model.state_dict(), ckpt)
         print(f"Saved → {ckpt}")
+        if wandb_run is not None and args.upload_checkpoint:
+            artifact = wandb.Artifact(f'{run_name}-checkpoint', type='model')
+            artifact.add_file(ckpt)
+            wandb.log_artifact(artifact)
 
     logger.close()
     envs.close()
@@ -398,6 +490,9 @@ def main():
     else:
         print("Skipping plot generation: plot.py not found in current working directory.")
     print(f"Plots → {fig_path}")
+
+    if wandb_run is not None:
+        wandb.finish()
 
 if __name__ == '__main__':
     main()
