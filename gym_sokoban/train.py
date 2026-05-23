@@ -1,11 +1,11 @@
 """
-PPO + Behavior Cloning training — Oracle-guided agent.
-Adapted for Sokoban (128x128 RGB).
+PPO training for Sokoban with an optional oracle-query action.
+Adapted for WorldCoder-style full-sprite observations (56x56 RGB).
 Style: CleanRL single-file.
 
 Metrics logged per episode to CSV:
     episode, global_step, ep_return, success,
-    guided_pct, queries_per_ep, bc_loss,
+    guided_pct, queries_per_ep,
     agreement_rate, cum_queries, first_unguided_success
 """
 
@@ -43,38 +43,36 @@ def parse_args():
     p.add_argument('--no-oracle',       action='store_true', default=False)        # If True, removes the Oracle action entirely (runs as a pure PPO baseline)
     p.add_argument('--reward-shaping',  action='store_true', default=False)        # Enables potential-based dense rewards
     p.add_argument('--warmup-steps',    type=int,   default=0)                     # Forces the agent to ONLY use the Oracle for the first N steps to build a good starting buffer
-    p.add_argument('--max-episode-steps', type=int, default=120)                   # Time-limit truncation for old gym-sokoban envs
-    p.add_argument('--obs-size',        type=int,   default=128)                   # RGB observation resize target
+    p.add_argument('--max-episode-steps', type=int, default=50)                    # WorldCoder-style short Sokoban horizon
+    p.add_argument('--obs-size',        type=int,   default=56)                    # 7x7 board rendered at 8 pixels per cell
     
     # --- Training Loop Dimensions ---
     p.add_argument('--total-timesteps', type=int,   default=500_000)               # Total number of environment frames the agent will experience during the entire run
     p.add_argument('--n-envs',          type=int,   default=8)                     # Number of parallel environments running at the same time (speeds up data collection)
-    p.add_argument('--n-steps',         type=int,   default=128)                   # Number of steps each parallel environment takes before pausing to update the neural network
+    p.add_argument('--n-steps',         type=int,   default=256)                   # Number of steps each parallel environment takes before pausing to update the neural network
     p.add_argument('--n-minibatches',   type=int,   default=4)                     # How many chunks the collected data (n_envs * n_steps) is split into for gradient descent
-    p.add_argument('--n-epochs',        type=int,   default=4)                     # How many times the network iterates over the collected batch of data per update phase
+    p.add_argument('--n-epochs',        type=int,   default=10)                    # How many times the network iterates over the collected batch of data per update phase
     
     # --- Standard PPO Hyperparameters ---
     p.add_argument('--gamma',           type=float, default=0.99)                  # Discount factor: How much the agent cares about future rewards vs immediate rewards (0.99 is standard)
     p.add_argument('--gae-lambda',      type=float, default=0.95)                  # Smoothing parameter for Advantage estimation (balances bias vs variance in reward predictions)
     p.add_argument('--clip-coef',       type=float, default=0.2)                   # PPO's core feature: prevents the policy from changing more than 20% in a single update step
-    p.add_argument('--ent-coef',        type=float, default=0.01)                  # Entropy bonus: encourages exploration by penalizing the network if it becomes too certain of its actions
+    p.add_argument('--ent-coef',        type=float, default=0.0)                   # Entropy bonus; WorldCoder-style PPO baseline uses no entropy bonus
     p.add_argument('--vf-coef',         type=float, default=0.5)                   # Value function coefficient: scales how much the Value head's errors impact the overall network loss
     p.add_argument('--max-grad-norm',   type=float, default=0.5)                   # Gradient clipping threshold: prevents "exploding gradients" from destroying the network weights
     
-    # --- Learning Rate & Behavior Cloning (BC) ---
-    p.add_argument('--lr',              type=float, default=2.5e-4)                # The starting step size for the Adam optimizer
+    # --- Learning Rate ---
+    p.add_argument('--lr',              type=float, default=3e-4)                  # The starting step size for the Adam optimizer
     p.add_argument('--anneal-lr',       action='store_true', default=True)         # If True, linearly decreases the learning rate to 0 by the end of training
-    p.add_argument('--bc-coef',         type=float, default=0.0)                   # How strongly to penalize the network for disagreeing with the Oracle (0.0 means no imitation learning)
-    p.add_argument('--bc-anneal',       action='store_true', default=False)        # If True, linearly fades out the Behavior Cloning strength to 0 over training, forcing self-reliance
     
     # --- Architecture & Reproducibility ---
     p.add_argument('--seed',            type=int,   default=1)                     # Random seed to ensure you get the exact same results if you run the script twice
-    p.add_argument('--hidden-dim',      type=int,   default=256)                   # Size of the FC layer after the CNN
+    p.add_argument('--hidden-dim',      type=int,   default=64)                    # Size of the FC layer after the WorldCoder-style CNN
     p.add_argument('--tile-size',       type=int,   default=8)                     # Legacy MiniGrid argument (kept for bash script compatibility)
     
     # --- Output/Saving ---
     p.add_argument('--save-model',      action='store_true', default=False)        # If True, saves the final PyTorch weights (.pt file) in the /checkpoints folder
-    p.add_argument('--exp-name',        type=str,   default='oracle_ppo')          # The prefix name used for saving CSV logs, PNG plots, and Model checkpoints
+    p.add_argument('--exp-name',        type=str,   default='worldcoder_ppo')      # The prefix name used for saving CSV logs, PNG plots, and Model checkpoints
     return p.parse_args()
 
 
@@ -84,7 +82,7 @@ CSV_FIELDS = [
     'episode', 'global_step',
     'ep_return', 'success',
     'guided_pct', 'queries_per_ep',
-    'bc_loss', 'agreement_rate',
+    'agreement_rate',
     'cum_queries', 'first_unguided_success',
 ]
 
@@ -179,8 +177,6 @@ def main():
     episode_count          = 0
     cum_queries            = 0
     first_unguided_success = None
-    last_bc_loss           = 0.0
-
     # Rolling windows for console
     ep_returns    = deque(maxlen=100)
     ep_guided_pct = deque(maxlen=100)
@@ -199,8 +195,6 @@ def main():
 
         if args.anneal_lr:
             optimiser.param_groups[0]['lr'] = frac * args.lr
-
-        bc_coef = args.bc_coef * frac if args.bc_anneal else args.bc_coef
 
         # ── Rollout collection ────────────────────────────────────────────────
         for step in range(args.n_steps):
@@ -296,7 +290,6 @@ def main():
                     'success':               success,
                     'guided_pct':            round(pct, 2),
                     'queries_per_ep':        n_q,
-                    'bc_loss':               round(last_bc_loss, 5),
                     'agreement_rate':        round(agree, 4) if not np.isnan(agree) else '',
                     'cum_queries':           cum_queries,
                     'first_unguided_success': fug,
@@ -331,7 +324,6 @@ def main():
         b_returns     = returns.reshape(-1)
         b_values      = values_buf.reshape(-1)
         b_guided      = guided_buf.reshape(-1)
-        b_oracle_acts = oracle_actions_buf.reshape(-1)
 
         approx_kl = torch.tensor(0.0, device=device)
         clipfracs = []
@@ -359,22 +351,12 @@ def main():
                 mb_g    = b_guided[mb]
                 ent_loss = entropy[~mb_g].mean() if (~mb_g).any() else torch.tensor(0.0, device=device)
 
-                # ── BC loss — only on guided steps ────────────────────────────
-                if mb_g.any() and bc_coef > 0:
-                    _, bc_lp, _, _ = model.get_action_and_value(
-                        b_obs[mb][mb_g], b_oracle_acts[mb][mb_g])
-                    bc_loss = -bc_lp.mean()
-                else:
-                    bc_loss = torch.tensor(0.0, device=device)
-
-                loss = pg_loss - args.ent_coef * ent_loss + args.vf_coef * v_loss + bc_coef * bc_loss
+                loss = pg_loss - args.ent_coef * ent_loss + args.vf_coef * v_loss
 
                 optimiser.zero_grad()
                 loss.backward()
                 nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
                 optimiser.step()
-
-            last_bc_loss = bc_loss.item()
 
         y_pred = b_values.detach().cpu().numpy()
         y_true = b_returns.detach().cpu().numpy()
@@ -389,8 +371,8 @@ def main():
                 f"ep={episode_count:5d} | "
                 f"return={np.mean(ep_returns) if ep_returns else float('nan'):6.3f} | "
                 f"guided%={np.mean(ep_guided_pct) if ep_guided_pct else float('nan'):5.1f} | "
-                f"bc={last_bc_loss:.4f} | cumQ={cum_queries:6d} | "
-                f"bc_coef={bc_coef:.3f} | kl={approx_kl.item():.4f} | "
+                f"cumQ={cum_queries:6d} | "
+                f"kl={approx_kl.item():.4f} | "
                 f"clip={np.mean(clipfracs):.3f} | ev={explained_var:.3f} | sps={sps}"
             )
 

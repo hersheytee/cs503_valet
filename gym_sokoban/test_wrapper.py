@@ -12,7 +12,7 @@ def main():
     env = SokobanOracleWrapper(env_id='Sokoban-small-v0', oracle_cost=0.5, reward_shaping=True)
     
     obs, info = env.reset(seed=12)
-    assert obs.shape == (128, 128, 3), obs.shape
+    assert obs.shape == (56, 56, 3), obs.shape
     assert env.action_space.n == 10, env.action_space.n
     
     # List to store our frames for the GIF
@@ -52,7 +52,7 @@ def main():
 
     baseline_env = SokobanOracleWrapper(env_id='Sokoban-small-v0', no_oracle=True)
     baseline_obs, _ = baseline_env.reset(seed=12)
-    assert baseline_obs.shape == (128, 128, 3), baseline_obs.shape
+    assert baseline_obs.shape == (56, 56, 3), baseline_obs.shape
     assert baseline_env.action_space.n == 9, baseline_env.action_space.n
     baseline_env.close()
 

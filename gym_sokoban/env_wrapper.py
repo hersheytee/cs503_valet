@@ -1,7 +1,8 @@
 """
 Environment wrapper for gym-sokoban.
 Translates old Gym v0.21 environments into modern Gymnasium v0.28+ environments.
-Adds the `query_oracle` action and resizes RGB images to 128x128.
+Adds the `query_oracle` action and resizes RGB images to 56x56 by default
+for 7x7 boards rendered at 8 pixels per cell.
 """
 
 import gym as old_gym          # The old library where Sokoban lives
@@ -81,7 +82,7 @@ class SokobanOracleWrapper(gym.Env):
         reward_shaping: bool = False,
         no_oracle: bool = False,
         max_episode_steps: int = 120,
-        obs_size: int = 128,
+        obs_size: int = 56,
     ):
         # Build the environment using the OLD gym
         self.env = old_gym.make(env_id)
@@ -199,7 +200,7 @@ def make_env(
     reward_shaping: bool = False,
     no_oracle: bool = False,
     max_episode_steps: int = 120,
-    obs_size: int = 128,
+    obs_size: int = 56,
 ):
     """Factory function for SyncVectorEnv."""
     def _init():

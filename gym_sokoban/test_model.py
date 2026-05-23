@@ -7,7 +7,7 @@ from model import CNNPolicy
 
 
 def check_model(obs_shape, n_actions):
-    model = CNNPolicy(obs_shape=obs_shape, n_actions=n_actions, hidden_dim=256)
+    model = CNNPolicy(obs_shape=obs_shape, n_actions=n_actions, hidden_dim=64)
 
     batch_size = 4
     dummy_obs = torch.randint(0, 256, (batch_size,) + obs_shape, dtype=torch.uint8)
@@ -27,7 +27,7 @@ def check_model(obs_shape, n_actions):
 
 
 def main():
-    obs_shape = (128, 128, 3)
+    obs_shape = (56, 56, 3)
     check_model(obs_shape, n_actions=9)
     check_model(obs_shape, n_actions=10)
     print("[SUCCESS] Model smoke test passed.")

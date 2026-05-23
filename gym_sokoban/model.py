@@ -1,8 +1,10 @@
 """
-MiniGrid-large style CNN policy for RGB Sokoban observations.
+WorldCoder-style CNN policy for RGB Sokoban observations.
 
-This matches the visual policy family used for 16x16 MiniGrid: strided
-3x3 convolutions, adaptive 8x8 pooling, then shared actor/critic heads.
+WorldCoder used a compact 2x2-convolution stack on 7x7 Sokoban inputs.
+For full 8-pixel sprites on a 7x7 board, the policy sees 56x56x3 RGB and
+pools the final feature map back to the same 4x4 spatial footprint that the
+original 7x7 stack would produce.
 """
 
 import numpy as np
@@ -18,19 +20,19 @@ def layer_init(layer, std=np.sqrt(2), bias_const=0.0):
 
 
 class CNNPolicy(nn.Module):
-    def __init__(self, obs_shape, n_actions: int, hidden_dim: int = 256):
+    def __init__(self, obs_shape, n_actions: int, hidden_dim: int = 64):
         super().__init__()
 
         height, width, channels = obs_shape
 
         self.cnn = nn.Sequential(
-            layer_init(nn.Conv2d(channels, 32, kernel_size=3, stride=2, padding=1)),
+            layer_init(nn.Conv2d(channels, 16, kernel_size=2, stride=1)),
             nn.ReLU(),
-            layer_init(nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1)),
+            layer_init(nn.Conv2d(16, 32, kernel_size=2, stride=1)),
             nn.ReLU(),
-            layer_init(nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1)),
+            layer_init(nn.Conv2d(32, 64, kernel_size=2, stride=1)),
             nn.ReLU(),
-            nn.AdaptiveAvgPool2d((8, 8)),
+            nn.AdaptiveAvgPool2d((4, 4)),
             nn.Flatten(),
         )
 

@@ -43,8 +43,8 @@ def parse_args():
     p.add_argument('--env-id', type=str, default='Sokoban-small-v0')
     p.add_argument('--n-episodes', type=int, default=5)
     p.add_argument('--max-steps', type=int, default=120)
-    p.add_argument('--obs-size', type=int, default=128)
-    p.add_argument('--hidden-dim', type=int, default=256)
+    p.add_argument('--obs-size', type=int, default=56)
+    p.add_argument('--hidden-dim', type=int, default=64)
     p.add_argument('--oracle-enabled', action='store_true',
                    help='Use 10-action model/env with query_oracle action available')
     p.add_argument('--seed', type=int, default=42)
