@@ -121,6 +121,21 @@ class SokobanOracleWrapper(gym.Env):
         resized = cv2.resize(obs, (self.obs_size, self.obs_size), interpolation=cv2.INTER_AREA)
         return resized
 
+    def _is_solved(self):
+        """Return True only when every box is currently on a target square."""
+        unwrapped = self.env.unwrapped
+        if not hasattr(unwrapped, 'room_state') or not hasattr(unwrapped, 'room_fixed'):
+            return False
+
+        room_state = np.asarray(unwrapped.room_state)
+        room_fixed = np.asarray(unwrapped.room_fixed)
+        box_mask = (room_state == 3) | (room_state == 4)
+
+        if not np.any(box_mask):
+            return False
+
+        return bool(np.all(room_fixed[box_mask] == 2))
+
     def reset(self, seed=None, options=None):
         # Old gym doesn't always handle seeds cleanly in reset()
         if seed is not None:
@@ -178,7 +193,7 @@ class SokobanOracleWrapper(gym.Env):
 
         info['guided'] = guided
         info['oracle_action'] = int(oracle_action) if oracle_action is not None else -1
-        info['success'] = bool(done and base_reward > 0)
+        info['success'] = bool(done and self._is_solved())
 
         # Convert old 'done' to modern 'terminated' and 'truncated'
         terminated = bool(done)

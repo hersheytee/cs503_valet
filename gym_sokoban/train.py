@@ -211,6 +211,12 @@ def main():
             mode=args.wandb_mode,
             save_code=True,
         )
+        wandb.define_metric('episode/count')
+        wandb.define_metric('episode/*', step_metric='episode/count')
+        wandb.define_metric('raw_episode/*', step_metric='episode/count')
+        wandb.define_metric('charts/global_step')
+        wandb.define_metric('charts/*', step_metric='charts/global_step')
+        wandb.define_metric('losses/*', step_metric='charts/global_step')
 
     # ── Rollout buffers ───────────────────────────────────────────────────────
     obs_buf            = torch.zeros((args.n_steps, args.n_envs) + obs_shape,
@@ -235,7 +241,11 @@ def main():
     first_unguided_success = None
     # Rolling windows for console
     ep_returns    = deque(maxlen=100)
-    ep_guided_pct = deque(maxlen=100)
+    ep_successes  = deque(maxlen=50)
+    ep_guided_pct = deque(maxlen=40)
+    ep_queries    = deque(maxlen=40)
+    ep_lengths    = deque(maxlen=100)
+    ep_agreements = deque(maxlen=40)
 
     # ── Initial reset ─────────────────────────────────────────────────────────
     next_obs_np, _ = envs.reset(seed=args.seed)
@@ -351,20 +361,34 @@ def main():
                     'first_unguided_success': fug,
                 })
 
+                ep_returns.append(ret)
+                ep_successes.append(success)
+                ep_guided_pct.append(pct)
+                ep_queries.append(n_q)
+                ep_lengths.append(int(ep_len[i]))
+                if not np.isnan(agree):
+                    ep_agreements.append(agree)
+
                 if wandb_run is not None:
                     wandb.log({
-                        'episode/return': ret,
-                        'episode/success': success,
-                        'episode/length': int(ep_len[i]),
-                        'episode/guided_pct': pct,
-                        'episode/queries_per_ep': n_q,
-                        'episode/agreement_rate': agree if not np.isnan(agree) else None,
+                        'episode/count': episode_count,
+                        'episode/return': float(np.mean(ep_returns)),
+                        'episode/success_rate': float(np.mean(ep_successes)),
+                        'episode/length': float(np.mean(ep_lengths)),
+                        'episode/guided_pct': float(np.mean(ep_guided_pct)),
+                        'episode/queries_per_ep': float(np.mean(ep_queries)),
+                        'episode/agreement_rate': (
+                            float(np.mean(ep_agreements)) if ep_agreements else None
+                        ),
                         'episode/cum_queries': cum_queries,
                         'episode/first_success_episode': first_unguided_success or 0,
+                        'raw_episode/return': ret,
+                        'raw_episode/success': success,
+                        'raw_episode/length': int(ep_len[i]),
+                        'raw_episode/guided_pct': pct,
+                        'raw_episode/queries_per_ep': n_q,
+                        'raw_episode/agreement_rate': agree if not np.isnan(agree) else None,
                     }, step=global_step)
-
-                ep_returns.append(ret)
-                ep_guided_pct.append(pct)
 
                 # Reset accumulators
                 ep_ret[i] = ep_len[i] = ep_n_queries[i] = ep_agree[i] = 0
@@ -456,6 +480,11 @@ def main():
                 'charts/global_step': global_step,
                 'charts/SPS': int(global_step / (time.time() - t0)),
                 'charts/learning_rate': optimiser.param_groups[0]['lr'],
+                'charts/episodes': episode_count,
+                'charts/return_mean_100ep': float(np.mean(ep_returns)) if ep_returns else None,
+                'charts/success_rate_50ep': float(np.mean(ep_successes)) if ep_successes else None,
+                'charts/guided_pct_40ep': float(np.mean(ep_guided_pct)) if ep_guided_pct else None,
+                'charts/queries_per_ep_40ep': float(np.mean(ep_queries)) if ep_queries else None,
                 'losses/policy_loss': last_pg_loss.item(),
                 'losses/value_loss': last_v_loss.item(),
                 'losses/entropy': last_entropy.item(),
@@ -492,6 +521,15 @@ def main():
     print(f"Plots → {fig_path}")
 
     if wandb_run is not None:
+        try:
+            import wandb
+            if os.path.exists(fig_path):
+                wandb.log({'figures/training_metrics': wandb.Image(fig_path)}, step=global_step)
+                artifact = wandb.Artifact(f'{run_name}-figures', type='figure')
+                artifact.add_file(fig_path)
+                wandb.log_artifact(artifact)
+        except Exception as exc:
+            print(f"Skipping W&B figure upload: {exc}")
         wandb.finish()
 
 if __name__ == '__main__':
