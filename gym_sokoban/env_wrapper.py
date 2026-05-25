@@ -180,6 +180,7 @@ class SokobanOracleWrapper(gym.Env):
                     'oracle_optimal_action': 0,
                     'oracle_correct': False,
                     'oracle_accuracy': self.oracle_accuracy,
+                    'oracle_cost': self.oracle_cost,
                     'fatal_deadlock': True,
                     'success': False,
                 }
@@ -215,6 +216,7 @@ class SokobanOracleWrapper(gym.Env):
         info['oracle_optimal_action'] = int(optimal_action) if optimal_action is not None else -1
         info['oracle_correct'] = bool(oracle_correct)
         info['oracle_accuracy'] = self.oracle_accuracy
+        info['oracle_cost'] = self.oracle_cost
         info['success'] = bool(done and self._is_solved())
 
         # Convert old 'done' to modern 'terminated' and 'truncated'

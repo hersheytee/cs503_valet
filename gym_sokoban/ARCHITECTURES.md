@@ -140,3 +140,30 @@ MiniGrid partial CNN on the same 56x56 sprites
 ```
 
 Keep action space and observation size fixed when comparing transfer results. For `Sokoban-small-v0`, use the full 7x7 board at `56x56x3`. For larger boards, use a 7x7 player-centered crop rendered at the same 8 pixels per cell.
+
+## Current Concern
+
+The active WorldCoder full-sprite adaptation may be underpowered for rendered
+sprites. It is faithful to the original WorldCoder filter sizes, but the
+original network operated on compact `3x7x7` cell-level input. On `56x56`
+sprites, the adaptive pool back to `4x4` may discard too much spatial detail.
+
+The most plausible stronger drop-in candidate is the MiniGrid partial-observation
+CNN above:
+
+```text
+Input: 56x56x3
+Conv2d(3, 32, kernel=3, stride=2, padding=1)
+Conv2d(32, 64, kernel=3, stride=1, padding=1)
+Conv2d(64, 64, kernel=3, stride=1, padding=1)
+AdaptiveAvgPool2d(8, 8)
+Linear(4096, 256)
+```
+
+If we switch to this architecture, all core runs must be rerun for clean
+comparison:
+
+- PPO baseline
+- perfect oracle cost sweep
+- randomized-accuracy oracle sweep
+- linear oracle-cost schedule

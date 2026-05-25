@@ -43,6 +43,7 @@ def parse_args():
     
     # --- Oracle & Shaping Settings ---
     p.add_argument('--oracle-cost',     type=float, default=0.0)                   # Negative reward penalty applied every time the agent asks the Oracle for a move
+    p.add_argument('--oracle-cost-final', type=float, default=None)                # If set, linearly anneals oracle cost from --oracle-cost to this value over training
     p.add_argument('--oracle-accuracy', type=float, default=1.0)                   # Probability that a queried oracle returns the BFS-optimal action; otherwise returns a random native action
     p.add_argument('--no-oracle',       action='store_true', default=False)        # If True, removes the Oracle action entirely (runs as a pure PPO baseline)
     p.add_argument('--reward-shaping',  action='store_true', default=False)        # Enables potential-based dense rewards
@@ -98,6 +99,7 @@ CSV_FIELDS = [
     'ep_return', 'success',
     'guided_pct', 'queries_per_ep',
     'agreement_rate', 'oracle_correct_rate',
+    'oracle_cost',
     'cum_queries', 'first_unguided_success',
 ]
 
@@ -168,6 +170,24 @@ def get_git_commit():
         return ''
 
 
+def get_current_oracle_cost(args, global_step: int) -> float:
+    if args.oracle_cost_final is None:
+        return float(args.oracle_cost)
+    frac = min(max(global_step / max(args.total_timesteps, 1), 0.0), 1.0)
+    return float(args.oracle_cost + frac * (args.oracle_cost_final - args.oracle_cost))
+
+
+def set_vector_oracle_cost(envs, cost: float):
+    if hasattr(envs, 'envs'):
+        for env in envs.envs:
+            env.oracle_cost = cost
+        return
+    if hasattr(envs, 'set_attr'):
+        envs.set_attr('oracle_cost', cost)
+        return
+    raise RuntimeError("Unable to set oracle_cost on vector environment.")
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
@@ -201,6 +221,11 @@ def main():
 
     print(f"Run: {run_name}")
     print(f"Run directory: {run_dir}")
+    if args.oracle_cost_final is not None:
+        print(
+            f"  oracle cost schedule: linear {args.oracle_cost} -> "
+            f"{args.oracle_cost_final}"
+        )
 
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -365,6 +390,9 @@ def main():
         # ── Rollout collection ────────────────────────────────────────────────
         for step in range(args.n_steps):
             global_step += args.n_envs
+            current_oracle_cost = get_current_oracle_cost(args, global_step)
+            if not args.no_oracle:
+                set_vector_oracle_cost(envs, current_oracle_cost)
             obs_buf[step]   = next_obs
             dones_buf[step] = next_done
 
@@ -463,6 +491,7 @@ def main():
                     'queries_per_ep':        n_q,
                     'agreement_rate':        round(agree, 4) if not np.isnan(agree) else '',
                     'oracle_correct_rate':   round(oracle_correct_rate, 4) if not np.isnan(oracle_correct_rate) else '',
+                    'oracle_cost':           round(current_oracle_cost, 6),
                     'cum_queries':           cum_queries,
                     'first_unguided_success': fug,
                 })
@@ -494,6 +523,7 @@ def main():
                         ),
                         'episode/cum_queries': cum_queries,
                         'episode/first_success_episode': first_unguided_success or 0,
+                        'episode/oracle_cost': current_oracle_cost,
                         'raw_episode/return': ret,
                         'raw_episode/success': success,
                         'raw_episode/length': int(ep_len[i]),
@@ -595,6 +625,7 @@ def main():
                 'charts/global_step': global_step,
                 'charts/SPS': int(global_step / (time.time() - t0)),
                 'charts/learning_rate': optimiser.param_groups[0]['lr'],
+                'charts/oracle_cost': get_current_oracle_cost(args, global_step),
                 'charts/episodes': episode_count,
                 'charts/return_mean_100ep': float(np.mean(ep_returns)) if ep_returns else None,
                 'charts/success_rate_50ep': float(np.mean(ep_successes)) if ep_successes else None,

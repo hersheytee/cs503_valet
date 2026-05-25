@@ -47,6 +47,103 @@ Core intent:
 - [ ] Reward shaping off for WorldCoder-style baseline unless explicitly
   running a shaping ablation.
 
+## Tabled Architecture Question
+
+Current active architecture:
+
+- WorldCoder-style full-sprite adaptation
+- input `56x56x3`
+- conv filters `16, 32, 64`
+- kernel `2`
+- stride `1`
+- adaptive pool to `4x4`
+- `Linear(1024, 64)`
+
+Concern:
+
+- This may be too weak for full 56x56 sprites.
+- The original WorldCoder architecture was designed for compact `3x7x7`
+  cell-level input, not rendered sprites.
+- Pooling to `4x4` preserves parameter count, but may discard sprite-level
+  spatial details too early.
+
+Candidate stronger architecture:
+
+- MiniGrid partial-observation CNN on the same `56x56x3` sprites
+- `Conv2d(3, 32, kernel=3, stride=2, padding=1)`
+- `Conv2d(32, 64, kernel=3, stride=1, padding=1)`
+- `Conv2d(64, 64, kernel=3, stride=1, padding=1)`
+- adaptive pool to `8x8`
+- `Linear(4096, 256)`
+
+Why it might be stronger:
+
+- More filters in the first layer.
+- Larger `3x3` kernels.
+- Keeps a larger pooled spatial map, `8x8` instead of `4x4`.
+- Same visual input size as current Sokoban runs.
+- Already matches the MiniGrid partial-observation model family.
+
+Main caveat:
+
+- If we switch architectures, the old runs are still useful but are no longer
+  directly comparable to new runs.
+- The core baseline/oracle/randomized-oracle matrix must be rerun for the new
+  architecture.
+
+Decision:
+
+- [ ] Do not change active architecture mid-analysis.
+- [ ] First inspect current 500k/2M results.
+- [ ] If PPO baseline remains weak or oracle learning looks architecture-limited,
+  add a MiniGrid-CNN architecture flag and rerun the core matrix.
+
+Minimum rerun set after switching architecture:
+
+| Priority | Run family | Env | Seed(s) | Timesteps | Oracle accuracy | Oracle cost | Notes |
+|---|---|---|---:|---:|---:|---:|---|
+| P0 | PPO baseline | `Sokoban-small-v0` | 1 | 500k | n/a | n/a | Compare learning speed vs current architecture. |
+| P0 | Perfect oracle free | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.0 | Checks whether oracle-query policy improves. |
+| P0 | Perfect oracle high cost | `Sokoban-small-v0` | 1 | 500k | 1.0 | 1.0 | Checks cost sensitivity. |
+| P0 | Randomized oracle mid accuracy | `Sokoban-small-v0` | 1 | 500k | 0.5 | 0.0 | Checks robustness to imperfect help. |
+| P1 | Linear cost schedule | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.0 -> 1.0 | Checks query decay under increasing cost. |
+
+Full rerun set after switching architecture:
+
+- [ ] baseline
+- [ ] perfect oracle cost sweep: `0.0`, `0.2`, `0.3`, `0.5`, `1.0`
+- [ ] randomized oracle accuracies: `0.75`, `0.5`, `0.25`, `0.0` at cost `0.0`
+- [ ] randomized oracle accuracies: `0.75`, `0.5`, `0.25` at cost `0.2`
+- [ ] linear cost schedule `0.0 -> 1.0`
+
+## Current Run Ledger
+
+This table is the working memory of what has been run or should be run next.
+Rows marked W&B-only should be verified from W&B because the Vast instance was
+destroyed before local artifacts were downloaded.
+
+| Priority | Status | Run family | Env | Seed(s) | Timesteps | Oracle accuracy | Oracle cost | Notes |
+|---|---|---|---|---:|---:|---:|---:|---|
+| P0 | Done | PPO baseline | `Sokoban-small-v0` | 1 | 2M | n/a | n/a | Main WorldCoder-style no-oracle run. |
+| P0 | Done | PPO baseline | `Sokoban-small-v0` | 1 | 500k | n/a | n/a | Needed as comparison for 500k sweeps. |
+| P0 | Done | Perfect oracle cost sweep | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.0 | Existing variable-cost run. |
+| P0 | Done | Perfect oracle cost sweep | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.2 | Existing variable-cost run. |
+| P0 | Done | Perfect oracle cost sweep | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.3 | Existing variable-cost run. |
+| P0 | Done | Perfect oracle cost sweep | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.5 | Existing variable-cost run. |
+| P0 | W&B-only | Perfect oracle high cost | `Sokoban-small-v0` | 1 | 500k | 1.0 | 1.0 | Launched on Vast; verify W&B. |
+| P0 | W&B-only | Randomized oracle | `Sokoban-small-v0` | 1 | 500k | 0.75 | 0.0 | Launched on Vast; verify W&B. |
+| P0 | W&B-only | Randomized oracle | `Sokoban-small-v0` | 1 | 500k | 0.5 | 0.0 | Launched on Vast; verify W&B. |
+| P0 | W&B-only | Randomized oracle | `Sokoban-small-v0` | 1 | 500k | 0.25 | 0.0 | Launched on Vast; verify W&B. |
+| P0 | W&B-only | Randomized oracle | `Sokoban-small-v0` | 1 | 500k | 0.0 | 0.0 | Launched on Vast; verify W&B. |
+| P0 | W&B-only | Randomized oracle with cost | `Sokoban-small-v0` | 1 | 500k | 0.75 | 0.2 | Launched on Vast; verify W&B. |
+| P0 | W&B-only | Randomized oracle with cost | `Sokoban-small-v0` | 1 | 500k | 0.5 | 0.2 | Launched on Vast; verify W&B. |
+| P0 | W&B-only | Randomized oracle with cost | `Sokoban-small-v0` | 1 | 500k | 0.25 | 0.2 | Launched on Vast; verify W&B. |
+| P1 | To run | Linear cost schedule | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.0 -> 1.0 | Tests whether rising cost suppresses oracle reliance over training. |
+| P1 | To run | Linear cost schedule | `Sokoban-small-v0` | 1 | 2M | 1.0 | 0.0 -> 1.0 | Run only if 500k schedule curve is informative. |
+| P2 | To run | Big Sokoban baseline | `Sokoban-v0` | 1 | 500k | n/a | n/a | Next environment difficulty step. |
+| P2 | To run | Big Sokoban perfect oracle | `Sokoban-v0` | 1 | 500k | 1.0 | 0.0 | Checks whether BFS upper bound works on bigger task. |
+| P3 | To run | VLM oracle | `Sokoban-small-v0` | 1 | 500k | model | 0.0, 0.5 | Do after BFS/randomized story is clean. |
+
 ## Phase 0: Reproducibility Infrastructure
 
 - [ ] Each run writes to its own directory under `runs/`
@@ -118,6 +215,7 @@ Conditions:
 - [ ] `oracle_paid_005`: `--oracle-cost 0.05`
 - [ ] `oracle_paid_010`: `--oracle-cost 0.10`
 - [ ] `oracle_paid_020`: `--oracle-cost 0.20`
+- [ ] `oracle_linear_cost_0to1`: `--oracle-cost 0.0 --oracle-cost-final 1.0`
 
 Run order:
 
@@ -144,6 +242,34 @@ Important interpretation:
   oracle's native Sokoban actions.
 - [ ] Track `guided_pct` and `queries_per_ep` as first-class results.
 
+### Perfect Oracle Linear Cost Command
+
+Use this to test a 100% accurate BFS oracle whose query cost increases
+linearly from `0.0` at the start of training to `1.0` at the end.
+
+```bash
+python -u gym_sokoban/train.py \
+  --env-id Sokoban-small-v0 \
+  --seed 1 \
+  --exp-name oracle_acc100_cost_linear_0to1_500k \
+  --total-timesteps 500000 \
+  --save-model \
+  --oracle-cost 0.0 \
+  --oracle-cost-final 1.0 \
+  --oracle-accuracy 1.0 \
+  --n-envs 64 \
+  --n-steps 256 \
+  --n-minibatches 8 \
+  --wandb-project cs503-sokoban \
+  --wandb-group sokoban_linear_cost_500k
+```
+
+The current per-step cost is logged as:
+
+- `oracle_cost` in `data/metrics.csv`
+- `episode/oracle_cost` in W&B
+- `charts/oracle_cost` in W&B
+
 ## Phase 3: Randomized-Accuracy Oracle
 
 Goal: simulate imperfect VLM-style advice without paying VLM cost or adding
@@ -160,6 +286,7 @@ Implementation target:
 - [x] Log `oracle_correct_rate` in CSV and W&B
 - [x] Keep `guided=True` whenever the query action was used, even if the oracle
   returned a noisy action
+- [x] Add `--oracle-cost-final` for linear oracle-cost schedules
 
 Initial conditions:
 

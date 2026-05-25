@@ -54,6 +54,16 @@ This only affects steps where the agent chooses `query_oracle`. The queried
 step is still logged as guided, and `oracle_correct_rate` records how often the
 returned oracle action matched the BFS-optimal action.
 
+Oracle query cost can also be linearly scheduled:
+
+```text
+--oracle-cost 0.0 --oracle-cost-final 1.0
+```
+
+This starts query cost at `0.0` and linearly increases it to `1.0` over
+training. The active cost is logged as `oracle_cost` in the metrics CSV and in
+W&B.
+
 ## Current CNN
 
 The current `model.py` implements the fair WorldCoder full-sprite CNN:
