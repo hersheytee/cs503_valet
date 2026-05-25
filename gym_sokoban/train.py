@@ -142,7 +142,19 @@ def _safe_name(text: str) -> str:
 
 def write_yaml(path: str, data: dict):
     with open(path, 'w') as f:
-        yaml.safe_dump(data, f, sort_keys=False)
+        yaml.safe_dump(to_plain_config(data), f, sort_keys=False)
+
+
+def to_plain_config(value):
+    if isinstance(value, dict):
+        return {str(k): to_plain_config(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [to_plain_config(v) for v in value]
+    if isinstance(value, np.generic):
+        return value.item()
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    return value
 
 
 def get_git_commit():
