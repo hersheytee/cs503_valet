@@ -79,16 +79,20 @@ class SokobanOracleWrapper(gym.Env):
         self,
         env_id: str = 'Sokoban-small-v0',
         oracle_cost: float = 0.0,
+        oracle_accuracy: float = 1.0,
         reward_shaping: bool = False,
         no_oracle: bool = False,
         max_episode_steps: int = 120,
         obs_size: int = 56,
+        seed: int = 0,
     ):
         # Build the environment using the OLD gym
         self.env = old_gym.make(env_id)
         self.oracle_cost = oracle_cost
+        self.oracle_accuracy = float(np.clip(oracle_accuracy, 0.0, 1.0))
         self.max_episode_steps = max_episode_steps
         self.elapsed_steps = 0
+        self._oracle_rng = np.random.default_rng(seed)
         
         # include no oracle flag
         self.no_oracle = no_oracle
@@ -99,6 +103,7 @@ class SokobanOracleWrapper(gym.Env):
         
         # Extend action space: 9 original actions + 1 oracle action
         n_original = 9
+        self.n_original_actions = n_original
 
         if self.no_oracle:
             self.action_space = spaces.Discrete(n_original)
@@ -140,6 +145,7 @@ class SokobanOracleWrapper(gym.Env):
         # Old gym doesn't always handle seeds cleanly in reset()
         if seed is not None:
             self.env.seed(seed)
+            self._oracle_rng = np.random.default_rng(seed)
             
         self.env.reset()
         self.elapsed_steps = 0
@@ -162,22 +168,35 @@ class SokobanOracleWrapper(gym.Env):
 
         if action == self.QUERY_ACTION:
             unwrapped = self.env.unwrapped
-            oracle_action = get_oracle_action(unwrapped)
+            optimal_action = get_oracle_action(unwrapped)
             guided = True
             
             # Fatal deadlock
-            if oracle_action == 0:
+            if optimal_action == 0:
                 self.env.reset() 
                 info = {
                     'guided': True,
                     'oracle_action': 0,
+                    'oracle_optimal_action': 0,
+                    'oracle_correct': False,
+                    'oracle_accuracy': self.oracle_accuracy,
                     'fatal_deadlock': True,
                     'success': False,
                 }
                 # Return modern format: obs, reward, terminated, truncated, info
                 return self._process_obs(), -1.0, True, False, info
+
+            if self._oracle_rng.random() <= self.oracle_accuracy:
+                oracle_action = optimal_action
+                oracle_correct = True
+            else:
+                oracle_action = int(self._oracle_rng.integers(0, self.n_original_actions))
+                oracle_correct = oracle_action == optimal_action
                 
             action = oracle_action
+        else:
+            optimal_action = None
+            oracle_correct = False
 
         # Take the step in the old environment (which returns 4 values)
         _, reward, done, info = self.env.step(action)
@@ -193,6 +212,9 @@ class SokobanOracleWrapper(gym.Env):
 
         info['guided'] = guided
         info['oracle_action'] = int(oracle_action) if oracle_action is not None else -1
+        info['oracle_optimal_action'] = int(optimal_action) if optimal_action is not None else -1
+        info['oracle_correct'] = bool(oracle_correct)
+        info['oracle_accuracy'] = self.oracle_accuracy
         info['success'] = bool(done and self._is_solved())
 
         # Convert old 'done' to modern 'terminated' and 'truncated'
@@ -211,6 +233,7 @@ class SokobanOracleWrapper(gym.Env):
 def make_env(
     env_id: str,
     oracle_cost: float = 0.0,
+    oracle_accuracy: float = 1.0,
     seed: int = 0,
     reward_shaping: bool = False,
     no_oracle: bool = False,
@@ -222,10 +245,12 @@ def make_env(
         env = SokobanOracleWrapper(
             env_id,
             oracle_cost,
+            oracle_accuracy=oracle_accuracy,
             reward_shaping=reward_shaping,
             no_oracle=no_oracle,
             max_episode_steps=max_episode_steps,
             obs_size=obs_size,
+            seed=seed,
         )
         env.action_space.seed(seed)
         env.observation_space.seed(seed)

@@ -13,6 +13,8 @@ import argparse
 import csv
 import os
 import random
+import re
+import shlex
 import subprocess
 import sys
 import time
@@ -23,6 +25,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import gymnasium as gym
+import yaml
 
 # Assumes env_wrapper.py and model.py are in the same directory
 from env_wrapper import make_env
@@ -40,6 +43,7 @@ def parse_args():
     
     # --- Oracle & Shaping Settings ---
     p.add_argument('--oracle-cost',     type=float, default=0.0)                   # Negative reward penalty applied every time the agent asks the Oracle for a move
+    p.add_argument('--oracle-accuracy', type=float, default=1.0)                   # Probability that a queried oracle returns the BFS-optimal action; otherwise returns a random native action
     p.add_argument('--no-oracle',       action='store_true', default=False)        # If True, removes the Oracle action entirely (runs as a pure PPO baseline)
     p.add_argument('--reward-shaping',  action='store_true', default=False)        # Enables potential-based dense rewards
     p.add_argument('--warmup-steps',    type=int,   default=0)                     # Forces the agent to ONLY use the Oracle for the first N steps to build a good starting buffer
@@ -93,7 +97,7 @@ CSV_FIELDS = [
     'episode', 'global_step',
     'ep_return', 'success',
     'guided_pct', 'queries_per_ep',
-    'agreement_rate',
+    'agreement_rate', 'oracle_correct_rate',
     'cum_queries', 'first_unguided_success',
 ]
 
@@ -113,10 +117,51 @@ class CSVLogger:
         self._f.close()
 
 
+class TeeStream:
+    """Write console output to both the terminal and the run log."""
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for stream in self.streams:
+            stream.write(data)
+            stream.flush()
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
+
+    def isatty(self):
+        return any(getattr(stream, 'isatty', lambda: False)() for stream in self.streams)
+
+
+def _safe_name(text: str) -> str:
+    text = re.sub(r'[^A-Za-z0-9_.-]+', '-', text.strip())
+    return text.strip('-') or 'run'
+
+
+def write_yaml(path: str, data: dict):
+    with open(path, 'w') as f:
+        yaml.safe_dump(data, f, sort_keys=False)
+
+
+def get_git_commit():
+    try:
+        return subprocess.check_output(
+            ['git', 'rev-parse', 'HEAD'],
+            stderr=subprocess.DEVNULL,
+            text=True,
+        ).strip()
+    except Exception:
+        return ''
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main():
     args = parse_args()
+    if not 0.0 <= args.oracle_accuracy <= 1.0:
+        raise ValueError(f"oracle_accuracy must be in [0, 1], got {args.oracle_accuracy}")
 
     batch_size     = args.n_envs * args.n_steps
     minibatch_size = batch_size // args.n_minibatches
@@ -127,8 +172,23 @@ def main():
             f"batch={batch_size}. Increase timesteps or reduce n-envs/n-steps."
         )
 
-    run_name = f"{args.exp_name}__{args.env_id}__seed{args.seed}__{int(time.time())}"
+    timestamp = time.strftime('%Y%m%d_%H%M%S')
+    run_desc = _safe_name(f"{args.exp_name}__{args.env_id}__seed{args.seed}")
+    run_name = f"{timestamp}__{run_desc}"
+    run_dir = os.path.join('runs', run_name)
+    logs_dir = os.path.join(run_dir, 'logs')
+    data_dir = os.path.join(run_dir, 'data')
+    figures_dir = os.path.join(run_dir, 'figures')
+    checkpoints_dir = os.path.join(run_dir, 'checkpoints')
+    for path in (logs_dir, data_dir, figures_dir, checkpoints_dir):
+        os.makedirs(path, exist_ok=True)
+
+    stdout_log = open(os.path.join(logs_dir, 'stdout.log'), 'a', buffering=1)
+    sys.stdout = TeeStream(sys.__stdout__, stdout_log)
+    sys.stderr = TeeStream(sys.__stderr__, stdout_log)
+
     print(f"Run: {run_name}")
+    print(f"Run directory: {run_dir}")
 
     random.seed(args.seed)
     np.random.seed(args.seed)
@@ -137,14 +197,15 @@ def main():
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f"  device={device}, batch={batch_size}, updates={n_updates}")
 
-    logger = CSVLogger(f"logs/{run_name}.csv")
-    os.makedirs('figures', exist_ok=True)
+    metrics_path = os.path.join(data_dir, 'metrics.csv')
+    logger = CSVLogger(metrics_path)
 
     # ── Environments ─────────────────────────────────────────────────────────
     envs = gym.vector.SyncVectorEnv([
         make_env(
             args.env_id, 
             oracle_cost=args.oracle_cost, 
+            oracle_accuracy=args.oracle_accuracy,
             seed=args.seed * 1000 + i, 
             reward_shaping=args.reward_shaping, 
             no_oracle=args.no_oracle,
@@ -168,6 +229,38 @@ def main():
     param_count = sum(p.numel() for p in model.parameters())
     print(f"  params={param_count:,}")
 
+    git_commit = get_git_commit()
+    config_path = os.path.join(run_dir, 'config.yaml')
+    config_payload = {
+        'run': {
+            'name': run_name,
+            'timestamp': timestamp,
+            'description': run_desc,
+            'directory': run_dir,
+            'command': ' '.join(shlex.quote(part) for part in [sys.executable] + sys.argv),
+            'git_commit': git_commit,
+        },
+        'args': vars(args).copy(),
+        'derived': {
+            'batch_size': batch_size,
+            'minibatch_size': minibatch_size,
+            'n_updates': n_updates,
+            'obs_shape': tuple(obs_shape),
+            'n_actions': n_actions,
+            'query_action': QUERY_ACTION,
+            'parameter_count': param_count,
+            'device': str(device),
+        },
+        'artifacts': {
+            'metrics_csv': metrics_path,
+            'stdout_log': os.path.join(logs_dir, 'stdout.log'),
+            'figure': os.path.join(figures_dir, 'training_metrics.png'),
+            'checkpoint': os.path.join(checkpoints_dir, 'final.pt'),
+        },
+    }
+    write_yaml(config_path, config_payload)
+    print(f"  config → {config_path}")
+
     # ── Optional W&B ──────────────────────────────────────────────────────────
     wandb_run = None
     if args.track and args.wandb_mode != 'disabled':
@@ -179,17 +272,10 @@ def main():
                 "Install it with: pip install wandb"
             ) from exc
 
-        try:
-            git_commit = subprocess.check_output(
-                ['git', 'rev-parse', 'HEAD'],
-                stderr=subprocess.DEVNULL,
-                text=True,
-            ).strip()
-        except Exception:
-            git_commit = ''
-
         wandb_config = vars(args).copy()
         wandb_config.update({
+            'run_dir': run_dir,
+            'run_name': run_name,
             'batch_size': batch_size,
             'minibatch_size': minibatch_size,
             'n_updates': n_updates,
@@ -234,6 +320,7 @@ def main():
     ep_len       = np.zeros(args.n_envs, dtype=int)
     ep_n_queries = np.zeros(args.n_envs, dtype=int)   # oracle calls this ep
     ep_agree     = np.zeros(args.n_envs, dtype=int)   # guided steps where greedy==oracle
+    ep_oracle_correct = np.zeros(args.n_envs, dtype=int)
 
     # Global counters
     episode_count          = 0
@@ -246,6 +333,7 @@ def main():
     ep_queries    = deque(maxlen=40)
     ep_lengths    = deque(maxlen=100)
     ep_agreements = deque(maxlen=40)
+    ep_oracle_correct_rates = deque(maxlen=40)
 
     # ── Initial reset ─────────────────────────────────────────────────────────
     next_obs_np, _ = envs.reset(seed=args.seed)
@@ -298,6 +386,7 @@ def main():
             # Parse guided flags ──────────────────────────────────────────────
             guided_np     = np.zeros(args.n_envs, dtype=bool)
             oracle_act_np = np.zeros(args.n_envs, dtype=np.int64)
+            oracle_correct_np = np.zeros(args.n_envs, dtype=bool)
             success_np    = np.zeros(args.n_envs, dtype=bool)
 
             for i in range(args.n_envs):
@@ -313,6 +402,7 @@ def main():
                 guided_np[i]     = step_info.get('guided', False)
                 oa               = step_info.get('oracle_action', -1)
                 oracle_act_np[i] = oa if oa >= 0 else 0
+                oracle_correct_np[i] = bool(step_info.get('oracle_correct', False))
                 success_np[i]    = bool(step_info.get('success', False))
 
             guided_buf[step]         = torch.tensor(guided_np).to(device)
@@ -323,6 +413,7 @@ def main():
             ep_ret       += reward_np
             ep_len       += 1
             ep_n_queries += guided_np.astype(int)
+            ep_oracle_correct += (guided_np & oracle_correct_np).astype(int)
 
             greedy_np = greedy.cpu().numpy()
             for i in range(args.n_envs):
@@ -341,6 +432,8 @@ def main():
                 pct     = n_q / max(int(ep_len[i]), 1) * 100
                 agree   = (ep_agree[i] / ep_n_queries[i]
                            if ep_n_queries[i] > 0 else float('nan'))
+                oracle_correct_rate = (ep_oracle_correct[i] / ep_n_queries[i]
+                                       if ep_n_queries[i] > 0 else float('nan'))
 
                 # First unguided success
                 fug = ''
@@ -357,6 +450,7 @@ def main():
                     'guided_pct':            round(pct, 2),
                     'queries_per_ep':        n_q,
                     'agreement_rate':        round(agree, 4) if not np.isnan(agree) else '',
+                    'oracle_correct_rate':   round(oracle_correct_rate, 4) if not np.isnan(oracle_correct_rate) else '',
                     'cum_queries':           cum_queries,
                     'first_unguided_success': fug,
                 })
@@ -368,6 +462,8 @@ def main():
                 ep_lengths.append(int(ep_len[i]))
                 if not np.isnan(agree):
                     ep_agreements.append(agree)
+                if not np.isnan(oracle_correct_rate):
+                    ep_oracle_correct_rates.append(oracle_correct_rate)
 
                 if wandb_run is not None:
                     wandb.log({
@@ -380,6 +476,10 @@ def main():
                         'episode/agreement_rate': (
                             float(np.mean(ep_agreements)) if ep_agreements else None
                         ),
+                        'episode/oracle_correct_rate': (
+                            float(np.mean(ep_oracle_correct_rates))
+                            if ep_oracle_correct_rates else None
+                        ),
                         'episode/cum_queries': cum_queries,
                         'episode/first_success_episode': first_unguided_success or 0,
                         'raw_episode/return': ret,
@@ -388,10 +488,13 @@ def main():
                         'raw_episode/guided_pct': pct,
                         'raw_episode/queries_per_ep': n_q,
                         'raw_episode/agreement_rate': agree if not np.isnan(agree) else None,
+                        'raw_episode/oracle_correct_rate': (
+                            oracle_correct_rate if not np.isnan(oracle_correct_rate) else None
+                        ),
                     }, step=global_step)
 
                 # Reset accumulators
-                ep_ret[i] = ep_len[i] = ep_n_queries[i] = ep_agree[i] = 0
+                ep_ret[i] = ep_len[i] = ep_n_queries[i] = ep_agree[i] = ep_oracle_correct[i] = 0
 
         # ── GAE ───────────────────────────────────────────────────────────────
         with torch.no_grad():
@@ -485,6 +588,9 @@ def main():
                 'charts/success_rate_50ep': float(np.mean(ep_successes)) if ep_successes else None,
                 'charts/guided_pct_40ep': float(np.mean(ep_guided_pct)) if ep_guided_pct else None,
                 'charts/queries_per_ep_40ep': float(np.mean(ep_queries)) if ep_queries else None,
+                'charts/oracle_correct_rate_40ep': (
+                    float(np.mean(ep_oracle_correct_rates)) if ep_oracle_correct_rates else None
+                ),
                 'losses/policy_loss': last_pg_loss.item(),
                 'losses/value_loss': last_v_loss.item(),
                 'losses/entropy': last_entropy.item(),
@@ -495,8 +601,7 @@ def main():
 
     # ── Save & plot ───────────────────────────────────────────────────────────
     if args.save_model:
-        os.makedirs('checkpoints', exist_ok=True)
-        ckpt = f'checkpoints/{run_name}.pt'
+        ckpt = os.path.join(checkpoints_dir, 'final.pt')
         torch.save(model.state_dict(), ckpt)
         print(f"Saved → {ckpt}")
         if wandb_run is not None and args.upload_checkpoint:
@@ -507,8 +612,8 @@ def main():
     logger.close()
     envs.close()
 
-    log_path = f"logs/{run_name}.csv"
-    fig_path = f"figures/{run_name}.png"
+    log_path = metrics_path
+    fig_path = os.path.join(figures_dir, 'training_metrics.png')
     print("Generating plots...")
     plot_script = os.path.join(os.getcwd(), "plot.py")
     if os.path.exists(plot_script):
@@ -527,6 +632,8 @@ def main():
                 wandb.log({'figures/training_metrics': wandb.Image(fig_path)}, step=global_step)
                 artifact = wandb.Artifact(f'{run_name}-figures', type='figure')
                 artifact.add_file(fig_path)
+                artifact.add_file(config_path)
+                artifact.add_file(metrics_path)
                 wandb.log_artifact(artifact)
         except Exception as exc:
             print(f"Skipping W&B figure upload: {exc}")

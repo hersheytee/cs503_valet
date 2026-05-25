@@ -42,6 +42,18 @@ The important command-line flag for the pure PPO baseline is:
 --no-oracle
 ```
 
+For oracle-query experiments, oracle quality can be randomized:
+
+```text
+--oracle-accuracy 1.0   # perfect BFS oracle
+--oracle-accuracy 0.5   # 50% BFS-optimal, 50% random native Sokoban action
+--oracle-accuracy 0.0   # always random native Sokoban action when queried
+```
+
+This only affects steps where the agent chooses `query_oracle`. The queried
+step is still logged as guided, and `oracle_correct_rate` records how often the
+returned oracle action matched the BFS-optimal action.
+
 ## Current CNN
 
 The current `model.py` implements the fair WorldCoder full-sprite CNN:
@@ -218,6 +230,28 @@ For now, prefer:
 ```text
 64 envs, 256 steps, 8 minibatches
 ```
+
+## Run Artifact Layout
+
+New `train.py` runs are self-contained under `runs/`.
+
+Each run directory is named with the timestamp first:
+
+```text
+runs/YYYYMMDD_HHMMSS__<exp-name>__<env-id>__seed<seed>/
+```
+
+Expected contents:
+
+```text
+config.yaml
+logs/stdout.log
+data/metrics.csv
+figures/training_metrics.png
+checkpoints/final.pt
+```
+
+`config.yaml` records CLI args, derived PPO batch sizes, observation/action shapes, parameter count, device, git commit, and artifact paths. `data/metrics.csv` is the canonical file for analysis and figure regeneration.
 
 or:
 
