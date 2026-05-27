@@ -191,8 +191,12 @@ class SokobanOracleWrapper(gym.Env):
                 oracle_action = optimal_action
                 oracle_correct = True
             else:
-                oracle_action = int(self._oracle_rng.integers(0, self.n_original_actions))
-                oracle_correct = oracle_action == optimal_action
+                non_optimal_actions = [
+                    a for a in range(self.n_original_actions)
+                    if a != optimal_action
+                ]
+                oracle_action = int(self._oracle_rng.choice(non_optimal_actions))
+                oracle_correct = False
                 
             action = oracle_action
         else:

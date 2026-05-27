@@ -46,8 +46,7 @@ For oracle-query experiments, oracle quality can be randomized:
 
 ```text
 --oracle-accuracy 1.0   # perfect BFS oracle
---oracle-accuracy 0.5   # 50% BFS-optimal, 50% random native Sokoban action
---oracle-accuracy 0.0   # always random native Sokoban action when queried
+--oracle-accuracy 0.5   # 50% BFS-optimal, 50% deliberately non-optimal native Sokoban action
 ```
 
 This only affects steps where the agent chooses `query_oracle`. The queried

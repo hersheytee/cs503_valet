@@ -5,7 +5,8 @@ MiniGrid-style experiment suite in `gym_sokoban`.
 
 Core intent:
 
-- Recreate the WorldCoder-style PPO Sokoban baseline with full sprites.
+- Move the final Sokoban runs to a MiniGrid-equivalent visual CNN rather than
+  the older WorldCoder-style full-sprite adaptation.
 - Keep PPO purely reinforcement learning; do not use behavior cloning as an
   experimental ingredient.
 - Use oracle-query runs as an upper-bound / optional-help comparison, not as
@@ -23,12 +24,12 @@ Core intent:
 
 - [ ] Environment: `Sokoban-small-v0`
 - [ ] Observation: full 7x7 board rendered at 8 px/cell, shape `56x56x3`
-- [ ] CNN: WorldCoder-style conv stack adapted to full sprites
-  - [ ] `Conv2d(3, 16, kernel=2, stride=1)`
-  - [ ] `Conv2d(16, 32, kernel=2, stride=1)`
-  - [ ] `Conv2d(32, 64, kernel=2, stride=1)`
-  - [ ] `AdaptiveAvgPool2d(4, 4)`
-  - [ ] `Linear(1024, 64)`
+- [ ] CNN: MiniGrid-equivalent visual CNN on the `56x56x3` Sokoban sprites
+  - [ ] `Conv2d(3, 32, kernel=3, stride=2, padding=1)`
+  - [ ] `Conv2d(32, 64, kernel=3, stride=1, padding=1)`
+  - [ ] `Conv2d(64, 64, kernel=3, stride=1, padding=1)`
+  - [ ] `AdaptiveAvgPool2d(8, 8)`
+  - [ ] `Linear(4096, 256)`
 - [ ] PPO defaults
   - [ ] `lr=3e-4`
   - [ ] `gamma=0.99`
@@ -44,12 +45,12 @@ Core intent:
   - [ ] `n_minibatches=8`
   - [ ] rollout batch `64 * 256 = 16,384`
   - [ ] optimizer minibatch `16,384 / 8 = 2,048`
-- [ ] Reward shaping off for WorldCoder-style baseline unless explicitly
+- [ ] Reward shaping off for final baseline unless explicitly
   running a shaping ablation.
 
-## Tabled Architecture Question
+## Architecture Decision
 
-Current active architecture:
+Previous architecture:
 
 - WorldCoder-style full-sprite adaptation
 - input `56x56x3`
@@ -64,10 +65,10 @@ Concern:
 - This may be too weak for full 56x56 sprites.
 - The original WorldCoder architecture was designed for compact `3x7x7`
   cell-level input, not rendered sprites.
-- Pooling to `4x4` preserves parameter count, but may discard sprite-level
+- Pooling to `4x4` preserves parameter count, but likely discards sprite-level
   spatial details too early.
 
-Candidate stronger architecture:
+Final-run architecture:
 
 - MiniGrid partial-observation CNN on the same `56x56x3` sprites
 - `Conv2d(3, 32, kernel=3, stride=2, padding=1)`
@@ -86,35 +87,217 @@ Why it might be stronger:
 
 Main caveat:
 
-- If we switch architectures, the old runs are still useful but are no longer
+- Switching architectures means the old runs are still useful but are no longer
   directly comparable to new runs.
 - The core baseline/oracle/randomized-oracle matrix must be rerun for the new
   architecture.
 
 Decision:
 
-- [ ] Do not change active architecture mid-analysis.
-- [ ] First inspect current 500k/2M results.
-- [ ] If PPO baseline remains weak or oracle learning looks architecture-limited,
-  add a MiniGrid-CNN architecture flag and rerun the core matrix.
+- [ ] Use the MiniGrid-equivalent CNN for the final Sokoban run matrix.
+- [ ] Treat WorldCoder-style runs as exploratory / historical.
+- [ ] Do not mix WorldCoder-style and MiniGrid-CNN runs in the same final
+  aggregate plot.
 
-Minimum rerun set after switching architecture:
+Minimum sanity set after switching architecture:
 
 | Priority | Run family | Env | Seed(s) | Timesteps | Oracle accuracy | Oracle cost | Notes |
 |---|---|---|---:|---:|---:|---:|---|
 | P0 | PPO baseline | `Sokoban-small-v0` | 1 | 500k | n/a | n/a | Compare learning speed vs current architecture. |
 | P0 | Perfect oracle free | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.0 | Checks whether oracle-query policy improves. |
 | P0 | Perfect oracle high cost | `Sokoban-small-v0` | 1 | 500k | 1.0 | 1.0 | Checks cost sensitivity. |
-| P0 | Randomized oracle mid accuracy | `Sokoban-small-v0` | 1 | 500k | 0.5 | 0.0 | Checks robustness to imperfect help. |
+| P0 | Randomized oracle mid accuracy | `Sokoban-small-v0` | 1 | 500k | 0.5 | 0.5 | Checks robustness to imperfect paid help. |
 | P1 | Linear cost schedule | `Sokoban-small-v0` | 1 | 500k | 1.0 | 0.0 -> 1.0 | Checks query decay under increasing cost. |
 
-Full rerun set after switching architecture:
+Full desired matrix after switching architecture:
 
 - [ ] baseline
-- [ ] perfect oracle cost sweep: `0.0`, `0.2`, `0.3`, `0.5`, `1.0`
-- [ ] randomized oracle accuracies: `0.75`, `0.5`, `0.25`, `0.0` at cost `0.0`
-- [ ] randomized oracle accuracies: `0.75`, `0.5`, `0.25` at cost `0.2`
+- [ ] perfect oracle cost sweep: `0.0`, `0.1`, `0.3`, `0.5`, `0.8`, `1.0`
+- [ ] randomized oracle accuracies: `0.25`, `0.5`, `0.75`, `1.0`
+- [ ] representative randomized-oracle accuracy sweep at cost `0.5`
 - [ ] linear cost schedule `0.0 -> 1.0`
+- [ ] best VLM oracle after benchmarking
+
+## Final Run Budget Recommendation
+
+Do not launch the full Cartesian product first.
+
+The tempting matrix is:
+
+```text
+costs = 0.0, 0.1, 0.3, 0.5, 0.8, 1.0
+accuracies = 0.25, 0.5, 0.75, 1.0
+seeds = 1, 2, 3
+```
+
+That is already `6 * 4 * 3 = 72` oracle runs before adding a baseline,
+linear-cost runs, or VLM runs. It is more expensive than it looks, and most of
+those combinations are not needed for the final story.
+
+Recommended staged plan:
+
+### Seed Policy
+
+Seeding is not mandatory for exploration, but it is important for final claims.
+
+Recommended rule:
+
+- Use seed `1` for smoke tests, architecture sanity checks, VLM benchmarking,
+  and deciding whether a condition is worth keeping.
+- Use seeds `1, 2, 3` for the final figures that will appear in the report or
+  presentation.
+- Do not run 3 seeds for every possible cost-by-accuracy combination unless the
+  result is specifically a heatmap or interaction analysis.
+
+Why:
+
+- Sokoban room generation and PPO are both noisy.
+- Single-seed curves are acceptable for "preliminary" language.
+- Three seeds are the minimum reasonable standard for comparing conditions.
+- More than 3 seeds is not worth the cost for this project unless one result is
+  very close or surprising.
+
+### Timestep Policy
+
+Current estimate:
+
+```text
+500k steps ~= 1 hour/run
+1M steps ~= 2 hours/run
+```
+
+Recommended rule:
+
+- Use `500k` for P0 sanity and for the first pass of every new condition.
+- Use `1M` only for the final P1 matrix if the 500k curves are still changing
+  substantially at the end.
+- Do not default to `1M` before the MiniGrid-equivalent CNN is validated.
+
+Decision point after 500k:
+
+- If success/usage curves have mostly plateaued, keep final runs at `500k`.
+- If baseline or oracle curves are still rising, rerun only the core final
+  conditions at `1M`.
+- If only one condition is still changing, extend that condition rather than
+  doubling the whole matrix.
+
+### P0: Architecture Sanity Gate
+
+Run this first with the MiniGrid-equivalent CNN. Stop and inspect before
+launching the larger matrix.
+
+| Condition | Seeds | Count | Why |
+|---|---:|---:|---|
+| baseline, no oracle | `1` | 1 | Make sure PPO is not broken under the new CNN. |
+| perfect oracle, free | `1` | 1 | Check that querying can help. |
+| perfect oracle, cost `1.0` | `1` | 1 | Check that high cost suppresses querying. |
+| randomized oracle, accuracy `0.5`, cost `0.5` | `1` | 1 | Check the imperfect-expert setting. |
+| linear cost `0.0 -> 1.0`, accuracy `1.0` | `1` | 1 | Check whether query usage decays as cost rises. |
+
+P0 count: `5` runs.
+
+Only continue if:
+
+- baseline logging is clean with `guided_pct = 0`;
+- oracle runs actually use `query_oracle`;
+- success / return curves are not obviously broken;
+- the new CNN trains at acceptable speed.
+
+### P1: Final Core Plots
+
+This is the best cost/quality tradeoff for final figures.
+
+| Figure need | Conditions | Seeds | Count |
+|---|---|---:|---:|
+| Baseline curve | no oracle | `1, 2, 3` | 3 |
+| Cost sweep | accuracy `1.0`, costs `0.0`, `0.1`, `0.3`, `0.5`, `0.8`, `1.0` | `1, 2, 3` | 18 |
+| Accuracy sweep | cost `0.5`, accuracies `0.25`, `0.5`, `0.75` | `1, 2, 3` | 9 |
+| Accuracy sweep overlap | cost `0.5`, accuracy `1.0` | already in cost sweep | 0 |
+| Linear schedule | accuracy `1.0`, cost `0.0 -> 1.0` | `1, 2, 3` | 3 |
+
+P1 count: `33` runs.
+
+At 1 hour/run for `500k` and `$0.30/hour`, P1 is roughly:
+
+```text
+33 * 1 * 0.30 = $9.90
+```
+
+At `1M`, the same P1 matrix is roughly:
+
+```text
+33 * 2 * 0.30 = $19.80
+```
+
+This gives the final plots we actually need:
+
+- baseline vs perfect-oracle cost sweep;
+- query usage vs cost;
+- success / usage vs oracle accuracy at fixed cost `0.5`;
+- linear cost schedule behavior.
+
+Current one-seed overnight execution split:
+
+- Laptop RTX 3060:
+  - baseline
+  - linear cost schedule
+  - free perfect oracle, `oracle_accuracy=1.0`, cost `0.0`
+- Vast, 2x RTX4000:
+  - all paid cost-by-accuracy runs:
+    costs `0.1`, `0.3`, `0.5`, `0.8`, `1.0`
+    crossed with accuracies `0.25`, `0.5`, `0.75`, `1.0`
+
+This keeps the three most useful reference curves local and uses the faster
+paid GPUs for the larger 20-run paid grid.
+
+### P2: VLM Runs
+
+Do not run 3 VLM seeds before benchmarking VLM quality.
+
+Order:
+
+1. Benchmark candidate VLMs on static Sokoban states.
+2. Pick the best model by parse rate, action agreement with BFS, latency, and
+   cost.
+3. Run one seed at cost `0.0` or the chosen representative cost.
+4. If it is interpretable, run seeds `1, 2, 3`.
+
+P2 final count after benchmarking: `3` runs.
+
+Total recommended final count after P0 passes:
+
+```text
+P1 33 + P2 3 = 36 runs
+```
+
+Including P0 sanity runs:
+
+```text
+5 + 33 + 3 = 41 runs
+```
+
+### P3: Optional Interaction Matrix
+
+Only do this if the report needs a cost-by-accuracy heatmap.
+
+For each additional cost beyond `0.5`, run:
+
+```text
+accuracies 0.25, 0.5, 0.75
+seeds 1, 2, 3
+= 9 extra runs per cost
+```
+
+Suggested order for extra costs:
+
+1. cost `1.0`
+2. cost `0.1`
+3. cost `0.8`
+4. cost `0.3`
+5. cost `0.0`
+
+This avoids paying for the full `72+` run grid unless the core plots show a
+clear interaction worth expanding.
 
 ## Current Run Ledger
 
@@ -211,10 +394,11 @@ Conditions:
 
 - [ ] `baseline`: `--no-oracle`
 - [ ] `oracle_free`: `--oracle-cost 0.0`
-- [ ] `oracle_paid_001`: `--oracle-cost 0.01`
-- [ ] `oracle_paid_005`: `--oracle-cost 0.05`
 - [ ] `oracle_paid_010`: `--oracle-cost 0.10`
-- [ ] `oracle_paid_020`: `--oracle-cost 0.20`
+- [ ] `oracle_paid_030`: `--oracle-cost 0.30`
+- [ ] `oracle_paid_050`: `--oracle-cost 0.50`
+- [ ] `oracle_paid_080`: `--oracle-cost 0.80`
+- [ ] `oracle_paid_100`: `--oracle-cost 1.00`
 - [ ] `oracle_linear_cost_0to1`: `--oracle-cost 0.0 --oracle-cost-final 1.0`
 
 Run order:
@@ -222,7 +406,7 @@ Run order:
 - [ ] Cheap triad first
   - [ ] `baseline`
   - [ ] `oracle_free`
-  - [ ] `oracle_paid_005`
+  - [ ] `oracle_paid_100`
   - [ ] seeds `1, 2, 3`
   - [ ] `500k` or `1M` timesteps
 - [ ] Full cost sweep
@@ -279,27 +463,28 @@ Implementation target:
 
 - [x] Add `--oracle-accuracy <float>` to Sokoban training/wrapper
 - [x] `1.0` means perfect BFS oracle
-- [x] `0.0` means always random native action when oracle is queried
+- [x] `0.0` is supported for debugging but is not a final experiment condition
 - [x] Intermediate values return BFS action with probability `p`, otherwise a
-  random valid native Sokoban action
+  random non-optimal native Sokoban action
 - [x] Log `oracle_accuracy` in `config.yaml` and W&B config
 - [x] Log `oracle_correct_rate` in CSV and W&B
 - [x] Keep `guided=True` whenever the query action was used, even if the oracle
   returned a noisy action
 - [x] Add `--oracle-cost-final` for linear oracle-cost schedules
 
-Initial conditions:
+Initial final-plot conditions:
 
-- [ ] `oracle_acc_100`: accuracy `1.0`, cost `0.0`
-- [ ] `oracle_acc_075`: accuracy `0.75`, cost `0.0`
-- [ ] `oracle_acc_050`: accuracy `0.50`, cost `0.0`
-- [ ] `oracle_acc_025`: accuracy `0.25`, cost `0.0`
-- [ ] `oracle_acc_000`: accuracy `0.0`, cost `0.0`
+- [ ] `oracle_acc_100_cost05`: accuracy `1.0`, cost `0.5`
+- [ ] `oracle_acc_075_cost05`: accuracy `0.75`, cost `0.5`
+- [ ] `oracle_acc_050_cost05`: accuracy `0.50`, cost `0.5`
+- [ ] `oracle_acc_025_cost05`: accuracy `0.25`, cost `0.5`
 
 Run order:
 
-- [ ] First pass: accuracies `1.0`, `0.5`, `0.0`; seed `1`; `500k`
-- [ ] Full pass: all accuracies above; seeds `1, 2, 3`; `500k`
+- [ ] First pass: accuracies `1.0`, `0.5`, `0.25`; seed `1`; cost `0.5`; `500k`
+- [ ] Full pass: all accuracies above; seeds `1, 2, 3`; cost `0.5`; `500k`
+- [ ] Expand to other costs only if the final report needs a
+  cost-by-accuracy interaction heatmap.
 
 ## Phase 4: Big Sokoban
 
@@ -337,20 +522,30 @@ Recommended order:
 Goal: replace BFS oracle with a VLM-like action provider once BFS upper-bound
 and randomized-accuracy oracle runs are working.
 
-First VLM target:
+Do not run a VLM training matrix before benchmarking the model itself.
+
+VLM benchmark first:
+
+- [ ] sample representative Sokoban states from baseline/oracle rollouts
+- [ ] test candidate VLMs offline on those states
+- [ ] measure parse rate
+- [ ] measure action agreement with BFS
+- [ ] measure latency and cost
+- [ ] pick one best-performing VLM for training runs
+
+First VLM training target:
 
 - [ ] `Sokoban-small-v0`
-- [ ] one VLM model only
-- [ ] seed `1`
+- [ ] one best benchmarked VLM model only
+- [ ] seed `1` first
 - [ ] `500k` max
 - [ ] compare against BFS oracle and randomized-accuracy oracle
 
-Conditions:
+Final VLM condition if seed `1` is interpretable:
 
-- [ ] VLM oracle, cost `0.0`
-- [ ] VLM oracle, cost `0.1`
-- [ ] BFS oracle, same costs
-- [ ] randomized oracle, matched estimated VLM accuracy
+- [ ] VLM oracle, chosen representative cost, seeds `1, 2, 3`
+- [ ] compare to BFS oracle at the same cost
+- [ ] compare to randomized oracle with matched measured VLM accuracy
 
 Required setup:
 

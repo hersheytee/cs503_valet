@@ -72,7 +72,7 @@ def parse_args():
     
     # --- Architecture & Reproducibility ---
     p.add_argument('--seed',            type=int,   default=1)                     # Random seed to ensure you get the exact same results if you run the script twice
-    p.add_argument('--hidden-dim',      type=int,   default=256)                   # Size of the FC layer after the MiniGrid-style CNN
+    p.add_argument('--hidden-dim',      type=int,   default=64)                    # Size of the FC layer after the WorldCoder-style CNN
     p.add_argument('--tile-size',       type=int,   default=8)                     # Legacy MiniGrid argument (kept for bash script compatibility)
     
     # --- Output/Saving ---
@@ -334,10 +334,9 @@ def main():
             mode=args.wandb_mode,
             save_code=True,
         )
-        wandb.define_metric('global_step')
-        wandb.define_metric('episode/count', step_metric='global_step')
-        wandb.define_metric('episode/*', step_metric='global_step')
-        wandb.define_metric('raw_episode/*', step_metric='global_step')
+        wandb.define_metric('episode/count')
+        wandb.define_metric('episode/*', step_metric='episode/count')
+        wandb.define_metric('raw_episode/*', step_metric='episode/count')
         wandb.define_metric('charts/global_step')
         wandb.define_metric('charts/*', step_metric='charts/global_step')
         wandb.define_metric('losses/*', step_metric='charts/global_step')
@@ -509,7 +508,6 @@ def main():
 
                 if wandb_run is not None:
                     wandb.log({
-                        'global_step': global_step,
                         'episode/count': episode_count,
                         'episode/return': float(np.mean(ep_returns)),
                         'episode/success_rate': float(np.mean(ep_successes)),

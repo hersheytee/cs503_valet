@@ -3,6 +3,7 @@ Tests the SokobanOracleWrapper and saves a GIF of the run.
 """
 
 from env_wrapper import SokobanOracleWrapper
+import env_wrapper
 import numpy as np
 import imageio
 import os
@@ -55,6 +56,28 @@ def main():
     assert baseline_obs.shape == (56, 56, 3), baseline_obs.shape
     assert baseline_env.action_space.n == 9, baseline_env.action_space.n
     baseline_env.close()
+
+    original_oracle = env_wrapper.get_oracle_action
+    try:
+        env_wrapper.get_oracle_action = lambda _env: 4
+
+        noisy_env = SokobanOracleWrapper(
+            env_id='Sokoban-small-v0',
+            oracle_accuracy=0.0,
+            seed=12,
+        )
+        noisy_env.reset(seed=12)
+        noisy_query = noisy_env.action_space.n - 1
+        for _ in range(20):
+            _, _, terminated, truncated, info = noisy_env.step(noisy_query)
+            assert info['oracle_optimal_action'] == 4
+            assert info['oracle_action'] != 4
+            assert info['oracle_correct'] is False
+            if terminated or truncated:
+                noisy_env.reset(seed=12)
+        noisy_env.close()
+    finally:
+        env_wrapper.get_oracle_action = original_oracle
 
     # Save the GIF
     os.makedirs("gym_sokoban/figures", exist_ok=True)

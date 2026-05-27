@@ -7,7 +7,7 @@ from model import CNNPolicy
 
 
 def check_model(obs_shape, n_actions):
-    model = CNNPolicy(obs_shape=obs_shape, n_actions=n_actions, hidden_dim=64)
+    model = CNNPolicy(obs_shape=obs_shape, n_actions=n_actions)
 
     batch_size = 4
     dummy_obs = torch.randint(0, 256, (batch_size,) + obs_shape, dtype=torch.uint8)

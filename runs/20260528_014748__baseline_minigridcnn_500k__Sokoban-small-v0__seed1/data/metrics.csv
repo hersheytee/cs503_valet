@@ -1,0 +1,2 @@
+episode,global_step,ep_return,success,guided_pct,queries_per_ep,agreement_rate,oracle_correct_rate,oracle_cost,cum_queries,first_unguided_success
+1,192,11.7,1.0,0.0,0,,,0.0,0,1

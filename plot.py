@@ -300,7 +300,7 @@ def make_figure(d, title='Oracle-Guided PPO Training Metrics', out=None):
         os.makedirs(os.path.dirname(out) if os.path.dirname(out) else '.', exist_ok=True)
         fig.savefig(out, dpi=150, bbox_inches='tight',
                     facecolor=fig.get_facecolor())
-        print(f'Saved → {out}')
+        print(f'Saved -> {out}')
     else:
         plt.show()
 
