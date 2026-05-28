@@ -44,7 +44,6 @@ def parse_args():
     # --- Oracle & Shaping Settings ---
     p.add_argument('--oracle-cost',     type=float, default=0.0)                   # Negative reward penalty applied every time the agent asks the Oracle for a move
     p.add_argument('--oracle-cost-final', type=float, default=None)                # If set, linearly anneals oracle cost from --oracle-cost to this value over training
-    p.add_argument('--oracle-cost-anneal-steps', type=int, default=None)           # Steps over which to complete the linear ramp; defaults to total-timesteps (ramp ends at training end)
     p.add_argument('--oracle-accuracy', type=float, default=1.0)                   # Probability that a queried oracle returns the BFS-optimal action; otherwise returns a non-optimal native action
     p.add_argument('--no-oracle',       action='store_true', default=False)        # If True, removes the Oracle action entirely (runs as a pure PPO baseline)
     p.add_argument('--reward-shaping',  action='store_true', default=False)        # Enables potential-based dense rewards
@@ -174,8 +173,7 @@ def get_git_commit():
 def get_current_oracle_cost(args, global_step: int) -> float:
     if args.oracle_cost_final is None:
         return float(args.oracle_cost)
-    anneal_steps = args.oracle_cost_anneal_steps or args.total_timesteps
-    frac = min(max(global_step / max(anneal_steps, 1), 0.0), 1.0)
+    frac = min(max(global_step / max(args.total_timesteps, 1), 0.0), 1.0)
     return float(args.oracle_cost + frac * (args.oracle_cost_final - args.oracle_cost))
 
 

@@ -226,4 +226,6 @@ __marimo__/
 /Upper_Bound/checkpoints/
 /Upper_Bound/logs/
 /Upper_Bound/figures/
-git_token
+git_token.md
+gym_sokoban/sokoban_vast_results
+gym_sokoban/checkpoints

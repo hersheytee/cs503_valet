@@ -1,0 +1,67 @@
+{
+  "os": "Windows-10-10.0.26200-SP0",
+  "python": "CPython 3.11.5",
+  "startedAt": "2026-05-28T02:14:29.069772Z",
+  "args": [
+    "--env-id",
+    "Sokoban-small-v0",
+    "--seed",
+    "1",
+    "--exp-name",
+    "oracle_acc100_cost_linear_0to1_500k",
+    "--total-timesteps",
+    "500000",
+    "--n-envs",
+    "64",
+    "--n-steps",
+    "256",
+    "--n-minibatches",
+    "8",
+    "--save-model",
+    "--wandb-project",
+    "cs503-sokoban",
+    "--wandb-group",
+    "sokoban_minigridcnn_seed1_overnight_500k",
+    "--oracle-accuracy",
+    "1.0",
+    "--oracle-cost",
+    "0.0",
+    "--oracle-cost-final",
+    "1.0"
+  ],
+  "program": "C:\\Users\\htala\\Github\\cs503_project\\gym_sokoban\\train.py",
+  "codePath": "gym_sokoban\\train.py",
+  "codePathLocal": "gym_sokoban\\train.py",
+  "git": {
+    "remote": "https://github.com/hersheytee/cs503_project.git",
+    "commit": "394c2d1c2b10bdd5a9363dd5d40daf1c152bc318"
+  },
+  "email": "htalathi7@gmail.com",
+  "root": "C:\\Users\\htala\\Github\\cs503_project",
+  "host": "MSI",
+  "executable": "C:\\Users\\htala\\Github\\cs503_project\\venv\\Scripts\\python.exe",
+  "cpu_count": 14,
+  "cpu_count_logical": 20,
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "998049312768",
+      "used": "887280472064"
+    }
+  },
+  "memory": {
+    "total": "16870256640"
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+      "memoryTotal": "6442450944",
+      "cudaCores": 3840,
+      "architecture": "Ampere",
+      "uuid": "GPU-b15726db-6e4f-407e-657e-055806433d56"
+    }
+  ],
+  "cudaVersion": "12.9",
+  "writerId": "p1v79155dlqu8wcpvq2sinc2q54pj5v7"
+}

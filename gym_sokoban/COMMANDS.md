@@ -203,7 +203,19 @@ costs `0.1, 0.3, 0.5, 0.8, 1.0` crossed with accuracies
 `0.25, 0.5, 0.75, 1.0`.
 
 ```bash
+cat > run_vast_paid_grid.sh <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
 mkdir -p vast_logs
+
+PYTHON_BIN="${PYTHON_BIN:-$(command -v python || command -v python3 || true)}"
+if [ -z "$PYTHON_BIN" ]; then
+  echo "No python executable found. Activate the Vast/conda environment first."
+  exit 127
+fi
+"$PYTHON_BIN" --version
+"$PYTHON_BIN" -c "import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.device_count()); print(torch.version.cuda)"
 
 COMMON_ARGS="--env-id Sokoban-small-v0 \
   --total-timesteps 500000 \
@@ -221,7 +233,7 @@ run_job() {
   local log_path="vast_logs/${exp_name}_s1.log"
 
   echo "[$(date)] gpu=${gpu} start ${exp_name}"
-  CUDA_VISIBLE_DEVICES="$gpu" python -u gym_sokoban/train.py \
+  CUDA_VISIBLE_DEVICES="$gpu" "$PYTHON_BIN" -u gym_sokoban/train.py \
     $COMMON_ARGS \
     --seed 1 \
     --exp-name "$exp_name" \
@@ -266,13 +278,27 @@ run_job() {
 
 wait
 echo "Vast paid-grid jobs complete"
+EOF
+
+chmod +x run_vast_paid_grid.sh
+
+# Start inside tmux so it keeps running after you close the terminal.
+tmux new-session -d -s soko_paid_grid './run_vast_paid_grid.sh'
+tmux attach -t soko_paid_grid
 ```
 
 Check progress:
 
 ```bash
+tmux attach -t soko_paid_grid
 tail -f vast_logs/gpu*_queue.log
 watch -n 2 nvidia-smi
+```
+
+Detach from tmux without stopping the jobs:
+
+```text
+Ctrl-b d
 ```
 
 If one queue finishes early, that is okay. The split keeps the laptop on the
@@ -299,4 +325,79 @@ details.
 ```bash
 rsync -avz -e "ssh -p <PORT>" root@<HOST>:/workspace/cs503_project/runs/ gym_sokoban/runs/
 rsync -avz -e "ssh -p <PORT>" root@<HOST>:/workspace/cs503_project/vast_logs/ gym_sokoban/vast_logs/
+```
+
+## Run Missing Reference Jobs On Vast
+
+Use this if the laptop did not finish the linear-cost schedule and free
+perfect-oracle reference. It runs one job per GPU inside tmux, so it is safe to
+detach and close the terminal.
+
+```bash
+cat > run_vast_reference_jobs.sh <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p vast_logs
+
+PYTHON_BIN="${PYTHON_BIN:-$(command -v python || command -v python3 || true)}"
+if [ -z "$PYTHON_BIN" ]; then
+  echo "No python executable found. Activate the Vast/conda environment first."
+  exit 127
+fi
+"$PYTHON_BIN" --version
+"$PYTHON_BIN" -c "import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.device_count()); print(torch.version.cuda)"
+
+COMMON_ARGS="--env-id Sokoban-small-v0 \
+  --total-timesteps 500000 \
+  --n-envs 64 \
+  --n-steps 256 \
+  --n-minibatches 8 \
+  --save-model \
+  --wandb-project cs503-sokoban \
+  --wandb-group sokoban_minigridcnn_seed1_reference_500k"
+
+run_job() {
+  local gpu="$1"
+  local exp_name="$2"
+  local extra_args="$3"
+  local log_path="vast_logs/${exp_name}_s1.log"
+
+  echo "[$(date)] gpu=${gpu} start ${exp_name}"
+  CUDA_VISIBLE_DEVICES="$gpu" "$PYTHON_BIN" -u gym_sokoban/train.py \
+    $COMMON_ARGS \
+    --seed 1 \
+    --exp-name "$exp_name" \
+    $extra_args \
+    > "$log_path" 2>&1
+  local status=$?
+  if [ "$status" -ne 0 ]; then
+    echo "[$(date)] gpu=${gpu} FAILED ${exp_name}"
+    tail -80 "$log_path"
+    exit "$status"
+  fi
+  echo "[$(date)] gpu=${gpu} done ${exp_name}"
+}
+
+(
+  run_job 0 "oracle_acc100_cost_linear_0to2_3M" "--oracle-accuracy 1.0 --oracle-cost 0.0 --oracle-cost-final 2.0 --oracle-cost-anneal-steps 2000000 --total-timesteps 3000000"
+) > vast_logs/gpu0_reference_queue.log 2>&1 &
+
+(
+  run_job 1 "oracle_acc100_cost0_500k" "--oracle-accuracy 1.0 --oracle-cost 0.0"
+) > vast_logs/gpu1_reference_queue.log 2>&1 &
+
+wait
+echo "Vast reference jobs complete"
+EOF
+
+chmod +x run_vast_reference_jobs.sh
+tmux new-session -d -s soko_reference './run_vast_reference_jobs.sh'
+tmux attach -t soko_reference
+```
+
+Detach from tmux without stopping the jobs:
+
+```text
+Ctrl-b d
 ```
