@@ -283,10 +283,10 @@ Checkpoints are saved as `checkpoints/final.pt` inside the run directory when
 `--save-model` is passed. The run's `config.yaml` records all training
 parameters needed to reproduce the model.
 
-`gym_sokoban/sokoban_results/` is tracked in git (configs, metrics CSVs,
-figures), but `*.pt` checkpoint files within it are excluded via `.gitignore`
-due to size. If you need the checkpoints, download them separately from the
-Vast instance before destroying it.
+`gym_sokoban/sokoban_results/` is excluded from git entirely via `.gitignore`
+due to size. It is not included in the repo — you need to produce it by running
+the training jobs (see [Training runs](#training-runs) and [COMMANDS.md](COMMANDS.md))
+and placing the resulting run directories under `gym_sokoban/sokoban_results/runs/`.
 
 To archive a set of completed runs before destroying a Vast instance:
 
