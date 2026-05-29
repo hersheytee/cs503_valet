@@ -87,7 +87,7 @@ class SokobanOracleWrapper(gym.Env):
         seed: int = 0,
     ):
         # Build the environment using the OLD gym
-        self.env = old_gym.make(env_id)
+        self.env = old_gym.make(env_id, disable_env_checker=True)
         self.oracle_cost = oracle_cost
         self.oracle_accuracy = float(np.clip(oracle_accuracy, 0.0, 1.0))
         self.max_episode_steps = max_episode_steps
