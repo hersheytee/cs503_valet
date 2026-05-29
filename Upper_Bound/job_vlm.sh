@@ -24,7 +24,7 @@ VLM_MODEL="wethink"
 VLM_MODE="baseline"
 
 # Sweep : coûts oracle et seeds à évaluer
-ORACLE_COSTS=(0.0 0.1)
+ORACLE_COSTS=(0.01 0.02)
 SEEDS=(4 5 6 7 8)
 
 TOTAL_TIMESTEPS=500000
