@@ -379,15 +379,9 @@ run_job() {
   echo "[$(date)] gpu=${gpu} done ${exp_name}"
 }
 
-(
-  run_job 0 "oracle_acc100_cost_linear_0to2_3M" "--oracle-accuracy 1.0 --oracle-cost 0.0 --oracle-cost-final 2.0 --oracle-cost-anneal-steps 2000000 --total-timesteps 3000000"
-) > vast_logs/gpu0_reference_queue.log 2>&1 &
+run_job 0 "oracle_acc100_cost_linear_0to2_3M" "--oracle-accuracy 1.0 --oracle-cost 0.0 --oracle-cost-final 2.0 --oracle-cost-anneal-steps 2000000 --total-timesteps 3000000"
+run_job 0 "oracle_acc100_cost0_500k" "--oracle-accuracy 1.0 --oracle-cost 0.0"
 
-(
-  run_job 1 "oracle_acc100_cost0_500k" "--oracle-accuracy 1.0 --oracle-cost 0.0"
-) > vast_logs/gpu1_reference_queue.log 2>&1 &
-
-wait
 echo "Vast reference jobs complete"
 EOF
 

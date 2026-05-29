@@ -240,13 +240,13 @@ def main():
     logger = CSVLogger(metrics_path)
 
     # ── Environments ─────────────────────────────────────────────────────────
-    envs = gym.vector.SyncVectorEnv([
+    envs = gym.vector.AsyncVectorEnv([
         make_env(
-            args.env_id, 
-            oracle_cost=args.oracle_cost, 
+            args.env_id,
+            oracle_cost=args.oracle_cost,
             oracle_accuracy=args.oracle_accuracy,
-            seed=args.seed * 1000 + i, 
-            reward_shaping=args.reward_shaping, 
+            seed=args.seed * 1000 + i,
+            reward_shaping=args.reward_shaping,
             no_oracle=args.no_oracle,
             max_episode_steps=args.max_episode_steps,
             obs_size=args.obs_size,
