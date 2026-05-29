@@ -41,7 +41,7 @@ headless OpenCV to avoid GUI library issues.
 
 ```bash
 # Get the repo.
-git clone https://github.com/<YOUR_USER_OR_ORG>/cs503_project.git
+git clone https://github.com/hersheytee/cs503_project.git
 cd cs503_project
 
 # Set this first if you want non-interactive W&B login.
@@ -52,6 +52,9 @@ bash gym_sokoban/setup_vast.sh
 
 # If the repo already existed and you want to update first:
 bash gym_sokoban/setup_vast.sh --pull
+
+# V100 instances only: reinstall PyTorch with cu121 (last build supporting sm_70).
+pip uninstall -y torch torchvision torchaudio && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
 If `WANDB_API_KEY` was not set, login manually:
@@ -449,14 +452,20 @@ Detach from tmux without stopping the jobs:
 Ctrl-b d
 ```
 
-## Budget-Limited Oracle Runs (Single GPU, Serial)
+## Budget-Limited Oracle Runs (budgets 3, 6, 10)
 
-Fixed query budget per episode (1, 3, 5), 100% accuracy, cost=0, 1M steps each.
-The oracle is free but the agent can only query it N times per episode; after that
-the query action falls through as a no-op.
+Fixed query budget per episode, 100% oracle accuracy, cost=0, 1M steps each.
+Uses 4-channel obs (RGB + budget channel) — checkpoints incompatible with
+3-channel runs.
+
+Split across two instances:
+- **Fast GPU** (e.g. RTX 4090 / A100): budget=3 then budget=6, serial on GPU 0
+- **Slow GPU** (e.g. RTX 3060 / T4): budget=10 on GPU 0
+
+### Fast GPU instance (2 jobs, serial)
 
 ```bash
-cat > run_budget_oracle.sh <<'EOF'
+cat > run_budget_fast.sh <<'EOF'
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -486,19 +495,61 @@ run_job() {
   echo "[$(date)] done  ${exp_name}"
 }
 
-run_job 0 "oracle_budget1_acc100_1M" "--max-oracle-queries 1"
-run_job 0 "oracle_budget3_acc100_1M" "--max-oracle-queries 3"
-run_job 0 "oracle_budget5_acc100_1M" "--max-oracle-queries 5"
+run_job 0 "oracle_budget3_acc100_1M"  "--max-oracle-queries 3"
+run_job 0 "oracle_budget6_acc100_1M"  "--max-oracle-queries 6"
 
-echo "Budget oracle runs complete"
+echo "Fast GPU budget jobs complete"
 EOF
 
-chmod +x run_budget_oracle.sh
-tmux new-session -d -s soko_budget './run_budget_oracle.sh'
-tmux attach -t soko_budget
+chmod +x run_budget_fast.sh
+tmux new-session -d -s soko_budget_fast './run_budget_fast.sh'
+tmux attach -t soko_budget_fast
 ```
 
-Detach from tmux without stopping the jobs:
+### Slow GPU instance (1 job)
+
+```bash
+cat > run_budget_slow.sh <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p vast_logs
+
+PYTHON_BIN="${PYTHON_BIN:-$(command -v python || command -v python3 || true)}"
+
+COMMON_ARGS="--env-id Sokoban-small-v0 \
+  --total-timesteps 1000000 \
+  --n-envs 64 \
+  --n-steps 256 \
+  --n-minibatches 8 \
+  --save-model \
+  --oracle-accuracy 1.0 \
+  --oracle-cost 0.0 \
+  --wandb-project cs503-sokoban \
+  --wandb-group sokoban_minigridcnn_seed1_budget_oracle"
+
+run_job() {
+  local gpu="$1"; local exp_name="$2"; local extra_args="$3"
+  local log_path="vast_logs/${exp_name}_s1.log"
+  echo "[$(date)] start ${exp_name}"
+  CUDA_VISIBLE_DEVICES="$gpu" "$PYTHON_BIN" -u gym_sokoban/train.py \
+    $COMMON_ARGS --seed 1 --exp-name "$exp_name" $extra_args > "$log_path" 2>&1
+  local status=$?
+  [ "$status" -ne 0 ] && { echo "[$(date)] FAILED ${exp_name}"; tail -80 "$log_path"; exit "$status"; }
+  echo "[$(date)] done  ${exp_name}"
+}
+
+run_job 0 "oracle_budget10_acc100_1M" "--max-oracle-queries 10"
+
+echo "Slow GPU budget job complete"
+EOF
+
+chmod +x run_budget_slow.sh
+tmux new-session -d -s soko_budget_slow './run_budget_slow.sh'
+tmux attach -t soko_budget_slow
+```
+
+Detach from tmux without stopping jobs:
 
 ```text
 Ctrl-b d

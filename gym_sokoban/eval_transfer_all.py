@@ -46,9 +46,9 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 DEFAULT_RUN_ROOTS = [
     REPO_ROOT / "runs",
-    SCRIPT_DIR / "sokoban_vast_results" / "runs",
+    SCRIPT_DIR / "sokoban_results" / "runs",
 ]
-DEFAULT_OUT = SCRIPT_DIR / "figures" / "final" / "transfer_results.csv"
+DEFAULT_OUT = SCRIPT_DIR / "figures" / "transfer_results.csv"
 
 sys.path.insert(0, str(SCRIPT_DIR))
 from model import CNNPolicy

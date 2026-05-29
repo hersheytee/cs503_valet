@@ -34,7 +34,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRIPT_DIR.parent
 DEFAULT_RUN_ROOTS = [
     REPO_ROOT / "runs",
-    SCRIPT_DIR / "sokoban_vast_results" / "runs",
+    SCRIPT_DIR / "sokoban_results" / "runs",
 ]
 
 
@@ -637,7 +637,7 @@ def main():
         default=[str(path) for path in DEFAULT_RUN_ROOTS],
         help="Directories containing run subdirectories with config.yaml and data/metrics.csv.",
     )
-    parser.add_argument("--out-dir", default=str(SCRIPT_DIR / "figures" / "final"))
+    parser.add_argument("--out-dir", default=str(SCRIPT_DIR / "figures"))
     parser.add_argument("--window", type=int, default=50)
     parser.add_argument("--min-steps", type=int, default=450_000)
     parser.add_argument("--cost-curve-accuracy", type=float, default=1.0)

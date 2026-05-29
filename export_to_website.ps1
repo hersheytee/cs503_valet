@@ -4,7 +4,7 @@
 $WebsiteRepo = "..\CS503-VALET-Website"
 
 # GIFs
-$GifSrc = "gym_sokoban\figures\final\gifs"
+$GifSrc = "gym_sokoban\figures\gifs"
 $GifDst = "$WebsiteRepo\static\gifs\sokoban"
 if (Test-Path $GifSrc) {
     New-Item -ItemType Directory -Force $GifDst | Out-Null
@@ -15,7 +15,7 @@ if (Test-Path $GifSrc) {
 }
 
 # Figures (plots)
-$FigSrc = "gym_sokoban\figures\final"
+$FigSrc = "gym_sokoban\figures"
 $FigDst = "$WebsiteRepo\static\images"
 if (Test-Path $FigSrc) {
     Copy-Item "$FigSrc\*.png" $FigDst -Force

@@ -14,7 +14,7 @@ Usage:
     python gym_sokoban/eval_gif.py \\
         --checkpoint runs/.../checkpoints/final.pt \\
         --n-episodes 5 \\
-        --out gym_sokoban/figures/final/eval.gif
+        --out gym_sokoban/figures/eval.gif
 
     # Budget run (will auto-detect 4-channel obs):
     python gym_sokoban/eval_gif.py \\

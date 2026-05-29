@@ -100,6 +100,8 @@ VALET extended to Gym-Sokoban (irreversible actions, longer horizons). Same self
 
 Budget-limited variant: agent given at most K queries per episode, remaining budget encoded as a 4th input channel.
 
+See [`gym_sokoban/README.md`](gym_sokoban/README.md) for full setup, training, and evaluation instructions for the Sokoban experiments.
+
 ---
 
 ## `minigrid/` — Training code
