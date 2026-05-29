@@ -120,31 +120,140 @@ def bfs_sokoban(env_unwrapped, debug=False):
 
 def get_oracle_action(env_unwrapped):
     """
-    State-aware Oracle. If the agent deviates from the path, the cache breaks 
+    State-aware Oracle. If the agent deviates from the path, the cache breaks
     and it recomputes a new optimal path.
     """
+    if is_fixed_target_env(env_unwrapped):
+        return _get_oracle_action_fixed_target(env_unwrapped)
+    return _get_oracle_action_standard(env_unwrapped)
+
+
+def _get_oracle_action_standard(env_unwrapped):
     current_state = extract_state(env_unwrapped)
     if current_state[0] is None:
-        return 0 # Edge case: player is missing
-        
-    state_key = (current_state[0], current_state[1]) # (player_pos, boxes)
-    
-    # 1. Check if we have a cache AND the agent is exactly where we expect it to be
+        return 0
+
+    state_key = (current_state[0], current_state[1])
+
     if hasattr(env_unwrapped, '_oracle_cache') and getattr(env_unwrapped, '_expected_state', None) == state_key:
         if env_unwrapped._oracle_cache:
             action, next_state_key = env_unwrapped._oracle_cache.pop(0)
             env_unwrapped._expected_state = next_state_key
             return action
-            
-    # 2. Agent deviated (or first run). Recompute!
+
     path_data = bfs_sokoban(env_unwrapped, debug=False)
-    
     if path_data and len(path_data) > 0:
         action, next_state_key = path_data.pop(0)
         env_unwrapped._oracle_cache = path_data
         env_unwrapped._expected_state = next_state_key
         return action
-        
-    # 3. Agent pushed a box into a corner and the map is now unsolvable.
-    # Returning 0 (noop) will let the RL wrapper know the oracle gave up.
+
+    return 0
+
+
+# ── Fixed-target BFS ──────────────────────────────────────────────────────────
+
+def is_fixed_target_env(env_unwrapped) -> bool:
+    return hasattr(env_unwrapped, 'box_mapping')
+
+
+def _extract_ft_state(env_unwrapped):
+    """Return (player, assignment) where assignment = frozenset of (target, box) pairs."""
+    box_mapping = env_unwrapped.box_mapping
+    assignment = frozenset(box_mapping.items())
+    p_loc = np.where((env_unwrapped.room_state == 5) | (env_unwrapped.room_state == 6))
+    if len(p_loc[0]) == 0:
+        return None, assignment
+    player = (int(p_loc[0][0]), int(p_loc[1][0]))
+    return player, assignment
+
+
+def bfs_sokoban_fixed_target(env_unwrapped, debug=False):
+    """BFS for FixedTarget Sokoban: each box must reach its paired target."""
+    walls = set(zip(*np.where(env_unwrapped.room_fixed == 0)))
+    targets_set = frozenset(env_unwrapped.box_mapping.keys())
+
+    start_player, start_assignment = _extract_ft_state(env_unwrapped)
+    if start_player is None:
+        return []
+    if all(t == b for t, b in start_assignment):
+        return []
+
+    max_y, max_x = env_unwrapped.room_fixed.shape
+
+    start_state = (start_player, start_assignment)
+    queue = deque([(start_state, [])])
+    visited = {start_state}
+
+    while queue:
+        (player, assignment), path = queue.popleft()
+        py, px = player
+        box_positions = {b for _, b in assignment}
+
+        for dir_name, (dy, dx) in DIRECTIONS.items():
+            ny, nx = py + dy, px + dx
+            n_pos = (ny, nx)
+
+            if ny < 0 or ny >= max_y or nx < 0 or nx >= max_x:
+                continue
+            if n_pos in walls:
+                continue
+
+            new_assignment = assignment
+            is_push = False
+
+            if n_pos in box_positions:
+                bny, bnx = ny + dy, nx + dx
+                bn_pos = (bny, bnx)
+                if bny < 0 or bny >= max_y or bnx < 0 or bnx >= max_x:
+                    continue
+                if bn_pos in walls or bn_pos in box_positions:
+                    continue
+                if is_deadlock(bn_pos, walls, targets_set):
+                    continue
+                new_assignment = frozenset(
+                    (t, bn_pos) if b == n_pos else (t, b)
+                    for t, b in assignment
+                )
+                is_push = True
+
+            new_state = (n_pos, new_assignment)
+            if new_state in visited:
+                continue
+            visited.add(new_state)
+
+            if all(t == b for t, b in new_assignment):
+                if debug:
+                    print(f"  [FT Oracle] Solved! Path length: {len(path) + 1}")
+                action = get_action_id(dir_name, is_push)
+                return path + [(action, new_state)]
+
+            action = get_action_id(dir_name, is_push)
+            queue.append((new_state, path + [(action, new_state)]))
+
+    if debug:
+        print("  [FT Oracle] Unsolvable state.")
+    return None
+
+
+def _get_oracle_action_fixed_target(env_unwrapped):
+    start_player, assignment = _extract_ft_state(env_unwrapped)
+    if start_player is None:
+        return 0
+
+    state_key = (start_player, assignment)
+
+    if hasattr(env_unwrapped, '_ft_oracle_cache') and getattr(env_unwrapped, '_ft_expected_state', None) == state_key:
+        if env_unwrapped._ft_oracle_cache:
+            action, next_state_key = env_unwrapped._ft_oracle_cache.pop(0)
+            env_unwrapped._ft_expected_state = next_state_key
+            return action
+
+    path_data = bfs_sokoban_fixed_target(env_unwrapped, debug=False)
+    if path_data and len(path_data) > 0:
+        action, next_state_key = path_data.pop(0)
+        env_unwrapped._ft_oracle_cache = path_data
+        env_unwrapped._ft_expected_state = next_state_key
+        return action
+
     return 0
