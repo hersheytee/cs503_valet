@@ -23,9 +23,10 @@ cs503_project/
 ├── Benchmark/              # VLM oracle benchmark (dataset + evaluation)
 ├── Literature review/      # Related papers
 ├── VALET proposal.pdf      # Original project proposal
-├── checkpoints/            # Sokoban checkpoints
-├── logs/                   # Root-level logs
-└── figures/                # Root-level figures
+├── plot.py                 # Root-level plotting utility
+├── requirements.txt        # Root-level Python dependencies
+├── gen_eval_gifs.ps1       # Batch GIF generation for Sokoban conditions (PowerShell)
+└── export_to_website.ps1   # Copy figures and GIFs to the website repo (PowerShell)
 ```
 
 ---
@@ -129,12 +130,17 @@ See [`gym_sokoban/README.md`](gym_sokoban/README.md) for full setup, training, a
 |---|---|
 | `eval_transfer_stats.py` | Zero-shot transfer (100 eps, success/return/oracle%/efficiency) |
 | `per_cost_plot.py` | One 1×4 training curve plot per oracle cost vs baseline |
+| `merged_plot.py` | All conditions overlaid, plasma colorbar |
+| `plot.py` | General plotting utility |
+| `noise_plot.py` | Noisy oracle plots |
+| `vlm_plot.py` | VLM oracle plots |
+| `vlm_compare_plot.py` | Side-by-side VLM vs BFS comparison plots |
 | `submit_eval_transfer_stats.sh` | Transfer eval on Fetch-16×16 |
 | `submit_eval_transfer_stats_multiroom.sh` | Transfer eval on MultiRoom-N6 |
 | `submit_eval_all_partial_doorkey.sh` | GIFs for all partial-obs models |
+| `eval_transfer.sh` | Transfer eval runner |
 | `job_noise.sh` | Noisy oracle sweep |
-| `noise_plot.py` | Noisy oracle plots |
-| `vlm_plot.py` | VLM oracle plots |
+| `plot_all.sh` | Regenerate all plots |
 
 ---
 
