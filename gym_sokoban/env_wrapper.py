@@ -5,7 +5,9 @@ Adds the `query_oracle` action and resizes RGB images to 56x56 by default
 for 7x7 boards rendered at 8 pixels per cell.
 """
 
+import warnings
 import gym as old_gym          # The old library where Sokoban lives
+warnings.filterwarnings("ignore", category=UserWarning, module="gym")
 import gymnasium as gym        # The modern library your RL agent needs
 from gymnasium import spaces
 import numpy as np
