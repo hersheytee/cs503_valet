@@ -200,6 +200,14 @@ def main():
     ep_returns    = deque(maxlen=100)
     ep_guided_pct = deque(maxlen=100)
 
+    # Best-model tracking (per run)
+    best_mean_return = -np.inf
+    # Condition-level checkpoint shared across seeds — overwritten if this seed is better
+    condition_ckpt = (f'checkpoints/best__{args.exp_name}__{args.env_id}.pt'
+                      if args.save_model else None)
+    if condition_ckpt:
+        os.makedirs('checkpoints', exist_ok=True)
+
     # ── Initial reset ─────────────────────────────────────────────────────────
     next_obs_np, _ = envs.reset(seed=args.seed)
     next_obs  = torch.tensor(next_obs_np, dtype=torch.uint8).to(device)
@@ -381,24 +389,40 @@ def main():
 
             last_bc_loss = bc_loss.item()
 
-        # ── Console log ───────────────────────────────────────────────────────
+        # ── Console log + best-model checkpoint ──────────────────────────────
         if update % 10 == 0 or update == 1:
             sps = int(global_step / (time.time() - t0))
+            mean_ret = np.mean(ep_returns) if ep_returns else float('nan')
             print(
                 f"[{update:4d}/{n_updates}] step={global_step:7d} | "
                 f"ep={episode_count:5d} | "
-                f"return={np.mean(ep_returns) if ep_returns else float('nan'):6.3f} | "
+                f"return={mean_ret:6.3f} | "
                 f"guided%={np.mean(ep_guided_pct) if ep_guided_pct else float('nan'):5.1f} | "
                 f"bc={last_bc_loss:.4f} | cumQ={cum_queries:6d} | "
                 f"bc_coef={bc_coef:.3f} | sps={sps}"
             )
+            if condition_ckpt and ep_returns and mean_ret > best_mean_return:
+                best_mean_return = mean_ret
 
-    # ── Save & plot ───────────────────────────────────────────────────────────
-    if args.save_model:
-        os.makedirs('checkpoints', exist_ok=True)
-        ckpt = f'checkpoints/{run_name}.pt'
-        torch.save(model.state_dict(), ckpt)
-        print(f"Saved → {ckpt}")
+    # ── Save best model for this condition (shared across seeds) ─────────────
+    if condition_ckpt:
+        # Load existing best return for this condition if it exists
+        existing_best = -np.inf
+        if os.path.exists(condition_ckpt):
+            meta = torch.load(condition_ckpt, map_location='cpu', weights_only=False)
+            existing_best = meta.get('best_return', -np.inf)
+
+        if best_mean_return > existing_best:
+            torch.save({'state_dict': model.state_dict(),
+                        'best_return': float(best_mean_return),
+                        'seed': int(args.seed),
+                        'exp_name': args.exp_name,
+                        'env_id': args.env_id}, condition_ckpt)
+            print(f"  ★ Best seed so far (return={best_mean_return:.4f}, seed={args.seed})"
+                  f" → {condition_ckpt}")
+        else:
+            print(f"  Seed {args.seed} return={best_mean_return:.4f} "
+                  f"≤ existing best={existing_best:.4f}, not overwritten.")
 
     logger.close()
     envs.close()

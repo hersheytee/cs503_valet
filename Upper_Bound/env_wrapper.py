@@ -23,7 +23,15 @@ from minigrid.wrappers import FullyObsWrapper, RGBImgObsWrapper, RGBImgPartialOb
 from oracle import get_oracle_action as _get_oracle_action_doorkey
 from oracle_transfer import get_oracle_action as _get_oracle_action_transfer
 
-_TRANSFER_ENV_TYPES = {'fetch', 'gotodoor', 'gotoobject'}
+# Register custom Fetch sizes not bundled with minigrid
+from minigrid.envs import FetchEnv
+for _size, _n in [(16, 3)]:
+    _id = f'MiniGrid-Fetch-{_size}x{_size}-N{_n}-v0'
+    if _id not in gym.envs.registry:
+        gym.register(id=_id, entry_point='minigrid.envs:FetchEnv',
+                     kwargs={'size': _size, 'numObjs': _n})
+
+_TRANSFER_ENV_TYPES = {'fetch', 'gotodoor', 'gotoobject', 'multiroom'}
 
 def get_oracle_action(env_unwrapped, env_type):
     if env_type in _TRANSFER_ENV_TYPES:

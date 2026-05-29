@@ -193,9 +193,12 @@ def build_row(axes, oracle_dfs, base_dfs, row_label):
 
 # ── Main figure ───────────────────────────────────────────────────────────────
 
-def make_overview(free_dfs, paid_001_dfs, paid_002_dfs, paid_003_dfs,
-                  paid_004_dfs, paid_005_dfs, base_dfs, env_id, out):
-    n_rows = 7
+def make_overview(conditions, base_dfs, env_id, out):
+    """
+    conditions: list of (label, dfs) — one row per oracle condition
+    base_dfs:   baseline dfs (shown as reference in every row)
+    """
+    n_rows = len(conditions) + 1  # +1 for baseline row
     fig = plt.figure(figsize=(25, n_rows * 4.5))
     fig.patch.set_facecolor('#FAFAFA')
 
@@ -207,18 +210,13 @@ def make_overview(free_dfs, paid_001_dfs, paid_002_dfs, paid_003_dfs,
     )
 
     rows = [[fig.add_subplot(gs[r, c]) for c in range(5)] for r in range(n_rows)]
-
     for row in rows:
         for ax in row:
             ax.set_facecolor('#F5F5F5')
 
-    build_row(rows[0], free_dfs,      base_dfs, 'Free Oracle\n(cost=0.00)')
-    build_row(rows[1], paid_001_dfs,  base_dfs, 'Paid Oracle\n(cost=0.01)')
-    build_row(rows[2], paid_002_dfs,  base_dfs, 'Paid Oracle\n(cost=0.02)')
-    build_row(rows[3], paid_003_dfs,  base_dfs, 'Paid Oracle\n(cost=0.03)')
-    build_row(rows[4], paid_004_dfs,  base_dfs, 'Paid Oracle\n(cost=0.04)')
-    build_row(rows[5], paid_005_dfs,  base_dfs, 'Paid Oracle\n(cost=0.05)')
-    build_row(rows[6], base_dfs,      base_dfs, 'Baseline PPO\n(no oracle)')
+    for i, (label, dfs) in enumerate(conditions):
+        build_row(rows[i], dfs, base_dfs, label)
+    build_row(rows[-1], base_dfs, base_dfs, 'Baseline PPO\n(no oracle)')
 
     handles = [
         Line2D([0], [0], color=C['oracle'],   lw=2, label='PPO + Oracle'),
@@ -241,28 +239,43 @@ def make_overview(free_dfs, paid_001_dfs, paid_002_dfs, paid_003_dfs,
 # ── CLI ───────────────────────────────────────────────────────────────────────
 
 if __name__ == '__main__':
+    import re as _re
     parser = argparse.ArgumentParser()
-    parser.add_argument('--free-csv',      nargs='+', required=True)
-    parser.add_argument('--paid-001-csv',  nargs='+', required=True)
-    parser.add_argument('--paid-002-csv',  nargs='+', required=True)
-    parser.add_argument('--paid-003-csv',  nargs='+', required=True)
-    parser.add_argument('--paid-004-csv',  nargs='+', required=True)
-    parser.add_argument('--paid-005-csv',  nargs='+', required=True)
-    parser.add_argument('--base-csv',      nargs='+', required=True)
-    parser.add_argument('--env-id',        type=str,  default='MiniGrid-DoorKey-8x8-v0')
-    parser.add_argument('--out',           type=str,  default='figures/overview.png')
-    parser.add_argument('--min-steps',     type=int,  default=0)
+    parser.add_argument('--tag',      type=str, default=None,
+                        help='Exp-name suffix, e.g. "16_partial"')
+    parser.add_argument('--costs',    nargs='+', default=None,
+                        help='Explicit cost strings to include, e.g. 001 012 015 018 002')
+    parser.add_argument('--log-dir',  type=str, default='logs')
+    parser.add_argument('--base-csv', nargs='+', default=None)
+    parser.add_argument('--env-id',   type=str, default='MiniGrid-DoorKey-16x16-v0')
+    parser.add_argument('--out',      type=str, default='figures/overview.png')
+    parser.add_argument('--min-steps',type=int, default=0)
     args = parser.parse_args()
 
     ms = args.min_steps
-    make_overview(
-        free_dfs     = load_csvs(args.free_csv,     ms),
-        paid_001_dfs = load_csvs(args.paid_001_csv, ms),
-        paid_002_dfs = load_csvs(args.paid_002_csv, ms),
-        paid_003_dfs = load_csvs(args.paid_003_csv, ms),
-        paid_004_dfs = load_csvs(args.paid_004_csv, ms),
-        paid_005_dfs = load_csvs(args.paid_005_csv, ms),
-        base_dfs     = load_csvs(args.base_csv,     ms),
-        env_id=args.env_id,
-        out=args.out,
-    )
+
+    if args.tag is None:
+        parser.error('--tag is required')
+
+    suffix = f'_{args.tag}' if args.tag else ''
+    def p(name): return os.path.join(args.log_dir, f'{name}{suffix}__*.csv')
+
+    # Which costs to show
+    cost_strings = args.costs if args.costs else ['001', '002', '003', '004', '005']
+
+    conditions = []
+    for cs in cost_strings:
+        try:
+            dfs = load_csvs([p(f'oracle_paid_{cs}')], ms)
+            v = int(cs)
+            cost_val = f'{v/100:.2f}' if v <= 5 else f'{v/1000:.3f}'
+            conditions.append((f'Paid Oracle\n(cost={cost_val})', dfs))
+        except (FileNotFoundError, ValueError) as e:
+            print(f'  [skip] oracle_paid_{cs}: {e}')
+
+    if args.base_csv:
+        base_dfs = load_csvs(args.base_csv, ms)
+    else:
+        base_dfs = load_csvs([p('baseline')], ms)
+
+    make_overview(conditions, base_dfs, env_id=args.env_id, out=args.out)

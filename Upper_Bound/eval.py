@@ -15,12 +15,13 @@ import numpy as np
 import torch
 import gymnasium as gym
 import imageio
+from PIL import Image, ImageDraw, ImageFont
 from minigrid.wrappers import FullyObsWrapper, RGBImgObsWrapper
 
 from oracle_transfer import get_oracle_action as _get_oracle_action_transfer
 from oracle import get_oracle_action as _get_oracle_action_doorkey
 
-_TRANSFER_ENV_TYPES = {'fetch', 'gotodoor', 'gotoobject'}
+_TRANSFER_ENV_TYPES = {'fetch', 'gotodoor', 'gotoobject', 'multiroom'}
 
 def get_oracle_action(env_unwrapped, env_type):
     if env_type in _TRANSFER_ENV_TYPES:
@@ -44,6 +45,8 @@ def parse_args():
     p.add_argument('--no-oracle',      action='store_true', default=False)
     p.add_argument('--oracle-cost',    type=float, default=0.0)
     p.add_argument('--reward-shaping', action='store_true', default=False)
+    p.add_argument('--stochastic',     action='store_true', default=False,
+                   help='Sample actions from policy distribution instead of argmax')
     p.add_argument('--n-episodes',     type=int, default=3)
     p.add_argument('--hidden-dim',     type=int, default=256)
     p.add_argument('--tile-size',      type=int, default=8)
@@ -114,40 +117,112 @@ def make_eval_env(env_id, env_type, tile_size, no_oracle, oracle_cost,
     return EvalWrapper(inner)
 
 
-def run_episode(env, model, device, no_oracle, seed):
+def annotate_frame(frame, step, action_name, reward, total_ret, guided, n_queries, probs=None):
+    """Overlay HUD + action probability bars on a rendered frame."""
+    try:
+        font    = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 13)
+        font_sm = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 11)
+    except Exception:
+        font = font_sm = ImageFont.load_default()
+
+    img = Image.fromarray(frame).convert('RGB')
+    W, H = img.size
+
+    # ── Probability panel (appended below) ───────────────────────────────────
+    BAR_H    = 18   # height per action row
+    LABEL_W  = 58   # label column width
+    BAR_MAXW = W - LABEL_W - 6  # max bar width
+    N_ACTS   = len(ACTION_NAMES)
+    PANEL_H  = N_ACTS * BAR_H + 6
+
+    panel = Image.new('RGB', (W, PANEL_H), (30, 30, 30))
+    pd_   = ImageDraw.Draw(panel)
+
+    if probs is not None:
+        for i, (act_id, act_name) in enumerate(ACTION_NAMES.items()):
+            p    = float(probs[act_id]) if act_id < len(probs) else 0.0
+            y0   = 3 + i * BAR_H
+            y1   = y0 + BAR_H - 3
+
+            is_oracle   = (act_id == N_ACTS - 1)
+            is_selected = (act_name == action_name) or (guided and is_oracle)
+
+            # Bar colour
+            if is_oracle:
+                bar_col = (220, 60, 60) if is_selected else (160, 60, 60)
+            elif is_selected:
+                bar_col = (60, 200, 100)
+            else:
+                bar_col = (70, 130, 200)
+
+            bar_w = max(2, int(p * BAR_MAXW))
+            pd_.rectangle([LABEL_W, y0, LABEL_W + bar_w, y1], fill=bar_col)
+
+            # Label + pct
+            label = f'{act_name[:6]:<6s}'
+            pd_.text((2, y0), label,    font=font_sm, fill=(200, 200, 200))
+            pd_.text((LABEL_W + bar_w + 3, y0), f'{p*100:4.1f}%',
+                     font=font_sm, fill=(200, 200, 200))
+
+    # ── Combine frame + panel ─────────────────────────────────────────────────
+    combined = Image.new('RGB', (W, H + PANEL_H))
+    combined.paste(img,   (0, 0))
+    combined.paste(panel, (0, H))
+    draw = ImageDraw.Draw(combined, 'RGBA')
+
+    # ── Red border + banner when oracle called ────────────────────────────────
+    if guided:
+        for t in range(4):
+            draw.rectangle([t, t, W - 1 - t, H - 1 - t], outline=(220, 30, 30, 255))
+        draw.rectangle([0, 0, W, 18], fill=(220, 30, 30, 210))
+        draw.text((4, 2), '◆ ORACLE QUERY', font=font, fill=(255, 255, 255, 255))
+    else:
+        draw.rectangle([0, 0, W - 1, H - 1], outline=(80, 80, 80, 180))
+
+    # ── Top HUD ───────────────────────────────────────────────────────────────
+    hud_h = 16
+    draw.rectangle([0, H - hud_h, W, H], fill=(0, 0, 0, 170))
+    hud_text = (f'step={step}  act={action_name:<7s}  '
+                f'r={reward:+.2f}  R={total_ret:.3f}  queries={n_queries}')
+    draw.text((4, H - hud_h + 2), hud_text, font=font_sm, fill=(220, 220, 220, 255))
+
+    return np.array(combined)
+
+
+def run_episode(env, model, device, no_oracle, seed, stochastic=False):
     obs, _ = env.reset(seed=seed)
-    frames, total_ret, step = [], 0.0, 0
-    QUERY_ACTION = env.QUERY_ACTION
+    frames, total_ret, step, n_queries = [], 0.0, 0, 0
 
     while True:
-        frame = env.render()
-        if frame is not None:
-            frames.append(frame.copy())
-
         obs_t = torch.tensor(obs[None], dtype=torch.uint8).to(device)
         with torch.no_grad():
             logits, _ = model(obs_t)
-            if no_oracle:
-                action = logits.argmax(dim=-1).item()
+            probs = torch.softmax(logits, dim=-1)[0].cpu().numpy()
+            if stochastic:
+                action = torch.distributions.Categorical(logits=logits).sample().item()
             else:
-                # Let model decide — including potentially querying oracle
                 action = logits.argmax(dim=-1).item()
 
         obs, reward, terminated, truncated, info = env.step(action)
         total_ret += reward
         step += 1
         guided = info.get('guided', False)
+        if guided:
+            n_queries += 1
 
         name = 'Oracle' if guided else ACTION_NAMES.get(action, str(action))
         print(f"  step={step:3d}  action={name:8s}  reward={reward:+.3f}  "
-              f"guided={guided}  ret={total_ret:.3f}")
+              f"guided={guided}  queries={n_queries}  ret={total_ret:.3f}")
+
+        frame = env.render()
+        if frame is not None:
+            frames.append(annotate_frame(frame, step, name, reward,
+                                         total_ret, guided, n_queries, probs=probs))
 
         if terminated or truncated:
-            frame = env.render()
-            if frame is not None:
-                frames.append(frame.copy())
             status = 'SUCCESS' if terminated else 'TIMEOUT'
-            print(f"  → {status} in {step} steps, return={total_ret:.3f}")
+            print(f"  → {status} in {step} steps, return={total_ret:.3f}, "
+                  f"oracle_queries={n_queries}")
             break
 
     return frames, total_ret, step
@@ -174,15 +249,21 @@ def main():
     else:
         CNNPolicy = CNNPolicySmall
     model = CNNPolicy(env.observation_space.shape, env.n_actions, args.hidden_dim).to(device)
-    model.load_state_dict(torch.load(ckpt_path, map_location=device))
+    ckpt = torch.load(ckpt_path, map_location=device, weights_only=False)
+    state_dict = ckpt['state_dict'] if isinstance(ckpt, dict) and 'state_dict' in ckpt else ckpt
+    model.load_state_dict(state_dict)
     model.eval()
-    print(f"Model loaded — obs={env.observation_space.shape}, n_actions={env.n_actions}")
+    if isinstance(ckpt, dict):
+        print(f"Model loaded — best_return={ckpt.get('best_return', '?'):.4f}, "
+              f"seed={ckpt.get('seed', '?')}")
+    print(f"  obs={env.observation_space.shape}, n_actions={env.n_actions}")
 
     all_frames = []
     for ep in range(args.n_episodes):
         print(f"\n── Episode {ep+1}/{args.n_episodes} ──")
         frames, ret, steps = run_episode(env, model, device, args.no_oracle,
-                                         seed=args.seed + ep)
+                                         seed=args.seed + ep,
+                                         stochastic=args.stochastic)
         separator = [np.zeros_like(frames[0])] * 4
         all_frames += frames + separator
 
