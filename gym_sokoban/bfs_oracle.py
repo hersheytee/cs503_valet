@@ -154,7 +154,10 @@ def _get_oracle_action_standard(env_unwrapped):
 # ── Fixed-target BFS ──────────────────────────────────────────────────────────
 
 def is_fixed_target_env(env_unwrapped) -> bool:
-    return hasattr(env_unwrapped, 'box_mapping')
+    # Both standard and fixed-target envs have box_mapping, so we check the
+    # class name instead. FixedTarget variants inherit from FixedTargetsSokobanEnv.
+    return 'FixedTarget' in type(env_unwrapped).__name__ or \
+           any('FixedTarget' in c.__name__ for c in type(env_unwrapped).__mro__)
 
 
 def _extract_ft_state(env_unwrapped):

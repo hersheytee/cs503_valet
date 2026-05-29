@@ -1,6 +1,5 @@
 # gen_eval_gifs.ps1
 # Generate evaluation GIFs for all Sokoban conditions.
-# Fill in checkpoint paths before running.
 # Output: gym_sokoban/figures/final/gifs/
 
 param(
@@ -12,14 +11,14 @@ param(
 $OutDir = "gym_sokoban/figures/final/gifs"
 New-Item -ItemType Directory -Force $OutDir | Out-Null
 
-# ── Fill in checkpoint paths ─────────────────────────────────────────────────
-$CKPT_BASELINE     = "gym_sokoban/sokoban_vast_results/runs/<baseline_run>/checkpoints/final.pt"
-$CKPT_ORACLE_FREE  = "gym_sokoban/sokoban_vast_results/runs/<oracle_free_run>/checkpoints/final.pt"
-$CKPT_ORACLE_COST05= "gym_sokoban/sokoban_vast_results/runs/<oracle_cost05_run>/checkpoints/final.pt"
-$CKPT_BUDGET1      = "runs/<budget1_run>/checkpoints/final.pt"
-$CKPT_BUDGET3      = "runs/<budget3_run>/checkpoints/final.pt"
-$CKPT_BUDGET5      = "runs/<budget5_run>/checkpoints/final.pt"
-# ─────────────────────────────────────────────────────────────────────────────
+$VastRuns = "gym_sokoban/sokoban_vast_results/runs"
+
+$CKPT_BASELINE      = "$VastRuns/20260528_014748__baseline_minigridcnn_500k__Sokoban-small-v0__seed1/checkpoints/final.pt"
+$CKPT_ORACLE_FREE   = "$VastRuns/20260529_023713__oracle_acc100_cost0_500k__Sokoban-small-v0__seed1/checkpoints/final.pt"
+$CKPT_ORACLE_COST01 = "$VastRuns/20260528_022559__oracle_acc100_cost01_500k__Sokoban-small-v0__seed1/checkpoints/final.pt"
+$CKPT_ORACLE_COST05 = "$VastRuns/20260528_004947__oracle_acc100_cost05_500k__Sokoban-small-v0__seed1/checkpoints/final.pt"
+$CKPT_ORACLE_COST08 = "$VastRuns/20260528_033855__oracle_acc100_cost08_500k__Sokoban-small-v0__seed1/checkpoints/final.pt"
+$CKPT_LINEAR        = "$VastRuns/20260529_001243__oracle_acc100_cost_linear_0to2_3M__Sokoban-small-v0__seed1/checkpoints/final.pt"
 
 function Gen-Gif {
     param($Label, $Checkpoint, $ExtraArgs)
@@ -37,12 +36,12 @@ function Gen-Gif {
     }
 }
 
-Gen-Gif "baseline"      $CKPT_BASELINE      "--no-oracle"
-Gen-Gif "oracle_free"   $CKPT_ORACLE_FREE   ""
-Gen-Gif "oracle_cost05" $CKPT_ORACLE_COST05 ""
-Gen-Gif "budget1"       $CKPT_BUDGET1       "--max-oracle-queries 1"
-Gen-Gif "budget3"       $CKPT_BUDGET3       "--max-oracle-queries 3"
-Gen-Gif "budget5"       $CKPT_BUDGET5       "--max-oracle-queries 5"
+Gen-Gif "baseline"      $CKPT_BASELINE      "--no-oracle --stochastic --success-only"
+Gen-Gif "oracle_free"   $CKPT_ORACLE_FREE   "--oracle-cost 0 --stochastic --success-only"
+Gen-Gif "oracle_cost01" $CKPT_ORACLE_COST01 "--oracle-cost 0.1 --stochastic --success-only"
+Gen-Gif "oracle_cost05" $CKPT_ORACLE_COST05 "--oracle-cost 0.5 --stochastic --success-only"
+Gen-Gif "oracle_cost08" $CKPT_ORACLE_COST08 "--oracle-cost 0.8 --stochastic --success-only"
+Gen-Gif "oracle_linear" $CKPT_LINEAR        "--oracle-cost 0 --stochastic --success-only"
 
 Write-Host "`nAll GIFs saved to $OutDir"
 Write-Host "Run export_to_website.ps1 to copy them to the website repo."

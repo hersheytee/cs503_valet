@@ -193,6 +193,7 @@ def evaluate(
         "success_rate": float(np.mean(successes)),
         "success_std": float(np.std(successes)),
         "oracle_usage_pct": float(np.mean(guided_pcts)),
+        "oracle_usage_pct_std": float(np.std(guided_pcts)),
         "queries_per_ep": float(np.mean(queries)),
         "queries_per_ep_std": float(np.std(queries)),
         "n_episodes": n_episodes,

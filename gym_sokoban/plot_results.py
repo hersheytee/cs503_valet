@@ -305,12 +305,18 @@ def plot_cost_curves(
 
     baseline = baseline_run(records)
     colors = plt.cm.plasma(np.linspace(0.08, 0.9, len(unique_costs)))
-    fig, axes = plt.subplots(1, 2, figsize=(13, 4.8), sharex=True)
+    fig, axes = plt.subplots(1, 3, figsize=(18, 4.8), sharex=True)
+
+    plot_cols = ["success", "guided_pct", "queries_per_ep"]
 
     for color, cost_val in zip(colors, unique_costs):
         group = cost_groups[cost_val]
         label = f"cost={label_float(cost_val)}"
-        for col, ax in zip(["success", "guided_pct"], axes):
+        for col, ax in zip(plot_cols, axes):
+            # skip queries_per_ep if no run in this group has the column
+            has_col = any(col in r.metrics.columns for r in group)
+            if not has_col:
+                continue
             if shade and len(group) > 1:
                 steps, mean, std = smooth_metric_band(group, col, window)
                 if steps is None:
@@ -326,6 +332,8 @@ def plot_cost_curves(
                 )
             else:
                 run = max(group, key=lambda r: r.max_step)
+                if col not in run.metrics.columns:
+                    continue
                 s = smooth_metric(run.metrics, col, window)
                 ax.plot(s["global_step"], s["value"], color=color, linewidth=2.4, label=label)
 
@@ -348,17 +356,21 @@ def plot_cost_curves(
     axes[1].set_ylabel("")
     axes[1].set_ylim(-2, 102)
 
+    axes[2].set_title("Oracle Queries per Episode")
+    axes[2].set_ylabel("")
+
     for ax in axes:
         finish_axis(ax)
 
     handles, labels = axes[0].get_legend_handles_labels()
-    h1, l1 = axes[1].get_legend_handles_labels()
-    seen = set(labels)
-    for h, l in zip(h1, l1):
-        if l not in seen:
-            handles.append(h)
-            labels.append(l)
-            seen.add(l)
+    for ax in axes[1:]:
+        h1, l1 = ax.get_legend_handles_labels()
+        seen = set(labels)
+        for h, l in zip(h1, l1):
+            if l not in seen:
+                handles.append(h)
+                labels.append(l)
+                seen.add(l)
     fig.legend(handles, labels, loc="center left", bbox_to_anchor=(1.0, 0.5),
                frameon=False, fontsize=11)
 
@@ -382,6 +394,7 @@ def plot_accuracy_lines(
         r for r in records
         if not r.no_oracle and not r.is_linear_cost
         and r.oracle_accuracy is not None and r.fixed_cost is not None
+        and r.fixed_cost > 0
     ]
     if not all_runs:
         print("No accuracy-ablation runs found")
@@ -544,38 +557,54 @@ def plot_transfer(out_dir: Path, min_timesteps: int = 450_000):
         print("No FixedTarget transfer results found — skipping transfer plot")
         return
 
+    # Exclude linear-cost runs and cost=0 runs.
+    if "oracle_cost_final" in df.columns:
+        df = df[df["oracle_cost_final"].isna()].copy()
+    df = df[df["oracle_cost"] > 0].copy()
+
     costs = sorted(df["oracle_cost"].dropna().unique())
     palette = plt.cm.plasma(np.linspace(0.08, 0.9, len(costs)))
     cost_color = dict(zip(costs, palette))
 
-    fig, ax = plt.subplots(1, 1, figsize=(6, 4.8))
+    fig, axes = plt.subplots(1, 3, figsize=(16, 4.8))
+
+    metrics_cfg = [
+        ("success_rate",      "success_std",         "Success Rate",               (-.02, 1.02)),
+        ("oracle_usage_pct",  "oracle_usage_pct_std", "Oracle Usage (% steps)",     (-2, 102)),
+        ("queries_per_ep",    "queries_per_ep_std",  "Oracle Queries per Episode", None),
+    ]
 
     for cost_val in costs:
         rows = df[np.isclose(df["oracle_cost"], cost_val)].sort_values("oracle_accuracy")
         if rows.empty:
             continue
         color = cost_color[cost_val]
-        ax.plot(rows["oracle_accuracy"], rows["success_rate"],
-                color=color, linewidth=2, marker="o", label=f"cost={cost_val:g}")
-        ax.fill_between(
-            rows["oracle_accuracy"],
-            rows["success_rate"] - rows["success_std"],
-            rows["success_rate"] + rows["success_std"],
-            color=color, alpha=0.2,
-        )
+        label = f"cost={cost_val:g}"
+        for ax, (col, std_col, _, _) in zip(axes, metrics_cfg):
+            ax.plot(rows["oracle_accuracy"], rows[col],
+                    color=color, linewidth=2, marker="o", label=label)
+            if std_col and std_col in rows.columns:
+                ax.fill_between(
+                    rows["oracle_accuracy"],
+                    rows[col] - rows[std_col],
+                    rows[col] + rows[std_col],
+                    color=color, alpha=0.2,
+                )
 
-    ax.set_title("FixedTarget-Sokoban-v2 (zero-shot transfer)")
-    ax.set_xlabel("Oracle Accuracy")
-    ax.set_ylabel("Success Rate")
-    ax.set_ylim(-0.02, 1.02)
-    ax.grid(True, alpha=0.25, linestyle="--")
-    ax.spines["top"].set_visible(False)
-    ax.spines["right"].set_visible(False)
+    for ax, (_, _, title, ylim) in zip(axes, metrics_cfg):
+        ax.set_title(title)
+        ax.set_xlabel("Oracle Accuracy")
+        ax.set_ylabel("")
+        if ylim:
+            ax.set_ylim(*ylim)
+        ax.grid(True, alpha=0.25, linestyle="--")
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
 
-    handles, labels = ax.get_legend_handles_labels()
+    handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="center left", bbox_to_anchor=(1.0, 0.5),
                frameon=False, fontsize=11)
-    fig.suptitle("Zero-Shot Transfer: Success Rate by Oracle Accuracy & Cost", fontweight="bold")
+    fig.suptitle("Zero-Shot Transfer to FixedTarget-Sokoban-v2", fontweight="bold")
     fig.tight_layout()
     out_path = out_dir / "transfer_results.png"
     fig.savefig(out_path, dpi=220, bbox_inches="tight")

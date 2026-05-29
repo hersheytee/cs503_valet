@@ -214,11 +214,12 @@ def run_episode(
             frames.append(frame)
 
         if terminated or truncated:
-            status = "SUCCESS" if info.get("success", False) else "TIMEOUT"
+            success = info.get("success", False)
+            status = "SUCCESS" if success else "TIMEOUT/FAIL"
             print(f"  → {status} | steps={step}  return={total_ret:.3f}  queries={n_queries}")
             break
 
-    return frames, total_ret, step
+    return frames, total_ret, step, success
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -231,10 +232,12 @@ def parse_args():
     p.add_argument("--oracle-cost", type=float, default=0.0)
     p.add_argument("--oracle-accuracy", type=float, default=1.0)
     p.add_argument("--max-oracle-queries", type=int, default=None)
-    p.add_argument("--max-episode-steps", type=int, default=50)
+    p.add_argument("--max-episode-steps", type=int, default=120)
     p.add_argument("--obs-size", type=int, default=56)
     p.add_argument("--hidden-dim", type=int, default=256)
     p.add_argument("--n-episodes", type=int, default=5)
+    p.add_argument("--success-only", action="store_true",
+                   help="Keep re-rolling seeds until n-episodes successful episodes are collected.")
     p.add_argument("--stochastic", action="store_true")
     p.add_argument("--scale", type=int, default=4, help="Upscale factor for board rendering")
     p.add_argument("--fps", type=int, default=4)
@@ -282,13 +285,24 @@ def main():
     print(f"Device: {device}  obs={obs_shape}  n_actions={n_actions}")
 
     all_frames: list[np.ndarray] = []
-    for ep in range(args.n_episodes):
-        print(f"\n── Episode {ep + 1}/{args.n_episodes} ──")
-        frames, ret, steps = run_episode(
-            env, model, device, seed=args.seed + ep,
+    collected = 0
+    attempt = 0
+    target = args.n_episodes
+    while collected < target:
+        seed = args.seed + attempt
+        attempt += 1
+        print(f"\n── Episode {collected + 1}/{target}  (seed={seed}) ──")
+        frames, ret, steps, success = run_episode(
+            env, model, device, seed=seed,
             stochastic=args.stochastic, scale=args.scale,
         )
-        # Black separator between episodes
+        if args.success_only and not success:
+            print("  (skipped — not a success)")
+            if attempt > target * 20:
+                print("WARNING: gave up finding enough successes after many attempts.")
+                break
+            continue
+        collected += 1
         if frames:
             separator = [np.zeros_like(frames[0])] * 3
             all_frames += frames + separator
