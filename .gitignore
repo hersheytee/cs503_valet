@@ -223,6 +223,13 @@ __marimo__/
 /.claude
 /Benchmark/history_dataset
 
+# Training outputs
+Upper_Bound/logs/
+Upper_Bound/figures/
+Upper_Bound/checkpoints/
 /Upper_Bound/checkpoints/
 /Upper_Bound/logs/
 /Upper_Bound/figures/
+git_token.md
+gym_sokoban/sokoban_vast_results
+gym_sokoban/checkpoints
