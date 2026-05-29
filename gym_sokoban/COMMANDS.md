@@ -395,3 +395,56 @@ Detach from tmux without stopping the jobs:
 ```text
 Ctrl-b d
 ```
+
+## Cost=0 Accuracy Ablations (Single GPU, Serial)
+
+These fill in the free-oracle accuracy sweep (cost=0, varying accuracy).
+The acc=1.0 run (`oracle_acc100_cost0_500k`) is already covered by the
+reference jobs above. Run the remaining three serially on one GPU.
+
+```bash
+cat > run_cost0_accuracy.sh <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p vast_logs
+
+PYTHON_BIN="${PYTHON_BIN:-$(command -v python || command -v python3 || true)}"
+
+COMMON_ARGS="--env-id Sokoban-small-v0 \
+  --total-timesteps 500000 \
+  --n-envs 64 \
+  --n-steps 256 \
+  --n-minibatches 8 \
+  --save-model \
+  --wandb-project cs503-sokoban \
+  --wandb-group sokoban_minigridcnn_seed1_cost0_accuracy"
+
+run_job() {
+  local gpu="$1"; local exp_name="$2"; local extra_args="$3"
+  local log_path="vast_logs/${exp_name}_s1.log"
+  echo "[$(date)] start ${exp_name}"
+  CUDA_VISIBLE_DEVICES="$gpu" "$PYTHON_BIN" -u gym_sokoban/train.py \
+    $COMMON_ARGS --seed 1 --exp-name "$exp_name" $extra_args > "$log_path" 2>&1
+  local status=$?
+  [ "$status" -ne 0 ] && { echo "[$(date)] FAILED ${exp_name}"; tail -80 "$log_path"; exit "$status"; }
+  echo "[$(date)] done  ${exp_name}"
+}
+
+run_job 0 "oracle_acc025_cost0_500k" "--oracle-accuracy 0.25 --oracle-cost 0.0"
+run_job 0 "oracle_acc050_cost0_500k" "--oracle-accuracy 0.5  --oracle-cost 0.0"
+run_job 0 "oracle_acc075_cost0_500k" "--oracle-accuracy 0.75 --oracle-cost 0.0"
+
+echo "Cost=0 accuracy ablations complete"
+EOF
+
+chmod +x run_cost0_accuracy.sh
+tmux new-session -d -s soko_cost0 './run_cost0_accuracy.sh'
+tmux attach -t soko_cost0
+```
+
+Detach from tmux without stopping the jobs:
+
+```text
+Ctrl-b d
+```

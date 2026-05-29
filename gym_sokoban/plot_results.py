@@ -169,24 +169,31 @@ def as_float(value) -> float | None:
     return float(value)
 
 
-def smooth_metric(metrics: pd.DataFrame, column: str, window: int) -> pd.DataFrame:
+def smooth_metric(metrics: pd.DataFrame, column: str, window: int, n_interp: int = 500) -> pd.DataFrame:
     out = metrics[["global_step", column]].copy()
     out[column] = pd.to_numeric(out[column], errors="coerce")
     out = out.dropna(subset=["global_step", column]).sort_values("global_step")
-    # Require a full window so every plotted point is exactly a 50-episode
-    # average by default, not a shorter warm-start average.
-    out["value"] = out[column].rolling(window=window, min_periods=window).mean()
-    return out[["global_step", "value"]].dropna(subset=["value"])
+    if len(out) < 2:
+        return pd.DataFrame(columns=["global_step", "value"])
+    steps = np.linspace(out["global_step"].iloc[0], out["global_step"].iloc[-1], n_interp)
+    values = np.interp(steps, out["global_step"].values, out[column].values)
+    smoothed = pd.Series(values).rolling(window=window, min_periods=1).mean().values
+    return pd.DataFrame({"global_step": steps, "value": smoothed})
 
 
-def smooth_metric_with_std(metrics: pd.DataFrame, column: str, window: int) -> pd.DataFrame:
+def smooth_metric_with_std(metrics: pd.DataFrame, column: str, window: int, n_interp: int = 500) -> pd.DataFrame:
     """Like smooth_metric but also returns a rolling std column (for single-run shading)."""
     out = metrics[["global_step", column]].copy()
     out[column] = pd.to_numeric(out[column], errors="coerce")
     out = out.dropna(subset=["global_step", column]).sort_values("global_step")
-    out["value"] = out[column].rolling(window=window, min_periods=window).mean()
-    out["std"] = out[column].rolling(window=window, min_periods=window).std().fillna(0)
-    return out[["global_step", "value", "std"]].dropna(subset=["value"])
+    if len(out) < 2:
+        return pd.DataFrame(columns=["global_step", "value", "std"])
+    steps = np.linspace(out["global_step"].iloc[0], out["global_step"].iloc[-1], n_interp)
+    values = np.interp(steps, out["global_step"].values, out[column].values)
+    series = pd.Series(values)
+    smoothed = series.rolling(window=window, min_periods=1).mean().values
+    std = series.rolling(window=window, min_periods=1).std().fillna(0).values
+    return pd.DataFrame({"global_step": steps, "value": smoothed, "std": std})
 
 
 def smooth_metric_band(
@@ -329,25 +336,33 @@ def plot_cost_curves(
             base_success["value"],
             color="black",
             linewidth=2.8,
-            linestyle="--",
+            linestyle="-",
             label="baseline",
         )
 
     axes[0].set_title("Success Rate")
-    axes[0].set_ylabel("Success Rate")
+    axes[0].set_ylabel("")
     axes[0].set_ylim(-0.02, 1.02)
-    axes[0].legend(frameon=False, ncol=2)
 
-    axes[1].set_title("Oracle Usage")
-    axes[1].set_ylabel("Oracle Usage (% steps)")
+    axes[1].set_title("Oracle Usage (% steps)")
+    axes[1].set_ylabel("")
     axes[1].set_ylim(-2, 102)
-    axes[1].legend(frameon=False, ncol=2)
 
     for ax in axes:
         finish_axis(ax)
 
-    fig.suptitle("100% Oracle Accuracy: Varying Query Cost", fontweight="bold")
-    fig.tight_layout(rect=[0, 0, 1, 0.9])
+    handles, labels = axes[0].get_legend_handles_labels()
+    h1, l1 = axes[1].get_legend_handles_labels()
+    seen = set(labels)
+    for h, l in zip(h1, l1):
+        if l not in seen:
+            handles.append(h)
+            labels.append(l)
+            seen.add(l)
+    fig.legend(handles, labels, loc="center left", bbox_to_anchor=(1.0, 0.5),
+               frameon=False, fontsize=11)
+
+    fig.tight_layout()
     out_path = out_dir / "cost_curves_acc100.png"
     fig.savefig(out_path, dpi=220, bbox_inches="tight")
     plt.close(fig)
@@ -406,15 +421,13 @@ def plot_accuracy_lines(
             axes[0].fill_between(x, smean - sstd, smean + sstd, color=color, alpha=0.25)
             axes[1].fill_between(x, umean - ustd, umean + ustd, color=color, alpha=0.25)
 
-    axes[0].set_title("Final Success Rate")
-    axes[0].set_ylabel(f"Success Rate ({window}-ep mean)")
+    axes[0].set_title("Success Rate")
+    axes[0].set_ylabel("")
     axes[0].set_ylim(0, 1.02)
-    axes[0].legend(frameon=False)
 
-    axes[1].set_title("Final Oracle Usage")
-    axes[1].set_ylabel(f"Oracle Usage (% steps, {window}-ep mean)")
+    axes[1].set_title("Oracle Usage (% steps)")
+    axes[1].set_ylabel("")
     axes[1].set_ylim(0, 102)
-    axes[1].legend(frameon=False)
 
     for ax in axes:
         ax.set_xlabel("Oracle Accuracy")
@@ -422,8 +435,11 @@ def plot_accuracy_lines(
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
 
-    fig.suptitle("Accuracy Ablation: All Costs", fontweight="bold")
-    fig.tight_layout(rect=[0, 0, 1, 0.88])
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="center left", bbox_to_anchor=(1.0, 0.5),
+               frameon=False, fontsize=11)
+
+    fig.tight_layout()
     out_path = out_dir / "accuracy_lines.png"
     fig.savefig(out_path, dpi=220, bbox_inches="tight")
     plt.close(fig)
@@ -437,36 +453,59 @@ def plot_linear_schedule(records: list[RunRecord], out_dir: Path, window: int, s
         return
 
     run = runs[0]
-    fig, axes = plt.subplots(1, 3, figsize=(15, 4.6), sharex=True)
+    cost_max = float(run.oracle_cost_final) if run.oracle_cost_final is not None else float(run.oracle_cost or 1.0)
 
-    for col, ax, color, title, ylabel, ylim in [
-        ("success", axes[0], "#3b0f70", "Success Rate", "Success Rate", (-0.02, 1.02)),
-        ("guided_pct", axes[1], "#cc4778", "Oracle Usage", "Oracle Usage (% steps)", (-2, 102)),
-        ("oracle_cost", axes[2], "#f89540", "Scheduled Query Cost", "Query Cost", (-0.02, 1.02)),
-    ]:
-        if shade:
-            s = smooth_metric_with_std(run.metrics, col, window)
-            ax.plot(s["global_step"], s["value"], color=color, linewidth=2.5)
-            ax.fill_between(
-                s["global_step"], s["value"] - s["std"], s["value"] + s["std"],
-                color=color, alpha=0.25,
-            )
+    # Build derived metrics (efficiency ratios) on raw data then smooth
+    m = run.metrics.copy()
+    guided_frac = pd.to_numeric(m["guided_pct"], errors="coerce") / 100
+    success = pd.to_numeric(m["success"], errors="coerce")
+    m["oracle_efficiency"] = success / guided_frac.clip(lower=0.001)
+    if "queries_per_ep" in m.columns:
+        q = pd.to_numeric(m["queries_per_ep"], errors="coerce")
+        m["success_per_query"] = success / q.clip(lower=0.1)
+
+    RED = "#e53935"
+
+    def _plot(ax, col, title, ylabel, ylim, raw=False):
+        if col not in m.columns:
+            ax.set_visible(False)
+            return
+        if raw:
+            # No smoothing — plot the raw interpolated signal directly
+            out = m[["global_step", col]].copy()
+            out[col] = pd.to_numeric(out[col], errors="coerce")
+            out = out.dropna().sort_values("global_step")
+            ax.plot(out["global_step"], out[col], color=RED, linewidth=2.5)
+        elif shade:
+            s = smooth_metric_with_std(m, col, window)
+            ax.plot(s["global_step"], s["value"], color=RED, linewidth=2.5)
+            ax.fill_between(s["global_step"], s["value"] - s["std"], s["value"] + s["std"],
+                            color=RED, alpha=0.25)
         else:
-            s = smooth_metric(run.metrics, col, window)
-            ax.plot(s["global_step"], s["value"], color=color, linewidth=2.5)
+            s = smooth_metric(m, col, window)
+            ax.plot(s["global_step"], s["value"], color=RED, linewidth=2.5)
         ax.set_title(title)
-        ax.set_ylabel(ylabel)
-        ax.set_ylim(*ylim)
-
-    for ax in axes:
+        ax.set_ylabel("")
+        if ylim is not None:
+            ax.set_ylim(*ylim)
         finish_axis(ax)
+        ax.tick_params(labelbottom=True)
+
+    fig, axes = plt.subplots(2, 3, figsize=(18, 9), sharex=True)
+
+    _plot(axes[0, 0], "oracle_cost",      "Query Cost",                                None, (-0.02 * cost_max, cost_max * 1.08), raw=True)
+    _plot(axes[0, 1], "success",          "Success Rate",                              None, (-0.02, 1.02))
+    _plot(axes[0, 2], "ep_return",        "Episodic Reward",                           None, None)
+    _plot(axes[1, 0], "guided_pct",       "Oracle Usage (%)",                          None, (-2, 102))
+    _plot(axes[1, 1], "queries_per_ep",   "Oracle Queries per Episode",                None, None)
+    _plot(axes[1, 2], "success_per_query","Success Rate / Oracle Queries per Episode", None, None)
 
     cost_start = label_float(run.oracle_cost)
     cost_end = label_float(run.oracle_cost_final)
     anneal_m = f"{int(run.oracle_cost_anneal_steps) // 1_000_000}M" if run.oracle_cost_anneal_steps else f"{int(run.total_timesteps) // 1_000_000}M"
     total_m = f"{int(run.total_timesteps) // 1_000_000}M"
-    fig.suptitle(f"Linear Query Cost Schedule: {cost_start} → {cost_end} over {anneal_m} (total {total_m})", fontweight="bold")
-    fig.tight_layout(rect=[0, 0, 1, 0.9])
+    fig.suptitle(f"Increasing Query Cost Schedule: {cost_start} → {cost_end} over {anneal_m}", fontweight="bold")
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
     out_path = out_dir / "linear_cost_schedule.png"
     fig.savefig(out_path, dpi=220, bbox_inches="tight")
     plt.close(fig)
@@ -504,8 +543,9 @@ def main():
     parser.add_argument("--cost-curve-accuracy", type=float, default=1.0)
     parser.add_argument(
         "--shade",
-        action="store_true",
-        help="Draw solid shaded error bands (±1 std) around curves.",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="Draw solid shaded error bands (±1 std) around curves (default: on). Use --no-shade to disable.",
     )
     args = parser.parse_args()
 
