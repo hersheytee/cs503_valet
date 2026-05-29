@@ -1,7 +1,7 @@
-# Oracle-Augmented PPO — Upper Bound Experiments
+# Oracle-Augmented PPO — VALET
 
 > CS503 project — EPFL  
-> Research question: **Can a PPO agent learn to use a VLM as an optional action, and does it learn when it's worth the cost?**
+> Research question: **Can a PPO agent learn to use a BFS oracle (or VLM) as an optional action, and does it learn *when* it is worth the cost?**
 
 The agent lives in a MiniGrid environment and has one extra action: `query_oracle`. When chosen, the oracle (a perfect BFS solver) executes the optimal action. Querying costs a configurable reward penalty. The agent must therefore learn both *how* to solve the task and *when* it is worth consulting the oracle.
 
@@ -11,23 +11,35 @@ The agent lives in a MiniGrid environment and has one extra action: `query_oracl
 
 ```
 Upper_Bound/
-├── train.py              # Main training loop (PPO)
-├── env_wrapper.py        # Gym wrapper — adds oracle action to MiniGrid
-├── oracle.py             # BFS oracle for DoorKey / Empty envs
-├── oracle_transfer.py    # BFS oracle for transfer envs (Fetch, GoToDoor, GoToObject)
-├── model.py              # CNN policy for 8x8 grids (full obs, 40x40x3)
-├── model_large.py        # CNN policy for 16x16 grids (full obs, 128x128x3)
-├── model_partial.py      # CNN policy for partial obs (56x56x3, any grid size)
-├── eval.py               # Inference script — runs a checkpoint and saves a GIF
-├── compare_plot.py       # Multi-condition plot (one row per condition)
-├── merged_plot.py        # Merged plot (all conditions overlaid, 3 vertical subplots)
-├── plot.py               # Single-run debug plot
-├── requirements.txt      # Python dependencies
-├── submit_all.sh         # SLURM job — DoorKey-8x8, all oracle costs, 5 seeds
-├── submit_16x16.sh       # SLURM job — DoorKey-16x16, all oracle costs, 5 seeds
-├── logs/                 # CSV training logs (auto-created)
-├── figures/              # Output plots and GIFs (auto-created)
-└── checkpoints/          # Saved model weights (auto-created)
+├── train.py                          # Main training loop (PPO)
+├── env_wrapper.py                    # Gym wrapper — adds oracle action to MiniGrid
+├── oracle.py                         # BFS oracle for DoorKey / Empty envs
+├── oracle_transfer.py                # BFS oracle for transfer envs (Fetch, GoToDoor, GoToObject, MultiRoom)
+├── model.py                          # CNN policy for 8x8 grids (full obs, 40x40x3, ~26M params)
+├── model_large.py                    # CNN policy for 16x16 grids (full obs, 128x128x3, ~1.1M params)
+├── model_partial.py                  # CNN policy for partial obs (56x56x3, ~1.1M params)
+├── eval.py                           # Inference script — runs a checkpoint and saves a GIF
+├── eval_transfer_stats.py            # Zero-shot transfer evaluation with detailed stats + plots
+├── compare_plot.py                   # Multi-condition plot (one row per condition)
+├── merged_plot.py                    # Merged plot (all conditions overlaid, horizontal layout, plasma colorbar)
+├── per_cost_plot.py                  # One 1×4 plot per oracle cost vs baseline
+├── plot.py                           # Single-run debug plot
+├── requirements.txt                  # Python dependencies
+├── submit_all.sh                     # SLURM job — DoorKey-8x8, all oracle costs, 5 seeds
+├── submit_16x16.sh                   # SLURM job — DoorKey-16x16, full+partial obs, 5 seeds
+├── submit_16x16_partial_fine.sh      # Fine-grained cost sweep (0.01–0.05) partial obs
+├── submit_16x16_partial_vfine.sh     # Very fine-grained cost sweep (0.007–0.012) partial obs
+├── submit_eval_transfer.sh           # SLURM — GIF generation for Fetch transfer
+├── submit_eval_transfer_stats.sh     # SLURM — Transfer stats on Fetch-16x16 (100 eps)
+├── submit_eval_transfer_stats_multiroom.sh  # SLURM — Transfer stats on MultiRoom-N6 (100 eps)
+├── submit_eval_multiroom.sh          # SLURM — GIF for MultiRoom transfer
+├── submit_eval_all_partial_doorkey.sh # SLURM — GIFs for all partial-obs models on DoorKey-16x16
+├── logs/                             # CSV training logs (auto-created)
+├── figures/                          # Output plots and GIFs (auto-created)
+│   ├── per_cost/                     # Per-cost comparison plots
+│   └── gifs/                         # GIF visualizations
+├── all_gif/                          # All DoorKey-16x16 GIFs (one per model)
+└── checkpoints/                      # Saved model weights
 ```
 
 ---
@@ -41,6 +53,32 @@ Upper_Bound/
 | `reward_shaping` | Intermediate rewards for DoorKey: `+0.5` on key pickup, `+0.5` on door open. Helps the agent explore the task structure. |
 | `success` | Episode terminates with `terminated=True` (goal reached), as opposed to `truncated=True` (timeout). |
 | BFS oracle | Runs a full graph search on the true env state. Serves as a proxy for a perfect VLM with zero hallucination. |
+| `trajectory efficiency` | `opt_steps / agent_steps` — ratio of BFS-optimal path length to actual steps taken (only on successful episodes). |
+
+---
+
+## Model architectures
+
+| Model | Input | Params | Notes |
+|---|---|---|---|
+| `model.py` | 40×40×3 | ~26.3M | No pooling — huge FC layer. For 8×8 grids. |
+| `model_large.py` | 128×128×3 | ~1.1M | AdaptiveAvgPool(8,8). For 16×16 full obs. |
+| `model_partial.py` | 56×56×3 | ~1.1M | AdaptiveAvgPool(8,8). For partial obs (any grid). |
+
+All models: shared CNN backbone → FC(256) → policy head + value head. Weights are initialized with orthogonal init (std=√2 for conv/FC, 0.01 for policy head, 1.0 for value head).
+
+---
+
+## Training setup
+
+PPO with:
+- Clipped surrogate objective (`clip_coef=0.2`)
+- Generalized Advantage Estimation (`gae_lambda=0.95`)
+- Entropy bonus (`ent_coef=0.01`) applied only to **non-guided** steps
+- Optional BC loss on oracle-guided steps (`bc_coef=0.0` by default)
+- Linear learning rate annealing
+
+The observation is the raw RGB image — no extra flags or augmentation. The agent has no explicit signal about whether it just queried the oracle beyond the reward it received.
 
 ---
 
@@ -48,199 +86,170 @@ Upper_Bound/
 
 ### `train.py` — PPO training
 
-Standard CleanRL-style PPO with one extra BC (behavioural cloning) loss term on oracle-guided steps (disabled by default with `--bc-coef 0.0`).
-
 **Key parameters:**
 
 | Argument | Default | Description |
 |---|---|---|
 | `--env-id` | `MiniGrid-Empty-5x5-v0` | Gymnasium environment ID |
-| `--env-type` | `empty` | Oracle type: `empty`, `doorkey`, `fetch`, `gotodoor`, `gotoobject` |
-| `--oracle-cost` | `0.0` | Reward penalty per oracle query. `0.0` = free oracle (upper bound) |
-| `--no-oracle` | `False` | Disable oracle action entirely — pure PPO baseline |
-| `--reward-shaping` | `False` | Add intermediate rewards for key/door events (DoorKey only) |
-| `--warmup-steps` | `0` | Force oracle queries for the first N steps (curriculum) |
+| `--env-type` | `empty` | Oracle type: `empty`, `doorkey`, `fetch`, `gotodoor`, `gotoobject`, `multiroom` |
+| `--oracle-cost` | `0.0` | Reward penalty per oracle query |
+| `--no-oracle` | `False` | Disable oracle — pure PPO baseline |
+| `--reward-shaping` | `False` | Intermediate rewards for key/door events (DoorKey only) |
 | `--total-timesteps` | `500_000` | Total environment steps |
-| `--n-envs` | `8` | Number of parallel environments |
-| `--n-steps` | `128` | Rollout length per env before each PPO update |
-| `--n-minibatches` | `4` | Number of minibatches per epoch |
-| `--n-epochs` | `4` | PPO update epochs per rollout |
-| `--lr` | `2.5e-4` | Learning rate (linearly annealed by default) |
+| `--n-envs` | `8` | Parallel environments |
+| `--lr` | `2.5e-4` | Learning rate |
 | `--gamma` | `0.99` | Discount factor |
 | `--clip-coef` | `0.2` | PPO clip coefficient |
 | `--ent-coef` | `0.01` | Entropy coefficient |
 | `--bc-coef` | `0.0` | Behavioural cloning loss weight on guided steps |
 | `--hidden-dim` | `256` | FC layer size after CNN |
-| `--seed` | `1` | Random seed |
-| `--save-model` | `False` | Save checkpoint to `checkpoints/` at end of training |
-| `--large-model` | `False` | Use `model_large.py` (required for 16x16 grids) |
-| `--partial-obs` | `False` | Partial observability: agent sees only its 7×7 FOV (56×56px) instead of the full grid |
+| `--large-model` | `False` | Use `model_large.py` (required for 16×16 full obs) |
+| `--partial-obs` | `False` | Use partial obs (7×7 FOV, 56×56px) |
+| `--save-model` | `False` | Save best checkpoint across seeds |
 | `--exp-name` | `oracle_ppo` | Prefix for log CSV and checkpoint filenames |
 
-**Output:** CSV log at `logs/{exp_name}__{env_id}__seed{seed}__{timestamp}.csv`
+**Output:** `logs/{exp_name}__{env_id}__seed{seed}__{timestamp}.csv`
 
 ---
 
 ### `env_wrapper.py` — Oracle environment wrapper
 
 Wraps any MiniGrid environment with:
-- `FullyObsWrapper` — full grid visibility
-- `RGBImgObsWrapper` — RGB image observation (40×40 for 8×8 grid with `tile_size=8`)
 - `+1` extra action: `query_oracle`
-- Optional `RewardShaper` for intermediate rewards
-
-The dispatcher routes oracle calls automatically:
-- `env_type ∈ {empty, doorkey}` → `oracle.py`
-- `env_type ∈ {fetch, gotodoor, gotoobject}` → `oracle_transfer.py`
+- Full or partial observability (RGB image)
+- Oracle dispatching: `{empty, doorkey}` → `oracle.py`, `{fetch, gotodoor, gotoobject, multiroom}` → `oracle_transfer.py`
 
 **Observability modes:**
-- `partial_obs=False` (default): `FullyObsWrapper` + `RGBImgObsWrapper` → full grid visible, image shape `(H*tile, W*tile, 3)`
-- `partial_obs=True`: `RGBImgPartialObsWrapper` → agent sees only its 7×7 FOV, image always `(56, 56, 3)` for `tile_size=8`
+- `partial_obs=False`: `FullyObsWrapper` + `RGBImgObsWrapper` → full grid, shape `(H×tile, W×tile, 3)`
+- `partial_obs=True`: `RGBImgPartialObsWrapper` → agent-centric 7×7 FOV, always `(56, 56, 3)`
 
 ---
 
 ### `oracle.py` — BFS oracle for DoorKey / Empty
 
-Provides a BFS-optimal action for each env step.
-
-- **`bfs_empty(env)`** — Navigate to the goal cell. State: `(x, y, dir)`.
-- **`bfs_doorkey(env)`** — Pick up key, open door, reach goal. State: `(x, y, dir, has_key, door_open)`.
-- **`get_oracle_action(env_unwrapped, env_type)`** — Entry point. Returns `6` (done) when the task is already complete.
+- **`bfs_empty(env)`** — State: `(x, y, dir)`.
+- **`bfs_doorkey(env)`** — State: `(x, y, dir, has_key, door_open)`.
+- Returns `(action, path_length)` tuple. `path_length` is used to compute trajectory efficiency.
 
 ---
 
 ### `oracle_transfer.py` — BFS oracle for transfer environments
 
-Same BFS logic adapted to three new MiniGrid tasks. Mission text is parsed to identify the target object (color + type).
+Adapted BFS for four MiniGrid tasks. Mission text is parsed to identify the target object.
 
-- **`bfs_fetch(env)`** — Navigate to the target object and pick it up. Supports any color/type combination parsed from `env.mission`.
-- **`bfs_gotodoor(env)`** — Navigate to be within Chebyshev distance 1 of the target door.
-- **`bfs_gotoobject(env)`** — Navigate to be within Chebyshev distance 1 of the target object.
-- **`get_oracle_action(env_unwrapped, env_type)`** — Entry point for `env_type ∈ {fetch, gotodoor, gotoobject}`.
-
----
-
-### `model.py` — CNN policy for 8×8 grids
-
-Three conv layers (stride=1), flatten, FC(→256), policy head + value head. Designed for 40×40×3 RGB input. Weights are fixed at this architecture for checkpoint compatibility.
-
----
-
-### `model_large.py` — CNN policy for 16×16 grids (full obs)
-
-Uses strided convolutions (stride=2, 2, 1) + `AdaptiveAvgPool2d(8, 8)`. For a 128×128 input the feature maps are 32×32 before the pool → 8×8×64 = 4096 FC input. Required for 16×16 full-obs environments.
-
----
-
-### `model_partial.py` — CNN policy for partial observability (56×56)
-
-One strided conv (stride=2, 1, 1) + `AdaptiveAvgPool2d(8, 8)`. For a 56×56 input the feature maps stay at 28×28 before the pool, preserving 4× more spatial resolution than `model_large.py` would on the same input. Same FC dimension (4096) and same parameter count (~1.1M). Selected automatically when `--partial-obs` is passed.
+- **`bfs_fetch(env)`** — Pick up the target object.
+- **`bfs_gotodoor(env)`** — Reach target door (Chebyshev distance ≤ 1).
+- **`bfs_gotoobject(env)`** — Reach target object (Chebyshev distance ≤ 1).
+- **`bfs_multiroom(env)`** — Navigate through multiple rooms (state includes open doors as a frozenset).
+- **`get_oracle_action(env, env_type)`** — Entry point for all transfer envs.
+- **`get_optimal_steps(env, env_type)`** — Returns BFS path length (for trajectory efficiency).
 
 ---
 
 ### `eval.py` — Inference + GIF generation
 
-Loads a saved checkpoint, runs N episodes, and saves a GIF.
+Loads a checkpoint, runs N episodes, saves a GIF with action labels and guided/oracle annotations.
 
-**Parameters:**
+**Key parameters:**
 
 | Argument | Default | Description |
 |---|---|---|
-| `--checkpoint` | required | Path or glob to `.pt` checkpoint file |
-| `--env-id` | `MiniGrid-DoorKey-8x8-v0` | Environment to evaluate on |
-| `--env-type` | `doorkey` | Oracle type (same values as `train.py`) |
-| `--no-oracle` | `False` | Evaluate without oracle action (baseline checkpoint) |
-| `--oracle-cost` | `0.0` | Oracle cost used during eval (for reward reporting) |
-| `--reward-shaping` | `False` | Apply reward shaping during eval |
-| `--n-episodes` | `3` | Number of episodes to run |
-| `--hidden-dim` | `256` | Must match the training hidden dim |
-| `--tile-size` | `8` | Must match the training tile size |
-| `--fps` | `6` | GIF frame rate |
-| `--out` | `figures/eval.gif` | Output GIF path |
-| `--partial-obs` | `False` | Must match the training setting |
-| `--seed` | `42` | Starting seed (incremented per episode) |
+| `--checkpoint` | required | Path to `.pt` file |
+| `--env-id` | `MiniGrid-DoorKey-8x8-v0` | Evaluation environment |
+| `--env-type` | `doorkey` | Oracle type |
+| `--no-oracle` | `False` | For baseline checkpoints |
+| `--stochastic` | `False` | Sample from policy distribution (default: argmax) |
+| `--partial-obs` | `False` | Must match training setting |
+| `--n-episodes` | `3` | Number of episodes |
+| `--out` | `figures/eval.gif` | Output path |
 
 ---
 
-### `compare_plot.py` — Multi-condition comparison plot
+### `eval_transfer_stats.py` — Zero-shot transfer evaluation
 
-Produces a figure with one row per oracle condition (free / paid×5 / baseline) and four metric columns: episode return, success rate, oracle usage %, queries per episode.
+Runs N episodes of a trained model on an unseen task (no finetuning) and reports:
+- Success rate, mean return, mean steps
+- Oracle query rate (% of steps)
+- **Trajectory efficiency** = `opt_steps / agent_steps` (BFS-computed at episode start, success episodes only)
 
-Each metric is plotted as a function of total environment steps. Raw per-episode data is interpolated to a common step grid and smoothed with a rolling mean (window=50).
+Supports multi-run comparison: append results to a shared CSV then plot a 2×2 comparison figure (success rate, return, oracle %, efficiency).
 
-**Parameters:**
+**Key parameters:**
 
 | Argument | Description |
 |---|---|
-| `--free-csv` | Glob(s) to oracle_free CSV logs |
-| `--paid-001-csv` | Glob(s) to oracle_paid_001 CSV logs |
-| `--paid-002-csv` | ... |
-| `--paid-003-csv` | ... |
-| `--paid-004-csv` | ... |
-| `--paid-005-csv` | ... |
-| `--base-csv` | Glob(s) to baseline CSV logs |
-| `--out` | Output PNG path (default: `figures/overview.png`) |
-| `--min-steps` | Ignore CSVs with fewer than this many steps |
-
-When multiple CSVs exist for the same seed, only the one with the latest timestamp is used (avoids mixing old and new runs).
+| `--checkpoint` | Model to evaluate |
+| `--env-id` | Transfer target environment |
+| `--env-type` | `fetch`, `gotodoor`, `gotoobject`, `multiroom` |
+| `--partial-obs` | Partial obs model |
+| `--n-episodes` | Number of episodes (default: 100) |
+| `--csv-out` | Append to comparison CSV |
+| `--out` | Output PNG path |
 
 ---
 
 ### `merged_plot.py` — Merged overlay plot
 
-Same data as `compare_plot.py` but all conditions are overlaid on the same axes (3 vertical subplots: return, success rate, oracle usage %). Uses a viridis colormap for oracle conditions and black for baseline.
+All conditions overlaid on the same axes. **Horizontal layout** (1×4 subplots): return, success rate, oracle usage %, trajectory efficiency. Uses a **plasma colormap** for oracle costs + dashed black line for baseline.
 
-**Parameters:**
+**Key parameters:**
 
 | Argument | Description |
 |---|---|
-| `--free-csv` | Glob(s) to oracle_free CSV logs |
-| `--paid-low-csv` | Glob(s) to low-cost oracle logs |
-| `--paid-mid-csv` | Glob(s) to mid-cost oracle logs |
-| `--paid-high-csv` | Glob(s) to high-cost oracle logs |
-| `--base-csv` | Glob(s) to baseline CSV logs |
-| `--out` | Output PNG path (default: `figures/merged.png`) |
-| `--min-steps` | Ignore CSVs with fewer than this many steps |
+| `--tag` | Experiment tag, e.g. `16_partial` |
+| `--out` | Output PNG path |
+| `--min-steps` | Ignore incomplete runs |
 
 ---
 
-### `submit_all.sh` — SLURM job for DoorKey-8x8
+### `per_cost_plot.py` — Per-cost training curves
 
-Runs all 7 conditions × 5 seeds sequentially on a single GPU node (20h time limit).
-
-Conditions: `oracle_free` (cost=0.0), `oracle_paid_001` through `oracle_paid_005`, `baseline`.  
-Seeds: 4, 5, 6, 7, 8.
-
----
-
-### `submit_16x16.sh` — SLURM job for DoorKey-16x16
-
-Runs two series of experiments on `MiniGrid-DoorKey-16x16-v0` (48h time limit):
-
-**Full observability** (5 conditions × 5 seeds):
-`oracle_free_16`, `oracle_paid_001_16`, `oracle_paid_002_16`, `oracle_paid_005_16`, `baseline_16`
-
-**Partial observability** (4 conditions × 5 seeds):
-`oracle_free_16_partial`, `oracle_paid_002_16_partial`, `oracle_paid_005_16_partial`, `baseline_16_partial`
-
-All runs use `--large-model` and `--total-timesteps 2000000`.
-
----
-
-## Installation
+Generates one 1×4 plot per oracle cost: return, success rate, oracle usage %, queries per episode. Baseline is overlaid as a dashed red line on each plot. Also generates a standalone baseline plot.
 
 ```bash
-conda activate nanofm   # or your env
-pip install -r requirements.txt
+python per_cost_plot.py --log-dir logs --out-dir figures/per_cost
 ```
 
-`requirements.txt`:
-```
-torch>=2.0.0
-gymnasium>=0.29.0
-minigrid>=3.0.0
-numpy>=1.24.0
-```
+---
+
+### `compare_plot.py` — Multi-condition comparison
+
+One row per oracle condition, four metric columns. Loads CSVs by glob pattern, deduplicates by seed (latest timestamp wins).
+
+---
+
+## Experiments conducted
+
+### DoorKey-16×16 training sweep
+
+**Full observability** — 5 conditions × 5 seeds × 2M steps:
+`oracle_free`, `oracle_paid_{001,002,003,004,005}`, `baseline`
+
+**Partial observability** — same conditions + fine-grained sweep:
+- Coarse: `oracle_paid_{001,002,003,004,005}`
+- Fine: `oracle_paid_{007,008,009,011,012}` (costs 0.007–0.012)
+- Extended: `oracle_paid_{015,018}`
+
+**Key finding:** Oracle usage drops sharply between cost=0.010 and cost=0.012. Below this threshold the agent queries freely; above it, it stops querying entirely. The transition is unstable (seed-dependent) in the 0.007–0.010 range.
+
+---
+
+### Zero-shot transfer
+
+DoorKey-16×16 partial obs models evaluated (100 episodes, no finetuning) on:
+
+| Target env | Notes |
+|---|---|
+| `MiniGrid-Fetch-16x16-N3-v0` | Pick up target colored object |
+| `MiniGrid-MultiRoom-N6-v0` | Navigate through 6 rooms |
+
+Models tested: `oracle_paid_001_16_partial`, `oracle_free_16_partial`, `baseline_16_partial`.
+
+**Fetch results:** Oracle-trained models transfer well. Success detection requires `terminated=True AND return > 0` (FetchEnv terminates on any pickup, not just target).
+
+**MultiRoom results:** Oracle model shows meaningful oracle usage on transfer — queries at room transitions.
+
+**Trajectory efficiency** = BFS-optimal / actual steps. Computed only on successful episodes.
 
 ---
 
@@ -249,132 +258,91 @@ numpy>=1.24.0
 ### Quick local test
 
 ```bash
-# Oracle free (upper bound)
 python train.py \
     --env-id MiniGrid-DoorKey-8x8-v0 --env-type doorkey \
-    --oracle-cost 0.0 --reward-shaping \
-    --total-timesteps 100000 --seed 1 --exp-name test_free
-
-# Paid oracle
-python train.py \
-    --env-id MiniGrid-DoorKey-8x8-v0 --env-type doorkey \
-    --oracle-cost 0.02 --reward-shaping \
+    --oracle-cost 0.01 --reward-shaping \
     --total-timesteps 100000 --seed 1 --exp-name test_paid
-
-# Baseline (no oracle)
-python train.py \
-    --env-id MiniGrid-DoorKey-8x8-v0 --env-type doorkey \
-    --no-oracle --reward-shaping \
-    --total-timesteps 100000 --seed 1 --exp-name test_baseline
 ```
 
-### DoorKey-16x16 (full + partial observability)
+### DoorKey-16×16 partial obs
 
 ```bash
-# Full observability — oracle free
 python train.py \
     --env-id MiniGrid-DoorKey-16x16-v0 --env-type doorkey \
-    --oracle-cost 0.0 --reward-shaping --large-model \
-    --total-timesteps 2000000 --seed 1 --exp-name oracle_free_16 --save-model
-
-# Partial observability — oracle free
-python train.py \
-    --env-id MiniGrid-DoorKey-16x16-v0 --env-type doorkey \
-    --oracle-cost 0.0 --reward-shaping --large-model --partial-obs \
-    --total-timesteps 2000000 --seed 1 --exp-name oracle_free_16_partial --save-model
-
-# Partial observability — paid oracle (cost=0.02)
-python train.py \
-    --env-id MiniGrid-DoorKey-16x16-v0 --env-type doorkey \
-    --oracle-cost 0.02 --reward-shaping --large-model --partial-obs \
-    --total-timesteps 2000000 --seed 1 --exp-name oracle_paid_002_16_partial --save-model
+    --oracle-cost 0.01 --reward-shaping --large-model --partial-obs \
+    --total-timesteps 2000000 --seed 4 --exp-name oracle_paid_001_16_partial --save-model
 ```
-
-> **Note:** `--large-model` is required for 16×16. Both full and partial obs use `model_large.py`
-> (full: 128×128×3 input, partial: 56×56×3 input — `AdaptiveAvgPool` handles both).
 
 ### On cluster (SLURM)
 
 ```bash
-# From the Upper_Bound/ directory:
 cd ~/Upper_Bound
-sbatch submit_all.sh      # DoorKey-8x8, all conditions
-sbatch submit_16x16.sh    # DoorKey-16x16, full + partial obs
+sbatch submit_16x16.sh                    # full sweep
+sbatch submit_16x16_partial_vfine.sh      # fine-grained costs
 ```
 
-### Transfer environment (Fetch-8x8)
+### Zero-shot transfer evaluation
 
 ```bash
-python train.py \
-    --env-id MiniGrid-Fetch-8x8-N3-v0 --env-type fetch \
-    --oracle-cost 0.0 --reward-shaping \
-    --total-timesteps 500000 --seed 1 --exp-name fetch_free --save-model
+python eval_transfer_stats.py \
+    --checkpoint checkpoints/best__oracle_paid_001_16_partial__MiniGrid-DoorKey-16x16-v0.pt \
+    --env-id MiniGrid-Fetch-16x16-N3-v0 --env-type fetch \
+    --partial-obs --n-episodes 100 --label "Oracle 0.01" \
+    --csv-out figures/fetch_comparison.csv \
+    --out figures/fetch_comparison.png
 ```
 
-Supported transfer env_types:
-- `fetch` → `MiniGrid-Fetch-8x8-N3-v0`
-- `gotodoor` → `MiniGrid-GoToDoor-8x8-v0`
-- `gotoobject` → `MiniGrid-GoToObject-8x8-N2-v0`
-
----
-
-## Generating plots
-
-### Multi-condition comparison (separate rows)
+### GIF generation
 
 ```bash
-python compare_plot.py \
-    --free-csv      logs/oracle_free__MiniGrid-DoorKey-8x8-v0__seed*.csv \
-    --paid-001-csv  logs/oracle_paid_001__*.csv \
-    --paid-002-csv  logs/oracle_paid_002__*.csv \
-    --paid-003-csv  logs/oracle_paid_003__*.csv \
-    --paid-004-csv  logs/oracle_paid_004__*.csv \
-    --paid-005-csv  logs/oracle_paid_005__*.csv \
-    --base-csv      logs/baseline__*.csv \
-    --out figures/overview_doorkey.png
-```
+# All partial-obs models on DoorKey-16x16
+sbatch submit_eval_all_partial_doorkey.sh   # outputs to all_gif/
 
-### Merged overlay plot
-
-```bash
-python merged_plot.py \
-    --free-csv      logs/oracle_free__*.csv \
-    --paid-low-csv  logs/oracle_paid_001__*.csv \
-    --paid-mid-csv  logs/oracle_paid_003__*.csv \
-    --paid-high-csv logs/oracle_paid_005__*.csv \
-    --base-csv      logs/baseline__*.csv \
-    --out figures/merged_doorkey.png
-```
-
----
-
-## Inference and visualization
-
-```bash
-# Evaluate a saved checkpoint and produce a GIF
+# Single model
 python eval.py \
-    --checkpoint "checkpoints/oracle_free__MiniGrid-DoorKey-8x8-v0__seed4__*.pt" \
-    --env-id MiniGrid-DoorKey-8x8-v0 --env-type doorkey \
-    --n-episodes 5 --out figures/eval_doorkey.gif
+    --checkpoint checkpoints/best__oracle_paid_001_16_partial__MiniGrid-DoorKey-16x16-v0.pt \
+    --env-id MiniGrid-DoorKey-16x16-v0 --env-type doorkey \
+    --partial-obs --stochastic --n-episodes 3 --seed 42 \
+    --out all_gif/doorkey16_oracle_paid001_partial.gif
+```
 
-# Transfer: evaluate a DoorKey checkpoint on Fetch
-python eval.py \
-    --checkpoint "checkpoints/oracle_free__MiniGrid-DoorKey-8x8-v0__seed4__*.pt" \
-    --env-id MiniGrid-Fetch-8x8-N3-v0 --env-type fetch \
-    --n-episodes 5 --out figures/transfer_doorkey_to_fetch.gif
+### Per-cost plots
+
+```bash
+python per_cost_plot.py --log-dir logs --out-dir figures/per_cost
 ```
 
 ---
 
-## VLM oracle — setup and usage
+## Syncing with cluster
 
-### New files
+```bash
+# Push scripts
+rsync -avz ~/Desktop/cs503_project/Upper_Bound/*.py ~/Desktop/cs503_project/Upper_Bound/*.sh \
+    tjouven@izar.epfl.ch:~/Upper_Bound/
+
+# Pull logs
+rsync -avz tjouven@izar.epfl.ch:~/Upper_Bound/logs/ ~/Desktop/cs503_project/minigrid/logs/
+
+# Pull figures
+rsync -avz tjouven@izar.epfl.ch:~/Upper_Bound/figures/ ~/Desktop/cs503_project/Upper_Bound/figures/
+
+# Pull checkpoints
+rsync -avz "tjouven@izar.epfl.ch:~/Upper_Bound/checkpoints/best__*_partial__*.pt" \
+    ~/Desktop/cs503_project/minigrid/checkpoints/
+```
+
+---
+
+## VLM oracle
+
+### Files
 
 ```
-Upper_Bound/
-├── download_models.py   # Downloads VLMs from HuggingFace
-├── vlm_oracle.py        # Replaces the BFS oracle with a real VLM (vLLM server)
-└── job_vlm.sh           # Ready-to-use SLURM job for BFS or VLM runs
+vlm_oracle.py        # Replaces BFS with a VLM (Qwen2-VL, InternVL, SmolVLM, ...)
+download_models.py   # Download VLMs from HuggingFace to cluster scratch
+job_vlm.sh           # SLURM job for VLM training runs
+submit_vlm_test.sh   # Quick test job
 ```
 
 ### Available models
@@ -386,89 +354,24 @@ Upper_Bound/
 | `qwen7b` | Qwen2.5-VL 7B |
 | `internvl` | InternVL2.5 4B |
 | `internvl3` | InternVL3 8B |
-| `internvl8b_mpo` | InternVL2.5 8B MPO |
 | `wethink` | WeThink-Qwen2.5VL 7B |
 | `smolvlm` | SmolVLM 2B |
 
-### 1. Download models
-
-Do this **once** from the login node, before submitting any jobs.
-
-> **Adapt the path** to your own Izar scratch directory: replace `/scratch/izar/<username>/vlm_models` with your actual username.
+### Usage
 
 ```bash
-# Download all models
-python download_models.py --cache_dir /scratch/izar/<username>/vlm_models
+# Download models (login node, once)
+python download_models.py --cache_dir /scratch/izar/tjouven/vlm_models
 
-# Download specific models only
-python download_models.py qwen2vl internvl3 --cache_dir /scratch/izar/<username>/vlm_models
-
-# Check what is already cached (no download)
-python download_models.py --list --cache_dir /scratch/izar/<username>/vlm_models
+# Submit VLM training job
+sbatch submit_vlm_test.sh
 ```
-
-### 2. Run a simulation
-
-#### Option A — job_vlm.sh (recommended)
-
-Edit the parameters at the top of `job_vlm.sh`:
-
-```bash
-VLM_MODEL="qwen2vl"                          # model key, or "" to use the BFS oracle
-CACHE_DIR="/scratch/izar/<username>/vlm_models"  # adapt to your username
-TOTAL_TIMESTEPS=1000                         # 500000 for a full run
-```
-
-Then submit:
-
-```bash
-sbatch job_vlm.sh
-```
-
-#### Option B — manual sbatch
-
-```bash
-# BFS oracle (upper bound)
-sbatch \
-    --export=ENV_ID="MiniGrid-DoorKey-8x8-v0",ENV_TYPE="doorkey",SEED="1",EXTRA_ARGS="--exp-name bfs_free" \
-    job.sh
-
-# VLM oracle (adapt --cache-dir to your username)
-sbatch \
-    --export=ENV_ID="MiniGrid-DoorKey-8x8-v0",ENV_TYPE="doorkey",SEED="1",EXTRA_ARGS="--vlm-model qwen2vl --cache-dir /scratch/izar/<username>/vlm_models --exp-name vlm_qwen2vl" \
-    job.sh
-```
-
-#### Option C — launch_all.sh (all conditions, multiple seeds)
-
-```bash
-./launch_all.sh                   # BFS oracle, all conditions
-./launch_all.sh --vlm qwen2vl     # VLM oracle, all conditions
-```
-
-### 3. Monitor logs
-
-```bash
-# Stream output in real time
-tail -f logs/slurm_vlm_<job_id>.out
-
-# Check running jobs
-squeue -u $USER
-```
-
-Results are written to `logs/` in the same CSV format as BFS runs — all existing plot scripts work without modification.
 
 ---
 
-## Sending files to cluster
+## Installation
 
 ```bash
-# Full sync
-scp Upper_Bound/*.py Upper_Bound/*.sh Upper_Bound/requirements.txt \
-    tjouven@izar.epfl.ch:~/Upper_Bound/
-
-# Retrieve logs and figures
-scp -r tjouven@izar.epfl.ch:~/Upper_Bound/logs ./
-scp -r tjouven@izar.epfl.ch:~/Upper_Bound/figures ./
-scp -r tjouven@izar.epfl.ch:~/Upper_Bound/checkpoints ./
+conda activate nanofm
+pip install -r requirements.txt
 ```
