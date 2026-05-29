@@ -216,7 +216,7 @@ def run_episode(
         if terminated or truncated:
             success = info.get("success", False)
             status = "SUCCESS" if success else "TIMEOUT/FAIL"
-            print(f"  → {status} | steps={step}  return={total_ret:.3f}  queries={n_queries}")
+            print(f"  -> {status} | steps={step}  return={total_ret:.3f}  queries={n_queries}")
             break
 
     return frames, total_ret, step, success
@@ -291,7 +291,7 @@ def main():
     while collected < target:
         seed = args.seed + attempt
         attempt += 1
-        print(f"\n── Episode {collected + 1}/{target}  (seed={seed}) ──")
+        print(f"\n-- Episode {collected + 1}/{target}  (seed={seed}) --")
         frames, ret, steps, success = run_episode(
             env, model, device, seed=seed,
             stochastic=args.stochastic, scale=args.scale,
@@ -312,7 +312,7 @@ def main():
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     imageio.mimsave(str(out), all_frames, fps=args.fps, loop=0)
-    print(f"\nSaved → {out}")
+    print(f"\nSaved -> {out}")
 
 
 if __name__ == "__main__":

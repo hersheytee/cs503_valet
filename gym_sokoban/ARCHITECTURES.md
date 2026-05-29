@@ -167,3 +167,144 @@ comparison:
 - perfect oracle cost sweep
 - randomized-accuracy oracle sweep
 - linear oracle-cost schedule
+
+---
+
+## Final Architecture (all runs in sokoban_vast_results/)
+
+The switch was made. All runs in the final experiment matrix use the
+MiniGrid partial-observation CNN described above — not the WorldCoder variant.
+The "Current Concern" above was resolved by adopting this architecture.
+
+### Standard policy (3-channel, all non-budget runs)
+
+```text
+Input: 56x56x3 RGB, uint8, channel-last
+Preprocess: / 255, permute to channel-first (3x56x56)
+
+Conv2d(3,  32, kernel=3, stride=2, padding=1)   -> 32x28x28
+ReLU
+Conv2d(32, 64, kernel=3, stride=1, padding=1)   -> 64x28x28
+ReLU
+Conv2d(64, 64, kernel=3, stride=1, padding=1)   -> 64x28x28
+ReLU
+AdaptiveAvgPool2d(8, 8)                          -> 64x8x8 = 4096
+Flatten
+Linear(4096, 256)
+ReLU
+policy_head: Linear(256, n_actions)   init std=0.01
+value_head:  Linear(256, 1)           init std=1.0
+```
+
+`n_actions = 10` (9 env actions + oracle query), or `9` for `--no-oracle` baseline.
+All weights initialised with orthogonal init (std=sqrt(2)), bias=0.
+
+### Budget-aware policy (4-channel, --max-oracle-queries runs)
+
+Identical to above except the first conv takes 4 input channels:
+
+```text
+Input: 56x56x4  (RGB + budget channel)
+Conv2d(4, 32, kernel=3, stride=2, padding=1)
+... remainder identical ...
+```
+
+The 4th channel encodes remaining query budget as a spatially-constant
+uint8 value: `int((queries_remaining / max_queries) * 255)`.
+These checkpoints are incompatible with 3-channel checkpoints.
+
+### Key hyperparameters (from config.yaml)
+
+| Parameter | Value |
+|---|---|
+| hidden_dim | 256 |
+| obs_size | 56 |
+| max_episode_steps | 50 |
+| n_envs | 64 (AsyncVectorEnv) |
+| total_timesteps | 500k (standard) / 3M (linear schedule run) |
+| optimizer | Adam, lr=3e-4, annealed |
+| PPO clip | 0.2 |
+| entropy coef | 0.0 |
+| GAE lambda | 0.95 |
+
+---
+
+## MiniGrid Architectures (minigrid/)
+
+Three model files exist for different MiniGrid observation sizes.
+
+### model.py — DoorKey-8x8 full observation (40x40x3)
+
+```text
+Input: 40x40x3 RGB, uint8, channel-last
+Preprocess: / 255, permute to channel-first (3x40x40)
+
+Conv2d(3,  32, kernel=3, stride=1, padding=1)   -> 32x40x40
+ReLU
+Conv2d(32, 64, kernel=3, stride=1, padding=1)   -> 64x40x40
+ReLU
+Conv2d(64, 64, kernel=3, stride=1, padding=1)   -> 64x40x40
+ReLU
+Flatten                                          -> 102400
+Linear(102400, 256)
+ReLU
+policy_head: Linear(256, n_actions)   init std=0.01
+value_head:  Linear(256, 1)           init std=1.0
+```
+
+No pooling — the full spatial map is flattened directly.
+
+### model_partial.py — DoorKey-16x16 partial obs (56x56x3)
+
+Same architecture as the Sokoban model (`gym_sokoban/model.py`): one
+stride-2 conv then AdaptiveAvgPool to 8x8.
+
+```text
+Input: 56x56x3 RGB, uint8, channel-last
+Preprocess: / 255, permute to channel-first (3x56x56)
+
+Conv2d(3,  32, kernel=3, stride=2, padding=1)   -> 32x28x28
+ReLU
+Conv2d(32, 64, kernel=3, stride=1, padding=1)   -> 64x28x28
+ReLU
+Conv2d(64, 64, kernel=3, stride=1, padding=1)   -> 64x28x28
+ReLU
+AdaptiveAvgPool2d(8, 8)                          -> 64x8x8 = 4096
+Flatten
+Linear(4096, 256)
+ReLU
+policy_head: Linear(256, n_actions)   init std=0.01
+value_head:  Linear(256, 1)           init std=1.0
+```
+
+### model_large.py — DoorKey-16x16 full observation (128x128x3)
+
+Two stride-2 convolutions for more aggressive downsampling of the
+larger input.
+
+```text
+Input: 128x128x3 RGB, uint8, channel-last
+Preprocess: / 255, permute to channel-first (3x128x128)
+
+Conv2d(3,  32, kernel=3, stride=2, padding=1)   -> 32x64x64
+ReLU
+Conv2d(32, 64, kernel=3, stride=2, padding=1)   -> 64x32x32
+ReLU
+Conv2d(64, 64, kernel=3, stride=1, padding=1)   -> 64x32x32
+ReLU
+AdaptiveAvgPool2d(8, 8)                          -> 64x8x8 = 4096
+Flatten
+Linear(4096, 256)
+ReLU
+policy_head: Linear(256, n_actions)   init std=0.01
+value_head:  Linear(256, 1)           init std=1.0
+```
+
+### Which model was used for which experiment
+
+| Experiment | Model file | Obs size |
+|---|---|---|
+| DoorKey-8x8 BFS oracle sweep | `model.py` | 40x40x3 |
+| DoorKey-16x16 partial obs | `model_partial.py` | 56x56x3 |
+| DoorKey-16x16 full obs | `model_large.py` | 128x128x3 |
+| Sokoban all runs | `gym_sokoban/model.py` | 56x56x3 (or x4 for budget) |
