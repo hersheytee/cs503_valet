@@ -29,6 +29,13 @@ cs503_project/
 └── export_to_website.ps1   # Copy figures and GIFs to the website repo (PowerShell)
 ```
 
+The following are excluded from git via `.gitignore` (too large or contain raw data):
+
+- `Literature review/` — PDF papers
+- `minigrid/checkpoints/` — trained model weights
+- `gym_sokoban/sokoban_results/` — run artifacts (configs, CSVs, figures)
+- `Benchmark/results_hist/` — raw VLM benchmark results
+
 ---
 
 ## Method

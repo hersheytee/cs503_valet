@@ -233,5 +233,8 @@ Upper_Bound/checkpoints/
 git_token.md
 gym_sokoban/sokoban_results
 gym_sokoban/checkpoints
+minigrid/checkpoints/
+Literature review/
+Benchmark/results_hist/
 
 AGENTS.md
