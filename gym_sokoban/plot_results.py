@@ -391,13 +391,13 @@ def plot_accuracy_lines(
     palette = plt.cm.plasma(np.linspace(0.08, 0.9, len(costs)))
     cost_color = dict(zip(costs, palette))
 
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.6))
+    fig, axes = plt.subplots(1, 3, figsize=(16, 4.6))
 
     for cost_val in costs:
         color = cost_color[cost_val]
         label = f"cost={label_float(cost_val)}"
 
-        by_acc: dict = defaultdict(lambda: {"success": [], "usage": []})
+        by_acc: dict = defaultdict(lambda: {"success": [], "usage": [], "queries": []})
         for run in all_runs:
             if not np.isclose(run.fixed_cost, cost_val):
                 continue
@@ -405,6 +405,9 @@ def plot_accuracy_lines(
             uvals = pd.to_numeric(run.metrics["guided_pct"], errors="coerce").dropna().tail(window).values
             by_acc[run.oracle_accuracy]["success"].extend(svals.tolist())
             by_acc[run.oracle_accuracy]["usage"].extend(uvals.tolist())
+            if "queries_per_ep" in run.metrics.columns:
+                qvals = pd.to_numeric(run.metrics["queries_per_ep"], errors="coerce").dropna().tail(window).values
+                by_acc[run.oracle_accuracy]["queries"].extend(qvals.tolist())
 
         if not by_acc:
             continue
@@ -414,12 +417,19 @@ def plot_accuracy_lines(
         sstd = np.array([np.std(by_acc[a]["success"]) for a in accs])
         umean = np.array([np.mean(by_acc[a]["usage"]) for a in accs])
         ustd = np.array([np.std(by_acc[a]["usage"]) for a in accs])
+        qmean = np.array([np.mean(by_acc[a]["queries"]) if by_acc[a]["queries"] else np.nan for a in accs])
+        qstd  = np.array([np.std(by_acc[a]["queries"])  if by_acc[a]["queries"] else np.nan for a in accs])
 
         axes[0].plot(x, smean, color=color, linewidth=2, marker="o", label=label)
         axes[1].plot(x, umean, color=color, linewidth=2, marker="o", label=label)
+        valid = ~np.isnan(qmean)
+        if valid.any():
+            axes[2].plot(x[valid], qmean[valid], color=color, linewidth=2, marker="o", label=label)
         if shade:
             axes[0].fill_between(x, smean - sstd, smean + sstd, color=color, alpha=0.25)
             axes[1].fill_between(x, umean - ustd, umean + ustd, color=color, alpha=0.25)
+            if valid.any():
+                axes[2].fill_between(x[valid], qmean[valid] - qstd[valid], qmean[valid] + qstd[valid], color=color, alpha=0.25)
 
     axes[0].set_title("Success Rate")
     axes[0].set_ylabel("")
@@ -428,6 +438,9 @@ def plot_accuracy_lines(
     axes[1].set_title("Oracle Usage (% steps)")
     axes[1].set_ylabel("")
     axes[1].set_ylim(0, 102)
+
+    axes[2].set_title("Oracle Queries per Episode")
+    axes[2].set_ylabel("")
 
     for ax in axes:
         ax.set_xlabel("Oracle Accuracy")
@@ -498,15 +511,73 @@ def plot_linear_schedule(records: list[RunRecord], out_dir: Path, window: int, s
     _plot(axes[0, 2], "ep_return",        "Episodic Reward",                           None, None)
     _plot(axes[1, 0], "guided_pct",       "Oracle Usage (%)",                          None, (-2, 102))
     _plot(axes[1, 1], "queries_per_ep",   "Oracle Queries per Episode",                None, None)
-    _plot(axes[1, 2], "success_per_query","Success Rate / Oracle Queries per Episode", None, None)
+    _plot(axes[1, 2], "success_per_query","Success Rate / Oracle Queries per Episode", None, (0, 0.5))
 
     cost_start = label_float(run.oracle_cost)
     cost_end = label_float(run.oracle_cost_final)
     anneal_m = f"{int(run.oracle_cost_anneal_steps) // 1_000_000}M" if run.oracle_cost_anneal_steps else f"{int(run.total_timesteps) // 1_000_000}M"
     total_m = f"{int(run.total_timesteps) // 1_000_000}M"
-    fig.suptitle(f"Increasing Query Cost Schedule: {cost_start} → {cost_end} over {anneal_m}", fontweight="bold")
+    fig.suptitle(f"Increasing Query Cost Schedule: {cost_start} → {cost_end} over {anneal_m} steps", fontweight="bold")
     fig.tight_layout(rect=[0, 0, 1, 0.95])
     out_path = out_dir / "linear_cost_schedule.png"
+    fig.savefig(out_path, dpi=220, bbox_inches="tight")
+    plt.close(fig)
+    print(f"Saved {out_path}")
+
+
+def plot_transfer(out_dir: Path, min_timesteps: int = 450_000):
+    """Transfer results: accuracy on x-axis, lines colored by oracle cost."""
+    csv_path = out_dir / "transfer_results.csv"
+    if not csv_path.exists():
+        print(f"No transfer_results.csv found at {csv_path} — skipping transfer plot")
+        return
+
+    df = pd.read_csv(csv_path)
+    df = df[df["total_timesteps"] >= min_timesteps].copy()
+    df = df[~df["no_oracle"]].copy()
+    if df.empty:
+        print("No eligible transfer results found — skipping transfer plot")
+        return
+
+    df = df[df["env_id"].str.contains("FixedTarget")].copy()
+    if df.empty:
+        print("No FixedTarget transfer results found — skipping transfer plot")
+        return
+
+    costs = sorted(df["oracle_cost"].dropna().unique())
+    palette = plt.cm.plasma(np.linspace(0.08, 0.9, len(costs)))
+    cost_color = dict(zip(costs, palette))
+
+    fig, ax = plt.subplots(1, 1, figsize=(6, 4.8))
+
+    for cost_val in costs:
+        rows = df[np.isclose(df["oracle_cost"], cost_val)].sort_values("oracle_accuracy")
+        if rows.empty:
+            continue
+        color = cost_color[cost_val]
+        ax.plot(rows["oracle_accuracy"], rows["success_rate"],
+                color=color, linewidth=2, marker="o", label=f"cost={cost_val:g}")
+        ax.fill_between(
+            rows["oracle_accuracy"],
+            rows["success_rate"] - rows["success_std"],
+            rows["success_rate"] + rows["success_std"],
+            color=color, alpha=0.2,
+        )
+
+    ax.set_title("FixedTarget-Sokoban-v2 (zero-shot transfer)")
+    ax.set_xlabel("Oracle Accuracy")
+    ax.set_ylabel("Success Rate")
+    ax.set_ylim(-0.02, 1.02)
+    ax.grid(True, alpha=0.25, linestyle="--")
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+
+    handles, labels = ax.get_legend_handles_labels()
+    fig.legend(handles, labels, loc="center left", bbox_to_anchor=(1.0, 0.5),
+               frameon=False, fontsize=11)
+    fig.suptitle("Zero-Shot Transfer: Success Rate by Oracle Accuracy & Cost", fontweight="bold")
+    fig.tight_layout()
+    out_path = out_dir / "transfer_results.png"
     fig.savefig(out_path, dpi=220, bbox_inches="tight")
     plt.close(fig)
     print(f"Saved {out_path}")
@@ -562,6 +633,7 @@ def main():
     plot_cost_curves(records, out_dir, window=args.window, accuracy=args.cost_curve_accuracy, shade=args.shade)
     plot_accuracy_lines(records, out_dir, window=args.window, shade=args.shade)
     plot_linear_schedule(records, out_dir, window=args.window, shade=args.shade)
+    plot_transfer(out_dir, min_timesteps=args.min_steps)
 
 
 if __name__ == "__main__":

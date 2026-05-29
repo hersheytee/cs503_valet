@@ -6,13 +6,15 @@ for 7x7 boards rendered at 8 pixels per cell.
 """
 
 import warnings
-import gym as old_gym          # The old library where Sokoban lives
 warnings.filterwarnings("ignore", category=UserWarning, module="gym")
+warnings.filterwarnings("ignore", message=".*unmaintained.*")
+warnings.filterwarnings("ignore", message=".*Gymnasium.*")
+import gym as old_gym          # The old library where Sokoban lives
 import gymnasium as gym        # The modern library your RL agent needs
 from gymnasium import spaces
 import numpy as np
-import cv2 
-import gym_sokoban 
+import cv2
+import gym_sokoban
 from bfs_oracle import get_oracle_action
 
 # --- MONKEYPATCH FOR NUMPY 2.0 vs OLD GYM ---
