@@ -448,3 +448,58 @@ Detach from tmux without stopping the jobs:
 ```text
 Ctrl-b d
 ```
+
+## Budget-Limited Oracle Runs (Single GPU, Serial)
+
+Fixed query budget per episode (1, 3, 5), 100% accuracy, cost=0, 1M steps each.
+The oracle is free but the agent can only query it N times per episode; after that
+the query action falls through as a no-op.
+
+```bash
+cat > run_budget_oracle.sh <<'EOF'
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p vast_logs
+
+PYTHON_BIN="${PYTHON_BIN:-$(command -v python || command -v python3 || true)}"
+
+COMMON_ARGS="--env-id Sokoban-small-v0 \
+  --total-timesteps 1000000 \
+  --n-envs 64 \
+  --n-steps 256 \
+  --n-minibatches 8 \
+  --save-model \
+  --oracle-accuracy 1.0 \
+  --oracle-cost 0.0 \
+  --wandb-project cs503-sokoban \
+  --wandb-group sokoban_minigridcnn_seed1_budget_oracle"
+
+run_job() {
+  local gpu="$1"; local exp_name="$2"; local extra_args="$3"
+  local log_path="vast_logs/${exp_name}_s1.log"
+  echo "[$(date)] start ${exp_name}"
+  CUDA_VISIBLE_DEVICES="$gpu" "$PYTHON_BIN" -u gym_sokoban/train.py \
+    $COMMON_ARGS --seed 1 --exp-name "$exp_name" $extra_args > "$log_path" 2>&1
+  local status=$?
+  [ "$status" -ne 0 ] && { echo "[$(date)] FAILED ${exp_name}"; tail -80 "$log_path"; exit "$status"; }
+  echo "[$(date)] done  ${exp_name}"
+}
+
+run_job 0 "oracle_budget1_acc100_1M" "--max-oracle-queries 1"
+run_job 0 "oracle_budget3_acc100_1M" "--max-oracle-queries 3"
+run_job 0 "oracle_budget5_acc100_1M" "--max-oracle-queries 5"
+
+echo "Budget oracle runs complete"
+EOF
+
+chmod +x run_budget_oracle.sh
+tmux new-session -d -s soko_budget './run_budget_oracle.sh'
+tmux attach -t soko_budget
+```
+
+Detach from tmux without stopping the jobs:
+
+```text
+Ctrl-b d
+```

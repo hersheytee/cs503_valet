@@ -308,3 +308,38 @@ previous MiniGrid-style CNN on 56x56 sprites
 ```
 
 For larger boards, use a 7x7 player-centered crop rendered at 8 pixels per cell so the input remains `56x56x3`.
+
+## Budget-Limited Oracle with Budget-Aware Observation
+
+**Note for report.**
+
+We introduce a fixed per-episode oracle query budget (e.g. 1, 3, or 5 queries).
+Rather than silently redirecting exhausted queries to a no-op — which would give the
+agent no signal that its budget is gone — we encode the remaining budget directly
+into the observation as a fourth image channel.
+
+The 4th channel is a spatially-constant uint8 field:
+
+```text
+budget_channel[h, w] = int((queries_remaining / max_queries) * 255)
+```
+
+So the channel reads 255 (white) at the start of an episode and decays to 0 (black)
+as the agent uses up its queries. After the budget is exhausted the channel stays at
+0 for the rest of the episode.
+
+This means the observation space becomes `56x56x4` instead of `56x56x3` for
+budget-limited runs. The CNN first layer reads 4 input channels and the policy can
+explicitly condition on remaining budget when deciding whether to query.
+
+No architectural changes to `CNNPolicy` are needed: the model already
+parameterises input channels from `obs_shape`, which flows through automatically
+from `envs.single_observation_space.shape`. Budget and non-budget runs therefore
+produce non-interchangeable checkpoints (3-channel vs 4-channel weights), which is
+intentional — they are distinct experimental conditions.
+
+Implementation:
+- `--max-oracle-queries N` in `train.py`
+- Budget tracking and 4th-channel encoding in `SokobanOracleWrapper._process_obs()`
+- When budget is exhausted the `QUERY_ACTION` redirects to a no-op action (0),
+  but the agent can anticipate this by reading the 4th channel before choosing.

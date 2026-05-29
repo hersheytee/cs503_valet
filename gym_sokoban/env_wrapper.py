@@ -87,6 +87,7 @@ class SokobanOracleWrapper(gym.Env):
         max_episode_steps: int = 120,
         obs_size: int = 56,
         seed: int = 0,
+        max_oracle_queries: int | None = None,
     ):
         # Build the environment using the OLD gym
         self.env = old_gym.make(env_id, disable_env_checker=True)
@@ -94,6 +95,8 @@ class SokobanOracleWrapper(gym.Env):
         self.oracle_accuracy = float(np.clip(oracle_accuracy, 0.0, 1.0))
         self.max_episode_steps = max_episode_steps
         self.elapsed_steps = 0
+        self.max_oracle_queries = max_oracle_queries
+        self._episode_queries = 0
         self._oracle_rng = np.random.default_rng(seed)
         
         # include no oracle flag
@@ -115,10 +118,14 @@ class SokobanOracleWrapper(gym.Env):
             self.QUERY_ACTION = n_original
         
         # Resize observation space from the raw render to MiniGrid-large size.
+        # When a query budget is active, a 4th channel encodes remaining budget
+        # as a spatially-constant uint8 value (255 = full, 0 = exhausted).
         self.obs_size = obs_size
+        self._use_budget_channel = max_oracle_queries is not None
+        obs_channels = 4 if self._use_budget_channel else 3
         self.observation_space = spaces.Box(
-            low=0, high=255, 
-            shape=(self.obs_size, self.obs_size, 3), 
+            low=0, high=255,
+            shape=(self.obs_size, self.obs_size, obs_channels),
             dtype=np.uint8
         )
 
@@ -126,6 +133,11 @@ class SokobanOracleWrapper(gym.Env):
         """Grabs the raw RGB image from the old env and resizes it."""
         obs = self.env.render(mode='rgb_array')
         resized = cv2.resize(obs, (self.obs_size, self.obs_size), interpolation=cv2.INTER_AREA)
+        if self._use_budget_channel:
+            budget_frac = max(0.0, 1.0 - self._episode_queries / self.max_oracle_queries)
+            budget_val = int(budget_frac * 255)
+            budget_ch = np.full((self.obs_size, self.obs_size, 1), budget_val, dtype=np.uint8)
+            resized = np.concatenate([resized, budget_ch], axis=-1)
         return resized
 
     def _is_solved(self):
@@ -151,6 +163,7 @@ class SokobanOracleWrapper(gym.Env):
             
         self.env.reset()
         self.elapsed_steps = 0
+        self._episode_queries = 0
         
         # Clear the state-aware cache
         unwrapped = self.env.unwrapped
@@ -169,38 +182,45 @@ class SokobanOracleWrapper(gym.Env):
         oracle_action = None
 
         if action == self.QUERY_ACTION:
-            unwrapped = self.env.unwrapped
-            optimal_action = get_oracle_action(unwrapped)
-            guided = True
-            
-            # Fatal deadlock
-            if optimal_action == 0:
-                self.env.reset() 
-                info = {
-                    'guided': True,
-                    'oracle_action': 0,
-                    'oracle_optimal_action': 0,
-                    'oracle_correct': False,
-                    'oracle_accuracy': self.oracle_accuracy,
-                    'oracle_cost': self.oracle_cost,
-                    'fatal_deadlock': True,
-                    'success': False,
-                }
-                # Return modern format: obs, reward, terminated, truncated, info
-                return self._process_obs(), -1.0, True, False, info
+            budget_ok = self.max_oracle_queries is None or self._episode_queries < self.max_oracle_queries
+            if budget_ok:
+                unwrapped = self.env.unwrapped
+                optimal_action = get_oracle_action(unwrapped)
+                guided = True
+                self._episode_queries += 1
 
-            if self._oracle_rng.random() <= self.oracle_accuracy:
-                oracle_action = optimal_action
-                oracle_correct = True
+                # Fatal deadlock
+                if optimal_action == 0:
+                    self.env.reset()
+                    info = {
+                        'guided': True,
+                        'oracle_action': 0,
+                        'oracle_optimal_action': 0,
+                        'oracle_correct': False,
+                        'oracle_accuracy': self.oracle_accuracy,
+                        'oracle_cost': self.oracle_cost,
+                        'fatal_deadlock': True,
+                        'success': False,
+                    }
+                    return self._process_obs(), -1.0, True, False, info
+
+                if self._oracle_rng.random() <= self.oracle_accuracy:
+                    oracle_action = optimal_action
+                    oracle_correct = True
+                else:
+                    non_optimal_actions = [
+                        a for a in range(self.n_original_actions)
+                        if a != optimal_action
+                    ]
+                    oracle_action = int(self._oracle_rng.choice(non_optimal_actions))
+                    oracle_correct = False
+
+                action = oracle_action
             else:
-                non_optimal_actions = [
-                    a for a in range(self.n_original_actions)
-                    if a != optimal_action
-                ]
-                oracle_action = int(self._oracle_rng.choice(non_optimal_actions))
+                # Budget exhausted — fall through as no-op
+                action = 0
+                optimal_action = None
                 oracle_correct = False
-                
-            action = oracle_action
         else:
             optimal_action = None
             oracle_correct = False
@@ -247,8 +267,9 @@ def make_env(
     no_oracle: bool = False,
     max_episode_steps: int = 120,
     obs_size: int = 56,
+    max_oracle_queries: int | None = None,
 ):
-    """Factory function for SyncVectorEnv."""
+    """Factory function for AsyncVectorEnv."""
     def _init():
         env = SokobanOracleWrapper(
             env_id,
@@ -259,6 +280,7 @@ def make_env(
             max_episode_steps=max_episode_steps,
             obs_size=obs_size,
             seed=seed,
+            max_oracle_queries=max_oracle_queries,
         )
         env.action_space.seed(seed)
         env.observation_space.seed(seed)

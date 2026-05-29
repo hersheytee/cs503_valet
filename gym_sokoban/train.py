@@ -45,6 +45,7 @@ def parse_args():
     p.add_argument('--oracle-cost',     type=float, default=0.0)                   # Negative reward penalty applied every time the agent asks the Oracle for a move
     p.add_argument('--oracle-cost-final', type=float, default=None)                # If set, linearly anneals oracle cost from --oracle-cost to this value over training
     p.add_argument('--oracle-cost-anneal-steps', type=int, default=None)           # Steps over which to complete the linear ramp; defaults to total-timesteps (ramp ends at training end)
+    p.add_argument('--max-oracle-queries',    type=int,   default=None)            # If set, caps oracle queries per episode to this budget (budget exhausted → no-op)
     p.add_argument('--oracle-accuracy', type=float, default=1.0)                   # Probability that a queried oracle returns the BFS-optimal action; otherwise returns a non-optimal native action
     p.add_argument('--no-oracle',       action='store_true', default=False)        # If True, removes the Oracle action entirely (runs as a pure PPO baseline)
     p.add_argument('--reward-shaping',  action='store_true', default=False)        # Enables potential-based dense rewards
@@ -250,6 +251,7 @@ def main():
             no_oracle=args.no_oracle,
             max_episode_steps=args.max_episode_steps,
             obs_size=args.obs_size,
+            max_oracle_queries=args.max_oracle_queries,
             )
         for i in range(args.n_envs)
     ])
